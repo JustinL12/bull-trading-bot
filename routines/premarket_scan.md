@@ -91,10 +91,12 @@ python scripts/premarket_scan.py
 
 This script:
 - Fetches live snapshots of up to 3,000 US equities from Alpaca
-- Screens for: price $5–$500, avg daily volume ≥ 500,000, gap-up ≥ 1%, rel vol ≥ 1.5x
+- Screens for: price $10–$500, avg daily volume ≥ 500,000, gap-up ≥ 2%
 - Fetches VIX via yfinance; if VIX > 30, creates `data/no_trade_today.flag`
 - Checks SPY EMA-9 vs EMA-21 to determine market regime
-- Writes top 20 candidates (sorted by rel_vol) to `data/watchlist.json`
+- Researches all candidates with Perplexity (`sonar-pro`) and keeps only **positive-sentiment** ones
+- Writes the filtered candidates (sorted by gap-up %) to `data/watchlist.json` — each entry includes a `sentiment` field
+- Writes `data/research.json` with the full Perplexity results for all researched symbols
 - Writes `data/daily_context.json` with: date, no_trade flag, vix, spy_ema9, spy_ema21, market_trending_up, reason
 
 After it runs, read `data/daily_context.json`.
@@ -115,20 +117,15 @@ Reads `data/watchlist.json`, queries yfinance for upcoming earnings dates, and w
 
 ---
 
-## Part 5: Perplexity sentiment research
+## Part 5: Review sentiment research results
 
-```
-python scripts/research_symbols.py --top 8
-```
+Perplexity sentiment research ran automatically inside the premarket scan (Part 3) — no separate script needed. Read `data/research.json` to review the full results for all researched symbols.
 
-Queries Perplexity (`sonar-pro`) for the top 8 watchlist symbols by rel_vol. Writes `data/research.json` with sentiment (positive / neutral / negative) and a news summary per symbol.
+The watchlist already contains only **positive-sentiment** candidates. Note:
+- Any symbols that were screened out due to negative or neutral sentiment (visible in `research.json` but absent from `watchlist.json`)
+- Any surprising news (legal issues, unexpected guidance, sector headwinds) in the summaries that warrants extra caution even for positive-rated symbols
 
-After it runs, read `data/research.json`. Identify:
-- **Negative sentiment symbols** — will be hard-excluded at entry time; note them explicitly
-- **Positive sentiment symbols** — favorable signal; note which ones
-- Any surprising news (legal issues, unexpected guidance, sector headwinds) that isn't captured by sentiment alone
-
-If a symbol looks strong on technicals but Perplexity surfaces a clear risk factor, add a note in the journal so the 10:15 AM agent has context beyond just "negative."
+Add a note in the journal for the 9:30 AM agent if any symbol's summary contains meaningful caveats beyond its sentiment label.
 
 ---
 

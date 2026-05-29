@@ -4,11 +4,14 @@ Runs at 9:30 AM ET. Writes data/watchlist.json and data/daily_context.json.
 Also checks for no-trade conditions and sets data/no_trade_today.flag if needed.
 """
 
+import os
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import yfinance as yf
+from openai import OpenAI
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -16,6 +19,7 @@ import config
 from lib.alpaca_client import get_data_client, get_trading_client
 from lib.state import clear_flag, flag_exists, read_json, set_flag, write_json
 from scripts.check_earnings import load_earnings_blacklist
+from scripts.research_symbols import research_symbol
 from alpaca.data.requests import StockBarsRequest, StockLatestBarRequest, StockSnapshotRequest
 from alpaca.data.timeframe import TimeFrame
 from alpaca.trading.requests import GetAssetsRequest
@@ -84,7 +88,7 @@ def fetch_snapshots(data_client, symbols: list[str]) -> dict:
     for i in range(0, len(symbols), chunk_size):
         chunk = symbols[i:i + chunk_size]
         try:
-            req = StockSnapshotRequest(symbol_or_symbols=chunk, feed="iex")
+            req = StockSnapshotRequest(symbol_or_symbols=chunk, feed="sip")
             snaps = data_client.get_stock_snapshot(req)
             results.update(snaps)
         except Exception:
@@ -96,13 +100,19 @@ def screen_snapshots(snapshots: dict, earnings_blacklist: set[str]) -> list[dict
     candidates = []
     for symbol, snap in snapshots.items():
         try:
-            if snap.daily_bar is None or snap.prev_daily_bar is None:
+            if snap.prev_daily_bar is None:
                 continue
 
             prev_close = float(snap.prev_daily_bar.close)
-            latest_price = float(snap.latest_trade.price) if snap.latest_trade else float(snap.daily_bar.close)
-            daily_volume = float(snap.daily_bar.volume)
             prev_volume = float(snap.prev_daily_bar.volume)
+
+            # Prefer latest trade price; fall back to prev close if no intraday data yet
+            if snap.latest_trade:
+                latest_price = float(snap.latest_trade.price)
+            elif snap.daily_bar:
+                latest_price = float(snap.daily_bar.close)
+            else:
+                latest_price = prev_close
 
             if latest_price < config.PRICE_MIN or latest_price > config.PRICE_MAX:
                 continue
@@ -115,25 +125,65 @@ def screen_snapshots(snapshots: dict, earnings_blacklist: set[str]) -> list[dict
             if gap_pct < config.GAP_UP_MIN_PCT:
                 continue
 
-            rel_vol = daily_volume / prev_volume if prev_volume > 0 else 0
-            if rel_vol < config.REL_VOL_MIN:
-                continue
+            # pre-market daily_bar.volume is partial — record it but don't filter on it
+            premarket_volume = int(snap.daily_bar.volume) if snap.daily_bar else 0
 
             candidates.append({
                 "symbol": symbol,
                 "price": round(latest_price, 2),
                 "prev_close": round(prev_close, 2),
                 "gap_pct": round(gap_pct, 2),
-                "daily_volume": int(daily_volume),
+                "premarket_volume": premarket_volume,
                 "prev_volume": int(prev_volume),
-                "rel_vol": round(rel_vol, 2),
                 "earnings_blackout": False,
             })
         except Exception:
             continue
 
-    candidates.sort(key=lambda x: x["rel_vol"], reverse=True)
+    candidates.sort(key=lambda x: x["gap_pct"], reverse=True)
     return candidates[:20]
+
+
+def filter_by_sentiment(candidates: list[dict]) -> list[dict]:
+    """Research each candidate with Perplexity and keep only positive-sentiment ones.
+
+    Falls back to the full unfiltered list if the API key is missing or all calls fail,
+    so a Perplexity outage never blocks the scan entirely.
+    """
+    api_key = os.environ.get("PERPLEXITY_API_KEY")
+    if not api_key:
+        print("PERPLEXITY_API_KEY not set — skipping sentiment filter, keeping all candidates.")
+        for c in candidates:
+            c["sentiment"] = "neutral"
+        write_json("research.json", {"generated_at": datetime.now(timezone.utc).isoformat(), "results": {}})
+        return candidates
+
+    client = OpenAI(api_key=api_key, base_url="https://api.perplexity.ai")
+    results = {}
+    enriched = []
+
+    for candidate in candidates[:config.PREMARKET_RESEARCH_TOP_N]:
+        symbol = candidate["symbol"]
+        print(f"  Researching {symbol}...")
+        result = research_symbol(client, symbol)
+        results[symbol] = result
+        candidate["sentiment"] = result["sentiment"]
+        print(f"    → {result['sentiment']}")
+        enriched.append(candidate)
+        time.sleep(0.5)
+
+    write_json("research.json", {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "results": results,
+    })
+
+    positive = [c for c in enriched if c["sentiment"] == "positive"]
+    if not positive:
+        print("Warning: no positive-sentiment candidates — keeping all candidates as fallback.")
+        return enriched
+
+    print(f"Sentiment filter: {len(positive)}/{len(enriched)} candidates passed (positive sentiment).")
+    return positive
 
 
 def main():
@@ -186,10 +236,11 @@ def main():
     snapshots = fetch_snapshots(data_client, symbols)
     candidates = screen_snapshots(snapshots, earnings_bl)
 
+    candidates = filter_by_sentiment(candidates)
     write_json("watchlist.json", candidates)
-    print(f"Watchlist: {len(candidates)} candidates written.")
+    print(f"Watchlist: {len(candidates)} positive-sentiment candidates written.")
     for c in candidates[:10]:
-        print(f"  {c['symbol']}: gap {c['gap_pct']:+.1f}%, rel_vol {c['rel_vol']:.1f}x, price ${c['price']:.2f}")
+        print(f"  {c['symbol']}: gap {c['gap_pct']:+.1f}%, sentiment {c['sentiment']}, price ${c['price']:.2f}")
 
 
 if __name__ == "__main__":

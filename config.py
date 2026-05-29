@@ -58,7 +58,8 @@ MEMORY_JOURNAL_ARCHIVE_SESSIONS = 60  # archive journal entries older than this
 
 # --- Perplexity ---
 PERPLEXITY_TIMEOUT_SEC = 10
-PERPLEXITY_WATCHLIST_TOP_N = 8   # research top N watchlist symbols
+PERPLEXITY_WATCHLIST_TOP_N = 8   # research top N watchlist symbols (standalone script)
+PREMARKET_RESEARCH_TOP_N = 20    # research all candidates during premarket scan before sentiment filter
 PERPLEXITY_INTRADAY_MIN_GAIN = 50.0  # only check news if unrealized gain > this
 
 # --- Alpaca data ---
