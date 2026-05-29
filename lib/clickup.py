@@ -32,7 +32,10 @@ def _post_task(title: str, description: str) -> bool:
         print("ClickUp: API key or list ID not configured — skipping.")
         return False
 
-    payload = {"name": title, "description": description, "status": "open"}
+    # Do not hardcode a status name: ClickUp lists define their own status
+    # set, and an unknown name (e.g. "open") fails with CRTSK_001
+    # "Status not found". Omitting it lets the list apply its default status.
+    payload = {"name": title, "description": description}
     try:
         resp = requests.post(
             f"{_base_url()}/list/{list_id}/task",
