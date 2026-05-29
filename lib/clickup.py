@@ -1,4 +1,10 @@
-"""ClickUp API integration for trade alerts and daily reports."""
+"""Notification delivery for trade alerts and reports.
+
+Despite the module name, the active delivery channel is chosen at runtime:
+when DISCORD_WEBHOOK_URL is set, messages go to Discord (a chat-style feed);
+otherwise they fall back to the legacy ClickUp task list. All routines call
+_post_task, so the channel switch is transparent to them.
+"""
 
 import os
 import sys
@@ -8,6 +14,8 @@ from pathlib import Path
 import requests
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from lib.notify import discord_enabled, send_discord
 
 
 def _base_url() -> str:
@@ -26,13 +34,28 @@ def _list_id() -> str:
 
 
 def _post_task(title: str, description: str) -> bool:
+    """Deliver a notification through the active channel. Returns True on success.
+
+    Prefers Discord when DISCORD_WEBHOOK_URL is configured; otherwise falls
+    back to creating a ClickUp task. This is the single sink every routine and
+    helper (post_trade_alert, post_daily_report, weekly report) posts through.
+    """
+    if discord_enabled():
+        return send_discord(title, description)
+    return _post_clickup_task(title, description)
+
+
+def _post_clickup_task(title: str, description: str) -> bool:
     """Create a new task in the configured ClickUp list. Returns True on success."""
     list_id = _list_id()
     if not list_id or not os.environ.get("CLICKUP_API_KEY"):
         print("ClickUp: API key or list ID not configured — skipping.")
         return False
 
-    payload = {"name": title, "description": description, "status": "open"}
+    # Do not hardcode a status name: ClickUp lists define their own status
+    # set, and an unknown name (e.g. "open") fails with CRTSK_001
+    # "Status not found". Omitting it lets the list apply its default status.
+    payload = {"name": title, "description": description}
     try:
         resp = requests.post(
             f"{_base_url()}/list/{list_id}/task",
