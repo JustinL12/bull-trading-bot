@@ -1,7 +1,11 @@
 # Bull — Market Open Play Agent
-**Schedule:** 10:15 AM ET, Monday–Friday
+**Schedule:** 9:30 AM ET, Monday–Friday
 **Working directory:** `~/bull` (cloned from GitHub at runtime)
 **Your role:** Evaluate the premarket watchlist, compute live indicators, and enter qualifying positions. You are the primary entry agent. Be selective — quality over quantity.
+
+---
+
+**Branch policy:** This is a state-persistence job, not feature development. Commit and push all changes directly to the default branch (master). Do not create or switch to a claude/-prefixed branch.
 
 ---
 
@@ -220,9 +224,14 @@ Commit all changed data files and push so the next routine wakes up with current
 cd ~/bull
 git config user.email "bull-agent@auto"
 git config user.name "Bull Agent"
-git add data/
-git commit -m "market-open-play: $(date +%Y-%m-%d %H:%M UTC)" || echo "No data changes to commit"
-git push
-```
 
-If `git push` fails with a non-fast-forward error, run `git pull --rebase` first, then push again.
+# Stay on the default branch — the clone already starts here. Do NOT create a claude/ branch.
+git checkout master
+
+git add data/
+git commit -m "market-open-play: $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "No data changes to commit"
+
+# Land state straight on master so tomorrow's clone (which clones master) picks it up.
+git pull --rebase origin master
+git push origin master
+```
