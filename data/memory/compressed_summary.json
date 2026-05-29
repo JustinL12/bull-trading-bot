@@ -7,7 +7,7 @@
   "avoid": [],
   "active_parameter_adjustments": [],
   "overnight_hold_insights": "No overnight hold data yet. Apply safe-hold criteria from config.",
-  "recent_market_context": "No prior sessions. Check daily_context.json for today's VIX and SPY regime.",
+  "recent_market_context": "2026-05-29: VIX 15.86 (calm), SPY trending up (EMA9 745.82 > EMA21 734.89), no-trade flag clear. Low-volatility, mild risk-on environment. Watchlist empty (0 candidates) because the scan ran pre-open before intraday volume accumulated.",
   "current_open_positions": [],
-  "notes_for_next_session": "Bootstrap phase: collect data without making parameter adjustments. Need at least 10 trades per signal bucket before drawing conclusions."
+  "notes_for_next_session": "For 10:15 AM entry agent: Watchlist is EMPTY (0 candidates) — premarket_scan.py ran pre-open (~8:30 AM ET) so rel_vol was ~0 for all symbols and the >=1.5x filter rejected everything. Recommend re-running premarket_scan.py after the 9:30 open so current-session volume populates rel_vol before attempting entries. No earnings blackout names, no negative-sentiment names (no symbols researched). No overnight holds. No PDT restriction (daytrade_count 0, equity $100k). Market regime is trending_up, so no regime-down position cap. Still bootstrap phase: collect data, no parameter adjustments. Env note: GITHUB_REPO was not set in the runtime; relied on the pre-configured git remote, and the 'ta' package failed to build but is unused by any script."
 }
