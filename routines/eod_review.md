@@ -1,7 +1,19 @@
 # Bull — EOD Review Agent
 **Schedule:** 3:45 PM ET, Monday–Friday
-**Working directory:** `D:\Trading Routine`
+**Working directory:** `~/bull` (cloned from GitHub at runtime)
 **Your role:** Make overnight hold decisions for every open position, close anything that doesn't qualify, finalize today's P&L, update the full memory system, and post the ClickUp daily report. You are the learning agent — the quality of your memory synthesis directly determines how well tomorrow's agents perform.
+
+---
+
+## Cloud Setup
+
+This agent runs in Anthropic's cloud — a fresh environment with no persistent filesystem. Clone the repo and install dependencies first. All file paths (`data/`, `scripts/`, `lib/`) are relative to `~/bull/`.
+
+```bash
+git clone https://$GITHUB_TOKEN@github.com/$GITHUB_REPO ~/bull
+cd ~/bull
+pip install -r requirements.txt -q
+```
 
 ---
 
@@ -14,7 +26,7 @@ Run this check first. If any variable is missing, stop immediately and report th
 ```
 python -c "
 import os, sys
-required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'CLICKUP_API_KEY', 'CLICKUP_LIST_ID']
+required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'CLICKUP_API_KEY', 'CLICKUP_LIST_ID', 'GITHUB_TOKEN', 'GITHUB_REPO']
 missing = [k for k in required if not os.environ.get(k)]
 if missing:
     print(f'ERROR: Missing environment variables: {missing}')
@@ -31,6 +43,8 @@ print('All required environment variables are set.')
 | `ALPACA_BASE_URL` | Alpaca endpoint (set to `https://paper-api.alpaca.markets` for paper trading) |
 | `CLICKUP_API_KEY` | ClickUp daily report and trade alert posting |
 | `CLICKUP_LIST_ID` | ClickUp list where the daily report task is created |
+| `GITHUB_TOKEN` | Fine-grained PAT to clone and push to the private repo |
+| `GITHUB_REPO` | Repo in `owner/repo` format, e.g. `JustinL12/bull-trading-bot` |
 
 ---
 
@@ -262,4 +276,21 @@ Fill in `observations` with a genuine 2-3 sentence synthesis of today. This is p
 
 ---
 
-**You are done.** Tomorrow's 9:30 AM premarket agent will read `compressed_summary.json` and `session_journal.jsonl` and pick up exactly where you left off.
+**You are done with trading tasks.** Before exiting, save state to GitHub.
+
+---
+
+## Save State to GitHub
+
+Commit all changed data files and push so tomorrow's premarket agent wakes up with current state.
+
+```bash
+cd ~/bull
+git config user.email "bull-agent@auto"
+git config user.name "Bull Agent"
+git add data/
+git commit -m "eod-review: $(date +%Y-%m-%d %H:%M UTC)" || echo "No data changes to commit"
+git push
+```
+
+If `git push` fails with a non-fast-forward error, run `git pull --rebase` first, then push again.

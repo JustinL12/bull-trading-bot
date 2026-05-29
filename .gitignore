@@ -13,21 +13,5 @@ build/
 # Claude Code local settings
 .claude/
 
-# Runtime-generated data files (recreated each session by the agents)
-data/positions.json
-data/watchlist.json
+# Ephemeral scratch files (regenerated, not needed between sessions)
 data/watchlist_annotated.json
-data/indicators.json
-data/research.json
-data/account.json
-data/daily_context.json
-data/earnings_blacklist.json
-data/daily_pnl.json
-
-# Runtime flags (created/deleted by agents at runtime)
-data/*.flag
-
-# Append-only trade and session logs (live trading records)
-data/trade_log.jsonl
-data/memory/session_journal.jsonl
-data/memory/archive_summary.jsonl

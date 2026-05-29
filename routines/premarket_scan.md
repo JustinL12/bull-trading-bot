@@ -1,7 +1,19 @@
 # Bull — Premarket Scan Agent
 **Schedule:** 9:30 AM ET, Monday–Friday
-**Working directory:** `D:\Trading Routine`
+**Working directory:** `~/bull` (cloned from GitHub at runtime)
 **Your role:** Build today's watchlist, filter earnings risk, run Perplexity sentiment research. Everything the 10:15 AM agent needs is produced here.
+
+---
+
+## Cloud Setup
+
+This agent runs in Anthropic's cloud — a fresh environment with no persistent filesystem. Clone the repo and install dependencies first. All file paths (`data/`, `scripts/`, `lib/`) are relative to `~/bull/`.
+
+```bash
+git clone https://$GITHUB_TOKEN@github.com/$GITHUB_REPO ~/bull
+cd ~/bull
+pip install -r requirements.txt -q
+```
 
 ---
 
@@ -14,7 +26,7 @@ Run this check first. If any variable is missing, stop immediately and report th
 ```
 python -c "
 import os, sys
-required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'PERPLEXITY_API_KEY']
+required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'PERPLEXITY_API_KEY', 'GITHUB_TOKEN', 'GITHUB_REPO']
 missing = [k for k in required if not os.environ.get(k)]
 if missing:
     print(f'ERROR: Missing environment variables: {missing}')
@@ -30,6 +42,8 @@ print('All required environment variables are set.')
 | `ALPACA_SECRET_KEY` | Alpaca broker authentication |
 | `ALPACA_BASE_URL` | Alpaca endpoint (set to `https://paper-api.alpaca.markets` for paper trading) |
 | `PERPLEXITY_API_KEY` | Perplexity news sentiment research |
+| `GITHUB_TOKEN` | Fine-grained PAT to clone and push to the private repo |
+| `GITHUB_REPO` | Repo in `owner/repo` format, e.g. `JustinL12/bull-trading-bot` |
 
 ---
 
@@ -145,4 +159,21 @@ Write the updated `compressed_summary.json` back to disk.
 
 ---
 
-**You are done.** The 10:15 AM market-open-play agent reads `watchlist.json`, `research.json`, `daily_context.json`, and `compressed_summary.json` to make entry decisions.
+**You are done with trading tasks.** Before exiting, save state to GitHub.
+
+---
+
+## Save State to GitHub
+
+Commit all changed data files and push so the next routine wakes up with current state.
+
+```bash
+cd ~/bull
+git config user.email "bull-agent@auto"
+git config user.name "Bull Agent"
+git add data/
+git commit -m "premarket-scan: $(date +%Y-%m-%d %H:%M UTC)" || echo "No data changes to commit"
+git push
+```
+
+If `git push` fails with a non-fast-forward error, run `git pull --rebase` first, then push again.

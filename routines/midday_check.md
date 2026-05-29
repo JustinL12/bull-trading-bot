@@ -1,7 +1,19 @@
 # Bull — Midday Check Agent
 **Schedule:** 12:30 PM ET, Monday–Friday
-**Working directory:** `D:\Trading Routine`
+**Working directory:** `~/bull` (cloned from GitHub at runtime)
 **Your role:** Manage all open positions (exits, partial profits, trailing stop updates), then consider new entries if capacity allows. You are the position manager and secondary entry agent.
+
+---
+
+## Cloud Setup
+
+This agent runs in Anthropic's cloud — a fresh environment with no persistent filesystem. Clone the repo and install dependencies first. All file paths (`data/`, `scripts/`, `lib/`) are relative to `~/bull/`.
+
+```bash
+git clone https://$GITHUB_TOKEN@github.com/$GITHUB_REPO ~/bull
+cd ~/bull
+pip install -r requirements.txt -q
+```
 
 ---
 
@@ -14,7 +26,7 @@ Run this check first. If any variable is missing, stop immediately and report th
 ```
 python -c "
 import os, sys
-required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'CLICKUP_API_KEY', 'CLICKUP_LIST_ID']
+required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'CLICKUP_API_KEY', 'CLICKUP_LIST_ID', 'GITHUB_TOKEN', 'GITHUB_REPO']
 missing = [k for k in required if not os.environ.get(k)]
 if missing:
     print(f'ERROR: Missing environment variables: {missing}')
@@ -31,6 +43,8 @@ print('All required environment variables are set.')
 | `ALPACA_BASE_URL` | Alpaca endpoint (set to `https://paper-api.alpaca.markets` for paper trading) |
 | `CLICKUP_API_KEY` | ClickUp trade alert notifications |
 | `CLICKUP_LIST_ID` | ClickUp list where trade tasks are created |
+| `GITHUB_TOKEN` | Fine-grained PAT to clone and push to the private repo |
+| `GITHUB_REPO` | Repo in `owner/repo` format, e.g. `JustinL12/bull-trading-bot` |
 
 ---
 
@@ -182,4 +196,21 @@ Update `data/memory/compressed_summary.json`:
 
 ---
 
-**You are done.** The 3:45 PM EOD-review agent will make overnight hold decisions, close risky positions, and update the memory system for tomorrow.
+**You are done with trading tasks.** Before exiting, save state to GitHub.
+
+---
+
+## Save State to GitHub
+
+Commit all changed data files and push so the next routine wakes up with current state.
+
+```bash
+cd ~/bull
+git config user.email "bull-agent@auto"
+git config user.name "Bull Agent"
+git add data/
+git commit -m "midday-check: $(date +%Y-%m-%d %H:%M UTC)" || echo "No data changes to commit"
+git push
+```
+
+If `git push` fails with a non-fast-forward error, run `git pull --rebase` first, then push again.
