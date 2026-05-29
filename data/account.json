@@ -1,1 +1,12 @@
-{}
+{
+  "equity": 100000.0,
+  "cash": 100000.0,
+  "buying_power": 200000.0,
+  "portfolio_value": 100000.0,
+  "last_equity": 100000.0,
+  "daytrade_count": 0,
+  "pattern_day_trader": false,
+  "trading_blocked": false,
+  "account_blocked": false,
+  "currency": "USD"
+}
