@@ -183,7 +183,7 @@ Write a temporary Python script `_weekly_report.py`:
 ```python
 import json, sys, os
 sys.path.insert(0, '.')
-from lib.clickup import _post_task
+from lib.notify import send_discord as _post_task
 
 with open('_weekly_stats_output.json') as f:
     s = json.load(f)

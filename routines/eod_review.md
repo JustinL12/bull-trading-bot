@@ -202,7 +202,7 @@ Write a temporary Python script to post the daily report. Create `_discord_repor
 ```python
 import sys, json
 sys.path.insert(0, '.')
-from lib.clickup import post_daily_report
+from lib.notify import post_daily_report
 from lib.state import read_json, read_jsonl
 
 pnl = read_json('daily_pnl.json')
