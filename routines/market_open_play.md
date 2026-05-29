@@ -30,7 +30,7 @@ Run this check first. If any variable is missing, stop immediately and report th
 ```
 python -c "
 import os, sys
-required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'CLICKUP_API_KEY', 'CLICKUP_LIST_ID', 'GITHUB_TOKEN', 'GITHUB_REPO']
+required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'DISCORD_WEBHOOK_URL', 'GITHUB_TOKEN', 'GITHUB_REPO']
 missing = [k for k in required if not os.environ.get(k)]
 if missing:
     print(f'ERROR: Missing environment variables: {missing}')
@@ -45,8 +45,7 @@ print('All required environment variables are set.')
 | `ALPACA_API_KEY` | Alpaca broker authentication |
 | `ALPACA_SECRET_KEY` | Alpaca broker authentication |
 | `ALPACA_BASE_URL` | Alpaca endpoint (set to `https://paper-api.alpaca.markets` for paper trading) |
-| `CLICKUP_API_KEY` | ClickUp trade alert notifications |
-| `CLICKUP_LIST_ID` | ClickUp list where trade tasks are created |
+| `DISCORD_WEBHOOK_URL` | Discord webhook for trade alert notifications |
 | `GITHUB_TOKEN` | Fine-grained PAT to clone and push to the private repo |
 | `GITHUB_REPO` | Repo in `owner/repo` format, e.g. `JustinL12/bull-trading-bot` |
 
@@ -169,7 +168,7 @@ The script will:
 - Place a stop-loss order at `stop_price`
 - Write the position to `data/positions.json`
 - Append an ENTRY record to `data/trade_log.jsonl`
-- Post a ClickUp trade alert
+- Post a Discord trade alert
 
 After each fill, re-check position count and deployed equity before evaluating the next candidate. Stop when you've hit the position cap or equity deployment cap.
 

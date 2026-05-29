@@ -1,75 +1,21 @@
 """Notification delivery for trade alerts and reports.
 
-Despite the module name, the active delivery channel is chosen at runtime:
-when DISCORD_WEBHOOK_URL is set, messages go to Discord (a chat-style feed);
-otherwise they fall back to the legacy ClickUp task list. All routines call
-_post_task, so the channel switch is transparent to them.
+All notifications are sent to Discord via lib.notify.send_discord.
+The module name is kept for backward compatibility with scripts that
+import post_trade_alert and post_daily_report from here.
 """
 
-import os
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
-
-import requests
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from lib.notify import discord_enabled, send_discord
-
-
-def _base_url() -> str:
-    return "https://api.clickup.com/api/v2"
-
-
-def _headers() -> dict:
-    return {
-        "Authorization": os.environ.get("CLICKUP_API_KEY", ""),
-        "Content-Type": "application/json",
-    }
-
-
-def _list_id() -> str:
-    return os.environ.get("CLICKUP_LIST_ID", "")
+from lib.notify import send_discord
 
 
 def _post_task(title: str, description: str) -> bool:
-    """Deliver a notification through the active channel. Returns True on success.
-
-    Prefers Discord when DISCORD_WEBHOOK_URL is configured; otherwise falls
-    back to creating a ClickUp task. This is the single sink every routine and
-    helper (post_trade_alert, post_daily_report, weekly report) posts through.
-    """
-    if discord_enabled():
-        return send_discord(title, description)
-    return _post_clickup_task(title, description)
-
-
-def _post_clickup_task(title: str, description: str) -> bool:
-    """Create a new task in the configured ClickUp list. Returns True on success."""
-    list_id = _list_id()
-    if not list_id or not os.environ.get("CLICKUP_API_KEY"):
-        print("ClickUp: API key or list ID not configured — skipping.")
-        return False
-
-    # Do not hardcode a status name: ClickUp lists define their own status
-    # set, and an unknown name (e.g. "open") fails with CRTSK_001
-    # "Status not found". Omitting it lets the list apply its default status.
-    payload = {"name": title, "description": description}
-    try:
-        resp = requests.post(
-            f"{_base_url()}/list/{list_id}/task",
-            headers=_headers(),
-            json=payload,
-            timeout=10,
-        )
-        if resp.status_code in (200, 201):
-            return True
-        print(f"ClickUp error {resp.status_code}: {resp.text[:200]}")
-        return False
-    except Exception as e:
-        print(f"ClickUp request failed: {e}")
-        return False
+    """Deliver a notification to Discord. Returns True on success."""
+    return send_discord(title, description)
 
 
 def post_trade_alert(
@@ -86,7 +32,7 @@ def post_trade_alert(
     exit_reason: str | None = None,
     hold_duration: str | None = None,
 ) -> None:
-    """Send a real-time trade notification to ClickUp. Never raises."""
+    """Send a real-time trade notification to Discord. Never raises."""
     try:
         action_upper = action.upper()
         title = f"Bull Trade — {action_upper} {symbol}"
@@ -119,10 +65,9 @@ def post_trade_alert(
             if hold_duration:
                 lines.append(f"Hold duration: {hold_duration}")
 
-        description = "\n".join(lines)
-        _post_task(title, description)
+        _post_task(title, "\n".join(lines))
     except Exception as e:
-        print(f"ClickUp trade alert failed silently: {e}")
+        print(f"Discord trade alert failed silently: {e}")
 
 
 def post_daily_report(
@@ -137,16 +82,13 @@ def post_daily_report(
     cumulative_bull_pct: float,
     cumulative_spy_pct: float,
 ) -> None:
-    """Post the EOD daily report task to ClickUp. Never raises."""
+    """Post the EOD daily report to Discord. Never raises."""
     try:
         vs_spy = pnl_pct - spy_return_pct
         alpha_total = cumulative_bull_pct - cumulative_spy_pct
         sign = lambda x: "+" if x >= 0 else ""
 
         title = f"Bull Daily Report — {date} | {sign(pnl_pct)}{pnl_pct:.2f}% | vs SPY {sign(spy_return_pct)}{spy_return_pct:.2f}%"
-
-        winners = [t for t in trades if t.get("pnl_dollars", 0) > 0]
-        losers = [t for t in trades if t.get("pnl_dollars", 0) <= 0]
 
         lines = [
             f"Net P&L: {sign(pnl_dollars)}${pnl_dollars:.2f} ({sign(pnl_pct)}{pnl_pct:.2f}%)  |  S&P 500 today: {sign(spy_return_pct)}{spy_return_pct:.2f}%  |  Outperformance: {sign(vs_spy)}{vs_spy:.2f}%",
@@ -173,7 +115,6 @@ def post_daily_report(
             f"Running portfolio vs S&P 500: Bull {sign(cumulative_bull_pct)}{cumulative_bull_pct:.2f}%  |  SPY {sign(cumulative_spy_pct)}{cumulative_spy_pct:.2f}%  |  Alpha: {sign(alpha_total)}{alpha_total:.2f}%",
         ]
 
-        description = "\n".join(lines)
-        _post_task(title, description)
+        _post_task(title, "\n".join(lines))
     except Exception as e:
-        print(f"ClickUp daily report failed silently: {e}")
+        print(f"Discord daily report failed silently: {e}")

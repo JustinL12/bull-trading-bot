@@ -1,5 +1,5 @@
 """Place a buy, sell, or partial-sell order via Alpaca. Updates data/positions.json.
-Sends a ClickUp trade alert after every fill.
+Sends a Discord trade alert after every fill.
 
 Usage:
     python scripts/place_order.py --action buy --symbol AAPL --shares 45 --stop 184.69 --rsi 58.3 --rel_vol 2.1 --sentiment positive

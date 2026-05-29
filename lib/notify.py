@@ -1,8 +1,8 @@
 """Discord webhook delivery for trade alerts and reports.
 
-All Bull notifications funnel through lib.clickup._post_task, which delegates
-here when DISCORD_WEBHOOK_URL is set. Messages are plain Discord markdown so
-they read like a chat/text thread on desktop and mobile.
+All Bull notifications funnel through lib.clickup._post_task → send_discord.
+Messages are plain Discord markdown so they read like a chat/text thread on
+desktop and mobile.
 """
 
 import os

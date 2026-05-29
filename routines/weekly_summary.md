@@ -1,7 +1,7 @@
 # Bull — Weekly Summary Agent
 **Schedule:** 4:30 PM ET, Fridays only
 **Working directory:** `~/bull` (cloned from GitHub at runtime)
-**Your role:** After the Friday EOD review completes, compile the full week's performance — every trade, every day, every metric — and post a comprehensive weekly report to ClickUp. This is the record of what the bot actually did this week and whether the strategy is working.
+**Your role:** After the Friday EOD review completes, compile the full week's performance — every trade, every day, every metric — and post a comprehensive weekly report to Discord. This is the record of what the bot actually did this week and whether the strategy is working.
 
 ---
 
@@ -23,7 +23,7 @@ pip install -r requirements.txt -q
 
 ```python
 import os, sys
-required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'CLICKUP_API_KEY', 'CLICKUP_LIST_ID', 'GITHUB_TOKEN', 'GITHUB_REPO']
+required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'DISCORD_WEBHOOK_URL', 'GITHUB_TOKEN', 'GITHUB_REPO']
 missing = [k for k in required if not os.environ.get(k)]
 if missing:
     print(f'ERROR: Missing environment variables: {missing}')
@@ -176,7 +176,7 @@ Using the stats from Part 2 and the memory files from Part 1, answer these quest
 
 ---
 
-## Part 4: Post the ClickUp weekly report
+## Part 4: Post the Discord weekly report
 
 Write a temporary Python script `_weekly_report.py`:
 
@@ -237,7 +237,7 @@ lines = [
 
 description = '\n'.join(lines)
 ok = _post_task(title, description)
-print('ClickUp weekly report posted.' if ok else 'ClickUp post failed.')
+print('Discord weekly report posted.' if ok else 'Discord post failed.')
 ```
 
 Run it:

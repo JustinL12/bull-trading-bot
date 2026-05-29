@@ -1,7 +1,7 @@
 # Bull — EOD Review Agent
 **Schedule:** 3:45 PM ET, Monday–Friday
 **Working directory:** `~/bull` (cloned from GitHub at runtime)
-**Your role:** Make overnight hold decisions for every open position, close anything that doesn't qualify, finalize today's P&L, update the full memory system, and post the ClickUp daily report. You are the learning agent — the quality of your memory synthesis directly determines how well tomorrow's agents perform.
+**Your role:** Make overnight hold decisions for every open position, close anything that doesn't qualify, finalize today's P&L, update the full memory system, and post the Discord daily report. You are the learning agent — the quality of your memory synthesis directly determines how well tomorrow's agents perform.
 
 ---
 
@@ -25,12 +25,12 @@ pip install -r requirements.txt -q
 
 **API keys are injected by the Claude Desktop cloud runtime — there is no `.env` file.** The scripts call `load_dotenv()` internally, but when environment variables are already set in the process environment, `load_dotenv()` is a no-op and the scripts use the pre-set values automatically.
 
-Run this check first. If any variable is missing, stop immediately and report the error — the P&L and ClickUp report steps will fail without them.
+Run this check first. If any variable is missing, stop immediately and report the error — the P&L and Discord report steps will fail without them.
 
 ```
 python -c "
 import os, sys
-required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'CLICKUP_API_KEY', 'CLICKUP_LIST_ID', 'GITHUB_TOKEN', 'GITHUB_REPO']
+required = ['ALPACA_API_KEY', 'ALPACA_SECRET_KEY', 'ALPACA_BASE_URL', 'DISCORD_WEBHOOK_URL', 'GITHUB_TOKEN', 'GITHUB_REPO']
 missing = [k for k in required if not os.environ.get(k)]
 if missing:
     print(f'ERROR: Missing environment variables: {missing}')
@@ -45,8 +45,7 @@ print('All required environment variables are set.')
 | `ALPACA_API_KEY` | Alpaca broker authentication |
 | `ALPACA_SECRET_KEY` | Alpaca broker authentication |
 | `ALPACA_BASE_URL` | Alpaca endpoint (set to `https://paper-api.alpaca.markets` for paper trading) |
-| `CLICKUP_API_KEY` | ClickUp daily report and trade alert posting |
-| `CLICKUP_LIST_ID` | ClickUp list where the daily report task is created |
+| `DISCORD_WEBHOOK_URL` | Discord webhook for daily report and trade alert posting |
 | `GITHUB_TOKEN` | Fine-grained PAT to clone and push to the private repo |
 | `GITHUB_REPO` | Repo in `owner/repo` format, e.g. `JustinL12/bull-trading-bot` |
 
@@ -196,9 +195,9 @@ Write the completed object to `data/memory/compressed_summary.json`.
 
 ---
 
-## Part 6: Post the ClickUp daily report
+## Part 6: Post the Discord daily report
 
-Write a temporary Python script to post the daily report. Create `_clickup_report.py` in the working directory:
+Write a temporary Python script to post the daily report. Create `_discord_report.py` in the working directory:
 
 ```python
 import sys, json
@@ -235,20 +234,20 @@ post_daily_report(
     cumulative_bull_pct=pnl.get('cumulative_bull_pct', 0),
     cumulative_spy_pct=pnl.get('cumulative_spy_pct', 0),
 )
-print('ClickUp daily report posted.')
+print('Discord daily report posted.')
 ```
 
 Run it:
 ```
-python _clickup_report.py
+python _discord_report.py
 ```
 
 Then delete the temp file:
 ```
-del _clickup_report.py
+del _discord_report.py
 ```
 
-If the ClickUp post fails (network error, invalid key), log the error in the journal but do not let it block the memory update — the memory work in Part 5 is more important.
+If the Discord post fails (network error, invalid webhook), log the error in the journal but do not let it block the memory update — the memory work in Part 5 is more important.
 
 ---
 
@@ -271,7 +270,7 @@ Append one JSON line to `data/memory/session_journal.jsonl` as the EOD summary e
   "positions_closed_eod": [],
   "kill_switch_triggered": false,
   "compressed_summary_updated": true,
-  "clickup_report_posted": true,
+  "discord_report_posted": true,
   "observations": "Your synthesis: what drove today's results, what worked, what to watch tomorrow, any strategy observations"
 }
 ```
