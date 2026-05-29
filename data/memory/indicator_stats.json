@@ -1,0 +1,10 @@
+{
+  "last_updated": null,
+  "total_trades": 0,
+  "by_signal": {
+    "rsi_at_entry": {},
+    "rel_vol_at_entry": {},
+    "perplexity_sentiment": {},
+    "overnight_holds": {}
+  }
+}

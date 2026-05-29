@@ -1,0 +1,13 @@
+{
+  "last_updated": null,
+  "sessions_analyzed": 0,
+  "total_trades": 0,
+  "performance_overview": "No sessions yet. Bull is in bootstrap phase. Apply default thresholds from config.py.",
+  "best_signals": [],
+  "avoid": [],
+  "active_parameter_adjustments": [],
+  "overnight_hold_insights": "No overnight hold data yet. Apply safe-hold criteria from config.",
+  "recent_market_context": "No prior sessions. Check daily_context.json for today's VIX and SPY regime.",
+  "current_open_positions": [],
+  "notes_for_next_session": "Bootstrap phase: collect data without making parameter adjustments. Need at least 10 trades per signal bucket before drawing conclusions."
+}
