@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-01T12:35:00-04:00",
+  "last_updated": "2026-06-01T13:01:00-04:00",
   "sessions_analyzed": 0,
   "total_trades": 0,
   "performance_overview": "No sessions yet. Bull is in bootstrap phase. Apply default thresholds from config.py.",
@@ -7,7 +7,7 @@
   "avoid": [],
   "active_parameter_adjustments": [],
   "overnight_hold_insights": "No overnight hold data yet. Apply safe-hold criteria from config.",
-  "recent_market_context": "2026-06-01 (12:35 PM ET midday check): No open positions. INFY evaluated and rejected — gap fully faded (price $12.39 now below prev_close $12.64), rel_vol 0.25 (far below 1.5 minimum), stock below 200-day EMA $17.70 (long-term downtrend). Account: $100k equity, $0 P&L. VIX calm, SPY trending up.",
+  "recent_market_context": "2026-06-01 (1:01 PM ET market-open-play): No open positions, no entries taken. Agent ran late, just past the 1:00 PM entry-window close, so no entries were eligible regardless. Only watchlist candidate INFY re-evaluated and rejected on the merits too: close $12.385 below 200-day EMA $17.70 (long-term downtrend), rel_vol 0.23 (far below 1.5 min, gap fully faded below prev_close $12.64), MACD hist not rising. Account: $100k equity, $0 P&L. VIX 16.11 calm, SPY trending up.",
   "current_open_positions": [],
-  "notes_for_next_session": "For 3:45 PM EOD agent: NO OPEN POSITIONS — nothing to manage at end of day. Account is flat at $100k equity, $0 P&L. INFY was rejected at midday: failed gap (price faded below prev_close to $12.39), rel_vol only 0.25 (minimum is 1.5), far below 200-day EMA ($17.70 vs $12.39). Strategy remains in bootstrap phase with 0 total trades. EOD tasks: (1) run final account/P&L refresh; (2) check if any watchlist rescan is useful for tomorrow morning; (3) note that premarket_scan.py bugs were fixed this morning — scan is now functional and INFY appeared as first-ever candidate, but failed intraday criteria. IMPORTANT context on scan fix: feed='sip'->feed='iex' and snap.prev_daily_bar->snap.previous_daily_bar both fixed and committed earlier today. Tomorrow morning's premarket scan should work correctly."
+  "notes_for_next_session": "For 3:45 PM EOD agent: NO OPEN POSITIONS — nothing to manage at end of day. Account flat at $100k equity, $0 P&L. ZERO entries today: market-open-play agent ran late (1:01 PM ET, 1 min past the 1:00 PM entry-window close) AND the sole watchlist candidate INFY failed 4 of 8 criteria anyway (below 200-day EMA $17.70, rel_vol 0.23 vs 1.5 min with gap faded below prev_close, MACD hist not rising). Strategy remains in bootstrap phase, 0 total trades. EOD tasks: (1) final account/P&L refresh; (2) optional watchlist rescan for tomorrow; (3) candidate quality remains the core problem — INFY is the only ticker the (now-fixed) scan has ever surfaced and it's a fading bounce in a downtrend, so even a working scan is producing thin/low-conviction candidates. OPERATIONAL NOTE: this market-open agent fired ~3 hours late (1:01 PM instead of 10:00 AM ET); if that recurs, the entry window will keep closing before the agent runs — worth checking the 10:00 AM schedule trigger."
 }
