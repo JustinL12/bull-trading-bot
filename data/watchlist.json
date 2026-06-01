@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "symbol": "INFY",
+    "price": 13.21,
+    "prev_close": 12.64,
+    "gap_pct": 4.47,
+    "premarket_volume": 651411,
+    "prev_volume": 1841728,
+    "earnings_blackout": false,
+    "sentiment": "neutral"
+  }
+]

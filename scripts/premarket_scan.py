@@ -88,7 +88,7 @@ def fetch_snapshots(data_client, symbols: list[str]) -> dict:
     for i in range(0, len(symbols), chunk_size):
         chunk = symbols[i:i + chunk_size]
         try:
-            req = StockSnapshotRequest(symbol_or_symbols=chunk, feed="sip")
+            req = StockSnapshotRequest(symbol_or_symbols=chunk, feed="iex")
             snaps = data_client.get_stock_snapshot(req)
             results.update(snaps)
         except Exception:
@@ -100,11 +100,11 @@ def screen_snapshots(snapshots: dict, earnings_blacklist: set[str]) -> list[dict
     candidates = []
     for symbol, snap in snapshots.items():
         try:
-            if snap.prev_daily_bar is None:
+            if snap.previous_daily_bar is None:
                 continue
 
-            prev_close = float(snap.prev_daily_bar.close)
-            prev_volume = float(snap.prev_daily_bar.volume)
+            prev_close = float(snap.previous_daily_bar.close)
+            prev_volume = float(snap.previous_daily_bar.volume)
 
             # Prefer latest trade price; fall back to prev close if no intraday data yet
             if snap.latest_trade:
