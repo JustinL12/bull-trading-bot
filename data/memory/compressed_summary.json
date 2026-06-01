@@ -1,5 +1,5 @@
 {
-  "last_updated": null,
+  "last_updated": "2026-06-01T10:00:00-05:00",
   "sessions_analyzed": 0,
   "total_trades": 0,
   "performance_overview": "No sessions yet. Bull is in bootstrap phase. Apply default thresholds from config.py.",
@@ -7,7 +7,7 @@
   "avoid": [],
   "active_parameter_adjustments": [],
   "overnight_hold_insights": "No overnight hold data yet. Apply safe-hold criteria from config.",
-  "recent_market_context": "2026-06-01 (8:30 AM ET premarket run): VIX 15.83 (calm, below 30), SPY trending up (EMA9 747.93 > EMA21 737.03), no-trade flag clear. Low-volatility, mild risk-on environment. Watchlist empty (0 candidates) — structural issue with rel_vol/gap-up gates pre-open confirmed across multiple sessions.",
+  "recent_market_context": "2026-06-01 (10:00 AM ET market-open run): VIX 15.83 (calm, below 30), SPY trending up (EMA9 747.93 > EMA21 737.03), no-trade flag clear. Watchlist empty (0 candidates) — structural rel_vol/gap-up gate issue confirmed across all sessions since bootstrap. 0 total trades to date.",
   "current_open_positions": [],
-  "notes_for_next_session": "For 10:15 AM entry agent: Watchlist is EMPTY (0 candidates) — DO NOT attempt entries, there is nothing to trade. CRITICAL STRUCTURAL ISSUE (confirmed across multiple sessions including a mid-session re-run on 2026-05-29 at ~12:38 PM ET that also returned 0): premarket_scan.py computes rel_vol as today cumulative daily-bar volume / prior full-day volume. Pre-open this is ~0 (rejects everything), and even mid-session the gate almost never clears when combined with gap-up >=2%. Re-running does NOT fix this — a code maintenance fix is required: switch to minute-bar rel_vol vs a time-of-day baseline, or relax the rel_vol and gap-up thresholds, or source pre-market snapshot data. Market context: VIX 15.83 (calm), SPY regime trending_up (EMA9 747.93 > EMA21 737.03, no regime-down position cap), no-trade flag clear. No earnings blackout names, no negative-sentiment names (nothing researched). No overnight holds. No PDT restriction (daytrade_count 0, equity $100k). Bootstrap phase: no parameter adjustments. Env note: 'ta' package fails to build but is not imported by any script."
+  "notes_for_next_session": "For 12:30 PM mid-session agent: WATCHLIST IS EMPTY (0 candidates) — do NOT attempt entries, nothing qualified. CRITICAL STRUCTURAL ISSUE (confirmed every session): premarket_scan.py computes rel_vol as today cumulative daily-bar volume / prior full-day volume. Even intraday this rarely clears the 1.5x gate when combined with gap-up >=2%. A mid-session re-run will almost certainly produce the same empty result based on prior sessions. This is a code maintenance problem, not a market condition issue. Top priority fix: switch to minute-bar rel_vol vs time-of-day baseline, or relax rel_vol/gap-up thresholds in config.py, or source pre-market snapshot volume. No overnight holds. No open positions. No PDT restriction (daytrade_count 0, equity $100k). Market context: VIX 15.83 (calm), SPY trending up — favorable regime if candidates ever appear. Bootstrap phase: 0 trades, no parameter adjustments active, indicator_stats has no signal data."
 }
