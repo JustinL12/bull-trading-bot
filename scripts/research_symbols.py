@@ -24,15 +24,28 @@ from lib.state import read_json, write_json
 
 
 DISCOVER_PROMPT = (
-    "Today is {date}. List up to {max_symbols} US publicly traded stocks that have "
-    "significant positive news catalysts right now. Look for: earnings beats, FDA approvals, "
-    "major partnerships, acquisitions, buybacks, analyst upgrades, or other market-moving "
-    "positive events.\n\n"
+    "Today is {date}. List {max_symbols} US-listed (NYSE/Nasdaq) stocks that have "
+    "positive momentum or recent positive news catalysts right now — earnings beats, "
+    "FDA approvals, major partnerships, acquisitions, buybacks, analyst upgrades, or "
+    "strong relative strength.\n\n"
+    "Always return a list of real ticker symbols. Do NOT refuse, do NOT ask for more "
+    "data, and do NOT add any preamble. If you are unsure about live catalysts, fall "
+    "back to large, liquid, high-momentum large-cap names.\n\n"
     "Format each entry on its own line as:\n"
-    "TICKER: one-sentence explanation of the catalyst\n\n"
-    "End your response with exactly this line:\n"
-    "TICKERS: TICK1,TICK2,TICK3"
+    "<TICKER>: one-sentence explanation of the catalyst\n\n"
+    "End your response with exactly one line listing only the ticker symbols, "
+    "comma-separated (use real symbols, not placeholders):\n"
+    "TICKERS: <first>,<second>,<third>,..."
 )
+
+# Tokens the model sometimes echoes from the prompt's format example; never real tickers.
+PLACEHOLDER_TICKERS = {
+    "TICK", "TICK1", "TICK2", "TICK3", "TICKER", "TICKERS",
+    "FIRST", "SECOND", "THIRD", "SYMBOL", "AAA", "BBB", "CCC", "XXX", "ABC",
+}
+
+# Number of discovery attempts before giving up (the model intermittently refuses).
+DISCOVER_MAX_ATTEMPTS = 4
 
 PROMPT_TEMPLATE = (
     "Summarize the latest news and analyst sentiment for {symbol} stock as of today. "
@@ -105,7 +118,7 @@ def _parse_discover_response(text: str) -> list[dict]:
     seen: set[str] = set()
     results = []
     for sym in tickers:
-        if sym in seen:
+        if sym in seen or sym in PLACEHOLDER_TICKERS:
             continue
         seen.add(sym)
         summary = summaries.get(sym, "Positive catalyst identified by Perplexity.")
@@ -123,23 +136,33 @@ def discover_stocks_by_news(client: OpenAI, max_symbols: int = 25) -> list[dict]
     """Ask Perplexity to discover US stocks with positive news catalysts today.
 
     Returns a list of dicts with symbol, sentiment, summary, key_points, error keys.
-    Returns [] on API failure so the caller can handle it gracefully.
+    Returns [] only if every attempt fails or the model refuses repeatedly.
+
+    The model intermittently refuses (empty TICKERS line) or echoes the prompt's
+    placeholder example, so we retry a few times and keep the first real list.
     """
     today = datetime.now().strftime("%B %d, %Y")
     prompt = DISCOVER_PROMPT.format(date=today, max_symbols=max_symbols)
-    try:
-        response = client.chat.completions.create(
-            model="sonar-pro",
-            messages=[{"role": "user", "content": prompt}],
-            timeout=config.PERPLEXITY_TIMEOUT_SEC,
-        )
-        text = response.choices[0].message.content.strip()
-        discovered = _parse_discover_response(text)
-        print(f"  Perplexity discovered {len(discovered)} tickers: {', '.join(d['symbol'] for d in discovered)}")
-        return discovered
-    except Exception as e:
-        print(f"  Perplexity discovery error: {e}")
-        return []
+    for attempt in range(1, DISCOVER_MAX_ATTEMPTS + 1):
+        try:
+            response = client.chat.completions.create(
+                model="sonar-pro",
+                messages=[{"role": "user", "content": prompt}],
+                timeout=config.PERPLEXITY_TIMEOUT_SEC,
+            )
+            text = response.choices[0].message.content.strip()
+            discovered = _parse_discover_response(text)
+        except Exception as e:
+            print(f"  Perplexity discovery error (attempt {attempt}): {e}")
+            continue
+        if discovered:
+            print(f"  Perplexity discovered {len(discovered)} tickers: "
+                  f"{', '.join(d['symbol'] for d in discovered)}")
+            return discovered
+        print(f"  Perplexity returned no usable tickers (attempt "
+              f"{attempt}/{DISCOVER_MAX_ATTEMPTS}) — retrying")
+    print("  Perplexity discovery failed after all attempts.")
+    return []
 
 
 def main():

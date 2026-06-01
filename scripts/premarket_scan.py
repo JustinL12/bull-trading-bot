@@ -18,6 +18,7 @@ import config
 from lib.alpaca_client import get_data_client, get_trading_client
 from lib.state import clear_flag, read_json, set_flag, write_json
 from scripts.check_earnings import load_earnings_blacklist
+from scripts.compute_indicators import fetch_daily_bars, get_avg_volume
 from scripts.research_symbols import discover_stocks_by_news
 from alpaca.data.requests import StockBarsRequest, StockSnapshotRequest
 from alpaca.data.timeframe import TimeFrame
@@ -82,8 +83,14 @@ def fetch_snapshots(data_client, symbols: list[str]) -> dict:
     return results
 
 
-def validate_candidates(discovered: list[dict], snapshots: dict, earnings_blacklist: set[str]) -> list[dict]:
-    """Apply price, volume, and earnings filters to Perplexity-discovered symbols."""
+def validate_candidates(data_client, discovered: list[dict], snapshots: dict, earnings_blacklist: set[str]) -> list[dict]:
+    """Apply price, volume, and earnings filters to Perplexity-discovered symbols.
+
+    Liquidity and price are judged from daily bars rather than the IEX snapshot's
+    single previous-day bar / latest trade: a single IEX day is noisy and the
+    snapshot's latest_trade can be an unreliable/stale print. We use the 20-day
+    average daily volume and the most recent daily close instead.
+    """
     validated = []
     for item in discovered:
         symbol = item["symbol"]
@@ -92,23 +99,19 @@ def validate_candidates(discovered: list[dict], snapshots: dict, earnings_blackl
             print(f"  {symbol}: no Alpaca snapshot — skipping")
             continue
         try:
-            if snap.previous_daily_bar is None:
+            daily_df = fetch_daily_bars(data_client, symbol, 30)
+            if daily_df.empty:
+                print(f"  {symbol}: no daily bars — skipping")
                 continue
-            prev_close = float(snap.previous_daily_bar.close)
-            prev_volume = float(snap.previous_daily_bar.volume)
+            avg_volume = get_avg_volume(daily_df)
+            price = float(daily_df["close"].iloc[-1])
+            prev_close = float(daily_df["close"].iloc[-2]) if len(daily_df) >= 2 else price
 
-            if snap.latest_trade:
-                latest_price = float(snap.latest_trade.price)
-            elif snap.daily_bar:
-                latest_price = float(snap.daily_bar.close)
-            else:
-                latest_price = prev_close
-
-            if latest_price < config.PRICE_MIN or latest_price > config.PRICE_MAX:
-                print(f"  {symbol}: price ${latest_price:.2f} outside ${config.PRICE_MIN}–${config.PRICE_MAX} — skipping")
+            if price < config.PRICE_MIN or price > config.PRICE_MAX:
+                print(f"  {symbol}: price ${price:.2f} outside ${config.PRICE_MIN}–${config.PRICE_MAX} — skipping")
                 continue
-            if prev_volume < config.MIN_AVG_VOLUME:
-                print(f"  {symbol}: prev volume {int(prev_volume):,} below {config.MIN_AVG_VOLUME:,} — skipping")
+            if avg_volume < config.MIN_AVG_VOLUME:
+                print(f"  {symbol}: 20d avg volume {int(avg_volume):,} below {config.MIN_AVG_VOLUME:,} — skipping")
                 continue
             if symbol in earnings_blacklist:
                 print(f"  {symbol}: earnings blackout — skipping")
@@ -117,15 +120,16 @@ def validate_candidates(discovered: list[dict], snapshots: dict, earnings_blackl
             premarket_volume = int(snap.daily_bar.volume) if snap.daily_bar else 0
             validated.append({
                 "symbol": symbol,
-                "price": round(latest_price, 2),
+                "price": round(price, 2),
                 "prev_close": round(prev_close, 2),
                 "premarket_volume": premarket_volume,
-                "prev_volume": int(prev_volume),
+                "prev_volume": int(avg_volume),
                 "earnings_blackout": False,
                 "sentiment": item["sentiment"],
                 "summary": item.get("summary", ""),
             })
-        except Exception:
+        except Exception as e:
+            print(f"  {symbol}: validation error ({e}) — skipping")
             continue
     return validated
 
@@ -195,7 +199,7 @@ def main():
     symbols = [d["symbol"] for d in discovered]
     print(f"Fetching Alpaca snapshots for {len(symbols)} discovered symbols...")
     snapshots = fetch_snapshots(data_client, symbols)
-    watchlist = validate_candidates(discovered, snapshots, earnings_bl)
+    watchlist = validate_candidates(data_client, discovered, snapshots, earnings_bl)
 
     research_results = {
         item["symbol"]: {

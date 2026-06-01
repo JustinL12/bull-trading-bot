@@ -2,8 +2,11 @@
 
 # --- Universe filters ---
 PRICE_MIN = 10.0
-PRICE_MAX = 500.0
-MIN_AVG_VOLUME = 500_000
+PRICE_MAX = 1000.0
+# Liquidity floor on the 20-day average daily volume. The Alpaca IEX feed only
+# reports a fraction (~2-10%) of consolidated volume, so this is calibrated to
+# IEX-scale numbers, not full-market volume.
+MIN_AVG_VOLUME = 100_000
 REL_VOL_MIN = 1.5
 
 # --- Entry criteria ---
