@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-01T10:00:00-05:00",
+  "last_updated": "2026-06-01T12:35:00-04:00",
   "sessions_analyzed": 0,
   "total_trades": 0,
   "performance_overview": "No sessions yet. Bull is in bootstrap phase. Apply default thresholds from config.py.",
@@ -7,7 +7,7 @@
   "avoid": [],
   "active_parameter_adjustments": [],
   "overnight_hold_insights": "No overnight hold data yet. Apply safe-hold criteria from config.",
-  "recent_market_context": "2026-06-01 (8:30 AM ET premarket run): VIX 16.11 (calm, below 30), SPY trending up (EMA9 749.67 > EMA21 738.82), no-trade flag clear. Watchlist 1 candidate (INFY, +4.47% gap). Scan now functional after two bug fixes committed this session.",
+  "recent_market_context": "2026-06-01 (12:35 PM ET midday check): No open positions. INFY evaluated and rejected — gap fully faded (price $12.39 now below prev_close $12.64), rel_vol 0.25 (far below 1.5 minimum), stock below 200-day EMA $17.70 (long-term downtrend). Account: $100k equity, $0 P&L. VIX calm, SPY trending up.",
   "current_open_positions": [],
-  "notes_for_next_session": "For 9:30 AM entry agent: WATCHLIST HAS 1 CANDIDATE — INFY at $13.21, +4.47% gap-up, prev_vol 1.84M, sentiment NEUTRAL (fallback; no positive candidates today). CAUTION: Perplexity rates INFY neutral with Reduce/Hold analyst consensus, gap described as tactical bounce on mixed technicals — low fundamental conviction. Size conservatively if entering. IMPORTANT CODE FIX THIS SESSION: premarket_scan.py had two bugs causing empty watchlists every session: (1) feed='sip' -> feed='iex' (SIP feed requires paid subscription, was silently 403-ing all snapshot batches); (2) snap.prev_daily_bar -> snap.previous_daily_bar (wrong attribute name). Both fixed and committed. Scan is now functional for the first time. Earnings blackout: INFY clear. PDT: not restricted (daytrade_count 0, equity $100k). Regime: SPY trending up, no position cap. VIX calm at 16.11."
+  "notes_for_next_session": "For 3:45 PM EOD agent: NO OPEN POSITIONS — nothing to manage at end of day. Account is flat at $100k equity, $0 P&L. INFY was rejected at midday: failed gap (price faded below prev_close to $12.39), rel_vol only 0.25 (minimum is 1.5), far below 200-day EMA ($17.70 vs $12.39). Strategy remains in bootstrap phase with 0 total trades. EOD tasks: (1) run final account/P&L refresh; (2) check if any watchlist rescan is useful for tomorrow morning; (3) note that premarket_scan.py bugs were fixed this morning — scan is now functional and INFY appeared as first-ever candidate, but failed intraday criteria. IMPORTANT context on scan fix: feed='sip'->feed='iex' and snap.prev_daily_bar->snap.previous_daily_bar both fixed and committed earlier today. Tomorrow morning's premarket scan should work correctly."
 }

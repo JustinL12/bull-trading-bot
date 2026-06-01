@@ -1,1 +1,19 @@
-{}
+{
+  "INFY": {
+    "close": 12.385,
+    "ema_9": 12.3744,
+    "ema_21": 12.372,
+    "rsi": 59.841,
+    "macd": 0.0022,
+    "macd_signal": 0.001,
+    "macd_hist": 0.0012,
+    "atr": 0.0058,
+    "vwap": 12.3359,
+    "rel_vol": 0.2545,
+    "macd_hist_rising": true,
+    "symbol": "INFY",
+    "avg_volume_20d": 835735.0,
+    "ema_200_daily": 17.7034,
+    "atr_pct": 0.047
+  }
+}
