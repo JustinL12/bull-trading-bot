@@ -6,7 +6,6 @@ Also checks for no-trade conditions and sets data/no_trade_today.flag if needed.
 
 import os
 import sys
-import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -17,13 +16,11 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
 from lib.alpaca_client import get_data_client, get_trading_client
-from lib.state import clear_flag, flag_exists, read_json, set_flag, write_json
+from lib.state import clear_flag, read_json, set_flag, write_json
 from scripts.check_earnings import load_earnings_blacklist
-from scripts.research_symbols import research_symbol
-from alpaca.data.requests import StockBarsRequest, StockLatestBarRequest, StockSnapshotRequest
+from scripts.research_symbols import discover_stocks_by_news
+from alpaca.data.requests import StockBarsRequest, StockSnapshotRequest
 from alpaca.data.timeframe import TimeFrame
-from alpaca.trading.requests import GetAssetsRequest
-from alpaca.trading.enums import AssetClass
 
 
 def get_market_clock(trading_client):
@@ -70,19 +67,8 @@ def fetch_spy_regime(data_client) -> dict:
         return {"error": str(e), "trending_up": True}
 
 
-def get_candidate_assets(trading_client) -> list[str]:
-    """Pull tradable US equity assets from Alpaca."""
-    req = GetAssetsRequest(asset_class=AssetClass.US_EQUITY)
-    assets = trading_client.get_all_assets(req)
-    symbols = [
-        a.symbol for a in assets
-        if a.tradable and a.status == "active" and a.symbol.isalpha() and len(a.symbol) <= 5
-    ]
-    return symbols[:3000]  # cap to avoid excessive API calls
-
-
 def fetch_snapshots(data_client, symbols: list[str]) -> dict:
-    """Batch-fetch latest snapshots for screening."""
+    """Batch-fetch latest snapshots for a given list of symbols."""
     results = {}
     chunk_size = 100
     for i in range(0, len(symbols), chunk_size):
@@ -96,17 +82,21 @@ def fetch_snapshots(data_client, symbols: list[str]) -> dict:
     return results
 
 
-def screen_snapshots(snapshots: dict, earnings_blacklist: set[str]) -> list[dict]:
-    candidates = []
-    for symbol, snap in snapshots.items():
+def validate_candidates(discovered: list[dict], snapshots: dict, earnings_blacklist: set[str]) -> list[dict]:
+    """Apply price, volume, and earnings filters to Perplexity-discovered symbols."""
+    validated = []
+    for item in discovered:
+        symbol = item["symbol"]
+        snap = snapshots.get(symbol)
+        if not snap:
+            print(f"  {symbol}: no Alpaca snapshot — skipping")
+            continue
         try:
             if snap.previous_daily_bar is None:
                 continue
-
             prev_close = float(snap.previous_daily_bar.close)
             prev_volume = float(snap.previous_daily_bar.volume)
 
-            # Prefer latest trade price; fall back to prev close if no intraday data yet
             if snap.latest_trade:
                 latest_price = float(snap.latest_trade.price)
             elif snap.daily_bar:
@@ -115,75 +105,29 @@ def screen_snapshots(snapshots: dict, earnings_blacklist: set[str]) -> list[dict
                 latest_price = prev_close
 
             if latest_price < config.PRICE_MIN or latest_price > config.PRICE_MAX:
+                print(f"  {symbol}: price ${latest_price:.2f} outside ${config.PRICE_MIN}–${config.PRICE_MAX} — skipping")
                 continue
             if prev_volume < config.MIN_AVG_VOLUME:
+                print(f"  {symbol}: prev volume {int(prev_volume):,} below {config.MIN_AVG_VOLUME:,} — skipping")
                 continue
             if symbol in earnings_blacklist:
+                print(f"  {symbol}: earnings blackout — skipping")
                 continue
 
-            gap_pct = (latest_price - prev_close) / prev_close * 100
-            if gap_pct < config.GAP_UP_MIN_PCT:
-                continue
-
-            # pre-market daily_bar.volume is partial — record it but don't filter on it
             premarket_volume = int(snap.daily_bar.volume) if snap.daily_bar else 0
-
-            candidates.append({
+            validated.append({
                 "symbol": symbol,
                 "price": round(latest_price, 2),
                 "prev_close": round(prev_close, 2),
-                "gap_pct": round(gap_pct, 2),
                 "premarket_volume": premarket_volume,
                 "prev_volume": int(prev_volume),
                 "earnings_blackout": False,
+                "sentiment": item["sentiment"],
+                "summary": item.get("summary", ""),
             })
         except Exception:
             continue
-
-    candidates.sort(key=lambda x: x["gap_pct"], reverse=True)
-    return candidates[:20]
-
-
-def filter_by_sentiment(candidates: list[dict]) -> list[dict]:
-    """Research each candidate with Perplexity and keep only positive-sentiment ones.
-
-    Falls back to the full unfiltered list if the API key is missing or all calls fail,
-    so a Perplexity outage never blocks the scan entirely.
-    """
-    api_key = os.environ.get("PERPLEXITY_API_KEY")
-    if not api_key:
-        print("PERPLEXITY_API_KEY not set — skipping sentiment filter, keeping all candidates.")
-        for c in candidates:
-            c["sentiment"] = "neutral"
-        write_json("research.json", {"generated_at": datetime.now(timezone.utc).isoformat(), "results": {}})
-        return candidates
-
-    client = OpenAI(api_key=api_key, base_url="https://api.perplexity.ai")
-    results = {}
-    enriched = []
-
-    for candidate in candidates[:config.PREMARKET_RESEARCH_TOP_N]:
-        symbol = candidate["symbol"]
-        print(f"  Researching {symbol}...")
-        result = research_symbol(client, symbol)
-        results[symbol] = result
-        candidate["sentiment"] = result["sentiment"]
-        print(f"    → {result['sentiment']}")
-        enriched.append(candidate)
-        time.sleep(0.5)
-
-    write_json("research.json", {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "results": results,
-    })
-
-    positive = [c for c in enriched if c["sentiment"] == "positive"]
-    if not positive:
-        print("Warning: no positive-sentiment candidates — keeping all candidates as fallback.")
-        return enriched
-
-    print(f"Sentiment filter: {len(positive)}/{len(enriched)} candidates passed (positive sentiment).")
-    return positive
+    return validated
 
 
 def main():
@@ -229,18 +173,49 @@ def main():
     # Load earnings blacklist
     earnings_bl = load_earnings_blacklist()
 
-    # Scan universe
-    print("Fetching tradable assets...")
-    symbols = get_candidate_assets(trading_client)
-    print(f"Screening {len(symbols)} symbols...")
-    snapshots = fetch_snapshots(data_client, symbols)
-    candidates = screen_snapshots(snapshots, earnings_bl)
+    # Discover stocks via Perplexity news sentiment
+    api_key = os.environ.get("PERPLEXITY_API_KEY")
+    if not api_key:
+        print("PERPLEXITY_API_KEY not set — cannot run Perplexity discovery. Watchlist will be empty.")
+        write_json("watchlist.json", [])
+        write_json("research.json", {"generated_at": datetime.now(timezone.utc).isoformat(), "results": {}})
+        return
 
-    candidates = filter_by_sentiment(candidates)
-    write_json("watchlist.json", candidates)
-    print(f"Watchlist: {len(candidates)} positive-sentiment candidates written.")
-    for c in candidates[:10]:
-        print(f"  {c['symbol']}: gap {c['gap_pct']:+.1f}%, sentiment {c['sentiment']}, price ${c['price']:.2f}")
+    print(f"Discovering up to {config.PERPLEXITY_DISCOVER_TOP_N} stocks via Perplexity news...")
+    client = OpenAI(api_key=api_key, base_url="https://api.perplexity.ai")
+    discovered = discover_stocks_by_news(client, config.PERPLEXITY_DISCOVER_TOP_N)
+
+    if not discovered:
+        print("Perplexity returned no stocks — watchlist will be empty.")
+        write_json("watchlist.json", [])
+        write_json("research.json", {"generated_at": datetime.now(timezone.utc).isoformat(), "results": {}})
+        return
+
+    # Validate discovered symbols against Alpaca (price, volume, tradability)
+    symbols = [d["symbol"] for d in discovered]
+    print(f"Fetching Alpaca snapshots for {len(symbols)} discovered symbols...")
+    snapshots = fetch_snapshots(data_client, symbols)
+    watchlist = validate_candidates(discovered, snapshots, earnings_bl)
+
+    research_results = {
+        item["symbol"]: {
+            "symbol": item["symbol"],
+            "sentiment": item["sentiment"],
+            "summary": item.get("summary", ""),
+            "key_points": item.get("key_points", []),
+            "error": None,
+        }
+        for item in discovered
+    }
+    write_json("research.json", {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "results": research_results,
+    })
+
+    write_json("watchlist.json", watchlist)
+    print(f"Watchlist: {len(watchlist)} validated candidates written.")
+    for c in watchlist[:10]:
+        print(f"  {c['symbol']}: ${c['price']:.2f}, sentiment {c['sentiment']}")
 
 
 if __name__ == "__main__":

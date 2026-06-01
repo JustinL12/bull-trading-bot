@@ -23,6 +23,17 @@ import config
 from lib.state import read_json, write_json
 
 
+DISCOVER_PROMPT = (
+    "Today is {date}. List up to {max_symbols} US publicly traded stocks that have "
+    "significant positive news catalysts right now. Look for: earnings beats, FDA approvals, "
+    "major partnerships, acquisitions, buybacks, analyst upgrades, or other market-moving "
+    "positive events.\n\n"
+    "Format each entry on its own line as:\n"
+    "TICKER: one-sentence explanation of the catalyst\n\n"
+    "End your response with exactly this line:\n"
+    "TICKERS: TICK1,TICK2,TICK3"
+)
+
 PROMPT_TEMPLATE = (
     "Summarize the latest news and analyst sentiment for {symbol} stock as of today. "
     "Cover: any catalysts (earnings revisions, product launches, partnerships), "
@@ -75,6 +86,60 @@ def research_symbol(client: OpenAI, symbol: str) -> dict:
             "key_points": [],
             "error": str(e),
         }
+
+
+def _parse_discover_response(text: str) -> list[dict]:
+    """Parse per-ticker summaries and the authoritative TICKERS list from a discovery response."""
+    # Extract TICKER: explanation lines (skip the TICKERS: summary line)
+    ticker_lines = re.findall(r"^([A-Z]{1,5}):\s*(.+)$", text, re.MULTILINE)
+    summaries = {t.upper(): s.strip() for t, s in ticker_lines if t.upper() != "TICKERS"}
+
+    # Authoritative ordered list from the final TICKERS: line
+    match = re.search(r"TICKERS:\s*([A-Z,\s]+)", text, re.IGNORECASE)
+    if match:
+        raw = match.group(1)
+        tickers = [t.strip().upper() for t in raw.split(",") if t.strip() and t.strip().isalpha()]
+    else:
+        tickers = list(summaries.keys())
+
+    seen: set[str] = set()
+    results = []
+    for sym in tickers:
+        if sym in seen:
+            continue
+        seen.add(sym)
+        summary = summaries.get(sym, "Positive catalyst identified by Perplexity.")
+        results.append({
+            "symbol": sym,
+            "sentiment": "positive",
+            "summary": summary,
+            "key_points": [summary],
+            "error": None,
+        })
+    return results
+
+
+def discover_stocks_by_news(client: OpenAI, max_symbols: int = 25) -> list[dict]:
+    """Ask Perplexity to discover US stocks with positive news catalysts today.
+
+    Returns a list of dicts with symbol, sentiment, summary, key_points, error keys.
+    Returns [] on API failure so the caller can handle it gracefully.
+    """
+    today = datetime.now().strftime("%B %d, %Y")
+    prompt = DISCOVER_PROMPT.format(date=today, max_symbols=max_symbols)
+    try:
+        response = client.chat.completions.create(
+            model="sonar-pro",
+            messages=[{"role": "user", "content": prompt}],
+            timeout=config.PERPLEXITY_TIMEOUT_SEC,
+        )
+        text = response.choices[0].message.content.strip()
+        discovered = _parse_discover_response(text)
+        print(f"  Perplexity discovered {len(discovered)} tickers: {', '.join(d['symbol'] for d in discovered)}")
+        return discovered
+    except Exception as e:
+        print(f"  Perplexity discovery error: {e}")
+        return []
 
 
 def main():

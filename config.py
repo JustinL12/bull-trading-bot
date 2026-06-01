@@ -4,7 +4,6 @@
 PRICE_MIN = 10.0
 PRICE_MAX = 500.0
 MIN_AVG_VOLUME = 500_000
-GAP_UP_MIN_PCT = 2.0
 REL_VOL_MIN = 1.5
 
 # --- Entry criteria ---
@@ -59,7 +58,7 @@ MEMORY_JOURNAL_ARCHIVE_SESSIONS = 60  # archive journal entries older than this
 # --- Perplexity ---
 PERPLEXITY_TIMEOUT_SEC = 10
 PERPLEXITY_WATCHLIST_TOP_N = 8   # research top N watchlist symbols (standalone script)
-PREMARKET_RESEARCH_TOP_N = 20    # research all candidates during premarket scan before sentiment filter
+PERPLEXITY_DISCOVER_TOP_N = 25   # how many tickers to request from Perplexity during pre-market discovery
 PERPLEXITY_INTRADAY_MIN_GAIN = 50.0  # only check news if unrealized gain > this
 
 # --- Alpaca data ---
