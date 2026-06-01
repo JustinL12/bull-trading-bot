@@ -8,23 +8,22 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-import yfinance as yf
-
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from lib.alpaca_client import get_trading_client
+from lib.finnhub_client import get_finnhub_client
 from lib.state import read_json, write_json
 
 
 def get_spy_return_today() -> float:
     """Return SPY's % return for today."""
     try:
-        spy = yf.Ticker("SPY")
-        hist = spy.history(period="2d")
-        if len(hist) >= 2:
-            prev_close = float(hist["Close"].iloc[-2])
-            today_close = float(hist["Close"].iloc[-1])
-            return round((today_close - prev_close) / prev_close * 100, 4)
+        client = get_finnhub_client()
+        res = client.quote("SPY")
+        current = res.get("c")
+        prev_close = res.get("pc")
+        if current and prev_close:
+            return round((current - prev_close) / prev_close * 100, 4)
     except Exception as e:
         print(f"Could not fetch SPY return: {e}")
     return 0.0
@@ -35,11 +34,14 @@ def get_cumulative_spy(start_date: str | None = None) -> float:
     if not start_date:
         return 0.0
     try:
-        spy = yf.Ticker("SPY")
-        hist = spy.history(start=start_date)
-        if len(hist) >= 2:
-            start_price = float(hist["Close"].iloc[0])
-            end_price = float(hist["Close"].iloc[-1])
+        import time
+        client = get_finnhub_client()
+        from_ts = int(datetime.strptime(start_date, "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp())
+        to_ts = int(datetime.now(timezone.utc).timestamp())
+        res = client.stock_candles("SPY", "D", from_ts, to_ts)
+        if res.get("s") == "ok" and len(res["c"]) >= 2:
+            start_price = float(res["c"][0])
+            end_price = float(res["c"][-1])
             return round((end_price - start_price) / start_price * 100, 4)
     except Exception:
         pass

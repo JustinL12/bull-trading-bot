@@ -1,6 +1,6 @@
 """Fetch upcoming earnings dates and write data/earnings_blacklist.json.
 
-Uses yfinance as a free earnings calendar source.
+Uses Finnhub as the earnings calendar source.
 Returns a set of symbol strings that are within the blackout window.
 """
 
@@ -8,11 +8,10 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
-import yfinance as yf
-
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
+from lib.finnhub_client import get_finnhub_client
 from lib.state import read_json, write_json
 
 
@@ -23,22 +22,25 @@ BLACKLIST_PATH = "earnings_blacklist.json"
 def check_symbol_earnings(symbol: str, blackout_days: int) -> dict | None:
     """Return earnings info if within blackout window, else None."""
     try:
-        ticker = yf.Ticker(symbol)
-        cal = ticker.calendar
-        if cal is None or cal.empty:
+        client = get_finnhub_client()
+        today = datetime.now().date()
+        from_date = (today - timedelta(days=1)).strftime("%Y-%m-%d")
+        to_date = (today + timedelta(days=blackout_days)).strftime("%Y-%m-%d")
+        res = client.earnings_calendar(
+            _from=from_date, to=to_date, symbol=symbol, international=False
+        )
+        calendar = res.get("earningsCalendar", [])
+        if not calendar:
             return None
-        # calendar index has 'Earnings Date' etc.
-        if "Earnings Date" in cal.index:
-            earnings_date = cal.loc["Earnings Date"].iloc[0]
-            if not isinstance(earnings_date, datetime):
-                earnings_date = datetime.combine(earnings_date, datetime.min.time())
-            days_until = (earnings_date.date() - datetime.now().date()).days
-            if -1 <= days_until <= blackout_days:
-                return {
-                    "symbol": symbol,
-                    "earnings_date": earnings_date.strftime("%Y-%m-%d"),
-                    "days_until": days_until,
-                }
+        entry = calendar[0]
+        earnings_date = datetime.strptime(entry["date"], "%Y-%m-%d").date()
+        days_until = (earnings_date - today).days
+        if -1 <= days_until <= blackout_days:
+            return {
+                "symbol": symbol,
+                "earnings_date": entry["date"],
+                "days_until": days_until,
+            }
     except Exception:
         pass
     return None

@@ -92,7 +92,7 @@ python scripts/premarket_scan.py
 This script:
 - Fetches live snapshots of up to 3,000 US equities from Alpaca
 - Screens for: price $10–$500, avg daily volume ≥ 500,000, gap-up ≥ 2%
-- Fetches VIX via yfinance; if VIX > 30, creates `data/no_trade_today.flag`
+- Fetches VIX via Finnhub; if VIX > 30, creates `data/no_trade_today.flag`
 - Checks SPY EMA-9 vs EMA-21 to determine market regime
 - Researches all candidates with Perplexity (`sonar-pro`) and keeps only **positive-sentiment** ones
 - Writes the filtered candidates (sorted by gap-up %) to `data/watchlist.json` — each entry includes a `sentiment` field
@@ -113,7 +113,7 @@ If `market_trending_up` is `false` (SPY EMA-9 < EMA-21), note this — the 10:15
 python scripts/check_earnings.py
 ```
 
-Reads `data/watchlist.json`, queries yfinance for upcoming earnings dates, and writes `data/earnings_blacklist.json`. Any symbol with earnings within 3 days is blacklisted. This is automatically checked at entry time, but note any high-profile names that made the list.
+Reads `data/watchlist.json`, queries Finnhub for upcoming earnings dates, and writes `data/earnings_blacklist.json`. Any symbol with earnings within 3 days is blacklisted. This is automatically checked at entry time, but note any high-profile names that made the list.
 
 ---
 

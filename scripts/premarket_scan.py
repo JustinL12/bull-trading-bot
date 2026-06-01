@@ -10,13 +10,13 @@ import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-import yfinance as yf
 from openai import OpenAI
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
 from lib.alpaca_client import get_data_client, get_trading_client
+from lib.finnhub_client import get_finnhub_client
 from lib.state import clear_flag, flag_exists, read_json, set_flag, write_json
 from scripts.check_earnings import load_earnings_blacklist
 from scripts.research_symbols import research_symbol
@@ -33,10 +33,11 @@ def get_market_clock(trading_client):
 
 def fetch_vix() -> float | None:
     try:
-        vix = yf.Ticker("^VIX")
-        hist = vix.history(period="1d")
-        if not hist.empty:
-            return round(float(hist["Close"].iloc[-1]), 2)
+        client = get_finnhub_client()
+        res = client.quote("^VIX")
+        price = res.get("c") or res.get("pc")
+        if price:
+            return round(float(price), 2)
     except Exception:
         pass
     return None

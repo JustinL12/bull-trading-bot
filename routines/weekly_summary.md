@@ -55,7 +55,8 @@ Write a temporary Python script `_weekly_stats.py` to crunch the numbers:
 import json, sys
 from pathlib import Path
 from datetime import date, timedelta
-import yfinance as yf
+import finnhub, os, time
+from datetime import timezone
 
 sys.path.insert(0, '.')
 from lib.state import read_jsonl, read_json
@@ -98,12 +99,12 @@ eod_entries = [
 
 # SPY weekly return
 try:
-    spy = yf.Ticker('SPY')
-    hist = spy.history(period='7d')
-    if len(hist) >= 5:
-        spy_week_start = float(hist['Close'].iloc[-5])
-        spy_week_end   = float(hist['Close'].iloc[-1])
-        spy_weekly_pct = round((spy_week_end - spy_week_start) / spy_week_start * 100, 4)
+    fh = finnhub.Client(api_key=os.environ['FINNHUB_API_KEY'])
+    from_ts = int(datetime.combine(week_start, datetime.min.time()).replace(tzinfo=timezone.utc).timestamp())
+    to_ts   = int(datetime.now(timezone.utc).timestamp())
+    res = fh.stock_candles('SPY', 'D', from_ts, to_ts)
+    if res.get('s') == 'ok' and len(res['c']) >= 2:
+        spy_weekly_pct = round((res['c'][-1] - res['c'][0]) / res['c'][0] * 100, 4)
     else:
         spy_weekly_pct = 0.0
 except Exception:
