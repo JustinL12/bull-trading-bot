@@ -279,6 +279,32 @@ Fill in `observations` with a genuine 2-3 sentence synthesis of today. This is p
 
 ---
 
+## Part 8: Reset the daily watchlist
+
+The watchlist is a single-day artifact — it belongs to today only. Clear it now so
+tomorrow's agents are never handed a stale, day-old watchlist. (A leftover watchlist
+has caused real confusion: an agent re-evaluating yesterday's candidates as if they
+were today's.) Tomorrow's 8:30 AM premarket scan rebuilds it from scratch.
+
+Reset `watchlist.json` and its paired `research.json` to empty:
+
+```
+python -c "
+import sys; sys.path.insert(0, '.')
+from datetime import datetime, timezone
+from lib.state import write_json
+write_json('watchlist.json', [])
+write_json('research.json', {'generated_at': datetime.now(timezone.utc).isoformat(), 'results': {}})
+print('Watchlist and research cleared for the day.')
+"
+```
+
+Leave `daily_context.json`, `positions.json`, `earnings_blacklist.json`, and all
+`data/memory/` files alone — those carry forward. Only the watchlist and its research
+are daily throwaways.
+
+---
+
 **You are done with trading tasks.** Before exiting, save state to GitHub.
 
 ---
