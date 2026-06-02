@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-06-02T17:44:10.869385+00:00",
-  "sessions_analyzed": 0,
+  "last_updated": "2026-06-02",
+  "sessions_analyzed": 1,
   "total_trades": 0,
-  "performance_overview": "No sessions yet. Bull is in bootstrap phase. Apply default thresholds from config.py.",
+  "performance_overview": "Still bootstrap phase: 0 completed trades across the tracked journal. Today (2026-06-02) was a flat, no-trade day — P&L +$0.75 (+0.00%) from cash interest/marks, SPY +0.10%, so a negligible -0.10% on the day. No win rate or per-trade P&L can be computed yet; cumulative Bull +0.00% vs SPY +0.10% since inception (2026-06-01).",
   "best_signals": [],
   "avoid": [],
   "active_parameter_adjustments": [],
-  "overnight_hold_insights": "No overnight hold data yet. Apply safe-hold criteria from config.",
-  "recent_market_context": "2026-06-02 (housekeeping): Clean slate. Still bootstrap phase, 0 real trades. Cleared the stale 2026-06-01 watchlist/research (which had repeatedly confused agents into re-evaluating yesterday's lone INFY candidate as if it were today's) and archived the 13 bootstrap-phase journal entries to session_journal_archive.jsonl. Account flat ~$100k, no positions.",
+  "overnight_hold_insights": "No overnight hold data yet — zero positions have been held overnight. Continue applying the config.py safe-hold criteria (profitable, trailing stop active, above EMA-21, no earnings within 2 days, sentiment not negative, 5% gap-risk cushion above break-even).",
+  "recent_market_context": "2026-06-02: Quiet session, no positions entered or exited. SPY essentially flat (+0.10%). No watchlist was acted on. Regime read is inconclusive on one no-trade day — default thresholds from config.py remain appropriate.",
   "current_open_positions": [],
-  "notes_for_next_session": "CLEAN SLATE as of 2026-06-02 housekeeping. (1) The session journal was archived to session_journal_archive.jsonl and reset to empty \u2014 start fresh; there are 0 real trades so nothing was lost. (2) watchlist.json and research.json were cleared to empty \u2014 do NOT treat any leftover INFY entry as a live candidate; INFY was a structural no-go (far below 200d EMA). (3) PREMARKET REDESIGN IS LIVE (master): the 8:30 AM premarket scan now builds a PURELY SENTIMENT-DRIVEN watchlist from Perplexity \u2014 it no longer filters on price or trade volume (only the earnings blackout is a hard exclude) and it NEVER places orders. All volume/indicator judgement + buying belongs to the 10:00 AM open-market agent. (4) NEW EOD STEP: the 3:45 PM EOD agent now clears the watchlist + research at end of day (Part 8), so a stale watchlist should not recur. (5) If tomorrow's premarket produces an empty watchlist, that's a real anomaly (API/trigger), not the old structural bug. Keep an eye on the premarket scan TRIGGER actually firing pre-open and on erratic agent scheduling."
+  "notes_for_next_session": "(1) CLEAN SLATE CONTINUES — 0 real trades, 0 open positions, account flat at ~$100k. Apply default thresholds from config.py. (2) No trade was placed today despite a live session; if the 8:30 AM premarket scan produces an empty watchlist again tomorrow, treat it as a real anomaly (premarket TRIGGER not firing, or Perplexity/API failure), NOT the old INFY structural bug — investigate the scan trigger and Perplexity output directly. (3) PREMARKET REDESIGN IS LIVE (master): the 8:30 AM scan builds a PURELY SENTIMENT-DRIVEN watchlist from Perplexity (no price/volume filter, only earnings blackout excludes) and NEVER places orders — all volume/indicator judgement + buying belongs to the 10:00 AM open-market agent. (4) watchlist.json and research.json have been cleared to empty by this EOD run (Part 8); a leftover watchlist tomorrow morning would itself be a bug. (5) Watch that agents are actually firing on schedule — two consecutive sessions with zero trades would warrant reviewing whether the premarket/open-market triggers are running pre-open."
 }
