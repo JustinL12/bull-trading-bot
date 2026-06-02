@@ -1,7 +1,14 @@
-"""Pre-market scanner: build a watchlist of momentum candidates.
+"""Pre-market scanner: build a sentiment-driven watchlist.
 
-Runs at 9:30 AM ET. Writes data/watchlist.json and data/daily_context.json.
-Also checks for no-trade conditions and sets data/no_trade_today.flag if needed.
+Runs at 8:30 AM ET (before the open). Writes data/watchlist.json and
+data/daily_context.json. Also checks for no-trade conditions and sets
+data/no_trade_today.flag if needed.
+
+The watchlist is built purely from Perplexity news/sentiment discovery. This
+agent does NOT place orders and does NOT judge trade volume or technical
+indicators — that is the 10:00 AM open-market agent's job. The only hard filter
+applied here is the earnings blackout (a safety exclude). Price and volume are
+attached to each entry for context only and are never used to drop a candidate.
 """
 
 import os
@@ -84,54 +91,54 @@ def fetch_snapshots(data_client, symbols: list[str]) -> dict:
 
 
 def validate_candidates(data_client, discovered: list[dict], snapshots: dict, earnings_blacklist: set[str]) -> list[dict]:
-    """Apply price, volume, and earnings filters to Perplexity-discovered symbols.
+    """Build the watchlist from Perplexity-discovered symbols.
 
-    Liquidity and price are judged from daily bars rather than the IEX snapshot's
-    single previous-day bar / latest trade: a single IEX day is noisy and the
-    snapshot's latest_trade can be an unreliable/stale print. We use the 20-day
-    average daily volume and the most recent daily close instead.
+    The watchlist is sentiment-driven: the ONLY hard filter applied here is the
+    earnings blackout (a safety exclude). Trade volume and price are NOT used to
+    drop candidates — judging volume and technical indicators is the 10:00 AM
+    open-market agent's job. Price and volume below are best-effort context only;
+    a symbol is kept on the watchlist even when Alpaca has no bars for it.
     """
-    validated = []
+    watchlist = []
     for item in discovered:
         symbol = item["symbol"]
-        snap = snapshots.get(symbol)
-        if not snap:
-            print(f"  {symbol}: no Alpaca snapshot — skipping")
+
+        if symbol in earnings_blacklist:
+            print(f"  {symbol}: earnings blackout — excluding")
             continue
+
+        # Best-effort enrichment for context only; never used to filter.
+        price = None
+        prev_close = None
+        avg_volume = None
+        premarket_volume = 0
         try:
             daily_df = fetch_daily_bars(data_client, symbol, 30)
-            if daily_df.empty:
-                print(f"  {symbol}: no daily bars — skipping")
-                continue
-            avg_volume = get_avg_volume(daily_df)
-            price = float(daily_df["close"].iloc[-1])
-            prev_close = float(daily_df["close"].iloc[-2]) if len(daily_df) >= 2 else price
-
-            if price < config.PRICE_MIN or price > config.PRICE_MAX:
-                print(f"  {symbol}: price ${price:.2f} outside ${config.PRICE_MIN}–${config.PRICE_MAX} — skipping")
-                continue
-            if avg_volume < config.MIN_AVG_VOLUME:
-                print(f"  {symbol}: 20d avg volume {int(avg_volume):,} below {config.MIN_AVG_VOLUME:,} — skipping")
-                continue
-            if symbol in earnings_blacklist:
-                print(f"  {symbol}: earnings blackout — skipping")
-                continue
-
-            premarket_volume = int(snap.daily_bar.volume) if snap.daily_bar else 0
-            validated.append({
-                "symbol": symbol,
-                "price": round(price, 2),
-                "prev_close": round(prev_close, 2),
-                "premarket_volume": premarket_volume,
-                "prev_volume": int(avg_volume),
-                "earnings_blackout": False,
-                "sentiment": item["sentiment"],
-                "summary": item.get("summary", ""),
-            })
+            if not daily_df.empty:
+                avg_volume = get_avg_volume(daily_df)
+                price = round(float(daily_df["close"].iloc[-1]), 2)
+                prev_close = round(float(daily_df["close"].iloc[-2]), 2) if len(daily_df) >= 2 else price
         except Exception as e:
-            print(f"  {symbol}: validation error ({e}) — skipping")
-            continue
-    return validated
+            print(f"  {symbol}: price/volume enrichment unavailable ({e}) — keeping anyway")
+
+        snap = snapshots.get(symbol)
+        if snap and getattr(snap, "daily_bar", None):
+            try:
+                premarket_volume = int(snap.daily_bar.volume)
+            except Exception:
+                premarket_volume = 0
+
+        watchlist.append({
+            "symbol": symbol,
+            "price": price,
+            "prev_close": prev_close,
+            "premarket_volume": premarket_volume,
+            "prev_volume": int(avg_volume) if avg_volume is not None else None,
+            "earnings_blackout": False,
+            "sentiment": item["sentiment"],
+            "summary": item.get("summary", ""),
+        })
+    return watchlist
 
 
 def main():
@@ -217,9 +224,10 @@ def main():
     })
 
     write_json("watchlist.json", watchlist)
-    print(f"Watchlist: {len(watchlist)} validated candidates written.")
+    print(f"Watchlist: {len(watchlist)} sentiment-driven candidates written.")
     for c in watchlist[:10]:
-        print(f"  {c['symbol']}: ${c['price']:.2f}, sentiment {c['sentiment']}")
+        price_str = f"${c['price']:.2f}" if c.get("price") is not None else "price n/a"
+        print(f"  {c['symbol']}: {price_str}, sentiment {c['sentiment']}")
 
 
 if __name__ == "__main__":

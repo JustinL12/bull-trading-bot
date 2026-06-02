@@ -1,12 +1,15 @@
 """Central strategy configuration. All tunable thresholds live here."""
 
 # --- Universe filters ---
+# NOTE: As of the sentiment-first redesign, the premarket scan no longer filters
+# the watchlist on price or volume — the watchlist is built purely from Perplexity
+# news/sentiment, and all trade-volume / indicator judgement happens in the 10:00 AM
+# open-market agent. PRICE_MIN/PRICE_MAX/MIN_AVG_VOLUME are retained for reference
+# and potential reuse but are NOT applied during watchlist construction.
 PRICE_MIN = 10.0
 PRICE_MAX = 1000.0
-# Liquidity floor on the 20-day average daily volume. The Alpaca IEX feed only
-# reports a fraction (~2-10%) of consolidated volume, so this is calibrated to
-# IEX-scale numbers, not full-market volume.
 MIN_AVG_VOLUME = 100_000
+# REL_VOL_MIN is still used by the open-market agent's entry criteria.
 REL_VOL_MIN = 1.5
 
 # --- Entry criteria ---

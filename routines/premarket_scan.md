@@ -90,14 +90,14 @@ python scripts/premarket_scan.py
 ```
 
 This script:
-- Fetches live snapshots of up to 3,000 US equities from Alpaca
-- Screens for: price $10–$500, avg daily volume ≥ 500,000, gap-up ≥ 2%
+- **Discovers candidates via Perplexity (`sonar-pro`)** news/sentiment — this is the watchlist. The scan is sentiment-first: it does NOT screen on price, trade volume, or technical indicators. Judging volume and indicators is the 10:00 AM open-market agent's job.
+- Applies exactly one hard filter to the discovered names: the **earnings blackout** (a safety exclude). Price and 20-day average volume are attached to each entry for context only and never used to drop a candidate.
 - Fetches VIX via yfinance; if VIX > 30, creates `data/no_trade_today.flag`
 - Checks SPY EMA-9 vs EMA-21 to determine market regime
-- Researches all candidates with Perplexity (`sonar-pro`) and keeps only **positive-sentiment** ones
-- Writes the filtered candidates (sorted by gap-up %) to `data/watchlist.json` — each entry includes a `sentiment` field
-- Writes `data/research.json` with the full Perplexity results for all researched symbols
+- Writes the discovered candidates (in Perplexity catalyst order) to `data/watchlist.json` — each entry includes `symbol`, `sentiment`, `summary`, and best-effort `price`/`prev_close`/`premarket_volume`/`prev_volume` (any of which may be `null` if Alpaca has no bars)
+- Writes `data/research.json` with the full Perplexity results for all discovered symbols
 - Writes `data/daily_context.json` with: date, no_trade flag, vix, spy_ema9, spy_ema21, market_trending_up, reason
+- **Never places orders.** This agent only builds state for the open-market agent.
 
 After it runs, read `data/daily_context.json`.
 
