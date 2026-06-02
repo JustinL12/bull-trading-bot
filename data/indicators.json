@@ -1,19 +1,19 @@
 {
   "INFY": {
-    "close": 12.41,
-    "ema_9": 12.4082,
-    "ema_21": 12.4084,
-    "rsi": 52.0098,
-    "macd": 0.0002,
-    "macd_signal": 0.0005,
-    "macd_hist": -0.0004,
-    "atr": 0.0053,
-    "vwap": 12.4038,
-    "rel_vol": 0.4888,
-    "macd_hist_rising": true,
+    "close": 12.68,
+    "ema_9": 12.6841,
+    "ema_21": 12.6872,
+    "rsi": 46.2305,
+    "macd": -0.0045,
+    "macd_signal": -0.0062,
+    "macd_hist": 0.0017,
+    "atr": 0.0109,
+    "vwap": 12.6828,
+    "rel_vol": 0.589,
+    "macd_hist_rising": false,
     "symbol": "INFY",
     "avg_volume_20d": 903773.0,
     "ema_200_daily": 17.6437,
-    "atr_pct": 0.043
+    "atr_pct": 0.086
   }
 }
