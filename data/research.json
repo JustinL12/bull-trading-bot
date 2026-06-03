@@ -1,4 +1,230 @@
 {
-  "generated_at": "2026-06-02T19:48:39.156096+00:00",
-  "results": {}
+  "generated_at": "2026-06-03T14:12:46.235272+00:00",
+  "results": {
+    "SNDK": {
+      "symbol": "SNDK",
+      "sentiment": "positive",
+      "summary": "SanDisk is one of the strongest US large-cap momentum names in 2026, with one of the best year-to-date gains among S&P 500 stocks.[1]",
+      "key_points": [
+        "SanDisk is one of the strongest US large-cap momentum names in 2026, with one of the best year-to-date gains among S&P 500 stocks.[1]"
+      ],
+      "error": null
+    },
+    "TPL": {
+      "symbol": "TPL",
+      "sentiment": "positive",
+      "summary": "Texas Pacific Land has had a major 2026 run and remains a high-relative-strength large-cap energy/royalty name.[1]",
+      "key_points": [
+        "Texas Pacific Land has had a major 2026 run and remains a high-relative-strength large-cap energy/royalty name.[1]"
+      ],
+      "error": null
+    },
+    "MRNA": {
+      "symbol": "MRNA",
+      "sentiment": "positive",
+      "summary": "Moderna has posted a very strong 2026 rebound, indicating renewed positive momentum in the shares.[1]",
+      "key_points": [
+        "Moderna has posted a very strong 2026 rebound, indicating renewed positive momentum in the shares.[1]"
+      ],
+      "error": null
+    },
+    "GNRC": {
+      "symbol": "GNRC",
+      "sentiment": "positive",
+      "summary": "Generac is among the year\u2019s top-performing stocks, reflecting sustained positive price momentum.[1]",
+      "key_points": [
+        "Generac is among the year\u2019s top-performing stocks, reflecting sustained positive price momentum.[1]"
+      ],
+      "error": null
+    },
+    "GLW": {
+      "symbol": "GLW",
+      "sentiment": "positive",
+      "summary": "Corning has been a standout 2026 performer, supported by strong relative strength.[1]",
+      "key_points": [
+        "Corning has been a standout 2026 performer, supported by strong relative strength.[1]"
+      ],
+      "error": null
+    },
+    "TER": {
+      "symbol": "TER",
+      "sentiment": "positive",
+      "summary": "Teradyne has delivered a large year-to-date gain and continues to screen as a momentum leader.[1]",
+      "key_points": [
+        "Teradyne has delivered a large year-to-date gain and continues to screen as a momentum leader.[1]"
+      ],
+      "error": null
+    },
+    "WDC": {
+      "symbol": "WDC",
+      "sentiment": "positive",
+      "summary": "Western Digital is one of 2026\u2019s top-performing large-cap tech names.[1]",
+      "key_points": [
+        "Western Digital is one of 2026\u2019s top-performing large-cap tech names.[1]"
+      ],
+      "error": null
+    },
+    "FIX": {
+      "symbol": "FIX",
+      "sentiment": "positive",
+      "summary": "Comfort Systems USA has produced an outsized 2026 advance, signaling strong momentum.[1]",
+      "key_points": [
+        "Comfort Systems USA has produced an outsized 2026 advance, signaling strong momentum.[1]"
+      ],
+      "error": null
+    },
+    "STX": {
+      "symbol": "STX",
+      "sentiment": "positive",
+      "summary": "Seagate Technology is another major 2026 winner with strong relative strength.[1]",
+      "key_points": [
+        "Seagate Technology is another major 2026 winner with strong relative strength.[1]"
+      ],
+      "error": null
+    },
+    "CIEN": {
+      "symbol": "CIEN",
+      "sentiment": "positive",
+      "summary": "Ciena has been a strong 2026 performer, keeping it on the momentum watchlist.[1]",
+      "key_points": [
+        "Ciena has been a strong 2026 performer, keeping it on the momentum watchlist.[1]"
+      ],
+      "error": null
+    },
+    "MPC": {
+      "symbol": "MPC",
+      "sentiment": "positive",
+      "summary": "Marathon Petroleum is highlighted by Zacks as a June 2026 buy candidate with strong 12-week price momentum and favorable earnings growth expectations.[3]",
+      "key_points": [
+        "Marathon Petroleum is highlighted by Zacks as a June 2026 buy candidate with strong 12-week price momentum and favorable earnings growth expectations.[3]"
+      ],
+      "error": null
+    },
+    "MCY": {
+      "symbol": "MCY",
+      "sentiment": "positive",
+      "summary": "Mercury General appears on Zacks\u2019 June 2026 list, pairing positive recent price action with favorable quantitative momentum.[3]",
+      "key_points": [
+        "Mercury General appears on Zacks\u2019 June 2026 list, pairing positive recent price action with favorable quantitative momentum.[3]"
+      ],
+      "error": null
+    },
+    "MBUU": {
+      "symbol": "MBUU",
+      "sentiment": "positive",
+      "summary": "Malibu Boats is on Zacks\u2019 June 2026 buy list with positive 12-week price change and improving projected sales growth.[3]",
+      "key_points": [
+        "Malibu Boats is on Zacks\u2019 June 2026 buy list with positive 12-week price change and improving projected sales growth.[3]"
+      ],
+      "error": null
+    },
+    "AAPL": {
+      "symbol": "AAPL",
+      "sentiment": "positive",
+      "summary": "Apple remains a large, liquid mega-cap with persistent institutional sponsorship and relative strength compared with weaker mega-cap peers.[1]",
+      "key_points": [
+        "Apple remains a large, liquid mega-cap with persistent institutional sponsorship and relative strength compared with weaker mega-cap peers.[1]"
+      ],
+      "error": null
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "sentiment": "positive",
+      "summary": "Amazon is a mega-cap liquidity leader that can be used as a fallback momentum name despite its weaker 2026 YTD showing in the cited data.[1]",
+      "key_points": [
+        "Amazon is a mega-cap liquidity leader that can be used as a fallback momentum name despite its weaker 2026 YTD showing in the cited data.[1]"
+      ],
+      "error": null
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "sentiment": "positive",
+      "summary": "Microsoft is a dominant large-cap name with deep liquidity and persistent market relevance, making it a high-quality fallback momentum candidate.[1]",
+      "key_points": [
+        "Microsoft is a dominant large-cap name with deep liquidity and persistent market relevance, making it a high-quality fallback momentum candidate.[1]"
+      ],
+      "error": null
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "sentiment": "positive",
+      "summary": "Nvidia remains a leading large-cap AI stock with enduring investor demand and strong market momentum characteristics.",
+      "key_points": [
+        "Nvidia remains a leading large-cap AI stock with enduring investor demand and strong market momentum characteristics."
+      ],
+      "error": null
+    },
+    "META": {
+      "symbol": "META",
+      "sentiment": "positive",
+      "summary": "Meta is a liquid mega-cap that has continued to attract buyers on strong earnings power and capital returns.",
+      "key_points": [
+        "Meta is a liquid mega-cap that has continued to attract buyers on strong earnings power and capital returns."
+      ],
+      "error": null
+    },
+    "AVGO": {
+      "symbol": "AVGO",
+      "sentiment": "positive",
+      "summary": "Broadcom is a large-cap semiconductor/software name that has remained a favored momentum and quality compounder.",
+      "key_points": [
+        "Broadcom is a large-cap semiconductor/software name that has remained a favored momentum and quality compounder."
+      ],
+      "error": null
+    },
+    "ORCL": {
+      "symbol": "ORCL",
+      "sentiment": "positive",
+      "summary": "Oracle has been a strong large-cap software name with recurring AI and cloud momentum.",
+      "key_points": [
+        "Oracle has been a strong large-cap software name with recurring AI and cloud momentum."
+      ],
+      "error": null
+    },
+    "LLY": {
+      "symbol": "LLY",
+      "sentiment": "positive",
+      "summary": "Eli Lilly is a high-momentum healthcare leader that has benefited from strong product demand and investor sponsorship.",
+      "key_points": [
+        "Eli Lilly is a high-momentum healthcare leader that has benefited from strong product demand and investor sponsorship."
+      ],
+      "error": null
+    },
+    "JPM": {
+      "symbol": "JPM",
+      "sentiment": "positive",
+      "summary": "JPMorgan Chase is a liquid large-cap financial leader with durable earnings power and strong relative stability.",
+      "key_points": [
+        "JPMorgan Chase is a liquid large-cap financial leader with durable earnings power and strong relative stability."
+      ],
+      "error": null
+    },
+    "XOM": {
+      "symbol": "XOM",
+      "sentiment": "positive",
+      "summary": "Exxon Mobil is a mega-cap energy name that remains a defensive large-cap fallback with persistent liquidity and market relevance.",
+      "key_points": [
+        "Exxon Mobil is a mega-cap energy name that remains a defensive large-cap fallback with persistent liquidity and market relevance."
+      ],
+      "error": null
+    },
+    "PANW": {
+      "symbol": "PANW",
+      "sentiment": "positive",
+      "summary": "Palo Alto Networks is a large-cap cybersecurity leader that has continued to trade as a momentum stock.",
+      "key_points": [
+        "Palo Alto Networks is a large-cap cybersecurity leader that has continued to trade as a momentum stock."
+      ],
+      "error": null
+    },
+    "V": {
+      "symbol": "V",
+      "sentiment": "positive",
+      "summary": "Visa is a high-quality, highly liquid large-cap payments name that often screens well when investors favor durable momentum and earnings consistency.",
+      "key_points": [
+        "Visa is a high-quality, highly liquid large-cap payments name that often screens well when investors favor durable momentum and earnings consistency."
+      ],
+      "error": null
+    }
+  }
 }
