@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from lib.alpaca_client import get_trading_client
+from lib.notify import post_attention
 from lib.state import write_json
 
 
@@ -28,6 +29,21 @@ def main():
 
     write_json("account.json", data)
     print(f"Account: equity=${data['equity']:,.2f}, buying_power=${data['buying_power']:,.2f}")
+
+    if data.get("account_blocked"):
+        post_attention(
+            "Account Blocked",
+            "Alpaca reports account_blocked=True. No trades can be placed.\n"
+            "Check the Alpaca dashboard for the block reason.",
+            level="critical",
+        )
+    elif data.get("trading_blocked"):
+        post_attention(
+            "Trading Blocked",
+            "Alpaca reports trading_blocked=True. Verify account standing before the next session.",
+            level="warning",
+        )
+
     return data
 
 

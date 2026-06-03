@@ -16,7 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from lib.alpaca_client import get_trading_client
-from lib.notify import post_trade_alert
+from lib.notify import post_attention, post_trade_alert
 from lib.risk import initial_stop_price
 from lib.state import append_jsonl, read_json, write_json
 from alpaca.trading.requests import MarketOrderRequest, StopOrderRequest
@@ -74,6 +74,13 @@ def place_buy(client, symbol: str, shares: int, stop_price: float, rsi: float, r
         stop_order_id = str(stop_order.id)
     except Exception as e:
         print(f"Warning: stop order for {symbol} failed: {e}")
+        post_attention(
+            f"Stop Order Not Placed: {symbol}",
+            f"Buy order for {symbol} filled but stop-loss order failed to submit.\n"
+            f"Error: {e}\n"
+            f"Position is unprotected. Place a stop manually in Alpaca.",
+            level="warning",
+        )
         stop_order_id = None
 
     position = {

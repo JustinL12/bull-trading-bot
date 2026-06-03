@@ -8,6 +8,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
+from lib.notify import post_attention
 from lib.state import flag_exists, read_json, set_flag
 
 
@@ -54,6 +55,12 @@ def check_kill_switch(equity: float, starting_equity: float) -> bool:
     if pnl_pct <= -config.DAILY_LOSS_LIMIT_PCT:
         set_flag("kill_switch.flag")
         print(f"KILL SWITCH: daily loss {pnl_pct:.2f}% exceeded -{config.DAILY_LOSS_LIMIT_PCT}%")
+        post_attention(
+            "Kill Switch Triggered",
+            f"Daily loss of {pnl_pct:.2f}% exceeded the -{config.DAILY_LOSS_LIMIT_PCT}% limit.\n"
+            f"Kill switch flag set. No new entries will be placed today.",
+            level="critical",
+        )
         return True
     return False
 

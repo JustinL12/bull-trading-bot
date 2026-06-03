@@ -33,6 +33,23 @@ print('All required environment variables are set.')
 
 ---
 
+## Unexpected Errors: Post an Attention Alert
+
+If at any point during this routine you encounter an unexpected error, API failure, or situation that requires user review — and it is not already handled by a Python script — post an attention alert to Discord:
+
+```
+python scripts/post_attention.py \
+  --title "SHORT TITLE DESCRIBING THE PROBLEM" \
+  --description "What happened, what state was left behind, and what manual action is needed." \
+  --level warning
+```
+
+Use `--level critical` for: unprotected open positions, failed emergency closes, or inability to determine account status. Use `--level warning` for API degradation, missing data, or ambiguous state that needs review but is not immediately harmful.
+
+Do not use this for conditions Python scripts already handle internally (kill switch, VIX suspend, account blocked — those scripts send their own alerts).
+
+---
+
 ## Part 1: Orient yourself
 
 Read these files before computing anything:

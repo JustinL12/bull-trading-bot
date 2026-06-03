@@ -169,3 +169,22 @@ def post_daily_report(
         send_discord(title, "\n".join(lines))
     except Exception as e:
         print(f"Discord daily report failed silently: {e}")
+
+
+def post_attention(title: str, description: str, level: str = "warning") -> None:
+    """Send a needs-attention alert to the attention webhook. Never raises.
+
+    Uses DISCORD_ATTENTION_WEBHOOK_URL; falls back to DISCORD_WEBHOOK_URL if not set.
+    """
+    try:
+        url = os.environ.get("DISCORD_ATTENTION_WEBHOOK_URL") or os.environ.get("DISCORD_WEBHOOK_URL")
+        if not url:
+            print(f"[notify] No attention webhook configured — skipping: {title}")
+            return
+        level_label = "Critical" if level == "critical" else "Warning"
+        full_title = f"Bull Bot — {level_label}: {title}"
+        body = f"**{full_title}**\n{description}" if description else f"**{full_title}**"
+        for chunk in _chunks(body):
+            requests.post(url, json={"content": chunk}, timeout=10)
+    except Exception as e:
+        print(f"Discord attention alert failed silently: {e}")

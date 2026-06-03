@@ -12,7 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from lib.alpaca_client import get_trading_client
-from lib.notify import post_trade_alert
+from lib.notify import post_attention, post_trade_alert
 from lib.state import append_jsonl, read_json, write_json
 from alpaca.trading.requests import ClosePositionRequest
 
@@ -55,6 +55,13 @@ def main():
             print(f"  Closed {symbol}")
         except Exception as e:
             print(f"  Error closing {symbol}: {e}")
+            post_attention(
+                f"Emergency Close Failed: {symbol}",
+                f"close_all_positions.py could not close {symbol}.\n"
+                f"Error: {e}\n"
+                f"MANUAL ACTION REQUIRED: verify {symbol} position status in Alpaca.",
+                level="critical",
+            )
 
     # Clear local positions state
     write_json("positions.json", {})

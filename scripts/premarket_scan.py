@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
 from lib.alpaca_client import get_data_client, get_trading_client
+from lib.notify import post_attention
 from lib.state import clear_flag, read_json, set_flag, write_json
 from scripts.check_earnings import load_earnings_blacklist
 from scripts.compute_indicators import fetch_daily_bars, get_avg_volume
@@ -169,6 +170,12 @@ def main():
         set_flag("no_trade_today.flag")
         print(f"VIX {vix} > {config.VIX_SUSPEND_THRESHOLD}. Suspending trading today.")
         write_json("daily_context.json", {"date": today_str, "no_trade": True, "reason": f"VIX={vix}"})
+        post_attention(
+            "VIX Suspend — No Trade Today",
+            f"VIX is {vix:.1f}, above the {config.VIX_SUSPEND_THRESHOLD} threshold.\n"
+            f"Trading suspended for {today_str}. no_trade_today.flag set.",
+            level="warning",
+        )
         return
 
     daily_context = {
@@ -200,6 +207,12 @@ def main():
         print("Perplexity returned no stocks — watchlist will be empty.")
         write_json("watchlist.json", [])
         write_json("research.json", {"generated_at": datetime.now(timezone.utc).isoformat(), "results": {}})
+        post_attention(
+            "Empty Watchlist — Perplexity Discovery Failed",
+            f"discover_stocks_by_news() returned no results.\n"
+            f"Watchlist is empty for {today_str}. Check PERPLEXITY_API_KEY and Perplexity API status.",
+            level="warning",
+        )
         return
 
     # Validate discovered symbols against Alpaca (price, volume, tradability)

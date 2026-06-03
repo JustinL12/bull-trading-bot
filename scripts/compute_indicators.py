@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import config
 from lib.alpaca_client import get_data_client
 from lib.indicators import apply_all_intraday, latest, time_of_day_rvol
+from lib.notify import post_attention
 from lib.state import read_json, write_json
 from alpaca.data.requests import StockBarsRequest, StockLatestBarRequest
 from alpaca.data.timeframe import TimeFrame
@@ -129,6 +130,17 @@ def main():
     for symbol in symbols:
         print(f"  Computing indicators for {symbol}...")
         results[symbol] = compute_for_symbol(client, symbol)
+
+    positions = read_json("positions.json", default={})
+    for symbol, result in results.items():
+        if "error" in result and symbol in positions:
+            post_attention(
+                f"Indicator Compute Failed: {symbol}",
+                f"compute_for_symbol() failed for {symbol}, which has an open position.\n"
+                f"Error: {result['error']}\n"
+                f"Exit decisions for this symbol may be unreliable.",
+                level="warning",
+            )
 
     write_json("indicators.json", results)
     print(f"Indicators written for {len(results)} symbols.")
