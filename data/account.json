@@ -1,9 +1,9 @@
 {
-  "equity": 100001.65,
+  "equity": 100000.31,
   "cash": 99242.38,
-  "buying_power": 199244.03,
-  "portfolio_value": 100001.65,
-  "last_equity": 100000.92,
+  "buying_power": 199242.69,
+  "portfolio_value": 100000.31,
+  "last_equity": 100001.95,
   "daytrade_count": 0,
   "pattern_day_trader": false,
   "trading_blocked": false,
