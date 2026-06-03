@@ -51,17 +51,96 @@ def compute_atr(df: pd.DataFrame, period: int = 14) -> pd.DataFrame:
     return df
 
 
-def compute_vwap(df: pd.DataFrame) -> pd.DataFrame:
-    """Intraday VWAP — resets daily. Requires intraday bars."""
+def compute_vwap(df: pd.DataFrame, market_tz: str = "America/New_York") -> pd.DataFrame:
+    """Intraday VWAP — resets each session. Requires intraday bars.
+
+    The cumulative sums are grouped by local session date so VWAP stays correct
+    even when the DataFrame spans multiple days (as it now does, since intraday
+    bars are fetched over a multi-day window).
+    """
     typical = (df["high"] + df["low"] + df["close"]) / 3
-    df["vwap"] = (typical * df["volume"]).cumsum() / df["volume"].cumsum()
+    pv = typical * df["volume"]
+    idx = df.index
+    if getattr(idx, "tz", None) is not None:
+        session = idx.tz_convert(market_tz).date
+    else:
+        session = idx.date
+    df["vwap"] = pv.groupby(session).cumsum() / df["volume"].groupby(session).cumsum()
     return df
 
 
 def compute_relative_volume(df: pd.DataFrame, avg_volume: float) -> pd.DataFrame:
-    """Ratio of today's cumulative volume vs the 20-day average daily volume."""
+    """Legacy per-bar relative volume: today's cumulative volume vs the 20-day
+    average daily volume. Retained for backward compatibility; the open-market
+    agent now uses time_of_day_rvol() instead, which is feed-agnostic and
+    time-of-day aware. See that function for why this definition was replaced.
+    """
     df["rel_vol"] = df["volume"].cumsum() / avg_volume
     return df
+
+
+def time_of_day_rvol(
+    df: pd.DataFrame,
+    lookback_days: int = 14,
+    market_tz: str = "America/New_York",
+):
+    """Time-of-day relative volume (RVOL).
+
+    RVOL = today's cumulative volume up to the latest bar, divided by the
+    average cumulative volume up to that *same time of day* over the prior
+    ``lookback_days`` trading days.
+
+    Both the numerator and the denominator are drawn from the same intraday
+    feed, so the ratio is feed-agnostic — unlike comparing an intraday volume
+    sum against a full-day average (the old definition), which read structurally
+    low on the partial/IEX feed and rejected nearly every liquid name.
+
+    Expects a multi-day intraday bar DataFrame with a tz-aware DatetimeIndex and
+    a ``volume`` column. Returns a float, or ``None`` if there is not enough
+    history to form a baseline (in which case the caller's entry gate fails
+    closed, which is the safe outcome).
+    """
+    if df is None or df.empty or "volume" not in df.columns:
+        return None
+
+    idx = df.index
+    if getattr(idx, "tz", None) is None:
+        idx = idx.tz_localize("UTC")
+    local = idx.tz_convert(market_tz)
+    minutes = local.hour * 60 + local.minute
+    # regular trading hours only (09:30–16:00 ET) so the baseline is comparable
+    rth = (minutes >= 9 * 60 + 30) & (minutes < 16 * 60)
+
+    work = pd.DataFrame({
+        "date": local.date,
+        "tod": minutes,
+        "vol": df["volume"].to_numpy(dtype="float64"),
+    })
+    work = work[rth & (work["vol"] > 0)]
+    if work.empty:
+        return None
+
+    days = sorted(work["date"].unique())
+    if len(days) < 2:
+        return None
+
+    today = days[-1]
+    today_rows = work[work["date"] == today]
+    cutoff = int(today_rows["tod"].max())  # latest time-of-day we have today
+    today_cum = float(today_rows.loc[today_rows["tod"] <= cutoff, "vol"].sum())
+
+    prior_cums = []
+    for d in days[:-1][-lookback_days:]:
+        c = float(work.loc[(work["date"] == d) & (work["tod"] <= cutoff), "vol"].sum())
+        if c > 0:
+            prior_cums.append(c)
+    if not prior_cums:
+        return None
+
+    baseline = sum(prior_cums) / len(prior_cums)
+    if baseline <= 0:
+        return None
+    return round(today_cum / baseline, 4)
 
 
 def macd_histogram_rising(df: pd.DataFrame, bars: int = 2) -> bool:

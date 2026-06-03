@@ -15,31 +15,47 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import config
 from lib.alpaca_client import get_data_client
-from lib.indicators import apply_all_intraday, latest
+from lib.indicators import apply_all_intraday, latest, time_of_day_rvol
 from lib.state import read_json, write_json
 from alpaca.data.requests import StockBarsRequest, StockLatestBarRequest
 from alpaca.data.timeframe import TimeFrame
 
 
-def fetch_5min_bars(client, symbol: str, limit: int) -> pd.DataFrame:
+def fetch_5min_bars(client, symbol: str, lookback_days: int) -> pd.DataFrame:
+    """Fetch recent intraday bars, end-anchored at *now*.
+
+    We deliberately do NOT pass ``limit``: Alpaca caps a limited request to the
+    OLDEST bars in the window, which used to return days-stale bars for liquid
+    names (and silently fed stale prices into RSI/EMA/MACD). Fetching the full
+    window keeps the most recent bar — including the current session — present.
+    The window also spans multiple days so time_of_day_rvol() has prior sessions
+    to baseline against.
+    """
     end = datetime.now(timezone.utc)
-    start = end - timedelta(days=5)  # pull enough history for indicators
+    start = end - timedelta(days=lookback_days)
     req = StockBarsRequest(
         symbol_or_symbols=symbol,
         timeframe=TimeFrame.Minute,
         start=start,
         end=end,
-        limit=limit,
         feed="iex",
     )
     bars = client.get_stock_bars(req)
     df = bars.df
+    if df.empty:
+        return df
     if isinstance(df.index, pd.MultiIndex):
         df = df.xs(symbol, level="symbol")
     return df.rename(columns=str.lower)
 
 
 def fetch_daily_bars(client, symbol: str, limit: int) -> pd.DataFrame:
+    """Fetch the most recent ``limit`` daily bars, end-anchored at *now*.
+
+    As with the intraday fetch, we avoid the ``limit`` request param (which
+    returns the oldest bars in the range) and instead pull a wide window and
+    keep the tail, so EMA-200 and the latest close are computed on current data.
+    """
     end = datetime.now(timezone.utc)
     start = end - timedelta(days=limit * 2)
     req = StockBarsRequest(
@@ -47,14 +63,15 @@ def fetch_daily_bars(client, symbol: str, limit: int) -> pd.DataFrame:
         timeframe=TimeFrame.Day,
         start=start,
         end=end,
-        limit=limit,
         feed="iex",
     )
     bars = client.get_stock_bars(req)
     df = bars.df
+    if df.empty:
+        return df
     if isinstance(df.index, pd.MultiIndex):
         df = df.xs(symbol, level="symbol")
-    return df.rename(columns=str.lower)
+    return df.rename(columns=str.lower).tail(limit)
 
 
 def get_avg_volume(daily_df: pd.DataFrame, days: int = 20) -> float:
@@ -65,18 +82,23 @@ def get_avg_volume(daily_df: pd.DataFrame, days: int = 20) -> float:
 
 def compute_for_symbol(client, symbol: str) -> dict:
     try:
-        intraday_df = fetch_5min_bars(client, symbol, config.INDICATOR_BAR_LIMIT_5MIN)
+        intraday_df = fetch_5min_bars(client, symbol, config.INDICATOR_INTRADAY_LOOKBACK_DAYS)
         daily_df = fetch_daily_bars(client, symbol, config.INDICATOR_BAR_LIMIT_DAILY)
 
         if intraday_df.empty:
             return {"symbol": symbol, "error": "no intraday bars"}
 
         avg_vol = get_avg_volume(daily_df)
-        intraday_df = apply_all_intraday(intraday_df, avg_vol)
+        ind_df = apply_all_intraday(intraday_df, avg_vol)
 
-        vals = latest(intraday_df)
+        vals = latest(ind_df)
         vals["symbol"] = symbol
         vals["avg_volume_20d"] = round(avg_vol, 0)
+
+        # Relative volume: time-of-day RVOL (today so far vs. the average for this
+        # same time of day over prior sessions). Overrides the legacy per-bar
+        # rel_vol that latest() copies from the indicator frame.
+        vals["rel_vol"] = time_of_day_rvol(intraday_df, config.RVOL_LOOKBACK_DAYS)
 
         # EMA-200 on daily bars
         if len(daily_df) >= 20:

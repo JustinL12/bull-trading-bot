@@ -68,5 +68,10 @@ PERPLEXITY_DISCOVER_TOP_N = 25   # how many tickers to request from Perplexity d
 PERPLEXITY_INTRADAY_MIN_GAIN = 50.0  # only check news if unrealized gain > this
 
 # --- Alpaca data ---
-INDICATOR_BAR_LIMIT_5MIN = 100   # bars of 5-min data to pull for indicators
+INDICATOR_BAR_LIMIT_5MIN = 100   # (legacy) recent intraday bars used for indicator warmup
 INDICATOR_BAR_LIMIT_DAILY = 220  # daily bars (need 200 for EMA-200)
+# Intraday history is fetched end-anchored (most recent bars). We pull a multi-day
+# window both so indicators warm up on current data and so the time-of-day RVOL
+# baseline below has enough prior sessions to average over.
+INDICATOR_INTRADAY_LOOKBACK_DAYS = 20  # calendar days of intraday history to fetch
+RVOL_LOOKBACK_DAYS = 14                # prior trading days for the time-of-day RVOL baseline
