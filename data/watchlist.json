@@ -1,252 +1,252 @@
 [
   {
     "symbol": "SNDK",
-    "price": 1407.06,
-    "prev_close": 1382.79,
-    "premarket_volume": 37001,
-    "prev_volume": 285156,
+    "price": 1833.98,
+    "prev_close": 1716.33,
+    "premarket_volume": 207432,
+    "prev_volume": 251952,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "SanDisk is one of the strongest US large-cap momentum names in 2026, with one of the best year-to-date gains among S&P 500 stocks.[1]"
+    "summary": "Sandisk is one of the strongest YTD performers in 2026, with Bankrate listing it up 172.8% this year, indicating powerful positive momentum.[1]"
   },
   {
     "symbol": "TPL",
-    "price": 385.07,
-    "prev_close": 388.12,
-    "premarket_volume": 516,
-    "prev_volume": 17376,
+    "price": 406.75,
+    "prev_close": 371.79,
+    "premarket_volume": 14937,
+    "prev_volume": 20388,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Texas Pacific Land has had a major 2026 run and remains a high-relative-strength large-cap energy/royalty name.[1]"
+    "summary": "Texas Pacific Land has been a major 2026 outperformer, with Bankrate showing a 75.8% year-to-date gain and strong relative strength.[1]"
   },
   {
     "symbol": "MRNA",
-    "price": 49.05,
-    "prev_close": 50.05,
-    "premarket_volume": 15551,
-    "prev_volume": 281683,
+    "price": 49.04,
+    "prev_close": 45.63,
+    "premarket_volume": 243069,
+    "prev_volume": 267211,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Moderna has posted a very strong 2026 rebound, indicating renewed positive momentum in the shares.[1]"
+    "summary": "Moderna has posted a 68.6% YTD gain in Bankrate\u2019s 2026 leaderboard, making it a large-cap momentum name with clear price strength.[1]"
   },
   {
     "symbol": "GNRC",
-    "price": 263.55,
-    "prev_close": 276.38,
-    "premarket_volume": 6158,
-    "prev_volume": 51494,
+    "price": 285.31,
+    "prev_close": 284.15,
+    "premarket_volume": 48128,
+    "prev_volume": 51150,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Generac is among the year\u2019s top-performing stocks, reflecting sustained positive price momentum.[1]"
+    "summary": "Generac is up 64.8% year to date in 2026 on Bankrate\u2019s best-performing stocks list, signaling sustained momentum.[1]"
   },
   {
     "symbol": "GLW",
-    "price": 191.92,
-    "prev_close": 208.28,
-    "premarket_volume": 125820,
-    "prev_volume": 642359,
+    "price": 200.81,
+    "prev_close": 200.38,
+    "premarket_volume": 423077,
+    "prev_volume": 605284,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Corning has been a standout 2026 performer, supported by strong relative strength.[1]"
+    "summary": "Corning has risen 63.4% YTD in 2026, putting it among the strongest large-cap names in the market right now.[1]"
   },
   {
     "symbol": "TER",
-    "price": 337.92,
-    "prev_close": 356.55,
-    "premarket_volume": 21624,
-    "prev_volume": 181252,
+    "price": 409.71,
+    "prev_close": 392.61,
+    "premarket_volume": 148690,
+    "prev_volume": 131717,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Teradyne has delivered a large year-to-date gain and continues to screen as a momentum leader.[1]"
+    "summary": "Teradyne is up 59.8% in 2026 according to Bankrate, reflecting strong momentum in a liquid Nasdaq-listed stock.[1]"
   },
   {
     "symbol": "WDC",
-    "price": 481.87,
-    "prev_close": 489.25,
-    "premarket_volume": 65075,
-    "prev_volume": 283333,
+    "price": 594.16,
+    "prev_close": 563.01,
+    "premarket_volume": 324244,
+    "prev_volume": 237698,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Western Digital is one of 2026\u2019s top-performing large-cap tech names.[1]"
+    "summary": "Western Digital has gained 58.3% year to date in 2026, a sign of strong relative strength and continued bullish action.[1]"
   },
   {
     "symbol": "FIX",
-    "price": 1992.38,
-    "prev_close": 2041.93,
-    "premarket_volume": 3547,
-    "prev_volume": 25676,
+    "price": 1850.9,
+    "prev_close": 1885.06,
+    "premarket_volume": 31726,
+    "prev_volume": 23201,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Comfort Systems USA has produced an outsized 2026 advance, signaling strong momentum.[1]"
+    "summary": "Comfort Systems USA has advanced 50.6% YTD in 2026, placing it among the market\u2019s strongest performers.[1]"
   },
   {
     "symbol": "STX",
-    "price": 795.27,
-    "prev_close": 804.95,
-    "premarket_volume": 20710,
-    "prev_volume": 196044,
+    "price": 940.98,
+    "prev_close": 927.02,
+    "premarket_volume": 108663,
+    "prev_volume": 167375,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Seagate Technology is another major 2026 winner with strong relative strength.[1]"
+    "summary": "Seagate Technology is up 44.5% year to date in 2026, keeping it on the list of high-momentum large-cap names.[1]"
   },
   {
     "symbol": "CIEN",
-    "price": 554.49,
-    "prev_close": 591.12,
-    "premarket_volume": 25740,
-    "prev_volume": 99698,
+    "price": 620.57,
+    "prev_close": 627.6,
+    "premarket_volume": 125487,
+    "prev_volume": 108679,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Ciena has been a strong 2026 performer, keeping it on the momentum watchlist.[1]"
+    "summary": "Ciena has gained 43.1% YTD in 2026, and NerdWallet ranks it among the best-performing growth stocks for June 2026.[1][4]"
   },
   {
-    "symbol": "MPC",
-    "price": 255.06,
-    "prev_close": 248.81,
-    "premarket_volume": 10205,
-    "prev_volume": 106787,
+    "symbol": "VICR",
+    "price": 329.56,
+    "prev_close": 332.75,
+    "premarket_volume": 14394,
+    "prev_volume": 35458,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Marathon Petroleum is highlighted by Zacks as a June 2026 buy candidate with strong 12-week price momentum and favorable earnings growth expectations.[3]"
+    "summary": "Vicor is a standout momentum stock, with NerdWallet showing a massive 651.60% gain and highlighting it among the best-performing growth stocks for June 2026.[4]"
   },
   {
-    "symbol": "MCY",
-    "price": 98.15,
-    "prev_close": 99.01,
-    "premarket_volume": 238,
-    "prev_volume": 10436,
+    "symbol": "TSEM",
+    "price": 267.78,
+    "prev_close": 274.83,
+    "premarket_volume": 48473,
+    "prev_volume": 127027,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Mercury General appears on Zacks\u2019 June 2026 list, pairing positive recent price action with favorable quantitative momentum.[3]"
+    "summary": "Tower Semiconductor is on NerdWallet\u2019s June 2026 best-performing growth list with a 525.20% gain, indicating exceptional momentum.[4]"
   },
   {
-    "symbol": "MBUU",
-    "price": 26.2,
-    "prev_close": 27.19,
-    "premarket_volume": 465,
-    "prev_volume": 18477,
+    "symbol": "TTMI",
+    "price": 189.62,
+    "prev_close": 179.63,
+    "premarket_volume": 180288,
+    "prev_volume": 137879,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Malibu Boats is on Zacks\u2019 June 2026 buy list with positive 12-week price change and improving projected sales growth.[3]"
-  },
-  {
-    "symbol": "AAPL",
-    "price": 300.19,
-    "prev_close": 298.25,
-    "premarket_volume": 319974,
-    "prev_volume": 1318477,
-    "earnings_blackout": false,
-    "sentiment": "positive",
-    "summary": "Apple remains a large, liquid mega-cap with persistent institutional sponsorship and relative strength compared with weaker mega-cap peers.[1]"
-  },
-  {
-    "symbol": "AMZN",
-    "price": 264.22,
-    "prev_close": 267.21,
-    "premarket_volume": 319346,
-    "prev_volume": 1885211,
-    "earnings_blackout": false,
-    "sentiment": "positive",
-    "summary": "Amazon is a mega-cap liquidity leader that can be used as a fallback momentum name despite its weaker 2026 YTD showing in the cited data.[1]"
-  },
-  {
-    "symbol": "MSFT",
-    "price": 422.0,
-    "prev_close": 409.44,
-    "premarket_volume": 289359,
-    "prev_volume": 857997,
-    "earnings_blackout": false,
-    "sentiment": "positive",
-    "summary": "Microsoft is a dominant large-cap name with deep liquidity and persistent market relevance, making it a high-quality fallback momentum candidate.[1]"
+    "summary": "TTM Technologies appears on NerdWallet\u2019s June 2026 best-performing growth list with a 478.82% gain, reflecting very strong price action.[4]"
   },
   {
     "symbol": "NVDA",
-    "price": 225.31,
-    "prev_close": 235.78,
-    "premarket_volume": 1103062,
-    "prev_volume": 4346740,
+    "price": 214.86,
+    "prev_close": 222.82,
+    "premarket_volume": 4741903,
+    "prev_volume": 4812348,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Nvidia remains a leading large-cap AI stock with enduring investor demand and strong market momentum characteristics."
+    "summary": "Nvidia remains a large-cap momentum leader and is widely cited among top June 2026 stock ideas in current market commentary.[2]"
+  },
+  {
+    "symbol": "AMZN",
+    "price": 249.99,
+    "prev_close": 256.53,
+    "premarket_volume": 2752817,
+    "prev_volume": 1807557,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Amazon is repeatedly included in June 2026 top-stock lists, reflecting ongoing investor interest and positive momentum.[2]"
   },
   {
     "symbol": "META",
-    "price": 614.38,
-    "prev_close": 618.51,
-    "premarket_volume": 167602,
-    "prev_volume": 500402,
+    "price": 623.05,
+    "prev_close": 597.73,
+    "premarket_volume": 661915,
+    "prev_volume": 461251,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Meta is a liquid mega-cap that has continued to attract buyers on strong earnings power and capital returns."
+    "summary": "Meta is featured in June 2026 top-ranked stock lists, consistent with strong large-cap momentum and market leadership.[2]"
   },
   {
-    "symbol": "AVGO",
-    "price": 425.03,
-    "prev_close": 439.34,
-    "premarket_volume": 229013,
-    "prev_volume": 601810,
+    "symbol": "MSFT",
+    "price": 427.58,
+    "prev_close": 441.35,
+    "premarket_volume": 1265267,
+    "prev_volume": 922964,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Broadcom is a large-cap semiconductor/software name that has remained a favored momentum and quality compounder."
+    "summary": "Microsoft is included in current June 2026 top-stock idea lists as a durable large-cap momentum name.[2]"
   },
   {
-    "symbol": "ORCL",
-    "price": 192.98,
-    "prev_close": 195.65,
-    "premarket_volume": 149241,
-    "prev_volume": 773770,
+    "symbol": "UBER",
+    "price": 71.7,
+    "prev_close": 71.67,
+    "premarket_volume": 1233086,
+    "prev_volume": 1179010,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Oracle has been a strong large-cap software name with recurring AI and cloud momentum."
-  },
-  {
-    "symbol": "LLY",
-    "price": 1004.7,
-    "prev_close": 1007.78,
-    "premarket_volume": 29776,
-    "prev_volume": 133648,
-    "earnings_blackout": false,
-    "sentiment": "positive",
-    "summary": "Eli Lilly is a high-momentum healthcare leader that has benefited from strong product demand and investor sponsorship."
-  },
-  {
-    "symbol": "JPM",
-    "price": 297.79,
-    "prev_close": 300.02,
-    "premarket_volume": 17285,
-    "prev_volume": 197926,
-    "earnings_blackout": false,
-    "sentiment": "positive",
-    "summary": "JPMorgan Chase is a liquid large-cap financial leader with durable earnings power and strong relative stability."
-  },
-  {
-    "symbol": "XOM",
-    "price": 157.93,
-    "prev_close": 152.78,
-    "premarket_volume": 90370,
-    "prev_volume": 597508,
-    "earnings_blackout": false,
-    "sentiment": "positive",
-    "summary": "Exxon Mobil is a mega-cap energy name that remains a defensive large-cap fallback with persistent liquidity and market relevance."
-  },
-  {
-    "symbol": "PANW",
-    "price": 242.85,
-    "prev_close": 238.22,
-    "premarket_volume": 157570,
-    "prev_volume": 306564,
-    "earnings_blackout": false,
-    "sentiment": "positive",
-    "summary": "Palo Alto Networks is a large-cap cybersecurity leader that has continued to trade as a momentum stock."
+    "summary": "Uber appears on current June 2026 top-ranked stock lists, suggesting continued positive market sponsorship.[2]"
   },
   {
     "symbol": "V",
-    "price": 325.74,
-    "prev_close": 322.45,
-    "premarket_volume": 52265,
-    "prev_volume": 497593,
+    "price": 313.63,
+    "prev_close": 317.27,
+    "premarket_volume": 553397,
+    "prev_volume": 368648,
     "earnings_blackout": false,
     "sentiment": "positive",
-    "summary": "Visa is a high-quality, highly liquid large-cap payments name that often screens well when investors favor durable momentum and earnings consistency."
+    "summary": "Visa is included in June 2026 top-stock picks, reflecting steady momentum in a high-quality large-cap name.[2]"
+  },
+  {
+    "symbol": "ADBE",
+    "price": 256.3,
+    "prev_close": 262.1,
+    "premarket_volume": 157832,
+    "prev_volume": 167323,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Adobe is part of current June 2026 top-stock idea lists, indicating continued bullish attention.[2]"
+  },
+  {
+    "symbol": "PANW",
+    "price": 280.25,
+    "prev_close": 297.13,
+    "premarket_volume": 505070,
+    "prev_volume": 408606,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Palo Alto Networks is highlighted by Morningstar around June 2026 earnings coverage, keeping it on the radar for catalyst-driven action.[5]"
+  },
+  {
+    "symbol": "CRWD",
+    "price": 747.02,
+    "prev_close": 768.84,
+    "premarket_volume": 147434,
+    "prev_volume": 133169,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "CrowdStrike is also mentioned by Morningstar in the context of June 2026 earnings-related stock coverage, suggesting ongoing event-driven interest.[5]"
+  },
+  {
+    "symbol": "AVGO",
+    "price": 478.62,
+    "prev_close": 481.91,
+    "premarket_volume": 1181748,
+    "prev_volume": 712484,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Broadcom is referenced by Morningstar in June 2026 earnings coverage, making it a notable large-cap catalyst name.[5]"
+  },
+  {
+    "symbol": "MPC",
+    "price": 267.21,
+    "prev_close": 263.04,
+    "premarket_volume": 83450,
+    "prev_volume": 100764,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Marathon Petroleum is listed by Zacks among its best stocks to buy now for June 2026, implying favorable recent setup and momentum.[6]"
+  },
+  {
+    "symbol": "MCY",
+    "price": 96.74,
+    "prev_close": 98.51,
+    "premarket_volume": 7813,
+    "prev_volume": 13799,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Mercury General is included by Zacks in its June 2026 best-stocks list, indicating a positive current stock-screening signal.[6]"
   }
 ]
