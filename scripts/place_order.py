@@ -17,23 +17,36 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from lib.alpaca_client import get_trading_client
 from lib.notify import post_attention, post_trade_alert
-from lib.risk import initial_stop_price
 from lib.state import append_jsonl, read_json, write_json
 from alpaca.trading.requests import MarketOrderRequest, StopOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
 
 
-def wait_for_fill(client, order_id: str, max_wait: int = 30) -> dict | None:
-    """Poll until order is filled or max_wait seconds elapsed."""
+def wait_for_fill(client, order_id: str, max_wait: int = 30, require_full: bool = False) -> dict | None:
+    """Poll until an order fills or max_wait seconds elapse.
+
+    When require_full is True (use this for entries), wait for the order to be
+    completely filled before returning. Returning on a partial fill would both
+    record the wrong share count and leave the buy order open — and an open buy
+    causes Alpaca to reject the opposite-side stop-loss as a wash trade.
+    """
     for _ in range(max_wait):
         order = client.get_order_by_id(order_id)
-        if order.status in ("filled", "partially_filled"):
+        if order.status == "filled":
+            return order
+        if order.status == "partially_filled" and not require_full:
             return order
         if order.status in ("canceled", "expired", "rejected"):
             print(f"Order {order_id} ended with status: {order.status}")
             return None
         time.sleep(1)
-    print(f"Order {order_id} not filled after {max_wait}s")
+    # Timed out: fall back to whatever filled so the position is still recorded
+    # and protected, rather than dropping it on the floor.
+    order = client.get_order_by_id(order_id)
+    if order.status in ("filled", "partially_filled"):
+        print(f"Order {order_id} only {order.status} after {max_wait}s; proceeding with filled qty.")
+        return order
+    print(f"Order {order_id} not filled after {max_wait}s (status: {order.status})")
     return None
 
 
@@ -52,36 +65,51 @@ def place_buy(client, symbol: str, shares: int, stop_price: float, rsi: float, r
         time_in_force=TimeInForce.DAY,
     )
     order = client.submit_order(buy_req)
-    filled = wait_for_fill(client, str(order.id))
+    # require_full: wait for the buy to fully fill before placing the stop, so
+    # filled_qty is correct and no open buy order remains to trip Alpaca's
+    # wash-trade protection on the opposite-side stop.
+    filled = wait_for_fill(client, str(order.id), require_full=True)
     if not filled:
         print(f"Buy order for {symbol} did not fill.")
         return
 
     fill_price = float(filled.filled_avg_price)
     filled_qty = int(float(filled.filled_qty))
-    actual_stop = initial_stop_price(fill_price, (fill_price - stop_price) / 1.5)
 
-    # Submit stop loss order
-    try:
-        stop_req = StopOrderRequest(
-            symbol=symbol,
-            qty=filled_qty,
-            side=OrderSide.SELL,
-            time_in_force=TimeInForce.GTC,
-            stop_price=round(stop_price, 2),
-        )
-        stop_order = client.submit_order(stop_req)
-        stop_order_id = str(stop_order.id)
-    except Exception as e:
-        print(f"Warning: stop order for {symbol} failed: {e}")
-        post_attention(
-            f"Stop Order Not Placed: {symbol}",
-            f"Buy order for {symbol} filled but stop-loss order failed to submit.\n"
-            f"Error: {e}\n"
-            f"Position is unprotected. Place a stop manually in Alpaca.",
-            level="warning",
-        )
-        stop_order_id = None
+    # Submit stop loss order. Retry on wash-trade rejection: if any part of the
+    # buy is still settling, Alpaca rejects the opposite-side stop — a short
+    # delay lets it clear before we give up and alert.
+    stop_req = StopOrderRequest(
+        symbol=symbol,
+        qty=filled_qty,
+        side=OrderSide.SELL,
+        time_in_force=TimeInForce.GTC,
+        stop_price=round(stop_price, 2),
+    )
+    stop_order_id = None
+    max_stop_attempts = 3
+    for attempt in range(max_stop_attempts):
+        try:
+            stop_order = client.submit_order(stop_req)
+            stop_order_id = str(stop_order.id)
+            break
+        except Exception as e:
+            is_wash = "wash trade" in str(e).lower()
+            if is_wash and attempt < max_stop_attempts - 1:
+                print(f"Stop for {symbol} rejected (wash trade); retrying in 3s "
+                      f"(attempt {attempt + 1}/{max_stop_attempts})...")
+                time.sleep(3)
+                continue
+            print(f"Warning: stop order for {symbol} failed: {e}")
+            post_attention(
+                f"Stop Order Not Placed: {symbol}",
+                f"Buy order for {symbol} filled ({filled_qty} sh @ ${fill_price:.2f}) but the "
+                f"stop-loss order failed to submit after {attempt + 1} attempt(s).\n"
+                f"Error: {e}\n"
+                f"Position is UNPROTECTED. Place a stop manually in Alpaca.",
+                level="critical",
+            )
+            break
 
     position = {
         "symbol": symbol,
