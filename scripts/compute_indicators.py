@@ -92,7 +92,7 @@ def compute_for_symbol(client, symbol: str) -> dict:
         avg_vol = get_avg_volume(daily_df)
         ind_df = apply_all_intraday(intraday_df, avg_vol)
 
-        vals = latest(ind_df)
+        vals = latest(ind_df, config.MACD_CONFIRM_BARS)
         vals["symbol"] = symbol
         vals["avg_volume_20d"] = round(avg_vol, 0)
 

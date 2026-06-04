@@ -165,12 +165,12 @@ def apply_all_intraday(df: pd.DataFrame, avg_volume: float) -> pd.DataFrame:
     return df
 
 
-def latest(df: pd.DataFrame) -> dict:
+def latest(df: pd.DataFrame, macd_confirm_bars: int = 2) -> dict:
     """Return the most recent bar's indicator values as a plain dict."""
     row = df.iloc[-1]
     result = {}
     for col in ["close", "ema_9", "ema_21", "rsi", "macd", "macd_signal", "macd_hist", "atr", "vwap", "rel_vol"]:
         if col in df.columns:
             result[col] = round(float(row[col]), 4) if not pd.isna(row[col]) else None
-    result["macd_hist_rising"] = macd_histogram_rising(df)
+    result["macd_hist_rising"] = macd_histogram_rising(df, macd_confirm_bars)
     return result
