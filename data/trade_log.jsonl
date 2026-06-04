@@ -1,1 +1,2 @@
 {"ts": "2026-06-04T16:37:05.660439+00:00", "event": "ENTRY", "symbol": "MPC", "shares": 18, "price": 269.65, "stop": 269.09, "rsi": 68.17, "rel_vol": 2.04, "perplexity": "positive"}
+{"ts": "2026-06-04T19:46:52.130297+00:00", "event": "EXIT", "symbol": "MPC", "shares": 18, "price": 268.0, "pnl_dollars": -29.7, "pnl_pct": -0.61, "exit_reason": "EOD: not profitable (close 268.14 < entry 269.65) and trailing stop not active"}
