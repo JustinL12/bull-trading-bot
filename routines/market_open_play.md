@@ -133,7 +133,7 @@ Then read `data/indicators.json` for that symbol. Evaluate all of these criteria
 | EMA-9 > EMA-21 (5-min) | `indicators[symbol]["ema_9"]` > `indicators[symbol]["ema_21"]` |
 | RSI in range | `RSI_MIN` (50) ≤ `indicators[symbol]["rsi"]` ≤ `RSI_MAX` (75) |
 | MACD histogram rising | `indicators[symbol]["macd_hist_rising"]` is `true` |
-| Relative volume | `indicators[symbol]["rel_vol"]` ≥ `REL_VOL_MIN` (1.5) |
+| Relative volume | `indicators[symbol]["rel_vol"]` ≥ `REL_VOL_MIN` (1.0) |
 | Sentiment | `research.json["results"][symbol]["sentiment"]` ≠ `"negative"` |
 | Earnings blacklist | Symbol NOT in `earnings_blacklist.json` |
 | Entry time window | Current ET time is between 9:45 AM and 1:00 PM |

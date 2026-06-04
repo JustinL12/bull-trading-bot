@@ -10,7 +10,7 @@ PRICE_MIN = 10.0
 PRICE_MAX = 1000.0
 MIN_AVG_VOLUME = 100_000
 # REL_VOL_MIN is still used by the open-market agent's entry criteria.
-REL_VOL_MIN = 1.5
+REL_VOL_MIN = 1.0
 
 # --- Entry criteria ---
 RSI_MIN = 50
