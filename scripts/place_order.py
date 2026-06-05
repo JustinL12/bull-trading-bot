@@ -149,6 +149,56 @@ def place_buy(client, symbol: str, shares: int, stop_price: float, rsi: float, r
     post_trade_alert("BUY", symbol, filled_qty, fill_price, stop=stop_price, rsi=rsi, rel_vol=rel_vol, sentiment=sentiment)
 
 
+def broker_position_qty(client, symbol: str) -> int:
+    """Return the signed share quantity the broker actually holds for *symbol*
+    (positive = long, negative = short, 0 = flat).
+
+    This is the source of truth we reconcile against before selling. positions.json
+    can drift from reality when a protective stop self-fills (that fill is never
+    written back here), so trusting our local share count and selling it blindly
+    can flip a flat book into an unintended short.
+    """
+    try:
+        pos = client.get_open_position(symbol)
+    except Exception:
+        # Alpaca raises when there is no open position for the symbol.
+        return 0
+    return int(float(pos.qty))
+
+
+def plan_sell_qty(intended: int, broker_held: int) -> int:
+    """Decide how many shares we may actually sell.
+
+    Never exceeds ``broker_held`` (so we cannot oversell long shares into a short)
+    and never goes negative. A return of 0 means there is nothing safe to sell —
+    the book is already flat (e.g. the stop self-filled) and the caller should
+    reconcile local state instead of submitting an order.
+    """
+    if broker_held <= 0:
+        return 0
+    return max(0, min(intended, broker_held))
+
+
+def cancel_stop_order(client, stop_order_id: str | None) -> None:
+    """Cancel a still-open protective stop before a manual close.
+
+    Without this, the GTC stop can fire after we've already sold the shares,
+    selling them a second time and opening a short — the same failure mode the
+    broker-reconcile guard protects against, from the other direction.
+    """
+    if not stop_order_id:
+        return
+    try:
+        order = client.get_order_by_id(stop_order_id)
+        if str(order.status) not in ("OrderStatus.FILLED", "OrderStatus.CANCELED",
+                                     "OrderStatus.EXPIRED", "OrderStatus.REJECTED",
+                                     "filled", "canceled", "expired", "rejected"):
+            client.cancel_order_by_id(stop_order_id)
+            print(f"Canceled open stop order {stop_order_id[:8]} before selling {order.symbol}.")
+    except Exception as e:
+        print(f"Note: could not cancel stop order {stop_order_id}: {e}")
+
+
 def place_sell(client, symbol: str, reason: str, shares: int | None = None, is_partial: bool = False) -> None:
     positions = read_json("positions.json", default={})
     if symbol not in positions:
@@ -156,10 +206,50 @@ def place_sell(client, symbol: str, reason: str, shares: int | None = None, is_p
         return
 
     pos = positions[symbol]
-    qty = shares if (is_partial and shares) else pos["shares"] - pos.get("partial_sold_shares", 0)
+    recorded_remaining = pos["shares"] - pos.get("partial_sold_shares", 0)
+
+    # --- Reconcile against the broker BEFORE selling -------------------------
+    # If the broker shows no long position, the stop almost certainly self-filled
+    # and was never written back to positions.json. Submitting a sell here would
+    # open a short (this is exactly how the MPC -18 short happened on 2026-06-04).
+    held = broker_position_qty(client, symbol)
+    if held <= 0:
+        del positions[symbol]
+        write_json("positions.json", positions)
+        append_jsonl("trade_log.jsonl", {
+            "ts": datetime.now(timezone.utc).isoformat(),
+            "event": "RECONCILE",
+            "symbol": symbol,
+            "note": (f"Skipped {'partial ' if is_partial else ''}sell: broker holds no long position "
+                     f"(held={held}) but positions.json recorded {recorded_remaining} sh. The protective "
+                     f"stop most likely self-filled and was never reconciled. Cleared stale local state "
+                     f"instead of selling, which would have opened a short."),
+            "reason": reason,
+        })
+        print(f"{symbol}: broker is flat (stop likely already filled). Cleared stale state; no sell submitted.")
+        post_attention(
+            f"Auto-reconciled stale position: {symbol}",
+            f"A {'partial ' if is_partial else ''}sell for {symbol} was requested ({reason}), but the broker "
+            f"holds no long position (positions.json had {recorded_remaining} sh). The stop almost certainly "
+            f"self-filled earlier. Local state was cleared and NO sell was submitted, avoiding an unintended "
+            f"short. Verify realized P&L for {symbol}.",
+            level="warning",
+        )
+        return
+
+    # For a full close, cancel the still-open protective stop first so it can't
+    # fire on the shares we're about to sell and flip us short from the other side.
+    if not is_partial:
+        cancel_stop_order(client, pos.get("stop_order_id"))
+
+    intended = shares if (is_partial and shares) else recorded_remaining
+    qty = plan_sell_qty(intended, held)
     if qty <= 0:
         print(f"No shares left to sell for {symbol}.")
         return
+    if qty < intended:
+        print(f"{symbol}: clamping sell qty {intended} -> {qty} to match broker-held shares "
+              f"(avoids overselling into a short).")
 
     sell_req = MarketOrderRequest(
         symbol=symbol,
