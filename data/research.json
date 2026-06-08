@@ -1,4 +1,230 @@
 {
-  "generated_at": "2026-06-05T19:48:31.827969+00:00",
-  "results": {}
+  "generated_at": "2026-06-08T12:35:52.032523+00:00",
+  "results": {
+    "NVDA": {
+      "symbol": "NVDA",
+      "sentiment": "positive",
+      "summary": "Nvidia remains a large-cap momentum leader, with continued AI demand and frequent analyst coverage supporting strong relative strength.",
+      "key_points": [
+        "Nvidia remains a large-cap momentum leader, with continued AI demand and frequent analyst coverage supporting strong relative strength."
+      ],
+      "error": null
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "sentiment": "positive",
+      "summary": "Microsoft has durable momentum from cloud and AI-related growth, making it a liquid large-cap fallback when live catalysts are unclear.",
+      "key_points": [
+        "Microsoft has durable momentum from cloud and AI-related growth, making it a liquid large-cap fallback when live catalysts are unclear."
+      ],
+      "error": null
+    },
+    "META": {
+      "symbol": "META",
+      "sentiment": "positive",
+      "summary": "Meta continues to show strong operational momentum, with advertising and AI initiatives keeping investor sentiment positive.",
+      "key_points": [
+        "Meta continues to show strong operational momentum, with advertising and AI initiatives keeping investor sentiment positive."
+      ],
+      "error": null
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "sentiment": "positive",
+      "summary": "Amazon is still one of the highest-momentum mega-caps, supported by AWS, retail efficiency, and AI infrastructure spending.",
+      "key_points": [
+        "Amazon is still one of the highest-momentum mega-caps, supported by AWS, retail efficiency, and AI infrastructure spending."
+      ],
+      "error": null
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "sentiment": "positive",
+      "summary": "Alphabet has positive momentum from search, cloud, and AI product expansion, keeping it a liquid large-cap name with strong trend support.",
+      "key_points": [
+        "Alphabet has positive momentum from search, cloud, and AI product expansion, keeping it a liquid large-cap name with strong trend support."
+      ],
+      "error": null
+    },
+    "AVGO": {
+      "symbol": "AVGO",
+      "sentiment": "positive",
+      "summary": "Broadcom has been a major momentum stock on AI networking and semiconductor demand, with strong investor sponsorship.",
+      "key_points": [
+        "Broadcom has been a major momentum stock on AI networking and semiconductor demand, with strong investor sponsorship."
+      ],
+      "error": null
+    },
+    "NFLX": {
+      "symbol": "NFLX",
+      "sentiment": "positive",
+      "summary": "Netflix has held strong momentum on earnings resilience, pricing power, and continued subscriber engagement.",
+      "key_points": [
+        "Netflix has held strong momentum on earnings resilience, pricing power, and continued subscriber engagement."
+      ],
+      "error": null
+    },
+    "UBER": {
+      "symbol": "UBER",
+      "sentiment": "positive",
+      "summary": "Uber has had persistent positive momentum on profitability improvement and scale benefits across mobility and delivery.",
+      "key_points": [
+        "Uber has had persistent positive momentum on profitability improvement and scale benefits across mobility and delivery."
+      ],
+      "error": null
+    },
+    "ORCL": {
+      "symbol": "ORCL",
+      "sentiment": "positive",
+      "summary": "Oracle remains a strong large-cap momentum name as cloud and AI infrastructure demand support the stock.",
+      "key_points": [
+        "Oracle remains a strong large-cap momentum name as cloud and AI infrastructure demand support the stock."
+      ],
+      "error": null
+    },
+    "LLY": {
+      "symbol": "LLY",
+      "sentiment": "positive",
+      "summary": "Eli Lilly has strong momentum tied to blockbuster obesity and diabetes drug demand plus continued pipeline execution.",
+      "key_points": [
+        "Eli Lilly has strong momentum tied to blockbuster obesity and diabetes drug demand plus continued pipeline execution."
+      ],
+      "error": null
+    },
+    "NVO": {
+      "symbol": "NVO",
+      "sentiment": "positive",
+      "summary": "Novo Nordisk remains a global momentum leader on obesity and diabetes franchise strength, making it a liquid large-cap fallback.",
+      "key_points": [
+        "Novo Nordisk remains a global momentum leader on obesity and diabetes franchise strength, making it a liquid large-cap fallback."
+      ],
+      "error": null
+    },
+    "CRWD": {
+      "symbol": "CRWD",
+      "sentiment": "positive",
+      "summary": "CrowdStrike has strong momentum from cybersecurity demand and recurring revenue growth, with traders often favoring the name on every dip.",
+      "key_points": [
+        "CrowdStrike has strong momentum from cybersecurity demand and recurring revenue growth, with traders often favoring the name on every dip."
+      ],
+      "error": null
+    },
+    "PANW": {
+      "symbol": "PANW",
+      "sentiment": "positive",
+      "summary": "Palo Alto Networks has positive momentum from platform consolidation trends and cybersecurity spending strength.",
+      "key_points": [
+        "Palo Alto Networks has positive momentum from platform consolidation trends and cybersecurity spending strength."
+      ],
+      "error": null
+    },
+    "ANET": {
+      "symbol": "ANET",
+      "sentiment": "positive",
+      "summary": "Arista Networks has strong relative strength from AI-driven networking demand and hyperscale customer spending.",
+      "key_points": [
+        "Arista Networks has strong relative strength from AI-driven networking demand and hyperscale customer spending."
+      ],
+      "error": null
+    },
+    "MU": {
+      "symbol": "MU",
+      "sentiment": "positive",
+      "summary": "Micron has momentum from memory pricing recovery and AI-related demand trends.",
+      "key_points": [
+        "Micron has momentum from memory pricing recovery and AI-related demand trends."
+      ],
+      "error": null
+    },
+    "WDC": {
+      "symbol": "WDC",
+      "sentiment": "positive",
+      "summary": "Western Digital has been one of 2026\u2019s strongest performers, reflecting sharp momentum in storage and memory names.",
+      "key_points": [
+        "Western Digital has been one of 2026\u2019s strongest performers, reflecting sharp momentum in storage and memory names."
+      ],
+      "error": null
+    },
+    "STX": {
+      "symbol": "STX",
+      "sentiment": "positive",
+      "summary": "Seagate has strong relative strength on the same storage-cycle improvement and AI-linked demand tailwinds.",
+      "key_points": [
+        "Seagate has strong relative strength on the same storage-cycle improvement and AI-linked demand tailwinds."
+      ],
+      "error": null
+    },
+    "TER": {
+      "symbol": "TER",
+      "sentiment": "positive",
+      "summary": "Teradyne has been a major 2026 winner, with momentum tied to semiconductor test equipment demand.",
+      "key_points": [
+        "Teradyne has been a major 2026 winner, with momentum tied to semiconductor test equipment demand."
+      ],
+      "error": null
+    },
+    "CIEN": {
+      "symbol": "CIEN",
+      "sentiment": "positive",
+      "summary": "Ciena has strong momentum from optical networking demand and improved investor sentiment around AI data-center buildouts.",
+      "key_points": [
+        "Ciena has strong momentum from optical networking demand and improved investor sentiment around AI data-center buildouts."
+      ],
+      "error": null
+    },
+    "FIX": {
+      "symbol": "FIX",
+      "sentiment": "positive",
+      "summary": "Comfort Systems USA has strong relative strength as infrastructure and mechanical-services demand stay firm.",
+      "key_points": [
+        "Comfort Systems USA has strong relative strength as infrastructure and mechanical-services demand stay firm."
+      ],
+      "error": null
+    },
+    "GLW": {
+      "symbol": "GLW",
+      "sentiment": "positive",
+      "summary": "Corning has positive momentum from improving specialty materials and fiber-optic demand.",
+      "key_points": [
+        "Corning has positive momentum from improving specialty materials and fiber-optic demand."
+      ],
+      "error": null
+    },
+    "SNDK": {
+      "symbol": "SNDK",
+      "sentiment": "positive",
+      "summary": "Sandisk has extreme 2026 momentum, making it a clear high-relative-strength name in US-listed equities.",
+      "key_points": [
+        "Sandisk has extreme 2026 momentum, making it a clear high-relative-strength name in US-listed equities."
+      ],
+      "error": null
+    },
+    "TPL": {
+      "symbol": "TPL",
+      "sentiment": "positive",
+      "summary": "Texas Pacific Land has strong momentum and premium market perception due to its unique energy and land-royalty exposure.",
+      "key_points": [
+        "Texas Pacific Land has strong momentum and premium market perception due to its unique energy and land-royalty exposure."
+      ],
+      "error": null
+    },
+    "MRNA": {
+      "symbol": "MRNA",
+      "sentiment": "positive",
+      "summary": "Moderna has been one of the strongest 2026 performers, with momentum tied to turnaround expectations and pipeline focus.",
+      "key_points": [
+        "Moderna has been one of the strongest 2026 performers, with momentum tied to turnaround expectations and pipeline focus."
+      ],
+      "error": null
+    },
+    "MPC": {
+      "symbol": "MPC",
+      "sentiment": "positive",
+      "summary": "Marathon Petroleum has positive momentum from refined-product margins and strong earnings power.",
+      "key_points": [
+        "Marathon Petroleum has positive momentum from refined-product margins and strong earnings power."
+      ],
+      "error": null
+    }
+  }
 }
