@@ -4,13 +4,13 @@
   "current_equity": 99923.37,
   "pnl_dollars": -83.3,
   "pnl_pct": -0.0833,
-  "spy_return_today": -0.8453,
-  "vs_spy_pct": 0.762,
+  "spy_return_today": -1.373,
+  "vs_spy_pct": 1.2897,
   "pdt_trades_today": 0,
   "overnight_holds": [],
   "kill_switch_triggered": false,
   "inception_date": "2026-06-01",
   "inception_equity": 100000.0,
   "cumulative_bull_pct": -0.0766,
-  "cumulative_spy_pct": -3.6544
+  "cumulative_spy_pct": -4.1685
 }
