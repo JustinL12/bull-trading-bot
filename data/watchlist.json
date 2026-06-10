@@ -1,1 +1,252 @@
-[]
+[
+  {
+    "symbol": "NINE",
+    "price": 9.88,
+    "prev_close": 10.04,
+    "premarket_volume": 2523,
+    "prev_volume": 1306,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock is one of the biggest monthly gainers in June 2026, indicating very strong near-term momentum.[1]"
+  },
+  {
+    "symbol": "INHD",
+    "price": 43.37,
+    "prev_close": 43.37,
+    "premarket_volume": 818938,
+    "prev_volume": 41299,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Inno Holdings is the top June 2026 monthly performer, with reported gains of about +2,892%, making it a clear momentum name.[1]"
+  },
+  {
+    "symbol": "STAK",
+    "price": 5.73,
+    "prev_close": 5.12,
+    "premarket_volume": 14131,
+    "prev_volume": 23709,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock is listed among June 2026\u2019s biggest gainers, with a reported monthly surge of roughly +479%.[1]"
+  },
+  {
+    "symbol": "STI",
+    "price": 20.38,
+    "prev_close": 29.1,
+    "premarket_volume": 13307,
+    "prev_volume": 19855,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock is shown as a major June 2026 gainer, with a reported monthly gain of about +315%.[1]"
+  },
+  {
+    "symbol": "MGRT",
+    "price": 77.25,
+    "prev_close": 77.25,
+    "premarket_volume": 249,
+    "prev_volume": 230,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock appears in June 2026\u2019s top monthly gainers list, signaling unusually strong recent price momentum.[1]"
+  },
+  {
+    "symbol": "BVC",
+    "price": 11.5,
+    "prev_close": 11.09,
+    "premarket_volume": 695,
+    "prev_volume": 62,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock is among the strongest June 2026 movers, with a reported monthly gain of about +742%.[1]"
+  },
+  {
+    "symbol": "ANL",
+    "price": 10.84,
+    "prev_close": 10.16,
+    "premarket_volume": 8083,
+    "prev_volume": 5819,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock is included in June 2026\u2019s biggest gainers, reflecting strong current momentum.[1]"
+  },
+  {
+    "symbol": "NTCL",
+    "price": 2.84,
+    "prev_close": 2.33,
+    "premarket_volume": 110852,
+    "prev_volume": 86772,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock is one of June 2026\u2019s top monthly gainers, suggesting positive recent price action.[1]"
+  },
+  {
+    "symbol": "VACH",
+    "price": 17.8,
+    "prev_close": 10.51,
+    "premarket_volume": 522,
+    "prev_volume": 36,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "The stock is listed among June 2026\u2019s standout gainers, with a reported strong monthly advance.[1]"
+  },
+  {
+    "symbol": "HGV",
+    "price": 48.75,
+    "prev_close": 48.51,
+    "premarket_volume": 55609,
+    "prev_volume": 62181,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Zacks highlights Hilton Grand Vacations as one of the best stocks to buy now for June 2026, based on strong recent performance and growth expectations.[2]"
+  },
+  {
+    "symbol": "MPC",
+    "price": 258.19,
+    "prev_close": 265.89,
+    "premarket_volume": 193515,
+    "prev_volume": 111554,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Zacks lists Marathon Petroleum as a best stock to buy now for June 2026, supported by strong 12-week price performance and projected EPS growth.[2]"
+  },
+  {
+    "symbol": "CRGY",
+    "price": 11.44,
+    "prev_close": 11.77,
+    "premarket_volume": 434061,
+    "prev_volume": 453442,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Zacks includes Crescent Energy among its June 2026 buy ideas, citing expected growth even though the recent price move has been flatter.[2]"
+  },
+  {
+    "symbol": "DEC",
+    "price": 13.73,
+    "prev_close": 13.86,
+    "premarket_volume": 43204,
+    "prev_volume": 35725,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Zacks lists Diversified Energy Company as a June 2026 buy candidate, reflecting its inclusion in a current stock-picking screen.[2]"
+  },
+  {
+    "symbol": "LNVGY",
+    "price": null,
+    "prev_close": null,
+    "premarket_volume": 0,
+    "prev_volume": null,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Zacks highlights Lenovo Group as a June 2026 buy candidate, with a very large recent price increase shown in its screen.[2]"
+  },
+  {
+    "symbol": "SNDK",
+    "price": 1649.51,
+    "prev_close": 1641.99,
+    "premarket_volume": 302642,
+    "prev_volume": 229969,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate ranks Sandisk among the best-performing S&P 500 stocks in 2026, with a very large year-to-date gain.[3]"
+  },
+  {
+    "symbol": "TPL",
+    "price": 382.14,
+    "prev_close": 396.99,
+    "premarket_volume": 23630,
+    "prev_volume": 18734,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate lists Texas Pacific Land as one of 2026\u2019s strongest performers, indicating sustained momentum.[3]"
+  },
+  {
+    "symbol": "MRNA",
+    "price": 47.74,
+    "prev_close": 47.6,
+    "premarket_volume": 243393,
+    "prev_volume": 206983,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate shows Moderna as a top 2026 performer in the S&P 500, reflecting strong relative strength.[3]"
+  },
+  {
+    "symbol": "GNRC",
+    "price": 260.96,
+    "prev_close": 265.5,
+    "premarket_volume": 113837,
+    "prev_volume": 55956,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate ranks Generac among the best-performing S&P 500 names in 2026, signaling strong recent momentum.[3]"
+  },
+  {
+    "symbol": "GLW",
+    "price": 173.93,
+    "prev_close": 187.49,
+    "premarket_volume": 485037,
+    "prev_volume": 507151,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate lists Corning as a top 2026 performer, with solid year-to-date strength.[3]"
+  },
+  {
+    "symbol": "TER",
+    "price": 369.5,
+    "prev_close": 374.52,
+    "premarket_volume": 137455,
+    "prev_volume": 133680,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate shows Teradyne as one of the best-performing S&P 500 stocks in 2026.[3]"
+  },
+  {
+    "symbol": "WDC",
+    "price": 517.62,
+    "prev_close": 526.81,
+    "premarket_volume": 247447,
+    "prev_volume": 218967,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate ranks Western Digital among the strongest 2026 performers, indicating continued positive momentum.[3]"
+  },
+  {
+    "symbol": "FIX",
+    "price": 1830.93,
+    "prev_close": 1851.71,
+    "premarket_volume": 40526,
+    "prev_volume": 23394,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate lists Comfort Systems USA as a top 2026 performer, reflecting strong relative strength.[3]"
+  },
+  {
+    "symbol": "STX",
+    "price": 846.31,
+    "prev_close": 876.94,
+    "premarket_volume": 116497,
+    "prev_volume": 126339,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate shows Seagate Technology among the best-performing S&P 500 stocks in 2026.[3]"
+  },
+  {
+    "symbol": "CIEN",
+    "price": 439.14,
+    "prev_close": 466.57,
+    "premarket_volume": 363016,
+    "prev_volume": 141098,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Bankrate includes Ciena among the top 2026 performers, highlighting sustained upside momentum.[3]"
+  },
+  {
+    "symbol": "AMZN",
+    "price": 244.15,
+    "prev_close": 245.21,
+    "premarket_volume": 2322639,
+    "prev_volume": 1870151,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Large-cap Amazon remains a liquid momentum name, and while not a live catalyst pick here, it is a high-quality fallback stock with broad institutional support.[3]"
+  }
+]

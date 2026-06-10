@@ -1,4 +1,230 @@
 {
-  "generated_at": "2026-06-09T19:49:01.323523+00:00",
-  "results": {}
+  "generated_at": "2026-06-10T12:37:22.807584+00:00",
+  "results": {
+    "NINE": {
+      "symbol": "NINE",
+      "sentiment": "positive",
+      "summary": "The stock is one of the biggest monthly gainers in June 2026, indicating very strong near-term momentum.[1]",
+      "key_points": [
+        "The stock is one of the biggest monthly gainers in June 2026, indicating very strong near-term momentum.[1]"
+      ],
+      "error": null
+    },
+    "INHD": {
+      "symbol": "INHD",
+      "sentiment": "positive",
+      "summary": "Inno Holdings is the top June 2026 monthly performer, with reported gains of about +2,892%, making it a clear momentum name.[1]",
+      "key_points": [
+        "Inno Holdings is the top June 2026 monthly performer, with reported gains of about +2,892%, making it a clear momentum name.[1]"
+      ],
+      "error": null
+    },
+    "STAK": {
+      "symbol": "STAK",
+      "sentiment": "positive",
+      "summary": "The stock is listed among June 2026\u2019s biggest gainers, with a reported monthly surge of roughly +479%.[1]",
+      "key_points": [
+        "The stock is listed among June 2026\u2019s biggest gainers, with a reported monthly surge of roughly +479%.[1]"
+      ],
+      "error": null
+    },
+    "STI": {
+      "symbol": "STI",
+      "sentiment": "positive",
+      "summary": "The stock is shown as a major June 2026 gainer, with a reported monthly gain of about +315%.[1]",
+      "key_points": [
+        "The stock is shown as a major June 2026 gainer, with a reported monthly gain of about +315%.[1]"
+      ],
+      "error": null
+    },
+    "MGRT": {
+      "symbol": "MGRT",
+      "sentiment": "positive",
+      "summary": "The stock appears in June 2026\u2019s top monthly gainers list, signaling unusually strong recent price momentum.[1]",
+      "key_points": [
+        "The stock appears in June 2026\u2019s top monthly gainers list, signaling unusually strong recent price momentum.[1]"
+      ],
+      "error": null
+    },
+    "BVC": {
+      "symbol": "BVC",
+      "sentiment": "positive",
+      "summary": "The stock is among the strongest June 2026 movers, with a reported monthly gain of about +742%.[1]",
+      "key_points": [
+        "The stock is among the strongest June 2026 movers, with a reported monthly gain of about +742%.[1]"
+      ],
+      "error": null
+    },
+    "ANL": {
+      "symbol": "ANL",
+      "sentiment": "positive",
+      "summary": "The stock is included in June 2026\u2019s biggest gainers, reflecting strong current momentum.[1]",
+      "key_points": [
+        "The stock is included in June 2026\u2019s biggest gainers, reflecting strong current momentum.[1]"
+      ],
+      "error": null
+    },
+    "NTCL": {
+      "symbol": "NTCL",
+      "sentiment": "positive",
+      "summary": "The stock is one of June 2026\u2019s top monthly gainers, suggesting positive recent price action.[1]",
+      "key_points": [
+        "The stock is one of June 2026\u2019s top monthly gainers, suggesting positive recent price action.[1]"
+      ],
+      "error": null
+    },
+    "VACH": {
+      "symbol": "VACH",
+      "sentiment": "positive",
+      "summary": "The stock is listed among June 2026\u2019s standout gainers, with a reported strong monthly advance.[1]",
+      "key_points": [
+        "The stock is listed among June 2026\u2019s standout gainers, with a reported strong monthly advance.[1]"
+      ],
+      "error": null
+    },
+    "HGV": {
+      "symbol": "HGV",
+      "sentiment": "positive",
+      "summary": "Zacks highlights Hilton Grand Vacations as one of the best stocks to buy now for June 2026, based on strong recent performance and growth expectations.[2]",
+      "key_points": [
+        "Zacks highlights Hilton Grand Vacations as one of the best stocks to buy now for June 2026, based on strong recent performance and growth expectations.[2]"
+      ],
+      "error": null
+    },
+    "MPC": {
+      "symbol": "MPC",
+      "sentiment": "positive",
+      "summary": "Zacks lists Marathon Petroleum as a best stock to buy now for June 2026, supported by strong 12-week price performance and projected EPS growth.[2]",
+      "key_points": [
+        "Zacks lists Marathon Petroleum as a best stock to buy now for June 2026, supported by strong 12-week price performance and projected EPS growth.[2]"
+      ],
+      "error": null
+    },
+    "CRGY": {
+      "symbol": "CRGY",
+      "sentiment": "positive",
+      "summary": "Zacks includes Crescent Energy among its June 2026 buy ideas, citing expected growth even though the recent price move has been flatter.[2]",
+      "key_points": [
+        "Zacks includes Crescent Energy among its June 2026 buy ideas, citing expected growth even though the recent price move has been flatter.[2]"
+      ],
+      "error": null
+    },
+    "DEC": {
+      "symbol": "DEC",
+      "sentiment": "positive",
+      "summary": "Zacks lists Diversified Energy Company as a June 2026 buy candidate, reflecting its inclusion in a current stock-picking screen.[2]",
+      "key_points": [
+        "Zacks lists Diversified Energy Company as a June 2026 buy candidate, reflecting its inclusion in a current stock-picking screen.[2]"
+      ],
+      "error": null
+    },
+    "LNVGY": {
+      "symbol": "LNVGY",
+      "sentiment": "positive",
+      "summary": "Zacks highlights Lenovo Group as a June 2026 buy candidate, with a very large recent price increase shown in its screen.[2]",
+      "key_points": [
+        "Zacks highlights Lenovo Group as a June 2026 buy candidate, with a very large recent price increase shown in its screen.[2]"
+      ],
+      "error": null
+    },
+    "SNDK": {
+      "symbol": "SNDK",
+      "sentiment": "positive",
+      "summary": "Bankrate ranks Sandisk among the best-performing S&P 500 stocks in 2026, with a very large year-to-date gain.[3]",
+      "key_points": [
+        "Bankrate ranks Sandisk among the best-performing S&P 500 stocks in 2026, with a very large year-to-date gain.[3]"
+      ],
+      "error": null
+    },
+    "TPL": {
+      "symbol": "TPL",
+      "sentiment": "positive",
+      "summary": "Bankrate lists Texas Pacific Land as one of 2026\u2019s strongest performers, indicating sustained momentum.[3]",
+      "key_points": [
+        "Bankrate lists Texas Pacific Land as one of 2026\u2019s strongest performers, indicating sustained momentum.[3]"
+      ],
+      "error": null
+    },
+    "MRNA": {
+      "symbol": "MRNA",
+      "sentiment": "positive",
+      "summary": "Bankrate shows Moderna as a top 2026 performer in the S&P 500, reflecting strong relative strength.[3]",
+      "key_points": [
+        "Bankrate shows Moderna as a top 2026 performer in the S&P 500, reflecting strong relative strength.[3]"
+      ],
+      "error": null
+    },
+    "GNRC": {
+      "symbol": "GNRC",
+      "sentiment": "positive",
+      "summary": "Bankrate ranks Generac among the best-performing S&P 500 names in 2026, signaling strong recent momentum.[3]",
+      "key_points": [
+        "Bankrate ranks Generac among the best-performing S&P 500 names in 2026, signaling strong recent momentum.[3]"
+      ],
+      "error": null
+    },
+    "GLW": {
+      "symbol": "GLW",
+      "sentiment": "positive",
+      "summary": "Bankrate lists Corning as a top 2026 performer, with solid year-to-date strength.[3]",
+      "key_points": [
+        "Bankrate lists Corning as a top 2026 performer, with solid year-to-date strength.[3]"
+      ],
+      "error": null
+    },
+    "TER": {
+      "symbol": "TER",
+      "sentiment": "positive",
+      "summary": "Bankrate shows Teradyne as one of the best-performing S&P 500 stocks in 2026.[3]",
+      "key_points": [
+        "Bankrate shows Teradyne as one of the best-performing S&P 500 stocks in 2026.[3]"
+      ],
+      "error": null
+    },
+    "WDC": {
+      "symbol": "WDC",
+      "sentiment": "positive",
+      "summary": "Bankrate ranks Western Digital among the strongest 2026 performers, indicating continued positive momentum.[3]",
+      "key_points": [
+        "Bankrate ranks Western Digital among the strongest 2026 performers, indicating continued positive momentum.[3]"
+      ],
+      "error": null
+    },
+    "FIX": {
+      "symbol": "FIX",
+      "sentiment": "positive",
+      "summary": "Bankrate lists Comfort Systems USA as a top 2026 performer, reflecting strong relative strength.[3]",
+      "key_points": [
+        "Bankrate lists Comfort Systems USA as a top 2026 performer, reflecting strong relative strength.[3]"
+      ],
+      "error": null
+    },
+    "STX": {
+      "symbol": "STX",
+      "sentiment": "positive",
+      "summary": "Bankrate shows Seagate Technology among the best-performing S&P 500 stocks in 2026.[3]",
+      "key_points": [
+        "Bankrate shows Seagate Technology among the best-performing S&P 500 stocks in 2026.[3]"
+      ],
+      "error": null
+    },
+    "CIEN": {
+      "symbol": "CIEN",
+      "sentiment": "positive",
+      "summary": "Bankrate includes Ciena among the top 2026 performers, highlighting sustained upside momentum.[3]",
+      "key_points": [
+        "Bankrate includes Ciena among the top 2026 performers, highlighting sustained upside momentum.[3]"
+      ],
+      "error": null
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "sentiment": "positive",
+      "summary": "Large-cap Amazon remains a liquid momentum name, and while not a live catalyst pick here, it is a high-quality fallback stock with broad institutional support.[3]",
+      "key_points": [
+        "Large-cap Amazon remains a liquid momentum name, and while not a live catalyst pick here, it is a high-quality fallback stock with broad institutional support.[3]"
+      ],
+      "error": null
+    }
+  }
 }
