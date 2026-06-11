@@ -1,1 +1,252 @@
-[]
+[
+  {
+    "symbol": "NVDA",
+    "price": 200.41,
+    "prev_close": 208.2,
+    "premarket_volume": 4910869,
+    "prev_volume": 5042918,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Nvidia remains a large-cap momentum name, and recent market commentary highlights continued analyst attention and strong relative performance into June. [4]"
+  },
+  {
+    "symbol": "META",
+    "price": 571.04,
+    "prev_close": 584.85,
+    "premarket_volume": 447492,
+    "prev_volume": 511021,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Meta is a high-liquidity mega-cap with ongoing positive sentiment, and recent June commentary described it as a core position being actively added to. [5]"
+  },
+  {
+    "symbol": "MA",
+    "price": 488.98,
+    "prev_close": 495.15,
+    "premarket_volume": 313284,
+    "prev_volume": 226212,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Mastercard is a steady large-cap compounder that continues to screen as a quality momentum name in broad market lists. [5]"
+  },
+  {
+    "symbol": "NU",
+    "price": 11.61,
+    "prev_close": 11.88,
+    "premarket_volume": 3666331,
+    "prev_volume": 4516853,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Nu Holdings has been cited in June buying commentary as a strong-growth fintech name with continued revenue and earnings expansion. [5]"
+  },
+  {
+    "symbol": "MELI",
+    "price": 1588.07,
+    "prev_close": 1642.15,
+    "premarket_volume": 14692,
+    "prev_volume": 28883,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "MercadoLibre remains a high-momentum Latin American e-commerce/fintech leader favored in June portfolio discussions. [5]"
+  },
+  {
+    "symbol": "LMB",
+    "price": 76.72,
+    "prev_close": 82.16,
+    "premarket_volume": 24068,
+    "prev_volume": 17334,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Limbach has been highlighted in June as an interesting stock pick with positive business momentum. [5]"
+  },
+  {
+    "symbol": "HGV",
+    "price": 49.83,
+    "prev_close": 48.75,
+    "premarket_volume": 61841,
+    "prev_volume": 63751,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Hilton Grand Vacations appears on Zacks\u2019 June 2026 \u201cbest stocks to buy now\u201d list, supported by recent positive price action. [2]"
+  },
+  {
+    "symbol": "MPC",
+    "price": 263.31,
+    "prev_close": 258.19,
+    "premarket_volume": 128186,
+    "prev_volume": 113056,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Marathon Petroleum appears on Zacks\u2019 June 2026 \u201cbest stocks to buy now\u201d list and has shown solid recent strength. [2]"
+  },
+  {
+    "symbol": "CRGY",
+    "price": 11.71,
+    "prev_close": 11.44,
+    "premarket_volume": 348546,
+    "prev_volume": 446479,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Crescent Energy appears on Zacks\u2019 June 2026 \u201cbest stocks to buy now\u201d list as a lower-valuation energy name with growth appeal. [2]"
+  },
+  {
+    "symbol": "DEC",
+    "price": 14.35,
+    "prev_close": 13.73,
+    "premarket_volume": 34745,
+    "prev_volume": 36030,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Diversified Energy appears on Zacks\u2019 June 2026 \u201cbest stocks to buy now\u201d list as a value-oriented energy stock. [2]"
+  },
+  {
+    "symbol": "LNVGY",
+    "price": null,
+    "prev_close": null,
+    "premarket_volume": 0,
+    "prev_volume": null,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Lenovo Group is listed by Zacks as a top June 2026 stock pick with very strong 12-week price performance. [2]"
+  },
+  {
+    "symbol": "SNDK",
+    "price": 1641.19,
+    "prev_close": 1649.51,
+    "premarket_volume": 160415,
+    "prev_volume": 219765,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Sandisk is one of the strongest-performing S&P 500 names in 2026, reflecting powerful relative strength. [3]"
+  },
+  {
+    "symbol": "TPL",
+    "price": 375.45,
+    "prev_close": 382.14,
+    "premarket_volume": 15488,
+    "prev_volume": 18308,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Texas Pacific Land has posted major year-to-date gains in 2026 and remains a strong momentum stock. [3]"
+  },
+  {
+    "symbol": "MRNA",
+    "price": 46.0,
+    "prev_close": 47.74,
+    "premarket_volume": 259402,
+    "prev_volume": 205032,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Moderna has been one of the top S&P 500 performers in 2026, indicating strong price momentum. [3]"
+  },
+  {
+    "symbol": "GNRC",
+    "price": 239.9,
+    "prev_close": 260.96,
+    "premarket_volume": 112644,
+    "prev_volume": 60041,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Generac has delivered strong 2026 returns and fits the large-cap momentum profile. [3]"
+  },
+  {
+    "symbol": "GLW",
+    "price": 168.05,
+    "prev_close": 173.93,
+    "premarket_volume": 394486,
+    "prev_volume": 478577,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Corning is among 2026\u2019s best-performing S&P 500 stocks and remains in a strong uptrend. [3]"
+  },
+  {
+    "symbol": "TER",
+    "price": 347.58,
+    "prev_close": 369.5,
+    "premarket_volume": 126401,
+    "prev_volume": 132746,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Teradyne has been one of the top S&P 500 performers in 2026, signaling robust relative strength. [3]"
+  },
+  {
+    "symbol": "WDC",
+    "price": 490.21,
+    "prev_close": 517.62,
+    "premarket_volume": 212721,
+    "prev_volume": 214196,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Western Digital has posted strong 2026 gains and continues to show momentum. [3]"
+  },
+  {
+    "symbol": "FIX",
+    "price": 1718.19,
+    "prev_close": 1830.93,
+    "premarket_volume": 35197,
+    "prev_volume": 24227,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Comfort Systems USA has been a standout 2026 winner with strong price performance. [3]"
+  },
+  {
+    "symbol": "STX",
+    "price": 815.54,
+    "prev_close": 846.31,
+    "premarket_volume": 118714,
+    "prev_volume": 124519,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Seagate Technology is another strong 2026 performer in the data-storage group. [3]"
+  },
+  {
+    "symbol": "CIEN",
+    "price": 434.88,
+    "prev_close": 439.14,
+    "premarket_volume": 214421,
+    "prev_volume": 147898,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Ciena has delivered powerful 2026 gains and continues to screen as a strong momentum stock. [3]"
+  },
+  {
+    "symbol": "ANET",
+    "price": 151.8,
+    "prev_close": 152.32,
+    "premarket_volume": 424737,
+    "prev_volume": 455427,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Arista Networks has shown strong one-year relative strength and remains a favored large-cap networking name. [6]"
+  },
+  {
+    "symbol": "WYNN",
+    "price": 105.26,
+    "prev_close": 107.47,
+    "premarket_volume": 103238,
+    "prev_volume": 79094,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Wynn Resorts has appeared among strong one-year performers, reflecting recent momentum. [6]"
+  },
+  {
+    "symbol": "NWSA",
+    "price": 26.96,
+    "prev_close": 27.19,
+    "premarket_volume": 256023,
+    "prev_volume": 333695,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "News Corp has shown positive one-year performance and remains in a constructive trend. [6]"
+  },
+  {
+    "symbol": "SW",
+    "price": 38.96,
+    "prev_close": 41.36,
+    "premarket_volume": 409545,
+    "prev_volume": 242565,
+    "earnings_blackout": false,
+    "sentiment": "positive",
+    "summary": "Smurfit WestRock has posted positive one-year returns and fits the relative-strength screen. [6]"
+  }
+]
