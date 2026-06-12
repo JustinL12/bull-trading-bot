@@ -1,1 +1,21 @@
-{}
+{
+  "WDC": {
+    "symbol": "WDC",
+    "entry_price": 563.73,
+    "shares": 8,
+    "entry_time": "2026-06-12T16:35:40.927545+00:00",
+    "atr_at_entry": 1.4667,
+    "rsi_at_entry": 63.98,
+    "rel_vol_at_entry": 1.05,
+    "perplexity_sentiment_at_entry": "positive",
+    "initial_stop": 561.53,
+    "current_stop": 561.53,
+    "highest_close_since_entry": 563.73,
+    "trailing_stop_active": false,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "overnight_hold": false,
+    "alpaca_order_id": "d8886d77-31c1-4fee-bd7e-72bb7aefb10a",
+    "stop_order_id": "fce44a63-0160-4a60-b2f4-e6e18dfdadfe"
+  }
+}
