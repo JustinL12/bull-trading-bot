@@ -1,19 +1,19 @@
 {
   "WDC": {
-    "close": 563.185,
-    "ema_9": 561.1595,
-    "ema_21": 560.2937,
-    "rsi": 63.9777,
-    "macd": 0.8601,
-    "macd_signal": 0.6928,
-    "macd_hist": 0.1673,
-    "atr": 1.1055,
-    "vwap": 557.8824,
-    "rel_vol": 1.0498,
-    "macd_hist_rising": true,
+    "close": 564.38,
+    "ema_9": 565.4135,
+    "ema_21": 565.6491,
+    "rsi": 41.4861,
+    "macd": -0.2385,
+    "macd_signal": -0.1866,
+    "macd_hist": -0.0519,
+    "atr": 0.9612,
+    "vwap": 561.0721,
+    "rel_vol": 1.0055,
+    "macd_hist_rising": false,
     "symbol": "WDC",
-    "avg_volume_20d": 210049.0,
-    "ema_200_daily": 292.645,
-    "atr_pct": 0.196
+    "avg_volume_20d": 213899.0,
+    "ema_200_daily": 292.6569,
+    "atr_pct": 0.17
   }
 }
