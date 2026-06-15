@@ -7,4 +7,5 @@ python-dotenv>=1.0.1
 portalocker>=2.10.1
 pytz>=2024.2
 requests>=2.32.3
+finnhub-python>=2.4.19
 pytest>=8.3.5

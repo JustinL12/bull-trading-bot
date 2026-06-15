@@ -1,14 +1,12 @@
-"""Pre-market scanner: build a sentiment-driven watchlist.
+"""Pre-market scanner: sort RS watchlist by Finnhub pre-market momentum.
 
-Runs at 8:30 AM ET (before the open). Writes data/watchlist.json and
-data/daily_context.json. Also checks for no-trade conditions and sets
-data/no_trade_today.flag if needed.
+Runs at 8:30 AM ET. Loads the RS Leader + VCP evening watchlist built at 4 PM,
+enriches each candidate with a Finnhub pre-market quote, sorts by pre-market %
+change (strongest mover first), applies the earnings blackout, and writes
+data/watchlist.json + data/daily_context.json for the 9:31 AM entry agent.
 
-The watchlist is built purely from Perplexity news/sentiment discovery. This
-agent does NOT place orders and does NOT judge trade volume or technical
-indicators — that is the 10:00 AM open-market agent's job. The only hard filter
-applied here is the earnings blackout (a safety exclude). Price and volume are
-attached to each entry for context only and are never used to drop a candidate.
+Perplexity discovery has been removed. Candidate discovery happens at 4 PM in
+scripts/evening_scan.py. This agent's sole job is pre-market enrichment + sort.
 """
 
 import os
@@ -16,8 +14,8 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+import finnhub
 import yfinance as yf
-from openai import OpenAI
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -26,15 +24,8 @@ from lib.alpaca_client import get_data_client, get_trading_client
 from lib.notify import post_attention
 from lib.state import clear_flag, read_json, set_flag, write_json
 from scripts.check_earnings import load_earnings_blacklist
-from scripts.compute_indicators import fetch_daily_bars, get_avg_volume
-from scripts.research_symbols import discover_stocks_by_news
-from alpaca.data.requests import StockBarsRequest, StockSnapshotRequest
+from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
-
-
-def get_market_clock(trading_client):
-    clock = trading_client.get_clock()
-    return clock
 
 
 def fetch_vix() -> float | None:
@@ -57,7 +48,6 @@ def fetch_spy_regime(data_client) -> dict:
             timeframe=TimeFrame.Day,
             start=start,
             end=end,
-            limit=50,
             feed="iex",
         )
         bars = data_client.get_stock_bars(req)
@@ -76,79 +66,32 @@ def fetch_spy_regime(data_client) -> dict:
         return {"error": str(e), "trending_up": True}
 
 
-def fetch_snapshots(data_client, symbols: list[str]) -> dict:
-    """Batch-fetch latest snapshots for a given list of symbols."""
-    results = {}
-    chunk_size = 100
-    for i in range(0, len(symbols), chunk_size):
-        chunk = symbols[i:i + chunk_size]
+def fetch_premarket_quotes(finnhub_client, symbols: list[str]) -> dict[str, dict]:
+    """Fetch Finnhub quotes for each symbol; during pre-market hours (4–9:30 AM ET)
+    the 'c' field reflects the latest pre-market trade price."""
+    quotes = {}
+    for sym in symbols:
         try:
-            req = StockSnapshotRequest(symbol_or_symbols=chunk, feed="iex")
-            snaps = data_client.get_stock_snapshot(req)
-            results.update(snaps)
-        except Exception:
-            pass
-    return results
-
-
-def validate_candidates(data_client, discovered: list[dict], snapshots: dict, earnings_blacklist: set[str]) -> list[dict]:
-    """Build the watchlist from Perplexity-discovered symbols.
-
-    The watchlist is sentiment-driven: the ONLY hard filter applied here is the
-    earnings blackout (a safety exclude). Trade volume and price are NOT used to
-    drop candidates — judging volume and technical indicators is the 10:00 AM
-    open-market agent's job. Price and volume below are best-effort context only;
-    a symbol is kept on the watchlist even when Alpaca has no bars for it.
-    """
-    watchlist = []
-    for item in discovered:
-        symbol = item["symbol"]
-
-        if symbol in earnings_blacklist:
-            print(f"  {symbol}: earnings blackout — excluding")
-            continue
-
-        # Best-effort enrichment for context only; never used to filter.
-        price = None
-        prev_close = None
-        avg_volume = None
-        premarket_volume = 0
-        try:
-            daily_df = fetch_daily_bars(data_client, symbol, 30)
-            if not daily_df.empty:
-                avg_volume = get_avg_volume(daily_df)
-                price = round(float(daily_df["close"].iloc[-1]), 2)
-                prev_close = round(float(daily_df["close"].iloc[-2]), 2) if len(daily_df) >= 2 else price
+            q = finnhub_client.quote(sym)
+            if not q or not q.get("c"):
+                continue
+            prev_close = q.get("pc") or q["c"]
+            pm_change_pct = round((q["c"] - prev_close) / prev_close * 100, 3) if prev_close else 0.0
+            quotes[sym] = {
+                "pm_price": round(float(q["c"]), 2),
+                "pm_change_pct": pm_change_pct,
+            }
         except Exception as e:
-            print(f"  {symbol}: price/volume enrichment unavailable ({e}) — keeping anyway")
-
-        snap = snapshots.get(symbol)
-        if snap and getattr(snap, "daily_bar", None):
-            try:
-                premarket_volume = int(snap.daily_bar.volume)
-            except Exception:
-                premarket_volume = 0
-
-        watchlist.append({
-            "symbol": symbol,
-            "price": price,
-            "prev_close": prev_close,
-            "premarket_volume": premarket_volume,
-            "prev_volume": int(avg_volume) if avg_volume is not None else None,
-            "earnings_blackout": False,
-            "sentiment": item["sentiment"],
-            "summary": item.get("summary", ""),
-        })
-    return watchlist
+            print(f"  Finnhub quote error for {sym}: {e}")
+    return quotes
 
 
 def main():
     trading_client = get_trading_client()
     data_client = get_data_client()
 
-    # Check market clock
-    clock = get_market_clock(trading_client)
-    print(f"Market open: {clock.is_open}, next open: {clock.next_open}")
+    finnhub_key = os.environ.get("FINNHUB_API_KEY")
+    finnhub_client = finnhub.Client(api_key=finnhub_key) if finnhub_key else None
 
     # Check no-trade dates
     no_trade_dates = read_json("no_trade_dates.json", default=[])
@@ -178,69 +121,63 @@ def main():
         )
         return
 
-    daily_context = {
+    write_json("daily_context.json", {
         "date": today_str,
         "no_trade": False,
         "vix": vix,
         "spy_ema9": spy_regime.get("spy_ema9"),
         "spy_ema21": spy_regime.get("spy_ema21"),
         "market_trending_up": spy_regime.get("trending_up", True),
-    }
-    write_json("daily_context.json", daily_context)
+    })
 
     # Load earnings blacklist
     earnings_bl = load_earnings_blacklist()
 
-    # Discover stocks via Perplexity news sentiment
-    api_key = os.environ.get("PERPLEXITY_API_KEY")
-    if not api_key:
-        print("PERPLEXITY_API_KEY not set — cannot run Perplexity discovery. Watchlist will be empty.")
-        write_json("watchlist.json", [])
-        write_json("research.json", {"generated_at": datetime.now(timezone.utc).isoformat(), "results": {}})
-        return
-
-    print(f"Discovering up to {config.PERPLEXITY_DISCOVER_TOP_N} stocks via Perplexity news...")
-    client = OpenAI(api_key=api_key, base_url="https://api.perplexity.ai")
-    discovered = discover_stocks_by_news(client, config.PERPLEXITY_DISCOVER_TOP_N)
-
-    if not discovered:
-        print("Perplexity returned no stocks — watchlist will be empty.")
-        write_json("watchlist.json", [])
-        write_json("research.json", {"generated_at": datetime.now(timezone.utc).isoformat(), "results": {}})
+    # Load evening watchlist (built by the 4 PM evening scan)
+    evening_watchlist = read_json("watchlist_evening.json", default=[])
+    if not evening_watchlist:
+        print("WARNING: data/watchlist_evening.json is empty or missing.")
         post_attention(
-            "Empty Watchlist — Perplexity Discovery Failed",
-            f"discover_stocks_by_news() returned no results.\n"
-            f"Watchlist is empty for {today_str}. Check PERPLEXITY_API_KEY and Perplexity API status.",
+            "Empty Watchlist — No Evening Scan Data",
+            f"data/watchlist_evening.json is empty for {today_str}. "
+            f"The 4 PM evening scan may not have run. No trades possible today.",
             level="warning",
         )
+        write_json("watchlist.json", [])
         return
 
-    # Validate discovered symbols against Alpaca (price, volume, tradability)
-    symbols = [d["symbol"] for d in discovered]
-    print(f"Fetching Alpaca snapshots for {len(symbols)} discovered symbols...")
-    snapshots = fetch_snapshots(data_client, symbols)
-    watchlist = validate_candidates(data_client, discovered, snapshots, earnings_bl)
+    # Apply earnings blackout
+    excluded = [c["symbol"] for c in evening_watchlist if c["symbol"] in earnings_bl]
+    watchlist = [c for c in evening_watchlist if c["symbol"] not in earnings_bl]
+    if excluded:
+        print(f"  Earnings blackout excluded: {excluded}")
 
-    research_results = {
-        item["symbol"]: {
-            "symbol": item["symbol"],
-            "sentiment": item["sentiment"],
-            "summary": item.get("summary", ""),
-            "key_points": item.get("key_points", []),
-            "error": None,
-        }
-        for item in discovered
-    }
-    write_json("research.json", {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "results": research_results,
-    })
+    # Enrich with Finnhub pre-market quotes and sort by pre-market momentum
+    symbols = [c["symbol"] for c in watchlist]
+    if finnhub_client and symbols:
+        print(f"Fetching Finnhub pre-market quotes for {len(symbols)} candidates...")
+        pm_quotes = fetch_premarket_quotes(finnhub_client, symbols)
+        for c in watchlist:
+            q = pm_quotes.get(c["symbol"], {})
+            c["pm_price"] = q.get("pm_price")
+            c["pm_change_pct"] = q.get("pm_change_pct", 0.0)
+    else:
+        if not finnhub_client:
+            print("FINNHUB_API_KEY not set — skipping pre-market sort, using RS rank order.")
+        for c in watchlist:
+            c["pm_price"] = None
+            c["pm_change_pct"] = 0.0
+
+    # Sort: strongest pre-market mover first; fall back to RS rank if no Finnhub data
+    watchlist.sort(key=lambda x: x.get("pm_change_pct", 0.0), reverse=True)
 
     write_json("watchlist.json", watchlist)
-    print(f"Watchlist: {len(watchlist)} sentiment-driven candidates written.")
-    for c in watchlist[:10]:
-        price_str = f"${c['price']:.2f}" if c.get("price") is not None else "price n/a"
-        print(f"  {c['symbol']}: {price_str}, sentiment {c['sentiment']}")
+    print(f"Watchlist: {len(watchlist)} RS candidates written.")
+    for c in watchlist:
+        pm = c.get("pm_change_pct", 0.0) or 0.0
+        sign = "+" if pm >= 0 else ""
+        print(f"  {c['symbol']:6s}  pm={sign}{pm:.2f}%  RS={c.get('rs_20day', 0):.3f}  "
+              f"VCP={c.get('vcp_ratio', 0):.3f}  prev_high=${c.get('prev_day_high')}")
 
 
 if __name__ == "__main__":

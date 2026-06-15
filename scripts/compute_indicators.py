@@ -112,6 +112,13 @@ def compute_for_symbol(client, symbol: str) -> dict:
         if vals.get("atr") and vals.get("close"):
             vals["atr_pct"] = round(vals["atr"] / vals["close"] * 100, 3)
 
+        # Prior-day context from daily bars (needed for breakout gate)
+        if len(daily_df) >= 2:
+            vals["prev_close"] = round(float(daily_df["close"].iloc[-2]), 4)
+            vals["prior_day_high"] = round(float(daily_df["high"].iloc[-2]), 4)
+            if vals.get("close") and vals.get("prev_close"):
+                vals["green_on_day"] = vals["close"] > vals["prev_close"]
+
         return vals
 
     except Exception as e:

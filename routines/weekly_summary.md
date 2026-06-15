@@ -1,5 +1,5 @@
 # Bull — Weekly Summary Agent
-**Schedule:** 4:30 PM ET, Fridays only
+**Schedule:** 9:00 AM ET, Saturdays only
 **Working directory:** `~/bull` (cloned from GitHub at runtime)
 **Your role:** After the Friday EOD review completes, compile the full week's performance — every trade, every day, every metric — and post a comprehensive weekly report to Discord. This is the record of what the bot actually did this week and whether the strategy is working.
 

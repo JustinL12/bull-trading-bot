@@ -1,26 +1,28 @@
 """Central strategy configuration. All tunable thresholds live here."""
 
 # --- Universe filters ---
-# NOTE: As of the sentiment-first redesign, the premarket scan no longer filters
-# the watchlist on price or volume — the watchlist is built purely from Perplexity
-# news/sentiment, and all trade-volume / indicator judgement happens in the 10:00 AM
-# open-market agent. PRICE_MIN/PRICE_MAX/MIN_AVG_VOLUME are retained for reference
-# and potential reuse but are NOT applied during watchlist construction.
 PRICE_MIN = 10.0
 PRICE_MAX = 1000.0
 MIN_AVG_VOLUME = 100_000
-# REL_VOL_MIN is still used by the open-market agent's entry criteria.
-REL_VOL_MIN = 1.0
+REL_VOL_MIN = 1.3          # raised from 1.0 — RS leader breakout strategy
+
+# --- Evening scan: RS Leader + VCP screener ---
+RS_20DAY_MIN = 1.10          # 20-day RS vs SPY; institutional accumulation threshold
+VCP_ATR_RATIO_MAX = 0.80     # ATR_5day/ATR_20day; < 0.80 = coiling (not yet extended)
+VOL_DRY_RATIO_MAX = 0.90     # 5d avg vol / 20d avg vol; < 0.90 = sellers exhausted
+HIGH_PROXIMITY_PCT = 0.08    # max pct below 52-week high to qualify
+EVENING_SCAN_TOP_N = 10      # number of candidates to output each evening
 
 # --- Entry criteria ---
-RSI_MIN = 50
-RSI_MAX = 75          # memory system may tighten this over time
+RSI_MIN = 55          # raised from 50 — tightened for RS leader setups
+RSI_MAX = 65          # lowered from 75 — avoid extended names
+ATR_MIN_PCT = 0.30    # ATR as % of price; skip if too low-volatility to move
 ATR_MAX_PCT = 4.0     # ATR as % of price; skip if more volatile
 MACD_CONFIRM_BARS = 2 # histogram must rise for this many consecutive bars
 ENTRY_START_HOUR_ET = 9
-ENTRY_START_MIN_ET = 45
-ENTRY_END_HOUR_ET = 13
-ENTRY_END_MIN_ET = 0
+ENTRY_START_MIN_ET = 31   # was 45 — capture the opening surge
+ENTRY_END_HOUR_ET = 10    # was 13
+ENTRY_END_MIN_ET = 30     # was 0
 MAX_OPEN_POSITIONS = 10
 
 # --- Position sizing ---
@@ -61,11 +63,8 @@ MEMORY_MIN_SAMPLE = 10        # minimum trades in a bucket before adjustments ap
 MEMORY_WIN_RATE_DIVERGENCE = 0.20  # trigger learning if win rate diverges by this much
 MEMORY_JOURNAL_ARCHIVE_SESSIONS = 60  # archive journal entries older than this
 
-# --- Perplexity ---
-PERPLEXITY_TIMEOUT_SEC = 10
-PERPLEXITY_WATCHLIST_TOP_N = 8   # research top N watchlist symbols (standalone script)
-PERPLEXITY_DISCOVER_TOP_N = 25   # how many tickers to request from Perplexity during pre-market discovery
-PERPLEXITY_INTRADAY_MIN_GAIN = 50.0  # only check news if unrealized gain > this
+# --- Finnhub ---
+FINNHUB_PM_SORT = True   # sort morning watchlist by Finnhub pre-market % change
 
 # --- Alpaca data ---
 INDICATOR_BAR_LIMIT_5MIN = 100   # (legacy) recent intraday bars used for indicator warmup

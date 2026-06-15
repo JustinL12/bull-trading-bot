@@ -151,6 +151,60 @@ def macd_histogram_rising(df: pd.DataFrame, bars: int = 2) -> bool:
     return all(recent.iloc[i] < recent.iloc[i + 1] for i in range(bars))
 
 
+def compute_rs_vs_spy(
+    stock_df: pd.DataFrame, spy_df: pd.DataFrame, period: int = 20
+) -> float | None:
+    """20-day relative strength vs SPY.
+
+    RS = (stock[-1] / stock[-period]) / (spy[-1] / spy[-period]).
+    Values > 1.0 mean outperforming SPY over the period. Target: > 1.10.
+    Both DataFrames must have a 'close' column and at least `period` rows.
+    """
+    if len(stock_df) < period or len(spy_df) < period:
+        return None
+    stock_ret = float(stock_df["close"].iloc[-1]) / float(stock_df["close"].iloc[-period])
+    spy_ret = float(spy_df["close"].iloc[-1]) / float(spy_df["close"].iloc[-period])
+    if spy_ret == 0:
+        return None
+    return round(stock_ret / spy_ret, 4)
+
+
+def compute_vcp_compression(df: pd.DataFrame) -> float | None:
+    """VCP: 5-day ATR / 20-day ATR.
+
+    Values < 1.0 indicate compression (coiling). Target: < 0.80.
+    Requires at least 25 rows. Uses simple average of true-range, not EWM,
+    so short-window ATR responds immediately to the compression.
+    """
+    if len(df) < 25:
+        return None
+    high_low = df["high"] - df["low"]
+    high_close = (df["high"] - df["close"].shift()).abs()
+    low_close = (df["low"] - df["close"].shift()).abs()
+    tr = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
+    atr5 = float(tr.iloc[-5:].mean())
+    atr20 = float(tr.iloc[-20:].mean())
+    if atr20 == 0:
+        return None
+    return round(atr5 / atr20, 4)
+
+
+def pct_from_52w_high(df: pd.DataFrame) -> float | None:
+    """Fraction below the 52-week (252-bar) high.
+
+    Returns a positive float: 0.04 = 4% below the high. Target: < 0.08.
+    Uses up to 252 rows; if fewer are available, uses what exists.
+    """
+    if df.empty:
+        return None
+    rows = min(252, len(df))
+    high_52w = float(df["high"].iloc[-rows:].max())
+    current = float(df["close"].iloc[-1])
+    if high_52w == 0:
+        return None
+    return round((high_52w - current) / high_52w, 4)
+
+
 def apply_all_intraday(df: pd.DataFrame, avg_volume: float) -> pd.DataFrame:
     """Apply all intraday indicators in one call."""
     df = df.copy()

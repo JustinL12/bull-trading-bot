@@ -1,7 +1,7 @@
 # Bull — Market Open Play Agent
-**Schedule:** 10:00 AM ET, Monday–Friday
+**Schedule:** 9:31 AM ET, Monday–Friday
 **Working directory:** `~/bull` (cloned from GitHub at runtime)
-**Your role:** Evaluate the premarket watchlist, compute live indicators, and enter qualifying positions. You are the primary entry agent. Be selective — quality over quantity.
+**Your role:** Evaluate the premarket watchlist, compute live indicators, and enter qualifying positions during the 9:31–10:30 AM breakout window. You are the primary entry agent. Be selective — quality over quantity.
 
 ---
 
@@ -22,8 +22,6 @@ pip install -r requirements.txt -q
 ---
 
 ## Part 0: Verify environment variables
-
-**API keys are injected by the Claude Desktop cloud runtime — there is no `.env` file.** The scripts call `load_dotenv()` internally, but when environment variables are already set in the process environment, `load_dotenv()` is a no-op and the scripts use the pre-set values automatically.
 
 Run this check first. If any variable is missing, stop immediately and report the error — nothing will work without them.
 
@@ -65,8 +63,6 @@ python scripts/post_attention.py \
 
 Use `--level critical` for: unprotected open positions, failed emergency closes, or inability to determine account status. Use `--level warning` for API degradation, missing data, or ambiguous state that needs review but is not immediately harmful.
 
-Do not use this for conditions Python scripts already handle internally (kill switch, VIX suspend, account blocked — those scripts send their own alerts).
-
 ---
 
 ## Part 1: Orient yourself
@@ -74,19 +70,20 @@ Do not use this for conditions Python scripts already handle internally (kill sw
 Read these files before doing anything else:
 
 1. `data/memory/compressed_summary.json` — recent performance insights, best signals, what to avoid, notes from this morning's premarket agent
-2. `data/watchlist.json` — today's screened candidates (sorted by rel_vol)
-3. `data/research.json` — Perplexity sentiment for the top 8 symbols
-4. `data/positions.json` — any overnight holds or positions already open
-5. `data/account.json` — current equity (may be slightly stale)
-6. `data/daily_context.json` — today's VIX, SPY regime, no_trade flag
-7. `data/earnings_blacklist.json` — symbols with upcoming earnings (hard exclude)
-8. `config.py` — all strategy thresholds (read this so you know the exact values)
+2. `data/watchlist.json` — today's RS candidates (sorted by pre-market momentum, highest first)
+3. `data/positions.json` — any overnight holds or positions already open
+4. `data/account.json` — current equity (may be slightly stale)
+5. `data/daily_context.json` — today's VIX, SPY regime, no_trade flag
+6. `data/earnings_blacklist.json` — symbols with upcoming earnings (hard exclude)
+7. `config.py` — all strategy thresholds (read this so you know the exact values)
 
 From `compressed_summary.json`, extract:
 - `notes_for_next_session` — the premarket agent left guidance here; follow it
 - `best_signals` — signal buckets with elevated win rates; give slight preference to setups in these buckets
 - `avoid` — setups to skip today
 - `active_parameter_adjustments` — any RSI/rel_vol threshold overrides. **Only apply these if the adjustment was made with ≥ 10 trades in that signal bucket (check `data/memory/indicator_stats.json` to confirm sample size).** If fewer than 10 samples, use the defaults from `config.py`.
+
+Each entry in `watchlist.json` includes the evening scan metadata: `rs_20day`, `vcp_ratio`, `pct_from_52w_high`, `prev_day_high`, `prev_close`, `pm_change_pct`. Use these as context but do not use them as entry gates — all entry decisions are made on **live intraday indicators** computed in Part 3.
 
 ---
 
@@ -119,28 +116,36 @@ If `market_trending_up` is `false` in `daily_context.json`, cap yourself at 5 op
 
 ## Part 3: Evaluate entry candidates
 
-Work through `watchlist.json` top-to-bottom (highest rel_vol first). For each symbol, run:
+Work through `watchlist.json` top-to-bottom (highest `pm_change_pct` first — the pre-market leader is most likely to break out at open). For each symbol, run:
 
 ```
 python scripts/compute_indicators.py --symbols SYMBOL
 ```
 
-Then read `data/indicators.json` for that symbol. Evaluate all of these criteria:
+Then read `data/indicators.json` for that symbol. The `prior_day_high` field is also available in `watchlist.json` (from the evening scan) — use whichever is non-null, preferring `indicators.json`.
 
-| Criterion | Check |
-|---|---|
-| Price > EMA-200 (daily) | `indicators[symbol]["ema_200_daily"]` < `indicators[symbol]["close"]` |
-| EMA-9 > EMA-21 (5-min) | `indicators[symbol]["ema_9"]` > `indicators[symbol]["ema_21"]` |
-| RSI in range | `RSI_MIN` (50) ≤ `indicators[symbol]["rsi"]` ≤ `RSI_MAX` (75) |
-| MACD histogram rising | `indicators[symbol]["macd_hist_rising"]` is `true` |
-| Relative volume | `indicators[symbol]["rel_vol"]` ≥ `REL_VOL_MIN` (1.0) |
-| Sentiment | `research.json["results"][symbol]["sentiment"]` ≠ `"negative"` |
-| Earnings blacklist | Symbol NOT in `earnings_blacklist.json` |
-| Entry time window | Current ET time is between 9:45 AM and 1:00 PM |
+**All of the following criteria must pass.** If a symbol fails any single check, skip it — do not force entries.
 
-**All criteria must pass.** If a symbol fails any single check, skip it — do not force entries.
+| Gate | Rule | Source |
+|---|---|---|
+| Entry time window | Current ET time is **9:31–10:30 AM** | Clock |
+| Price > EMA-200 (daily) | `indicators[sym]["ema_200_daily"]` < `indicators[sym]["close"]` | indicators.json |
+| ATR% floor | `indicators[sym]["atr_pct"]` ≥ `ATR_MIN_PCT` (0.30) | indicators.json |
+| EMA-9 > EMA-21 (5-min) | `indicators[sym]["ema_9"]` > `indicators[sym]["ema_21"]` | indicators.json |
+| RSI in range | `RSI_MIN` (55) ≤ `indicators[sym]["rsi"]` ≤ `RSI_MAX` (65) | indicators.json |
+| MACD histogram rising | `indicators[sym]["macd_hist_rising"]` is `true` | indicators.json |
+| Relative volume | `indicators[sym]["rel_vol"]` ≥ `REL_VOL_MIN` (1.3) | indicators.json |
+| Green on day | `indicators[sym]["green_on_day"]` is `true` | indicators.json |
+| Price > VWAP | `indicators[sym]["close"]` > `indicators[sym]["vwap"]` | indicators.json |
+| Breakout or reclaim | `indicators[sym]["close"]` > `prior_day_high` **OR** price just reclaimed VWAP from below | indicators.json / watchlist.json |
+| No earnings | Symbol NOT in `earnings_blacklist.json` | earnings_blacklist.json |
 
-Apply `active_parameter_adjustments` from compressed_summary only if sample size ≥ 10 (e.g., if memory says "cap RSI at 65" with 15 samples, honor it; if only 5 samples, use the config default of 75).
+**Notes on the breakout gate:**
+- `prior_day_high` comes from `indicators[sym]["prior_day_high"]` (computed from daily bars in compute_indicators.py); fall back to `watchlist.json["prev_day_high"]` if null
+- A VWAP reclaim counts only if price crossed VWAP from below in the current bar (not just price > VWAP with no recent cross)
+- If both conditions are false, skip the symbol regardless of other indicators
+
+Apply `active_parameter_adjustments` from compressed_summary only if sample size ≥ 10.
 
 ---
 
@@ -177,7 +182,7 @@ python scripts/place_order.py \
   --stop STOP_PRICE \
   --rsi RSI_VALUE \
   --rel_vol REL_VOL_VALUE \
-  --sentiment SENTIMENT
+  --sentiment neutral
 ```
 
 The script will:
@@ -189,6 +194,8 @@ The script will:
 - Post a Discord trade alert
 
 After each fill, re-check position count and deployed equity before evaluating the next candidate. Stop when you've hit the position cap or equity deployment cap.
+
+**Hard stop on time:** If the current ET time passes 10:30 AM, do not enter any new positions even if candidates remain unevaluated. The breakout window is closed.
 
 ---
 
@@ -215,17 +222,17 @@ Append one JSON line to `data/memory/session_journal.jsonl`:
   "symbols_bought": [],
   "symbols_evaluated": 0,
   "symbols_rejected": 0,
-  "top_rejection_reason": "e.g. RSI too high / MACD not rising",
+  "top_rejection_reason": "e.g. breakout gate / RSI too high / MACD not rising",
   "memory_adjustments_applied": [],
   "pdt_restricted": false,
   "regime_down_cap": false,
-  "notes": "Brief narrative: what setups looked best, any hesitation, quality of today's candidates"
+  "notes": "Brief narrative: what setups looked best, breakout quality, any hesitation"
 }
 ```
 
 Update `data/memory/compressed_summary.json`:
 - Set `current_open_positions` to reflect all currently open positions (read fresh from `positions.json`)
-- Update `notes_for_next_session` with anything the 12:30 PM agent should watch — e.g., "NVDA entered at $X, watch EMA-21 support", "Only 2 entries today — watchlist was thin"
+- Update `notes_for_next_session` with anything the midday agent should watch — e.g., "NVDA entered at $X, watch EMA-21 support", "Only 1 entry today — breakout window was thin"
 
 ---
 
