@@ -11,18 +11,15 @@
   "current_open_positions": [
     {
       "symbol": "SNDK",
-      "shares": 2,
+      "shares": 1,
       "entry_price": 2056.52,
-      "initial_stop": 2047.17,
-      "overnight_hold": false
-    },
-    {
-      "symbol": "TSEM",
-      "shares": 17,
-      "entry_price": 290.06,
-      "initial_stop": 287.43,
-      "overnight_hold": false
+      "current_stop": 2093.18,
+      "trailing_stop_active": true,
+      "partial_sold": true,
+      "partial_sold_shares": 1,
+      "overnight_hold": false,
+      "note": "1 of original 2 sh remain after +2 ATR partial (+$52.99). Trailing stop 2093.18 (0.70%-floored) locks in min +1.78%."
     }
   ],
-  "notes_for_next_session": "FOR THE 12:30 PM 2026-06-15 MANAGE AGENT: (a) TWO NEW ENTRIES this morning, both in the storage/semi cluster. SNDK: 2 sh @ 2056.52, initial stop 2047.17 (0.70% floor), rsi59/rvol1.16/atr%0.338. TSEM: 17 sh @ 290.06, initial stop 287.43 (0.70% floor), rsi64/rvol1.76/atr%0.285. Deployed ~$9.0k / 9pct equity, 2 of 5 regime-down slots used; equity ~$99,905, dtc 0, not PDT, not blocked. (b) STOP FLOORS WERE DELIBERATELY WIDENED to 0.70% of price (vs default 1.5xATR which would have been 0.51% SNDK / 0.43% TSEM) to defend against the 3-peat low-ATR noise-stop pattern -- so do NOT be surprised the stops sit wider than 1.5xATR; this is intentional. TSEM atr%0.285 is the marginal one, watch it. (c) SKIPPED AAPL despite a clean 6/6 mechanical pass -- atr%0.140 / 0.21% stop is the exact WDC/MPC/CIEN hair-trigger profile + fallback mega-cap, weak catalyst. (d) REGIME still DOWN (trending_up=false, cap 5), VIX calm 16.64, no_trade=false. Tape was flat/choppy -- most watchlist names failed on MACD histogram not rising. (e) RECONCILE BUG still unfixed: if either stop fills before you run, reconcile broker order history into trade_log.jsonl BEFORE update_memory. (f) For EOD carry, apply the 6 safe-hold gates as usual; both names are low-ATR so judge extension carefully."
+  "notes_for_next_session": "FOR THE 3:45 PM 2026-06-15 EOD AGENT: (a) ONE open position: SNDK, 1 sh (originally 2). Entry 2056.52; partial-profit sold 1 sh @ 2109.51 (+2.58%/+$52.99) at midday on the +2 ATR target. Remaining share trailing stop = 2093.18, trailing_stop_active=true, partial_sold=true. At midday close 2107.94 SNDK was up +2.50%, RSI 47, close fractionally under EMA-21 (2109.6) but solidly profitable so held. (b) STOP IS 0.70%-FLOORED, NOT 1.5xATR: today SNDK atr is only 2.31 (atr%0.11), so the mechanical highest_close-2xATR trail = 2103.32 (a 0.22% hair-trigger). I floored it to 2093.18 (0.70% below highest close) consistent with the morning agent's deliberate anti-noise-stop policy. Do NOT tighten it back to 1.5xATR. (c) TSEM STOPPED OUT 33s AFTER ENTRY (filled 286.86 @ 14:11:09Z, -$54.40/-1.10%) -- the 4th straight low-ATR hair-trigger noise stop, and critically the widened 0.70% floor did NOT prevent it (TSEM atr%0.285). Reconciled into trade_log.jsonl + removed from positions.json. (d) NO NEW ENTRIES at midday. Only CIEN(atr%0.12) and MPC(atr%0.07) passed all 7 criteria but both are the exact ultra-low-ATR hair-trigger profile that has produced ZERO clean wins + 4 noise-stops, and both are themselves prior stop-out casualties (CIEN -1.68% 06-10, MPC 06-04). Skipped for cash preservation; entry window now closed (after 1pm ET). (e) EOD CARRY DECISION for SNDK: apply the 6 safe-hold gates. As of midday it PASSES profitable + trailing-stop-active, but close (2107.94) sat just BELOW EMA-21 (2109.6) -- re-check at 3:45. SNDK is high-priced (~$2100/sh, 1 sh) so a single-share overnight carry is low gap-risk in dollar terms but watch the EMA-21 gate and any fresh news. (f) RECONCILE/PARTIAL BUG NOTE: place_order.py partial_sell does NOT auto-cancel the protective stop (only full close does), so all shares are held_for_orders and the partial sell fails until you manually cancel the stop, sell, then re-place a stop on the remainder. I handled this manually for SNDK today. (g) Account ~$99,954, day +$49.54/+0.05% (SPY +1.96%, so big relative laggard today). Regime still DOWN per this-morning daily_context (market_trending_up=false), though SPY tape was actually strongly green intraday. dtc still 0, not PDT, not blocked, kill switch NOT active."
 }
