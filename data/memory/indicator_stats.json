@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-12",
-  "total_trades": 4,
+  "last_updated": "2026-06-15",
+  "total_trades": 7,
   "by_signal": {
     "rsi_at_entry": {
       "65-75": {
@@ -10,10 +10,16 @@
         "avg_pnl_pct": -0.61
       },
       "60-65": {
-        "trades": 2,
+        "trades": 3,
         "wins": 0,
         "win_rate": 0.0,
-        "avg_pnl_pct": -1.045
+        "avg_pnl_pct": -1.0633
+      },
+      "55-60": {
+        "trades": 2,
+        "wins": 2,
+        "win_rate": 1.0,
+        "avg_pnl_pct": 2.1526
       }
     },
     "rel_vol_at_entry": {
@@ -22,22 +28,28 @@
         "wins": 0,
         "win_rate": 0.0,
         "avg_pnl_pct": -0.61
+      },
+      "1.5-2.0": {
+        "trades": 1,
+        "wins": 0,
+        "win_rate": 0.0,
+        "avg_pnl_pct": -1.1
       }
     },
     "perplexity_sentiment": {
       "positive": {
-        "trades": 3,
-        "wins": 0,
-        "win_rate": 0.0,
-        "avg_pnl_pct": -0.9
+        "trades": 6,
+        "wins": 2,
+        "win_rate": 0.3333,
+        "avg_pnl_pct": 0.0842
       }
     },
     "overnight_holds": {
       "closed_eod": {
-        "trades": 4,
-        "wins": 1,
-        "win_rate": 0.25,
-        "avg_pnl_pct": -0.54
+        "trades": 7,
+        "wins": 3,
+        "win_rate": 0.4286,
+        "avg_pnl_pct": 0.1493
       }
     }
   }
