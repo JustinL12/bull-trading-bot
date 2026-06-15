@@ -1,1 +1,40 @@
-{}
+{
+  "SNDK": {
+    "symbol": "SNDK",
+    "entry_price": 2056.52,
+    "shares": 2,
+    "entry_time": "2026-06-15T14:10:31.102001+00:00",
+    "atr_at_entry": 6.2333,
+    "rsi_at_entry": 59.06,
+    "rel_vol_at_entry": 1.1572,
+    "perplexity_sentiment_at_entry": "positive",
+    "initial_stop": 2047.17,
+    "current_stop": 2047.17,
+    "highest_close_since_entry": 2056.52,
+    "trailing_stop_active": false,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "overnight_hold": false,
+    "alpaca_order_id": "e5cadae6-a258-4711-941a-14ad4aa419c5",
+    "stop_order_id": "230e5785-7334-4b53-82fb-b4c76394e17f"
+  },
+  "TSEM": {
+    "symbol": "TSEM",
+    "entry_price": 290.06,
+    "shares": 17,
+    "entry_time": "2026-06-15T14:10:38.597790+00:00",
+    "atr_at_entry": 1.7533,
+    "rsi_at_entry": 64.41,
+    "rel_vol_at_entry": 1.7591,
+    "perplexity_sentiment_at_entry": "positive",
+    "initial_stop": 287.43,
+    "current_stop": 287.43,
+    "highest_close_since_entry": 290.06,
+    "trailing_stop_active": false,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "overnight_hold": false,
+    "alpaca_order_id": "c9f4aa9b-0fc5-4331-a0ac-3bc933071aa3",
+    "stop_order_id": "3cd59b54-11e7-4366-967f-eed6435fa601"
+  }
+}
