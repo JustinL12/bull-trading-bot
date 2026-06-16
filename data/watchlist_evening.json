@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "MGM",
+    "rs_20day": 1.3025,
+    "vcp_ratio": 0.7246,
+    "pct_from_52w_high": 0.0698,
+    "vol_dry_ratio": 0.4762,
+    "ema_aligned": true,
+    "close": 47.99,
+    "prev_close": 48.64,
+    "prev_day_high": 49.8,
+    "rank_score": 19.62
+  },
+  {
+    "symbol": "CDNS",
+    "rs_20day": 1.1213,
+    "vcp_ratio": 0.7435,
+    "pct_from_52w_high": 0.069,
+    "vol_dry_ratio": 0.6736,
+    "ema_aligned": true,
+    "close": 387.93,
+    "prev_close": 394.62,
+    "prev_day_high": 397.47,
+    "rank_score": 9.911
+  },
+  {
+    "symbol": "ANET",
+    "rs_20day": 1.1606,
+    "vcp_ratio": 0.7939,
+    "pct_from_52w_high": 0.065,
+    "vol_dry_ratio": 0.8719,
+    "ema_aligned": true,
+    "close": 168.08,
+    "prev_close": 169.1,
+    "prev_day_high": 169.22,
+    "rank_score": 8.388
+  }
+]

@@ -16,6 +16,7 @@ Batch strategy: fetch 400 calendar days of daily bars for all tickers in chunks
 of 50 (≈12 API calls). SPY bars are fetched first for RS computation.
 """
 
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -47,30 +48,41 @@ def fetch_daily_bars_multi(data_client, symbols: list[str]) -> dict[str, pd.Data
         chunk_num = i // chunk_size + 1
         total_chunks = (len(symbols) + chunk_size - 1) // chunk_size
         print(f"  Fetching bars chunk {chunk_num}/{total_chunks} ({len(chunk)} symbols)...")
-        try:
-            req = StockBarsRequest(
-                symbol_or_symbols=chunk,
-                timeframe=TimeFrame.Day,
-                start=start,
-                end=end,
-                feed="iex",
-            )
-            bars = data_client.get_stock_bars(req)
-            df = bars.df.rename(columns=str.lower)
-            if df.empty:
-                continue
-            if isinstance(df.index, pd.MultiIndex):
-                for sym in chunk:
-                    try:
-                        sym_df = df.xs(sym, level="symbol").copy()
-                        if not sym_df.empty:
-                            results[sym] = sym_df
-                    except KeyError:
-                        pass
-            elif len(chunk) == 1:
-                results[chunk[0]] = df
-        except Exception as e:
-            print(f"  Chunk {chunk_num} error: {e}")
+        live_chunk = list(chunk)
+        for attempt in range(len(chunk)):
+            try:
+                req = StockBarsRequest(
+                    symbol_or_symbols=live_chunk,
+                    timeframe=TimeFrame.Day,
+                    start=start,
+                    end=end,
+                    feed="iex",
+                )
+                bars = data_client.get_stock_bars(req)
+                df = bars.df.rename(columns=str.lower)
+                if df.empty:
+                    break
+                if isinstance(df.index, pd.MultiIndex):
+                    for sym in live_chunk:
+                        try:
+                            sym_df = df.xs(sym, level="symbol").copy()
+                            if not sym_df.empty:
+                                results[sym] = sym_df
+                        except KeyError:
+                            pass
+                elif len(live_chunk) == 1:
+                    results[live_chunk[0]] = df
+                break
+            except Exception as e:
+                bad_sym = re.search(r"invalid symbol:\s*([A-Za-z0-9.\-]+)", str(e))
+                if bad_sym and bad_sym.group(1) in live_chunk:
+                    print(f"  Chunk {chunk_num}: dropping invalid symbol {bad_sym.group(1)}, retrying...")
+                    live_chunk.remove(bad_sym.group(1))
+                    if not live_chunk:
+                        break
+                    continue
+                print(f"  Chunk {chunk_num} error: {e}")
+                break
 
     return results
 

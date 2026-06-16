@@ -7,33 +7,39 @@ Run this manually whenever the index composition changes (roughly quarterly).
 Requires: pandas (for Wikipedia table parsing)
 """
 
+import io
 import sys
 from pathlib import Path
 
 import pandas as pd
+import requests
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from lib.state import write_json
 
+HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; bull-trading-bot/1.0)"}
+
+
+def _fetch_html(url: str) -> io.StringIO:
+    resp = requests.get(url, headers=HEADERS, timeout=30)
+    resp.raise_for_status()
+    return io.StringIO(resp.text)
+
 
 def fetch_sp500() -> list[str]:
     url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-    tables = pd.read_html(url, attrs={"id": "constituents"})
+    tables = pd.read_html(_fetch_html(url), attrs={"id": "constituents"})
     return tables[0]["Symbol"].tolist()
 
 
 def fetch_nasdaq100() -> list[str]:
     url = "https://en.wikipedia.org/wiki/Nasdaq-100"
-    tables = pd.read_html(url)
+    tables = pd.read_html(_fetch_html(url))
     for t in tables:
-        cols = [c.lower() for c in t.columns]
-        if "ticker" in cols:
-            col = t.columns[[c.lower() == "ticker" for c in t.columns][0] if True else 0]
-            # find exact column name
-            for c in t.columns:
-                if c.lower() == "ticker":
-                    return t[c].dropna().tolist()
+        for c in t.columns:
+            if isinstance(c, str) and c.lower() == "ticker":
+                return t[c].dropna().tolist()
     return []
 
 
