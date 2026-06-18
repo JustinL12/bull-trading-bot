@@ -1,38 +1,26 @@
 [
   {
     "symbol": "APH",
-    "rs_20day": 1.3094,
-    "vcp_ratio": 0.7566,
-    "pct_from_52w_high": 0.0348,
-    "vol_dry_ratio": 0.8526,
+    "rs_20day": 1.306,
+    "vcp_ratio": 0.739,
+    "pct_from_52w_high": 0.0176,
+    "vol_dry_ratio": 0.8646,
     "ema_aligned": true,
-    "close": 161.08,
-    "prev_close": 158.87,
-    "prev_day_high": 162.05,
-    "rank_score": 18.672
+    "close": 163.94,
+    "prev_close": 161.08,
+    "prev_day_high": 164.15,
+    "rank_score": 20.664
   },
   {
-    "symbol": "SJM",
-    "rs_20day": 1.1246,
-    "vcp_ratio": 0.7554,
-    "pct_from_52w_high": 0.0465,
-    "vol_dry_ratio": 0.7071,
+    "symbol": "PANW",
+    "rs_20day": 1.1312,
+    "vcp_ratio": 0.7427,
+    "pct_from_52w_high": 0.0504,
+    "vol_dry_ratio": 0.682,
     "ema_aligned": true,
-    "close": 112.94,
-    "prev_close": 115.97,
-    "prev_day_high": 116.75,
-    "rank_score": 11.601
-  },
-  {
-    "symbol": "CDNS",
-    "rs_20day": 1.111,
-    "vcp_ratio": 0.7314,
-    "pct_from_52w_high": 0.0645,
-    "vol_dry_ratio": 0.6588,
-    "ema_aligned": true,
-    "close": 389.8,
-    "prev_close": 387.93,
-    "prev_day_high": 397.77,
-    "rank_score": 10.46
+    "close": 287.6,
+    "prev_close": 282.11,
+    "prev_day_high": 284.2,
+    "rank_score": 12.107
   }
 ]
