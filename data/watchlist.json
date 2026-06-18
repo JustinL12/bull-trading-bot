@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "symbol": "APH",
+    "rs_20day": 1.3094,
+    "vcp_ratio": 0.7566,
+    "pct_from_52w_high": 0.0348,
+    "vol_dry_ratio": 0.8526,
+    "ema_aligned": true,
+    "close": 161.08,
+    "prev_close": 158.87,
+    "prev_day_high": 162.05,
+    "rank_score": 18.672,
+    "pm_price": 161.11,
+    "pm_change_pct": 1.448
+  },
+  {
+    "symbol": "CDNS",
+    "rs_20day": 1.111,
+    "vcp_ratio": 0.7314,
+    "pct_from_52w_high": 0.0645,
+    "vol_dry_ratio": 0.6588,
+    "ema_aligned": true,
+    "close": 389.8,
+    "prev_close": 387.93,
+    "prev_day_high": 397.77,
+    "rank_score": 10.46,
+    "pm_price": 389.6,
+    "pm_change_pct": 0.451
+  },
+  {
+    "symbol": "SJM",
+    "rs_20day": 1.1246,
+    "vcp_ratio": 0.7554,
+    "pct_from_52w_high": 0.0465,
+    "vol_dry_ratio": 0.7071,
+    "ema_aligned": true,
+    "close": 112.94,
+    "prev_close": 115.97,
+    "prev_day_high": 116.75,
+    "rank_score": 11.601,
+    "pm_price": 112.96,
+    "pm_change_pct": -2.612
+  }
+]
