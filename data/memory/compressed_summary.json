@@ -1,18 +1,18 @@
 {
   "last_updated": "2026-06-19",
-  "sessions_analyzed": 15,
+  "sessions_analyzed": 16,
   "total_trades": 7,
-  "performance_overview": "Through 15 sessions (inception 2026-06-01) Bull has 7 completed trades: 3W/4L (43% win rate, avg +0.15%/trade). Cumulative since inception: Bull -0.0612% vs SPY -1.4699%, cushion +1.41 pts alpha. Today (2026-06-18) was a no-entry day \u2014 both APH and CDNS were RSI-extended at the open (81 and 80 respectively), book stayed flat at $0.00, SPY +0.87%, -0.87% alpha today. Three straight sessions without a qualifying entry; the RSI filter is the primary gatekeeper and it is working as designed.",
+  "performance_overview": "Through 16 sessions (inception 2026-06-01) Bull has 7 completed trades: 3W/4L (43% win rate, avg +0.15%/trade). Cumulative since inception: Bull -0.0612% vs SPY -1.302%, cushion +1.24 pts alpha. Today (2026-06-19) was the 5th consecutive no-entry session — APH opened in distribution (RSI 39.94, below EMAs) and PANW had ideal RSI (57.25) but insufficient volume (rel_vol 0.677) and compressed ATR (0.163%). Sitting out was correct; no qualifying setups emerged.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 only bucket with consistent wins; enforce this range aggressively at entry (n=2, sample small but signal is clean)"
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — only consistently profitable bucket; this is the primary target range; enforce aggressively at entry (n=2, sample small but signal is clean)"
   ],
   "avoid": [
-    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% \u2014 overbought chase entries have all lost; hard ceiling",
-    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% \u2014 even worse; this bucket must be skipped entirely"
+    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% — overbought chase entries have all lost; treat as hard ceiling",
+    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% — this bucket must be skipped entirely"
   ],
   "active_parameter_adjustments": [],
-  "overnight_hold_insights": "Zero genuine overnight carries across all 15 sessions. Policy unchanged: profitable + trailing-stop-active + price>EMA-21 + no earnings within 2 days + sentiment not negative + 5% gap-risk cushion all required. The absence of overnight holds reflects the thin, extended candidate pool of recent sessions \u2014 no position has met all six criteria simultaneously.",
-  "recent_market_context": "2026-06-19 premarket: VIX 17.15 (benign), SPY EMA-9 744.82 > EMA-21 743.21 (trending-up regime). 2 candidates survived evening scan and earnings check \u2014 thin pool but both clean. PANW leads pre-market momentum (+2.00%), APH follows (+1.77%). No overnight holds, account flat at $99,938.80, daytrade_count=0.",
+  "overnight_hold_insights": "Zero genuine overnight carries across all 16 sessions. Policy unchanged: profitable + trailing-stop-active + price>EMA-21 + no earnings within 2 days + sentiment not negative + 5% gap-risk cushion all required simultaneously. No position has met all six criteria. The thin, extended candidate pool continues to prevent qualified entries, let alone overnight candidates.",
+  "recent_market_context": "5th straight no-entry session: 06-17 through 06-19. SPY recovered +1.04% today (VIX ~17, trending-up regime — EMA-9 > EMA-21), but broad EMA misalignment persists across the scan universe. Evening scan pass rate has been 0.4-0.6% (2-3 names out of 514). Market appears mid-recovery, not yet in broad accumulation phase that generates clean breakout setups.",
   "current_open_positions": [],
-  "notes_for_next_session": "FOR EOD AGENT (3:45 PM) \u2014 2026-06-19 (written by midday agent). Book flat, equity ~$99,938.80, daytrade_count=0. NO positions open \u2014 zero entries were made today. Entry window closed at 10:30 AM per config. PANW: rel_vol 0.677, ATR% 0.163, MACD hist not rising \u2014 still fails 3 criteria. APH: RSI 39.94, EMA-9 < EMA-21, price below VWAP and breakout gate \u2014 showing distribution. Neither symbol recovered intraday. EOD agent should close out this session cleanly (nothing to close), update cumulative stats, and flag if either symbol has any recovery into the close worth noting for the evening scan. RSI discipline: 0/4 above RSI 60 historically \u2014 do not chase. This is the 4th straight no-entry session \u2014 patience is correct posture."
+  "notes_for_next_session": "FOR EVENING SCAN / PREMARKET AGENT (06-19 evening or 06-20 premarket). Book flat, equity $99,938.80, daytrade_count=0. NO open positions. PANW: RSI was in sweet spot today (57.25) but vol and ATR were compressed — watch for a real volume expansion day; if rel_vol reaches ≥1.3 and ATR% ≥0.30 on PANW with RSI still 55-60, that is a strong entry candidate. APH: deeply oversold (RSI 39.94 at today's open, showing distribution with EMA crossover down) — do NOT force; needs to rebuild RSI to 55-60 range with EMA-9 recovering above EMA-21 before re-qualifying. Evening scan should look for fresh names, not just the same 2-stock pool — 5 straight misses on APH/PANW suggests this pair is not ready. RSI discipline remains paramount: 0/4 on RSI ≥60 historically. If tomorrow brings a third rejection of the same names, consider widening or refreshing the scan universe."
 }

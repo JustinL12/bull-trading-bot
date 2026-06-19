@@ -126,14 +126,18 @@ def post_daily_report(
     pnl_dollars: float,
     pnl_pct: float,
     spy_return_pct: float,
-    trades: list[dict],
-    overnight_holds: list[str],
+    trades: "int | list[dict]",
+    overnight_holds: "int | list[str]",
     memory_update: str,
     top_watchlist: list[str],
     cumulative_bull_pct: float,
     cumulative_spy_pct: float,
 ) -> None:
-    """Post the EOD daily report to Discord. Never raises."""
+    """Post the EOD daily report to Discord. Never raises.
+
+    trades and overnight_holds accept either a count (int) or a list — callers
+    that pass len() and callers that pass the list both work correctly.
+    """
     try:
         vs_spy = pnl_pct - spy_return_pct
         alpha_total = cumulative_bull_pct - cumulative_spy_pct
@@ -141,16 +145,22 @@ def post_daily_report(
 
         title = f"Bull Daily Report — {date} | {sign(pnl_pct)}{pnl_pct:.2f}% | vs SPY {sign(spy_return_pct)}{spy_return_pct:.2f}%"
 
+        # Normalise: accept int (count) or list from callers.
+        trades_list: list[dict] = trades if isinstance(trades, list) else []
+        trades_count: int = len(trades_list) if isinstance(trades, list) else int(trades)
+        holds_list: list[str] = overnight_holds if isinstance(overnight_holds, list) else []
+        holds_label = ", ".join(holds_list) if holds_list else "None"
+
         lines = [
             f"Net P&L: {sign(pnl_dollars)}${pnl_dollars:.2f} ({sign(pnl_pct)}{pnl_pct:.2f}%)  |  S&P 500 today: {sign(spy_return_pct)}{spy_return_pct:.2f}%  |  Outperformance: {sign(vs_spy)}{vs_spy:.2f}%",
             "",
-            f"Positions held overnight: {', '.join(overnight_holds) if overnight_holds else 'None'}",
+            f"Positions held overnight: {holds_label}",
             "",
-            "Trades today:",
+            f"Trades today: {trades_count}",
         ]
-        for t in trades:
+        for t in trades_list:
             sym = t.get("symbol", "?")
-            action = t.get("action", "?")
+            action = t.get("event", t.get("action", "?"))
             p = t.get("price", 0)
             pnl = t.get("pnl_dollars", 0)
             reason = t.get("exit_reason", "")
