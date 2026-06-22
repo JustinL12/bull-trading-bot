@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "symbol": "PANW",
+    "rs_20day": 1.1312,
+    "vcp_ratio": 0.7427,
+    "pct_from_52w_high": 0.0504,
+    "vol_dry_ratio": 0.682,
+    "ema_aligned": true,
+    "close": 287.6,
+    "prev_close": 282.11,
+    "prev_day_high": 284.2,
+    "rank_score": 12.107,
+    "pm_price": 287.78,
+    "pm_change_pct": 2.003
+  },
+  {
+    "symbol": "APH",
+    "rs_20day": 1.306,
+    "vcp_ratio": 0.739,
+    "pct_from_52w_high": 0.0176,
+    "vol_dry_ratio": 0.8646,
+    "ema_aligned": true,
+    "close": 163.94,
+    "prev_close": 161.08,
+    "prev_day_high": 164.15,
+    "rank_score": 20.664,
+    "pm_price": 163.96,
+    "pm_change_pct": 1.769
+  }
+]
