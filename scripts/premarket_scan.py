@@ -9,7 +9,9 @@ Perplexity discovery has been removed. Candidate discovery happens at 4 PM in
 scripts/evening_scan.py. This agent's sole job is pre-market enrichment + sort.
 """
 
+import json
 import os
+import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -84,6 +86,33 @@ def fetch_premarket_quotes(finnhub_client, symbols: list[str]) -> dict[str, dict
         except Exception as e:
             print(f"  Finnhub quote error for {sym}: {e}")
     return quotes
+
+
+def estimate_premarket_rsi(symbols: list[str], root: Path) -> dict[str, float | None]:
+    """Run compute_indicators.py for each symbol and return the current RSI estimate.
+
+    Called at ~8:30 AM ET using pre-market bars already available from Alpaca.
+    Gives the entry agent advance warning of names that are RSI-extended before open.
+    """
+    compute_script = root / "scripts" / "compute_indicators.py"
+    rsi_map: dict[str, float | None] = {}
+    for sym in symbols:
+        try:
+            result = subprocess.run(
+                [sys.executable, str(compute_script), "--symbols", sym],
+                capture_output=True, text=True, timeout=60, cwd=str(root),
+            )
+            if result.returncode == 0:
+                ind = read_json("indicators.json", default={})
+                rsi_val = ind.get(sym, {}).get("rsi")
+                rsi_map[sym] = float(rsi_val) if rsi_val is not None else None
+            else:
+                print(f"  compute_indicators error for {sym}: {result.stderr.strip()}")
+                rsi_map[sym] = None
+        except Exception as e:
+            print(f"  RSI estimate failed for {sym}: {e}")
+            rsi_map[sym] = None
+    return rsi_map
 
 
 def main():
@@ -171,13 +200,34 @@ def main():
     # Sort: strongest pre-market mover first; fall back to RS rank if no Finnhub data
     watchlist.sort(key=lambda x: x.get("pm_change_pct", 0.0), reverse=True)
 
+    # Compute pre-market RSI estimate for each candidate so the entry agent gets
+    # advance warning of names that are already RSI-extended before 9:31 AM.
+    root = Path(__file__).parent.parent
+    print(f"Computing pre-market RSI estimates for {len(watchlist)} candidates...")
+    pm_rsi_map = estimate_premarket_rsi([c["symbol"] for c in watchlist], root)
+    extended_names = []
+    for c in watchlist:
+        rsi_est = pm_rsi_map.get(c["symbol"])
+        c["pm_rsi_est"] = round(rsi_est, 2) if rsi_est is not None else None
+        c["pm_rsi_extended"] = rsi_est is not None and rsi_est > config.RSI_MAX
+        rsi_str = f"{rsi_est:.1f}" if rsi_est is not None else "N/A"
+        flag = " *** RSI EXTENDED ***" if c["pm_rsi_extended"] else ""
+        print(f"  {c['symbol']:6s}  pm_rsi_est={rsi_str}{flag}")
+        if c["pm_rsi_extended"]:
+            extended_names.append(c["symbol"])
+
+    if extended_names:
+        print(f"  WARNING: {extended_names} likely RSI-blocked at open — "
+              f"entry only valid on intraday pullback to RSI {config.RSI_MIN}–{config.RSI_MAX}")
+
     write_json("watchlist.json", watchlist)
     print(f"Watchlist: {len(watchlist)} RS candidates written.")
     for c in watchlist:
         pm = c.get("pm_change_pct", 0.0) or 0.0
         sign = "+" if pm >= 0 else ""
         print(f"  {c['symbol']:6s}  pm={sign}{pm:.2f}%  RS={c.get('rs_20day', 0):.3f}  "
-              f"VCP={c.get('vcp_ratio', 0):.3f}  prev_high=${c.get('prev_day_high')}")
+              f"VCP={c.get('vcp_ratio', 0):.3f}  prev_high=${c.get('prev_day_high')}"
+              f"  pm_rsi={c.get('pm_rsi_est')}")
 
 
 if __name__ == "__main__":

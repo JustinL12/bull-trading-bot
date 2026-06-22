@@ -7,11 +7,11 @@ MIN_AVG_VOLUME = 100_000
 REL_VOL_MIN = 1.3          # raised from 1.0 — RS leader breakout strategy
 
 # --- Evening scan: RS Leader + VCP screener ---
-RS_20DAY_MIN = 1.10          # 20-day RS vs SPY; institutional accumulation threshold
-VCP_ATR_RATIO_MAX = 0.80     # ATR_5day/ATR_20day; < 0.80 = coiling (not yet extended)
+RS_20DAY_MIN = 1.05          # 20-day RS vs SPY; lowered from 1.10 to widen candidate pool
+VCP_ATR_RATIO_MAX = 0.85     # ATR_5day/ATR_20day; raised from 0.80 — admits slightly less coiled setups
 VOL_DRY_RATIO_MAX = 0.90     # 5d avg vol / 20d avg vol; < 0.90 = sellers exhausted
-HIGH_PROXIMITY_PCT = 0.08    # max pct below 52-week high to qualify
-EVENING_SCAN_TOP_N = 10      # number of candidates to output each evening
+HIGH_PROXIMITY_PCT = 0.10    # max pct below 52-week high; raised from 0.08
+EVENING_SCAN_TOP_N = 20      # number of candidates to output each evening; raised from 10
 
 # --- Entry criteria ---
 RSI_MIN = 55          # raised from 50 — tightened for RS leader setups
