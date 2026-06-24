@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "symbol": "PANW",
+    "rs_20day": 1.1601,
+    "vcp_ratio": 0.7428,
+    "pct_from_52w_high": 0.0384,
+    "vol_dry_ratio": 0.6647,
+    "ema_aligned": true,
+    "close": 291.23,
+    "prev_close": 286.45,
+    "prev_day_high": 295.38,
+    "rank_score": 18.133,
+    "pm_price": 290.92,
+    "pm_change_pct": 1.576,
+    "pm_rsi_est": 62.3,
+    "pm_rsi_extended": false
+  },
+  {
+    "symbol": "MGM",
+    "rs_20day": 1.2482,
+    "vcp_ratio": 0.6822,
+    "pct_from_52w_high": 0.0907,
+    "vol_dry_ratio": 0.4695,
+    "ema_aligned": true,
+    "close": 46.91,
+    "prev_close": 46.57,
+    "prev_day_high": 47.03,
+    "rank_score": 20.197,
+    "pm_price": 46.92,
+    "pm_change_pct": 0.752,
+    "pm_rsi_est": 59.92,
+    "pm_rsi_extended": false
+  },
+  {
+    "symbol": "LLY",
+    "rs_20day": 1.0624,
+    "vcp_ratio": 0.7269,
+    "pct_from_52w_high": 0.0624,
+    "vol_dry_ratio": 0.8996,
+    "ema_aligned": true,
+    "close": 1107.83,
+    "prev_close": 1103.15,
+    "prev_day_high": 1119.45,
+    "rank_score": 9.953,
+    "pm_price": 1107.08,
+    "pm_change_pct": 0.454,
+    "pm_rsi_est": 45.68,
+    "pm_rsi_extended": false
+  },
+  {
+    "symbol": "IBKR",
+    "rs_20day": 1.1692,
+    "vcp_ratio": 0.8059,
+    "pct_from_52w_high": 0.0308,
+    "vol_dry_ratio": 0.76,
+    "ema_aligned": true,
+    "close": 94.71,
+    "prev_close": 96.83,
+    "prev_day_high": 97.68,
+    "rank_score": 16.411,
+    "pm_price": 94.7,
+    "pm_change_pct": -2.19,
+    "pm_rsi_est": 38.67,
+    "pm_rsi_extended": false
+  }
+]

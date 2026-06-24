@@ -1,8 +1,8 @@
 {
-  "date": "2026-06-23",
+  "date": "2026-06-24",
   "no_trade": false,
-  "vix": 19.69,
-  "spy_ema9": 744.71,
-  "spy_ema21": 743.54,
-  "market_trending_up": true
+  "vix": null,
+  "spy_ema9": 742.49,
+  "spy_ema21": 742.64,
+  "market_trending_up": false
 }
