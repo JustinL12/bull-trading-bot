@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "symbol": "ES",
+    "rs_20day": 1.054,
+    "vcp_ratio": 0.8049,
+    "pct_from_52w_high": 0.0615,
+    "vol_dry_ratio": 0.83,
+    "ema_aligned": true,
+    "close": 71.7,
+    "prev_close": 71.02,
+    "prev_day_high": 71.28,
+    "rank_score": 8.063,
+    "pm_price": 71.71,
+    "pm_change_pct": 0.957,
+    "pm_rsi_est": 61.43,
+    "pm_rsi_extended": false
+  },
+  {
+    "symbol": "MGM",
+    "rs_20day": 1.149,
+    "vcp_ratio": 0.5984,
+    "pct_from_52w_high": 0.0874,
+    "vol_dry_ratio": 0.4689,
+    "ema_aligned": true,
+    "close": 47.08,
+    "prev_close": 46.91,
+    "prev_day_high": 46.97,
+    "rank_score": 19.079,
+    "pm_price": 47.09,
+    "pm_change_pct": 0.362,
+    "pm_rsi_est": 49.49,
+    "pm_rsi_extended": false
+  },
+  {
+    "symbol": "AMD",
+    "rs_20day": 1.0725,
+    "vcp_ratio": 0.8492,
+    "pct_from_52w_high": 0.0765,
+    "vol_dry_ratio": 0.8897,
+    "ema_aligned": true,
+    "close": 519.27,
+    "prev_close": 519.57,
+    "prev_day_high": 528.33,
+    "rank_score": 5.377,
+    "pm_price": 519.74,
+    "pm_change_pct": -0.021,
+    "pm_rsi_est": 89.66,
+    "pm_rsi_extended": true
+  },
+  {
+    "symbol": "PANW",
+    "rs_20day": 1.1746,
+    "vcp_ratio": 0.7114,
+    "pct_from_52w_high": 0.0586,
+    "vol_dry_ratio": 0.6519,
+    "ema_aligned": true,
+    "close": 285.11,
+    "prev_close": 291.23,
+    "prev_day_high": 292.11,
+    "rank_score": 17.763,
+    "pm_price": 285.26,
+    "pm_change_pct": -1.944,
+    "pm_rsi_est": 44.79,
+    "pm_rsi_extended": false
+  }
+]
