@@ -1,22 +1,22 @@
 {
-  "AMD": {
-    "close": 524.81,
-    "ema_9": 527.3559,
-    "ema_21": 527.6007,
-    "rsi": 36.746,
-    "macd": 0.3144,
-    "macd_signal": 1.059,
-    "macd_hist": -0.7446,
-    "atr": 0.9327,
-    "vwap": 528.1265,
-    "rel_vol": 1.0537,
+  "IBKR": {
+    "close": 92.155,
+    "ema_9": 92.0656,
+    "ema_21": 92.0622,
+    "rsi": 56.6519,
+    "macd": -0.0037,
+    "macd_signal": -0.0132,
+    "macd_hist": 0.0095,
+    "atr": 0.0879,
+    "vwap": 93.0572,
+    "rel_vol": 1.4182,
     "macd_hist_rising": false,
-    "symbol": "AMD",
-    "avg_volume_20d": 633459.0,
-    "ema_200_daily": 299.5422,
-    "atr_pct": 0.178,
-    "prev_close": 519.27,
-    "prior_day_high": 524.64,
-    "green_on_day": true
+    "symbol": "IBKR",
+    "avg_volume_20d": 215421.0,
+    "ema_200_daily": 75.3019,
+    "atr_pct": 0.095,
+    "prev_close": 92.77,
+    "prior_day_high": 95.235,
+    "green_on_day": false
   }
 }
