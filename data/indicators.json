@@ -1,22 +1,22 @@
 {
-  "IBKR": {
-    "close": 92.155,
-    "ema_9": 92.0656,
-    "ema_21": 92.0622,
-    "rsi": 56.6519,
-    "macd": -0.0037,
-    "macd_signal": -0.0132,
-    "macd_hist": 0.0095,
-    "atr": 0.0879,
-    "vwap": 93.0572,
-    "rel_vol": 1.4182,
-    "macd_hist_rising": false,
-    "symbol": "IBKR",
-    "avg_volume_20d": 215421.0,
-    "ema_200_daily": 75.3019,
-    "atr_pct": 0.095,
-    "prev_close": 92.77,
-    "prior_day_high": 95.235,
-    "green_on_day": false
+  "MGM": {
+    "close": 47.6,
+    "ema_9": 47.2684,
+    "ema_21": 47.1762,
+    "rsi": 81.385,
+    "macd": 0.0886,
+    "macd_signal": 0.0633,
+    "macd_hist": 0.0253,
+    "atr": 0.0866,
+    "vwap": 47.3949,
+    "rel_vol": 2.878,
+    "macd_hist_rising": true,
+    "symbol": "MGM",
+    "avg_volume_20d": 304197.0,
+    "ema_200_daily": 38.3214,
+    "atr_pct": 0.182,
+    "prev_close": 47.21,
+    "prior_day_high": 48.215,
+    "green_on_day": true
   }
 }
