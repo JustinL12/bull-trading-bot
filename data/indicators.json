@@ -1,22 +1,22 @@
 {
-  "SJM": {
-    "close": 112.53,
-    "ema_9": 112.6961,
-    "ema_21": 112.7981,
-    "rsi": 32.276,
-    "macd": -0.1126,
-    "macd_signal": -0.1005,
-    "macd_hist": -0.0122,
-    "atr": 0.1101,
-    "vwap": 113.3867,
-    "rel_vol": 0.977,
+  "AMGN": {
+    "close": 362.16,
+    "ema_9": 362.5568,
+    "ema_21": 362.2733,
+    "rsi": 50.0463,
+    "macd": 0.3055,
+    "macd_signal": 0.2804,
+    "macd_hist": 0.025,
+    "atr": 0.3845,
+    "vwap": 362.9625,
+    "rel_vol": 0.3134,
     "macd_hist_rising": false,
-    "symbol": "SJM",
-    "avg_volume_20d": 89565.0,
-    "ema_200_daily": 104.6617,
-    "atr_pct": 0.098,
-    "prev_close": 115.91,
-    "prior_day_high": 117.24,
-    "green_on_day": false
+    "symbol": "AMGN",
+    "avg_volume_20d": 96844.0,
+    "ema_200_daily": 335.7925,
+    "atr_pct": 0.106,
+    "prev_close": 362.12,
+    "prior_day_high": 362.74,
+    "green_on_day": true
   }
 }
