@@ -199,20 +199,23 @@ def main():
     data_client = get_data_client()
 
     # Load universe
-    universe_file = Path(config.BACKTEST_UNIVERSE_FILE)
+    universe_file = Path(config.BACKTEST_UNIVERSE_FILE).resolve()
     if not universe_file.exists():
-        universe_file = Path("data/universe.json")
-    raw = read_json(str(universe_file))
+        universe_file = Path("data/universe.json").resolve()
+    raw = read_json(universe_file)
     if isinstance(raw, list):
         tickers = raw
-    elif isinstance(raw, dict) and "tickers" in raw:
+    elif raw is not None and isinstance(raw, dict) and "tickers" in raw:
         tickers = raw["tickers"]
-    else:
+    elif raw is not None:
         tickers = list(raw.keys())
+    else:
+        print(f"ERROR: Could not load universe from {universe_file}")
+        sys.exit(1)
     print(f"Universe: {len(tickers)} tickers")
 
     # Load open positions to check for exit signals
-    positions = read_json("data/positions.json") or {}
+    positions = read_json(Path("data/positions.json").resolve()) or {}
 
     # Add open position symbols to fetch list so we can check exits
     all_symbols = list(set(tickers) | set(positions.keys()))
@@ -229,8 +232,8 @@ def main():
     # Exit signals on open positions (death cross)
     exit_signals = scan_exits(positions, bars)
 
-    write_json("data/watchlist_trend.json", entry_candidates)
-    write_json("data/exit_signals.json", exit_signals)
+    write_json("watchlist_trend.json", entry_candidates)
+    write_json("exit_signals.json", exit_signals)
 
     print(f"\nEntry signals (golden cross): {len(entry_candidates)}")
     for c in entry_candidates[:10]:

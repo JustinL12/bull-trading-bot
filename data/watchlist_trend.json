@@ -1,0 +1,32 @@
+[
+  {
+    "symbol": "SCHW",
+    "close": 96.96,
+    "atr": 2.3218,
+    "ema_fast": 91.7944,
+    "ema_slow": 91.7919,
+    "avg_volume_20d": 757179,
+    "signal": "golden_cross",
+    "scanned_at": "2026-07-02T20:06:14.203597+00:00"
+  },
+  {
+    "symbol": "PCG",
+    "close": 17.05,
+    "atr": 0.382,
+    "ema_fast": 16.8162,
+    "ema_slow": 16.8135,
+    "avg_volume_20d": 949894,
+    "signal": "golden_cross",
+    "scanned_at": "2026-07-02T20:06:14.311274+00:00"
+  },
+  {
+    "symbol": "XLU",
+    "close": 45.75,
+    "atr": 0.6877,
+    "ema_fast": 45.0908,
+    "ema_slow": 45.0631,
+    "avg_volume_20d": 1553835,
+    "signal": "golden_cross",
+    "scanned_at": "2026-07-02T20:06:14.107192+00:00"
+  }
+]
