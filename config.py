@@ -3,74 +3,47 @@
 # --- Universe filters ---
 PRICE_MIN = 10.0
 PRICE_MAX = 1000.0
-MIN_AVG_VOLUME = 100_000
-REL_VOL_MIN = 1.3          # raised from 1.0 — RS leader breakout strategy
-
-# --- Evening scan: RS Leader + VCP screener ---
-RS_20DAY_MIN = 1.05          # 20-day RS vs SPY; lowered from 1.10 to widen candidate pool
-VCP_ATR_RATIO_MAX = 0.85     # ATR_5day/ATR_20day; raised from 0.80 — admits slightly less coiled setups
-VOL_DRY_RATIO_MAX = 0.90     # 5d avg vol / 20d avg vol; < 0.90 = sellers exhausted
-HIGH_PROXIMITY_PCT = 0.10    # max pct below 52-week high; raised from 0.08
-EVENING_SCAN_TOP_N = 20      # number of candidates to output each evening; raised from 10
-
-# --- Entry criteria ---
-RSI_MIN = 55          # raised from 50 — tightened for RS leader setups
-RSI_MAX = 65          # lowered from 75 — avoid extended names
-ATR_MIN_PCT = 0.30    # ATR as % of price; skip if too low-volatility to move
-ATR_MAX_PCT = 4.0     # ATR as % of price; skip if more volatile
-MACD_CONFIRM_BARS = 2 # histogram must rise for this many consecutive bars
-ENTRY_START_HOUR_ET = 9
-ENTRY_START_MIN_ET = 31   # was 45 — capture the opening surge
-ENTRY_END_HOUR_ET = 10    # was 13
-ENTRY_END_MIN_ET = 30     # was 0
-MAX_OPEN_POSITIONS = 10
+MIN_AVG_VOLUME = 500_000      # trend following liquidity floor (higher than old 100k)
+MIN_ATR_DOLLAR = 0.05         # minimum ATR in dollars for a valid trend entry
 
 # --- Position sizing ---
-RISK_PER_TRADE_PCT = 0.02   # 2% of equity at risk per trade
-STOP_ATR_MULTIPLIER = 1.5   # initial stop = entry - (1.5 x ATR)
-MAX_POSITION_PCT = 0.05     # hard cap: 5% of equity per position
-MIN_NOTIONAL = 200.0        # skip if position value would be below $200
+MIN_NOTIONAL = 200.0          # skip if position value would be below $200
+MAX_EQUITY_DEPLOYED_PCT = 80.0  # keep at least 20% buying power free
 
-# --- Trailing stop ---
-TRAIL_ACTIVATE_ATR = 1.5    # trailing stop activates at +1.5 ATR profit
-TRAIL_ATR_MULTIPLIER = 2.0  # trail 2 ATR below highest close since entry
-
-# --- Partial profit ---
-PARTIAL_PROFIT_ATR = 2.0    # sell 50% at +2 ATR
-
-# --- Hard intraday exit thresholds ---
-RSI_OVERBOUGHT_EXIT = 80
-
-# --- EOD overnight hold criteria ---
-OVERNIGHT_GAP_RISK_PCT = 5.0  # simulate this adverse gap; must survive above initial stop
-EARNINGS_BLACKOUT_DAYS = 3    # no entry within this many days of earnings
-OVERNIGHT_EARNINGS_DAYS = 2   # close position if earnings within this many days
+# --- Earnings ---
+EARNINGS_BLACKOUT_DAYS = 14   # trend following holds for weeks — wider earnings buffer
 
 # --- Risk guardrails ---
 DAILY_LOSS_LIMIT_PCT = 2.0    # kill switch triggers at -2% of starting equity
-MAX_EQUITY_DEPLOYED_PCT = 80.0  # keep at least 20% buying power free
-PDT_MAX_DAY_TRADES = 3        # max round-trip day trades per rolling 5-day window
-PDT_ACCOUNT_THRESHOLD = 25_000  # PDT rule applies below this equity level
-
-# --- Market regime ---
-REGIME_DOWN_MAX_POSITIONS = 5  # when SPY EMA-9 < EMA-21
 
 # --- VIX ---
-VIX_SUSPEND_THRESHOLD = 30.0  # suspend all new entries if VIX above this
+VIX_SUSPEND_THRESHOLD = 40.0  # suspend new entries above this; trend following tolerates moderate vol
 
 # --- Memory ---
 MEMORY_MIN_SAMPLE = 10        # minimum trades in a bucket before adjustments apply
 MEMORY_WIN_RATE_DIVERGENCE = 0.20  # trigger learning if win rate diverges by this much
 MEMORY_JOURNAL_ARCHIVE_SESSIONS = 60  # archive journal entries older than this
 
-# --- Finnhub ---
-FINNHUB_PM_SORT = True   # sort morning watchlist by Finnhub pre-market % change
+# --- Backtesting ---
+BACKTEST_UNIVERSE_FILE = "data/universe_trend.json"
+TURTLE_RISK_PER_UNIT = 0.01      # 1% equity risk per unit
+TURTLE_MAX_POSITIONS = 20        # max simultaneous open positions
+ATR_PERIOD = 20                  # ATR period used for sizing and stops
+BACKTEST_STOP_ATR_MULT = 2.0     # hard stop = entry - 2 × ATR(20)
+
+# Strategy A: MA Crossover
+MA_FAST_SLOW_PAIRS = [(10, 50), (20, 60), (50, 200)]
+
+# Strategy B: Donchian Channel
+DONCHIAN_ENTRY_PERIODS = [20, 55]  # N-day high breakout variants
+# Exit period = entry period // 2 (10-day or 20-day low)
+
+# Strategy C: Time-Series Momentum
+TSMOM_LOOKBACK_MONTHS = [1, 3, 6, 12]  # variants; composite = avg of 3/6/12
+
+# Strategy D: ADX filter (applied on top of A/B/C)
+ADX_TREND_THRESHOLD = 25.0       # minimum ADX to confirm trending market
+ADX_PERIOD = 14
 
 # --- Alpaca data ---
-INDICATOR_BAR_LIMIT_5MIN = 100   # (legacy) recent intraday bars used for indicator warmup
-INDICATOR_BAR_LIMIT_DAILY = 220  # daily bars (need 200 for EMA-200)
-# Intraday history is fetched end-anchored (most recent bars). We pull a multi-day
-# window both so indicators warm up on current data and so the time-of-day RVOL
-# baseline below has enough prior sessions to average over.
-INDICATOR_INTRADAY_LOOKBACK_DAYS = 20  # calendar days of intraday history to fetch
-RVOL_LOOKBACK_DAYS = 14                # prior trading days for the time-of-day RVOL baseline
+INDICATOR_BAR_LIMIT_DAILY = 220  # daily bars for indicator computation

@@ -75,9 +75,6 @@ def post_trade_alert(
     shares: int,
     price: float,
     stop: float | None = None,
-    rsi: float | None = None,
-    rel_vol: float | None = None,
-    sentiment: str | None = None,
     pnl_dollars: float | None = None,
     pnl_pct: float | None = None,
     exit_reason: str | None = None,
@@ -96,12 +93,6 @@ def post_trade_alert(
             ]
             if stop:
                 lines.append(f"Stop: ${stop:.2f}")
-            if rsi:
-                lines.append(f"RSI at entry: {rsi:.1f}")
-            if rel_vol:
-                lines.append(f"Rel Vol: {rel_vol:.1f}x")
-            if sentiment:
-                lines.append(f"Perplexity: {sentiment}")
         else:
             lines = [
                 f"Action: {action_upper}",

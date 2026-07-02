@@ -205,6 +205,61 @@ def pct_from_52w_high(df: pd.DataFrame) -> float | None:
     return round((high_52w - current) / high_52w, 4)
 
 
+def donchian_high(df: pd.DataFrame, period: int = 20, col: str = "close") -> pd.Series:
+    """Highest value of col over the last `period` bars (rolling window)."""
+    return df[col].rolling(period).max()
+
+
+def donchian_low(df: pd.DataFrame, period: int = 10, col: str = "low") -> pd.Series:
+    """Lowest value of col over the last `period` bars (rolling window)."""
+    return df[col].rolling(period).min()
+
+
+def adx(df: pd.DataFrame, period: int = 14) -> pd.Series:
+    """Average Directional Index (ADX).
+
+    Returns a Series of ADX values aligned to df's index.
+    ADX > 25 indicates a trending market. Requires high, low, close columns.
+    """
+    high = df["high"]
+    low = df["low"]
+    close = df["close"]
+
+    up_move = high.diff()
+    down_move = -low.diff()
+
+    plus_dm = np.where((up_move > down_move) & (up_move > 0), up_move, 0.0)
+    minus_dm = np.where((down_move > up_move) & (down_move > 0), down_move, 0.0)
+
+    high_low = high - low
+    high_close = (high - close.shift()).abs()
+    low_close = (low - close.shift()).abs()
+    tr = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
+
+    atr_s = tr.ewm(com=period - 1, min_periods=period).mean()
+    plus_di = pd.Series(plus_dm, index=df.index).ewm(com=period - 1, min_periods=period).mean() / atr_s * 100
+    minus_di = pd.Series(minus_dm, index=df.index).ewm(com=period - 1, min_periods=period).mean() / atr_s * 100
+
+    dx = ((plus_di - minus_di).abs() / (plus_di + minus_di).replace(0, np.nan)) * 100
+    return dx.ewm(com=period - 1, min_periods=period).mean()
+
+
+def tsmom_return(df: pd.DataFrame, months: int = 12, col: str = "close") -> float | None:
+    """Time-series momentum: total return over the last `months` calendar months.
+
+    Uses 21 trading days per month as the lookback. Returns the fractional return
+    (positive = uptrend, negative = downtrend), or None if insufficient history.
+    """
+    lookback = months * 21
+    if len(df) < lookback + 1:
+        return None
+    start_price = float(df[col].iloc[-(lookback + 1)])
+    end_price = float(df[col].iloc[-1])
+    if start_price == 0:
+        return None
+    return round((end_price - start_price) / start_price, 6)
+
+
 def apply_all_intraday(df: pd.DataFrame, avg_volume: float) -> pd.DataFrame:
     """Apply all intraday indicators in one call."""
     df = df.copy()

@@ -2,9 +2,9 @@
 Sends a Discord trade alert after every fill.
 
 Usage:
-    python scripts/place_order.py --action buy --symbol AAPL --shares 45 --stop 184.69 --rsi 58.3 --rel_vol 2.1 --sentiment positive
-    python scripts/place_order.py --action sell --symbol AAPL --reason "Trailing stop"
-    python scripts/place_order.py --action partial_sell --symbol AAPL --shares 22 --reason "Partial profit target"
+    python scripts/place_order.py --action buy --symbol XLK --shares 45 --stop 192.40
+    python scripts/place_order.py --action sell --symbol XLK --reason "Trend exit: 10-day low"
+    python scripts/place_order.py --action partial_sell --symbol XLK --shares 22 --reason "Manual partial"
 """
 
 import argparse
@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+import config
 from lib.alpaca_client import get_trading_client
 from lib.notify import post_attention, post_trade_alert
 from lib.state import append_jsonl, read_json, write_json
@@ -50,7 +51,7 @@ def wait_for_fill(client, order_id: str, max_wait: int = 30, require_full: bool 
     return None
 
 
-def place_buy(client, symbol: str, shares: int, stop_price: float, rsi: float, rel_vol: float, sentiment: str) -> None:
+def place_buy(client, symbol: str, shares: int, stop_price: float) -> None:
     positions = read_json("positions.json", default={})
 
     if symbol in positions:
@@ -116,17 +117,12 @@ def place_buy(client, symbol: str, shares: int, stop_price: float, rsi: float, r
         "entry_price": fill_price,
         "shares": filled_qty,
         "entry_time": datetime.now(timezone.utc).isoformat(),
-        "atr_at_entry": round((fill_price - stop_price) / 1.5, 4),
-        "rsi_at_entry": rsi,
-        "rel_vol_at_entry": rel_vol,
-        "perplexity_sentiment_at_entry": sentiment,
+        "atr_at_entry": round((fill_price - stop_price) / config.BACKTEST_STOP_ATR_MULT, 4),
         "initial_stop": stop_price,
         "current_stop": stop_price,
         "highest_close_since_entry": fill_price,
-        "trailing_stop_active": False,
         "partial_sold": False,
         "partial_sold_shares": 0,
-        "overnight_hold": False,
         "alpaca_order_id": str(filled.id),
         "stop_order_id": stop_order_id,
     }
@@ -140,13 +136,10 @@ def place_buy(client, symbol: str, shares: int, stop_price: float, rsi: float, r
         "shares": filled_qty,
         "price": fill_price,
         "stop": stop_price,
-        "rsi": rsi,
-        "rel_vol": rel_vol,
-        "perplexity": sentiment,
     })
 
     print(f"BUY {filled_qty} {symbol} @ ${fill_price:.2f}, stop ${stop_price:.2f}")
-    post_trade_alert("BUY", symbol, filled_qty, fill_price, stop=stop_price, rsi=rsi, rel_vol=rel_vol, sentiment=sentiment)
+    post_trade_alert("BUY", symbol, filled_qty, fill_price, stop=stop_price)
 
 
 def broker_position_qty(client, symbol: str) -> int:
@@ -314,9 +307,6 @@ def main():
     parser.add_argument("--symbol", required=True)
     parser.add_argument("--shares", type=int, default=0)
     parser.add_argument("--stop", type=float, default=0)
-    parser.add_argument("--rsi", type=float, default=0)
-    parser.add_argument("--rel_vol", type=float, default=0)
-    parser.add_argument("--sentiment", default="neutral")
     parser.add_argument("--reason", default="")
     args = parser.parse_args()
 
@@ -327,7 +317,7 @@ def main():
         if not args.shares or not args.stop:
             print("--shares and --stop are required for buy.")
             sys.exit(1)
-        place_buy(client, symbol, args.shares, args.stop, args.rsi, args.rel_vol, args.sentiment)
+        place_buy(client, symbol, args.shares, args.stop)
     elif args.action == "sell":
         place_sell(client, symbol, args.reason or "manual sell")
     elif args.action == "partial_sell":

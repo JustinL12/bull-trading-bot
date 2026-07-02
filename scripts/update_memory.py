@@ -48,9 +48,7 @@ def enrich_trades_with_positions(trades: list[dict]) -> list[dict]:
             symbol = trade.get("symbol")
             entry = entries.get(symbol, {})
             trade = trade.copy()
-            trade.setdefault("rsi_at_entry", entry.get("rsi"))
-            trade.setdefault("rel_vol_at_entry", entry.get("rel_vol"))
-            trade.setdefault("perplexity_at_entry", entry.get("perplexity"))
+            trade.setdefault("entry_time", entry.get("ts"))
             enriched.append(trade)
     return enriched
 

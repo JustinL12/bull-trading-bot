@@ -16,10 +16,6 @@ STATS_PATH = MEMORY_DIR / "indicator_stats.json"
 JOURNAL_PATH = MEMORY_DIR / "session_journal.jsonl"
 ARCHIVE_PATH = MEMORY_DIR / "archive_summary.jsonl"
 
-RSI_BUCKETS = ["50-55", "55-60", "60-65", "65-75"]
-REL_VOL_BUCKETS = ["1.5-2.0", "2.0-3.0", "3.0+"]
-
-
 def read_compressed_summary() -> dict:
     """Return the compressed memory summary for agent consumption."""
     data = read_json(SUMMARY_PATH, default={})
@@ -35,29 +31,10 @@ def _default_summary() -> dict:
         "best_signals": [],
         "avoid": [],
         "active_parameter_adjustments": [],
-        "overnight_hold_insights": "No overnight hold data yet.",
         "recent_market_context": "No prior sessions.",
         "current_open_positions": [],
         "notes_for_next_session": "",
     }
-
-
-def _rsi_bucket(rsi: float) -> str:
-    if rsi < 55:
-        return "50-55"
-    if rsi < 60:
-        return "55-60"
-    if rsi < 65:
-        return "60-65"
-    return "65-75"
-
-
-def _rel_vol_bucket(rel_vol: float) -> str:
-    if rel_vol < 2.0:
-        return "1.5-2.0"
-    if rel_vol < 3.0:
-        return "2.0-3.0"
-    return "3.0+"
 
 
 def _increment_bucket(stats: dict, path: list[str], won: bool, pnl_pct: float) -> None:
@@ -93,29 +70,20 @@ def update_indicator_stats(completed_trades: list[dict]) -> None:
         won = pnl > 0
         stats["total_trades"] += 1
 
-        # RSI bucket
-        rsi = trade.get("rsi_at_entry")
-        if rsi is not None and 50 <= rsi <= 75:
-            sig.setdefault("rsi_at_entry", {})
-            _increment_bucket(sig, ["rsi_at_entry", _rsi_bucket(rsi)], won, pnl)
-
-        # Rel vol bucket
-        rv = trade.get("rel_vol_at_entry")
-        if rv is not None and rv >= 1.5:
-            sig.setdefault("rel_vol_at_entry", {})
-            _increment_bucket(sig, ["rel_vol_at_entry", _rel_vol_bucket(rv)], won, pnl)
-
-        # Perplexity sentiment
-        sentiment = trade.get("perplexity_at_entry") or trade.get("perplexity")
-        if sentiment in ("positive", "neutral", "negative"):
-            sig.setdefault("perplexity_sentiment", {})
-            _increment_bucket(sig, ["perplexity_sentiment", sentiment], won, pnl)
-
-        # Overnight hold
-        held_overnight = trade.get("held_overnight", False)
-        bucket = "held" if held_overnight else "closed_eod"
-        sig.setdefault("overnight_holds", {})
-        _increment_bucket(sig, ["overnight_holds", bucket], won, pnl)
+        # Hold duration bucket (short ≤5d, medium ≤20d, long >20d)
+        entry_time = trade.get("entry_time") or trade.get("ts", "")
+        exit_time = trade.get("ts", "")
+        if entry_time and exit_time:
+            try:
+                from datetime import datetime as _dt
+                e = _dt.fromisoformat(entry_time.replace("Z", "+00:00"))
+                x = _dt.fromisoformat(exit_time.replace("Z", "+00:00"))
+                days = (x - e).days
+                bucket = "short" if days <= 5 else ("medium" if days <= 20 else "long")
+                sig.setdefault("hold_duration", {})
+                _increment_bucket(sig, ["hold_duration", bucket], won, pnl)
+            except Exception:
+                pass
 
     stats["last_updated"] = datetime.now().strftime("%Y-%m-%d")
     write_json(STATS_PATH, stats)
