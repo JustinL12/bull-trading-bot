@@ -1,8 +1,8 @@
 {
   "last_updated": "2026-07-06",
-  "sessions_analyzed": 28,
+  "sessions_analyzed": 29,
   "total_trades": 7,
-  "performance_overview": "Through 28 sessions (inception 2026-06-01 through 2026-07-06 EOD) Bull has completed 7 trades: 3W/4L (43% win rate, avg +0.15%/trade). Cumulative: Bull -0.1036% vs SPY unavailable (persistent TLS error). Equity $99,896.39 after first day of 3 open trend positions. System now running MA-20/60 trend strategy; today's entries are the first overnight carries ever.",
+  "performance_overview": "Through 29 sessions (inception 2026-06-01 through 2026-07-06 evening) Bull has completed 7 closed trades: 3W/4L (43% win rate). 3 open trend positions (SCHW, PCG, XLU) entered July 6 morning. Cumulative: Bull -0.04% vs SPY unavailable (persistent TLS error). Equity $99,959.82 EOD July 6.",
   "best_signals": [
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
   ],
@@ -14,7 +14,7 @@
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "July 6 (first trading day after July 4 holiday): Entered all 3 golden-cross candidates (SCHW, PCG, XLU) at market open. By 3:45 PM ET: SCHW +2.49%, PCG -2.06% (approaching stop), XLU -0.88%. VIX unavailable (persistent TLS block). Alpaca paper fill delays ~80s at open (timeout extended to 120s). Total deployed ~$29,950 across 3 shallow MA-20/60 golden crosses.",
+  "recent_market_context": "July 6: Entered SCHW, PCG, XLU at morning open (first overnight trend carries). EOD: SCHW $100.60 (+2.73%), PCG $16.82 (-1.81%, stop $16.29 tight), XLU $45.285 (-0.82%). Evening scan found 1 new golden cross (TSLA) — extremely shallow EMA cross ($0.24 spread). Only 1 of 555 tickers crossed — weak cross environment. No death crosses on open positions. Account equity $99,959.82 (+$21.02 day). yfinance TLS block persists (earnings check unreliable).",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -22,8 +22,9 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 2.49,
-      "notes": "First MA-20/60 trend entry; stop fixed at 2xATR below entry; performing well day 1"
+      "eod_price": 100.60,
+      "unrealized_pnl_pct": 2.73,
+      "notes": "MA-20/60 trend entry day 1; performing well; stop $93.28 has ample cushion"
     },
     {
       "symbol": "PCG",
@@ -31,8 +32,9 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": -2.06,
-      "notes": "Utility; stop fixed at 16.29 (2.9% cushion at EOD close of 16.775); watch closely — shallow cross, elevated fake-out risk"
+      "eod_price": 16.82,
+      "unrealized_pnl_pct": -1.81,
+      "notes": "Utility; stop $16.29, only $0.53 cushion at EOD ($16.82); shallow cross, elevated fake-out risk — watch closely day 2"
     },
     {
       "symbol": "XLU",
@@ -40,9 +42,10 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": -0.88,
-      "notes": "Utilities ETF; stop fixed at 44.37 (2.0% cushion at EOD close of 45.26); shallow cross, small loss day 1"
+      "eod_price": 45.285,
+      "unrealized_pnl_pct": -0.82,
+      "notes": "Utilities ETF; stop $44.37, $0.92 cushion at EOD ($45.285); shallow cross, small loss day 1"
     }
   ],
-  "notes_for_next_session": "FOR EVENING SCAN AGENT (July 6, 2026):\n\nSTATUS: 3 open positions — first overnight carries in system history.\n  SCHW: 103sh @ $97.93, current ~$100.37 (+2.49%), stop $93.28\n  PCG:  586sh @ $17.13, current ~$16.78 (-2.06%), stop $16.29 ← WATCH\n  XLU:  218sh @ $45.66, current ~$45.26 (-0.88%), stop $44.37\n\nPRIORITY 1 — Run trend_scan.py. Check MA-20 vs MA-60 on SCHW, PCG, XLU:\n  - If death cross detected on any held symbol: write exit_signals.json immediately\n  - PCG is most at risk given day-1 weakness; if MA-20 is below or crossing MA-60 on PCG, flag for exit tomorrow morning\n  - XLU also slightly negative; verify cross direction hasn't reversed\n  - SCHW is positive; death cross unlikely but verify\n\nPRIORITY 2 — Scan for new golden-cross entry candidates per MA-20/60 strategy.\n\nCONTEXT:\n  - All 3 stops verified active at Alpaca (GTC stop orders confirmed 3:45 PM ET)\n  - MA-20/60 stops do NOT trail — they are fixed at entry until death-cross exit\n  - VIX unavailable (persistent TLS block — non-blocking)\n  - Alpaca paper fill delays ~80s at open; place_order.py timeout is 120s\n  - Both PCG and XLU are utilities — shallow EMA crosses with elevated reversal risk"
+  "notes_for_next_session": "FOR MARKET-OPEN AGENT (July 7, 2026):\n\nOPEN POSITIONS (no exits required — no death crosses detected July 6 EOD):\n  SCHW: 103sh @ $97.93 entry, EOD $100.60 (+2.73%), stop $93.28 [GTC active]\n  PCG:  586sh @ $17.13 entry, EOD $16.82 (-1.81%), stop $16.29 ← WATCH CLOSELY ($0.53 cushion)\n  XLU:  218sh @ $45.66 entry, EOD $45.285 (-0.82%), stop $44.37 [GTC active]\n\nEXIT SIGNALS: None. Do NOT close any positions unless stop is hit or death cross observed intraday.\n\nNEW ENTRY SIGNAL — TSLA golden cross (CAUTION: use judgment):\n  TSLA: close $419.79, ATR $19.12 (4.6%), EMA-20 $403.95 vs EMA-60 $403.71\n  CROSS IS EXTREMELY SHALLOW ($0.24 spread, 0.06%) — high reversal risk\n  EARNINGS RISK: yfinance blocked in cloud env; TSLA Q2 2026 earnings estimated ~July 22 (~16d out,\n  just beyond 14-day blackout but could be earlier — proceed only if comfortable with binary event risk\n  RECOMMENDATION: Size conservatively (half normal) or skip if uncertain on earnings date\n  If entering: position size = equity * 0.10 / ATR * 2 (same formula as other positions)\n\nCONTEXT:\n  - PCG is at highest risk of hitting stop day 2 — if it gaps down, stop order should execute\n  - Equity $99,959.82 at July 6 close\n  - Alpaca paper fill delays ~80s at open; place_order.py timeout is 120s\n  - MA-20/60 stops do NOT trail — fixed at entry until death-cross exit\n  - check_earnings.py has a bug: reads data/watchlist.json instead of data/watchlist_trend.json"
 }
