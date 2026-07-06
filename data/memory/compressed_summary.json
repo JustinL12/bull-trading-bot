@@ -1,25 +1,48 @@
 {
-  "last_updated": "2026-07-02",
-  "sessions_analyzed": 27,
+  "last_updated": "2026-07-06",
+  "sessions_analyzed": 28,
   "total_trades": 7,
-  "performance_overview": "Through 27 trading sessions (inception 2026-06-01 through 2026-07-02 EOD) Bull has completed 7 trades: 3W/4L (43% win rate, avg +0.15%/trade). Cumulative: Bull -0.0612% vs SPY unavailable (persistent TLS error). Equity flat at $99,938.80. System transitioned to MA-20/60 trend scan for evening agent; market-open agent continues intraday RSI/momentum strategy. Zero overnight holds ever.",
+  "performance_overview": "Through 28 sessions (inception 2026-06-01 through 2026-07-06 EOD) Bull has completed 7 trades: 3W/4L (43% win rate, avg +0.15%/trade). Cumulative: Bull -0.1036% vs SPY unavailable (persistent TLS error). Equity $99,896.39 after first day of 3 open trend positions. System now running MA-20/60 trend strategy; today's entries are the first overnight carries ever.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
   ],
   "avoid": [
-    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% \u2014 every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
-    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% \u2014 confirmed gap-up trap territory; skip on sight",
-    "Gap-up opens with RSI >60 on opening bar: zero qualifications across all 26 sessions; any name whose live RSI exceeds 60 on the first 1-min bar is a hard skip regardless of setup quality, conviction, or premarket RSI",
-    "Opening-bar RSI surge pattern: premarket-clean RSI names (PANW 57, AMGN 58 premarket Jun 29; D 58.2 premarket Jun 30; AMGN 54.4 premarket Jul 1) have routinely surged past 60 on the opening bar \u2014 the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
-    "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for this strategy and MUST be replaced"
+    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% — every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
+    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% — confirmed gap-up trap territory; skip on sight",
+    "Gap-up opens with RSI >60 on opening bar: zero qualifications across all prior sessions; any name whose live RSI exceeds 60 on the first 1-min bar is a hard skip regardless of setup quality, conviction, or premarket RSI",
+    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar — the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
+    "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "overnight_hold_insights": "Zero overnight carries across all 26 sessions. The six-criteria gate (profitable + trailing-stop-active + above EMA-21 + no earnings within 2 days + sentiment not negative + 5% gap-risk cushion) has never been simultaneously satisfied. Policy is sound and conservative \u2014 no change warranted. Persistent SPY DOWN regime increases overnight gap-down risk further; the gate is protective.",
-  "recent_market_context": "July 6 market-open (first day back after July 4 holiday weekend, July 3 observed closure confirmed): Entered all 3 golden-cross candidates from July 2 scan. SCHW 103sh@97.93 stop93.28, PCG 586sh@17.13 stop16.29, XLU 218sh@45.66 stop44.37. Alpaca paper trading showed ~80s fill delays at open (vs expected <5s); place_order.py timeout raised to 120s. VIX unavailable (persistent network block). No exits. Equity ~$99,939 pre-entry; 3 positions now open, total deployed ~$29,950.",
+  "recent_market_context": "July 6 (first trading day after July 4 holiday): Entered all 3 golden-cross candidates (SCHW, PCG, XLU) at market open. By 3:45 PM ET: SCHW +2.49%, PCG -2.06% (approaching stop), XLU -0.88%. VIX unavailable (persistent TLS block). Alpaca paper fill delays ~80s at open (timeout extended to 120s). Total deployed ~$29,950 across 3 shallow MA-20/60 golden crosses.",
   "current_open_positions": [
-    {"symbol": "SCHW", "shares": 103, "entry_price": 97.925243, "current_stop": 93.28, "atr": 2.3218},
-    {"symbol": "PCG",  "shares": 586, "entry_price": 17.127577, "current_stop": 16.29, "atr": 0.382},
-    {"symbol": "XLU",  "shares": 218, "entry_price": 45.66,     "current_stop": 44.37, "atr": 0.6877}
+    {
+      "symbol": "SCHW",
+      "shares": 103,
+      "entry_price": 97.925243,
+      "current_stop": 93.28,
+      "entry_date": "2026-07-06",
+      "unrealized_pnl_pct": 2.49,
+      "notes": "First MA-20/60 trend entry; stop fixed at 2xATR below entry; performing well day 1"
+    },
+    {
+      "symbol": "PCG",
+      "shares": 586,
+      "entry_price": 17.127577,
+      "current_stop": 16.29,
+      "entry_date": "2026-07-06",
+      "unrealized_pnl_pct": -2.06,
+      "notes": "Utility; stop fixed at 16.29 (2.9% cushion at EOD close of 16.775); watch closely — shallow cross, elevated fake-out risk"
+    },
+    {
+      "symbol": "XLU",
+      "shares": 218,
+      "entry_price": 45.66,
+      "current_stop": 44.37,
+      "entry_date": "2026-07-06",
+      "unrealized_pnl_pct": -0.88,
+      "notes": "Utilities ETF; stop fixed at 44.37 (2.0% cushion at EOD close of 45.26); shallow cross, small loss day 1"
+    }
   ],
-  "notes_for_next_session": "FOR EOD AGENT (July 6, 2026):\n\nSTATUS: 3 open positions entered today at market open.\n  SCHW: 103sh @ $97.93, stop $93.28 (ATR 2.32, ~4.7% risk)\n  PCG:  586sh @ $17.13, stop $16.29 (ATR 0.38, ~4.9% risk)\n  XLU:  218sh @ $45.66, stop $44.37 (ATR 0.69, ~2.8% risk)\n\nAll positions are first-day MA-20/60 golden-cross entries with shallow EMA separation. Watch for death crosses \u2014 at this separation distance, a reversal could trigger quickly.\n\nEXIT SIGNALS: Run evening trend scan. Flag death crosses (EMA20 < EMA60) for any held symbol as exit_signals.json for tomorrow's open agent.\n\nBUG FIXES APPLIED TODAY:\n- get_account.py: int(acct.daytrade_count or 0) \u2014 handles None from paper API\n- place_order.py: wait_for_fill timeout raised 30s\u2192120s \u2014 paper trading has ~80s fill delays at open\n\nVIX: Unavailable (persistent curl network block \u2014 yfinance TLS fails in this environment). Do not block on VIX.\n\nNOTE: PCG and XLU are utilities. All 3 names have shallow EMA crosses \u2014 elevated fake-out risk. Size was conservative (~1 unit each, ~$10k/position, ~$30k total deployed)."
+  "notes_for_next_session": "FOR EVENING SCAN AGENT (July 6, 2026):\n\nSTATUS: 3 open positions — first overnight carries in system history.\n  SCHW: 103sh @ $97.93, current ~$100.37 (+2.49%), stop $93.28\n  PCG:  586sh @ $17.13, current ~$16.78 (-2.06%), stop $16.29 ← WATCH\n  XLU:  218sh @ $45.66, current ~$45.26 (-0.88%), stop $44.37\n\nPRIORITY 1 — Run trend_scan.py. Check MA-20 vs MA-60 on SCHW, PCG, XLU:\n  - If death cross detected on any held symbol: write exit_signals.json immediately\n  - PCG is most at risk given day-1 weakness; if MA-20 is below or crossing MA-60 on PCG, flag for exit tomorrow morning\n  - XLU also slightly negative; verify cross direction hasn't reversed\n  - SCHW is positive; death cross unlikely but verify\n\nPRIORITY 2 — Scan for new golden-cross entry candidates per MA-20/60 strategy.\n\nCONTEXT:\n  - All 3 stops verified active at Alpaca (GTC stop orders confirmed 3:45 PM ET)\n  - MA-20/60 stops do NOT trail — they are fixed at entry until death-cross exit\n  - VIX unavailable (persistent TLS block — non-blocking)\n  - Alpaca paper fill delays ~80s at open; place_order.py timeout is 120s\n  - Both PCG and XLU are utilities — shallow EMA crosses with elevated reversal risk"
 }
