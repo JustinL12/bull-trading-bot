@@ -23,7 +23,7 @@ from alpaca.trading.requests import MarketOrderRequest, StopOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
 
 
-def wait_for_fill(client, order_id: str, max_wait: int = 30, require_full: bool = False) -> dict | None:
+def wait_for_fill(client, order_id: str, max_wait: int = 120, require_full: bool = False) -> dict | None:
     """Poll until an order fills or max_wait seconds elapse.
 
     When require_full is True (use this for entries), wait for the order to be

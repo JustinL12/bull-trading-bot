@@ -5,7 +5,7 @@
   "portfolio_value": 99938.8,
   "last_equity": 99938.8,
   "daytrade_count": 0,
-  "pattern_day_trader": false,
+  "pattern_day_trader": null,
   "trading_blocked": false,
   "account_blocked": false,
   "currency": "USD"

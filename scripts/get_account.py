@@ -20,7 +20,7 @@ def main():
         "buying_power": float(acct.buying_power),
         "portfolio_value": float(acct.portfolio_value),
         "last_equity": float(acct.last_equity),
-        "daytrade_count": int(acct.daytrade_count),
+        "daytrade_count": int(acct.daytrade_count or 0),
         "pattern_day_trader": acct.pattern_day_trader,
         "trading_blocked": acct.trading_blocked,
         "account_blocked": acct.account_blocked,
