@@ -16,3 +16,4 @@
 {"ts": "2026-07-06T13:41:32.501331+00:00", "event": "ENTRY", "symbol": "SCHW", "shares": 103, "price": 97.925243, "stop": 93.28}
 {"ts": "2026-07-06T13:42:53.782723+00:00", "event": "ENTRY", "symbol": "PCG", "shares": 586, "price": 17.127577, "stop": 16.29}
 {"ts": "2026-07-06T13:43:13.077119+00:00", "event": "ENTRY", "symbol": "XLU", "shares": 218, "price": 45.66, "stop": 44.37}
+{"ts": "2026-07-07T13:35:07.682199+00:00", "event": "ENTRY", "symbol": "TSLA", "shares": 12, "price": 417.62, "stop": 381.55}

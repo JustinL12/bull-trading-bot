@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-07-06",
-  "sessions_analyzed": 29,
+  "last_updated": "2026-07-07",
+  "sessions_analyzed": 30,
   "total_trades": 7,
-  "performance_overview": "Through 29 sessions (inception 2026-06-01 through 2026-07-06 evening) Bull has completed 7 closed trades: 3W/4L (43% win rate). 3 open trend positions (SCHW, PCG, XLU) entered July 6 morning. Cumulative: Bull -0.04% vs SPY unavailable (persistent TLS error). Equity $99,959.82 EOD July 6.",
+  "performance_overview": "Through 30 sessions (inception 2026-06-01 through 2026-07-07 market open) Bull has completed 7 closed trades: 3W/4L (43% win rate). 4 open trend positions (SCHW, PCG, XLU, TSLA). Equity $100,184.20 at July 7 open (up from $99,959.82 EOD July 6). yfinance TLS block persists (earnings check unreliable).",
   "best_signals": [
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
   ],
@@ -14,7 +14,7 @@
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "July 6: Entered SCHW, PCG, XLU at morning open (first overnight trend carries). EOD: SCHW $100.60 (+2.73%), PCG $16.82 (-1.81%, stop $16.29 tight), XLU $45.285 (-0.82%). Evening scan found 1 new golden cross (TSLA) — extremely shallow EMA cross ($0.24 spread). Only 1 of 555 tickers crossed — weak cross environment. No death crosses on open positions. Account equity $99,959.82 (+$21.02 day). yfinance TLS block persists (earnings check unreliable).",
+  "recent_market_context": "July 7 open: Entered TSLA at half-size (12sh @ $417.62, stop $381.55) due to shallow EMA cross ($0.24 spread) and earnings proximity risk (est. July 22, ~15d out, unverifiable). 4 open positions now. July 6 EOD: SCHW $100.60 (+2.73%), PCG $16.82 (-1.81%, tight stop), XLU $45.285 (-0.82%). VIX unavailable (persistent TLS block). yfinance earnings check broken in cloud env.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -24,7 +24,7 @@
       "entry_date": "2026-07-06",
       "eod_price": 100.60,
       "unrealized_pnl_pct": 2.73,
-      "notes": "MA-20/60 trend entry day 1; performing well; stop $93.28 has ample cushion"
+      "notes": "Day 2; performing well; stop $93.28 has ample cushion"
     },
     {
       "symbol": "PCG",
@@ -34,7 +34,7 @@
       "entry_date": "2026-07-06",
       "eod_price": 16.82,
       "unrealized_pnl_pct": -1.81,
-      "notes": "Utility; stop $16.29, only $0.53 cushion at EOD ($16.82); shallow cross, elevated fake-out risk — watch closely day 2"
+      "notes": "Day 2; stop $16.29, only $0.53 cushion at prior EOD — elevated stop-hit risk intraday; stop order active"
     },
     {
       "symbol": "XLU",
@@ -44,8 +44,18 @@
       "entry_date": "2026-07-06",
       "eod_price": 45.285,
       "unrealized_pnl_pct": -0.82,
-      "notes": "Utilities ETF; stop $44.37, $0.92 cushion at EOD ($45.285); shallow cross, small loss day 1"
+      "notes": "Day 2; stop $44.37, $0.92 cushion at prior EOD; shallow cross, small loss day 1"
+    },
+    {
+      "symbol": "TSLA",
+      "shares": 12,
+      "entry_price": 417.62,
+      "current_stop": 381.55,
+      "entry_date": "2026-07-07",
+      "eod_price": null,
+      "unrealized_pnl_pct": null,
+      "notes": "Day 1; half-size entry (12 vs 23 normal); shallow cross ($0.24 EMA spread); earnings risk ~July 22 (unverifiable); stop $381.55 = fill - 2xATR($18.035)"
     }
   ],
-  "notes_for_next_session": "FOR MARKET-OPEN AGENT (July 7, 2026):\n\nOPEN POSITIONS (no exits required — no death crosses detected July 6 EOD):\n  SCHW: 103sh @ $97.93 entry, EOD $100.60 (+2.73%), stop $93.28 [GTC active]\n  PCG:  586sh @ $17.13 entry, EOD $16.82 (-1.81%), stop $16.29 ← WATCH CLOSELY ($0.53 cushion)\n  XLU:  218sh @ $45.66 entry, EOD $45.285 (-0.82%), stop $44.37 [GTC active]\n\nEXIT SIGNALS: None. Do NOT close any positions unless stop is hit or death cross observed intraday.\n\nNEW ENTRY SIGNAL — TSLA golden cross (CAUTION: use judgment):\n  TSLA: close $419.79, ATR $19.12 (4.6%), EMA-20 $403.95 vs EMA-60 $403.71\n  CROSS IS EXTREMELY SHALLOW ($0.24 spread, 0.06%) — high reversal risk\n  EARNINGS RISK: yfinance blocked in cloud env; TSLA Q2 2026 earnings estimated ~July 22 (~16d out,\n  just beyond 14-day blackout but could be earlier — proceed only if comfortable with binary event risk\n  RECOMMENDATION: Size conservatively (half normal) or skip if uncertain on earnings date\n  If entering: position size = equity * 0.10 / ATR * 2 (same formula as other positions)\n\nCONTEXT:\n  - PCG is at highest risk of hitting stop day 2 — if it gaps down, stop order should execute\n  - Equity $99,959.82 at July 6 close\n  - Alpaca paper fill delays ~80s at open; place_order.py timeout is 120s\n  - MA-20/60 stops do NOT trail — fixed at entry until death-cross exit\n  - check_earnings.py has a bug: reads data/watchlist.json instead of data/watchlist_trend.json"
+  "notes_for_next_session": "FOR EOD AGENT (July 7, 2026):\n\nOPEN POSITIONS (4 total):\n  SCHW: 103sh @ $97.93 entry, stop $93.28 [GTC active] — day 2, performing well\n  PCG:  586sh @ $17.13 entry, stop $16.29 [GTC active] ← HIGH RISK: only $0.53 cushion at July 6 close; may have stopped out today\n  XLU:  218sh @ $45.66 entry, stop $44.37 [GTC active] — day 2, small unrealized loss\n  TSLA: 12sh @ $417.62 entry, stop $381.55 [GTC active] — day 1; half-size; earnings ~July 22 risk\n\nEXIT SIGNALS: Run death-cross scan on all 4 positions. PCG most at risk — if stop not already hit, check intraday.\n\nKEY WATCHPOINTS:\n  - PCG stop $16.29: if EOD price still below $16.82 (July 6 close), stop is very close; scan for death cross\n  - TSLA earnings: est. July 22 — if confirmed within 14 days, log exit signal; cannot verify via yfinance\n  - TSLA shallow cross: if death cross confirmed at EOD, exit even on day 1\n\nCONTEXT:\n  - Equity $100,184.20 at July 7 open\n  - Alpaca paper fill delays ~80s at open; place_order.py timeout is 120s\n  - MA-20/60 stops do NOT trail — fixed at entry until death-cross exit\n  - check_earnings.py has a bug: reads data/watchlist.json instead of data/watchlist_trend.json\n  - yfinance TLS blocked in cloud env — earnings dates unverifiable; use estimated dates from historical patterns"
 }
