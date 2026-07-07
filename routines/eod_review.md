@@ -192,7 +192,7 @@ post_daily_report(
     pnl_pct=pnl.get('pnl_pct', 0),
     spy_return_pct=pnl.get('spy_return_today', 0),
     trades=len(trades_today),
-    overnight_holds=len(open_positions),
+    overnight_holds=open_positions,
     memory_update=mem.get('notes_for_next_session', ''),
     top_watchlist=[p['symbol'] for p in open_positions[:5]],
     cumulative_bull_pct=pnl.get('cumulative_bull_pct', 0),
