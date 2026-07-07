@@ -1,12 +1,1 @@
-[
-  {
-    "symbol": "TSLA",
-    "close": 419.79,
-    "atr": 19.1205,
-    "ema_fast": 403.9467,
-    "ema_slow": 403.7124,
-    "avg_volume_20d": 1054561,
-    "signal": "golden_cross",
-    "scanned_at": "2026-07-06T20:03:15.458511+00:00"
-  }
-]
+[]
