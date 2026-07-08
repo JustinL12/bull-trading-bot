@@ -22,9 +22,9 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "eod_price": 101.905,
-      "unrealized_pnl_pct": 4.06,
-      "notes": "Day 3; +4.06% from entry, strong uptrend; stop $93.28 has $8.62 cushion"
+      "open_price": 101.415,
+      "unrealized_pnl_pct": 3.57,
+      "notes": "Day 4; +3.57% from entry at open Jul 8; strong trend; stop $93.28 has $8.14 cushion; GTC stop confirmed active"
     },
     {
       "symbol": "PCG",
@@ -32,9 +32,9 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "eod_price": 17.16,
-      "unrealized_pnl_pct": 0.19,
-      "notes": "Day 3; +0.19% from entry; tight $0.87 cushion above stop $16.29; watch for death cross"
+      "open_price": 17.115,
+      "unrealized_pnl_pct": -0.07,
+      "notes": "Day 4; -0.07% from entry at open Jul 8; TIGHT: only $0.83 cushion above stop $16.29; GTC stop confirmed active; watch for death cross"
     },
     {
       "symbol": "XLU",
@@ -42,9 +42,9 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "eod_price": 45.7,
-      "unrealized_pnl_pct": 0.09,
-      "notes": "Day 3; +0.09% from entry; thin gain; stop $44.37 has $1.33 cushion"
+      "open_price": 45.535,
+      "unrealized_pnl_pct": -0.27,
+      "notes": "Day 4; -0.27% from entry at open Jul 8; thin; stop $44.37 has $1.17 cushion; GTC stop confirmed active"
     },
     {
       "symbol": "TSLA",
@@ -52,10 +52,10 @@
       "entry_price": 417.62,
       "current_stop": 381.55,
       "entry_date": "2026-07-07",
-      "eod_price": 403.47,
-      "unrealized_pnl_pct": -3.39,
-      "notes": "Day 2; -3.39% from entry; down day 1 and weak; stop $381.55 has $21.92 cushion; shallow EMA cross; HIGH RISK - watch for death cross signal; earnings est. ~Jul 22 (approaching 14-day window)"
+      "open_price": 397.5868,
+      "unrealized_pnl_pct": -4.80,
+      "notes": "Day 3; -4.80% from entry at open Jul 8; WEAK: down two consecutive days; stop $381.55 has $16.04 cushion; earnings ~Jul 22 (14 days out today, approaching blackout); GTC stop confirmed active; HIGH RISK"
     }
   ],
-  "notes_for_next_session": "FOR MARKET-OPEN AGENT (July 8, 2026):\n\nOPEN POSITIONS (4 total \u2014 all stops GTC active):\n  SCHW: 103sh @ $97.93 entry, stop $93.28 \u2014 day 3, +4.07% from entry, strong trend, $8.63 cushion\n  PCG:  586sh @ $17.13 entry, stop $16.29 \u2014 day 3, +0.19% from entry, TIGHT: only $0.87 cushion; watch closely\n  XLU:  218sh @ $45.66 entry, stop $44.37 \u2014 day 3, +0.09% from entry, thin; $1.33 cushion\n  TSLA: 12sh @ $417.62 entry, stop $381.55 \u2014 day 2, -3.39% from entry, HIGH RISK; $21.92 cushion but weak\n\nENTRIES TOMORROW: NONE (watchlist empty after earnings filter)\n  - Only golden cross was KMI (earnings Jul 15, 8 days out \u2014 within 14-day blackout)\n  - No new entries at July 8 open\n\nPRIORITIES AT OPEN:\n  1. Confirm all 4 GTC stop orders are still active before market opens; do not place new stops\n  2. TSLA: if showing further weakness premarket, monitor stop distance \u2014 half-size (12sh) limits damage\n  3. PCG: thin $0.87 cushion above stop \u2014 any gap-down could stop it out; be ready\n  4. TSLA earnings ~Jul 22: if within 14-day window by next evening scan (Jul 8 EOD), flag for potential pre-earnings exit\n\nACCOUNT: equity $100,207.16 (cash $64,850.41)\n\nKNOWN BUGS/ISSUES:\n  - check_earnings.py reads watchlist.json instead of watchlist_trend.json \u2014 workaround in evening scan\n  - yfinance TLS blocked \u2014 earnings dates verified via web search instead\n  - SPY benchmark: 0.00% (unavailable) \u2014 do not use for decisions"
+  "notes_for_next_session": "FOR EOD SCAN AGENT (July 8, 2026 evening):\n\nOPEN POSITIONS (4 total \u2014 all 4 GTC stops confirmed active at Jul 8 market open):\n  SCHW: 103sh @ $97.93 entry, stop $93.28 \u2014 day 4, open $101.42 (+3.57%), strong trend, $8.14 cushion\n  PCG:  586sh @ $17.13 entry, stop $16.29 \u2014 day 4, open $17.12 (-0.07%), TIGHT: only $0.83 cushion; watch for death cross\n  XLU:  218sh @ $45.66 entry, stop $44.37 \u2014 day 4, open $45.54 (-0.27%), thin; $1.17 cushion\n  TSLA: 12sh @ $417.62 entry, stop $381.55 \u2014 day 3, open $397.59 (-4.80%), WEAK: two down days; $16.04 cushion; earnings ~Jul 22\n\nACCOUNT AT MARKET OPEN: equity $99,988.20 (cash $64,850.41)\n  Note: equity declined from last night $100,207.16 \u2014 TSLA and XLU/PCG weakness.\n\nEOD PRIORITIES:\n  1. TSLA earnings check: Jul 22 is exactly 14 days from today \u2014 verify if within blackout window; if yes, flag for pre-earnings exit before Jul 22\n  2. PCG: tight $0.83 cushion \u2014 check end-of-day if price held above $16.29; check for death cross\n  3. XLU: thin; check for death cross signal\n  4. SCHW: holding well; check if stop should be trailed up on strength\n  5. Scan for new golden crosses for Jul 9 entries\n\nKNOWN BUGS/ISSUES:\n  - check_earnings.py reads watchlist.json instead of watchlist_trend.json \u2014 workaround in evening scan\n  - yfinance TLS blocked \u2014 earnings dates verified via web search instead\n  - SPY benchmark: 0.00% (unavailable) \u2014 do not use for decisions"
 }
