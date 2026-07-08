@@ -1,20 +1,20 @@
 {
-  "last_updated": "2026-07-07",
-  "sessions_analyzed": 32,
+  "last_updated": "2026-07-08",
+  "sessions_analyzed": 33,
   "total_trades": 7,
-  "performance_overview": "Through 32 sessions (inception 2026-06-01 through 2026-07-07 EOD) Bull has completed 7 closed trades: 3W/4L (43% win rate). Strategy on MA-20/60 trend following with 4 open positions (SCHW, PCG, XLU, TSLA). Equity $100,207.16 EOD July 7 (+0.25% today, cumulative +0.21% vs SPY 0.00%). SCHW is the standout performer at +4.07% from entry. TSLA is the concern: -3.39% on day 1 with shallow EMA cross, approaching earnings blackout. yfinance TLS block persists (SPY return and earnings checks unreliable via yfinance).",
+  "performance_overview": "Through 33 sessions (inception 2026-06-01 through 2026-07-08 EOD) Bull has completed 7 closed trades: 3W/4L (43% win rate). Strategy on MA-20/60 trend following with 4 open positions (SCHW, PCG, XLU, TSLA). Equity $99,927.82 EOD July 8 (-0.29% today, cumulative -0.07% vs SPY 0.00%). SCHW remains the standout at +4.26% unrealized from entry. TSLA is the major concern at -5.80% with earnings July 22 now exactly 14 days out (entering blackout zone). yfinance TLS block persists (SPY return and earnings checks unreliable via yfinance).",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
   ],
   "avoid": [
-    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% \u2014 every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
-    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% \u2014 confirmed gap-up trap territory; skip on sight",
+    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% — every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
+    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% — confirmed gap-up trap territory; skip on sight",
     "Gap-up opens with RSI >60 on opening bar: zero qualifications across all prior sessions; any name whose live RSI exceeds 60 on the first 1-min bar is a hard skip regardless of setup quality, conviction, or premarket RSI",
-    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar \u2014 the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
+    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar — the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "July 7 EOD: SCHW +4.07% (103sh, entry $97.93, close $101.91, stop $93.28 \u2014 strong trend), PCG +0.19% (586sh, entry $17.13, close $17.16, stop $16.29 \u2014 narrow $0.87 cushion, watch closely), XLU +0.09% (218sh, entry $45.66, close $45.70, stop $44.37 \u2014 thin gain), TSLA -3.39% (12sh, entry $417.62, close $403.47, stop $381.55 \u2014 $21.92 cushion but week position). Evening scan: 1 golden cross (KMI) filtered out \u2014 earnings Jul 15 (8 days), and cross was very shallow (0.04% EMA spread). No death crosses on any open position. SPY benchmark unavailable (persistent TLS block).",
+  "recent_market_context": "July 8 EOD: SCHW $102.10 (+4.26% from entry, stop $93.28 — strong, $8.82 cushion), PCG $16.995 (-0.77% from entry, stop $16.29 — TIGHT: only $0.705 cushion, watch closely), XLU $45.35 (-0.68% from entry, stop $44.37 — thin, $0.98 cushion), TSLA $393.38 (-5.80% from entry, stop $381.55 — WEAK: two down days, $11.83 cushion but concerning trajectory, earnings Jul 22 = 14 days out, at blackout threshold). Today was a down session: 3 of 4 positions fell. Evening scan must run trend_scan.py to check for death crosses especially on TSLA and PCG. SPY benchmark unavailable (persistent TLS block).",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -22,9 +22,9 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "open_price": 101.415,
-      "unrealized_pnl_pct": 3.57,
-      "notes": "Day 4; +3.57% from entry at open Jul 8; strong trend; stop $93.28 has $8.14 cushion; GTC stop confirmed active"
+      "current_price": 102.095,
+      "unrealized_pnl_pct": 4.26,
+      "notes": "Day 3; +4.26% from entry; strong trend; stop $93.28 has $8.82 cushion (8.64%); GTC stop confirmed active"
     },
     {
       "symbol": "PCG",
@@ -32,9 +32,9 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "open_price": 17.115,
-      "unrealized_pnl_pct": -0.07,
-      "notes": "Day 4; -0.07% from entry at open Jul 8; TIGHT: only $0.83 cushion above stop $16.29; GTC stop confirmed active; watch for death cross"
+      "current_price": 16.995,
+      "unrealized_pnl_pct": -0.77,
+      "notes": "Day 3; -0.77% from entry; TIGHT: only $0.705 cushion above stop $16.29 (4.15%); GTC stop confirmed active; HIGH priority for death-cross check tonight"
     },
     {
       "symbol": "XLU",
@@ -42,9 +42,9 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "open_price": 45.535,
-      "unrealized_pnl_pct": -0.27,
-      "notes": "Day 4; -0.27% from entry at open Jul 8; thin; stop $44.37 has $1.17 cushion; GTC stop confirmed active"
+      "current_price": 45.35,
+      "unrealized_pnl_pct": -0.68,
+      "notes": "Day 3; -0.68% from entry; thin; stop $44.37 has $0.98 cushion (2.16%); GTC stop confirmed active; monitor for death cross"
     },
     {
       "symbol": "TSLA",
@@ -52,10 +52,10 @@
       "entry_price": 417.62,
       "current_stop": 381.55,
       "entry_date": "2026-07-07",
-      "open_price": 397.5868,
-      "unrealized_pnl_pct": -4.80,
-      "notes": "Day 3; -4.80% from entry at open Jul 8; WEAK: down two consecutive days; stop $381.55 has $16.04 cushion; earnings ~Jul 22 (14 days out today, approaching blackout); GTC stop confirmed active; HIGH RISK"
+      "current_price": 393.38,
+      "unrealized_pnl_pct": -5.80,
+      "notes": "Day 2; -5.80% from entry; WEAK: two consecutive down days; stop $381.55 has $11.83 cushion (3.01%); earnings Jul 22 = exactly 14 days out TODAY — AT BLACKOUT THRESHOLD; GTC stop confirmed active; flag for pre-earnings exit consideration"
     }
   ],
-  "notes_for_next_session": "FOR EOD SCAN AGENT (July 8, 2026 evening):\n\nOPEN POSITIONS (4 total \u2014 all 4 GTC stops confirmed active at Jul 8 market open):\n  SCHW: 103sh @ $97.93 entry, stop $93.28 \u2014 day 4, open $101.42 (+3.57%), strong trend, $8.14 cushion\n  PCG:  586sh @ $17.13 entry, stop $16.29 \u2014 day 4, open $17.12 (-0.07%), TIGHT: only $0.83 cushion; watch for death cross\n  XLU:  218sh @ $45.66 entry, stop $44.37 \u2014 day 4, open $45.54 (-0.27%), thin; $1.17 cushion\n  TSLA: 12sh @ $417.62 entry, stop $381.55 \u2014 day 3, open $397.59 (-4.80%), WEAK: two down days; $16.04 cushion; earnings ~Jul 22\n\nACCOUNT AT MARKET OPEN: equity $99,988.20 (cash $64,850.41)\n  Note: equity declined from last night $100,207.16 \u2014 TSLA and XLU/PCG weakness.\n\nEOD PRIORITIES:\n  1. TSLA earnings check: Jul 22 is exactly 14 days from today \u2014 verify if within blackout window; if yes, flag for pre-earnings exit before Jul 22\n  2. PCG: tight $0.83 cushion \u2014 check end-of-day if price held above $16.29; check for death cross\n  3. XLU: thin; check for death cross signal\n  4. SCHW: holding well; check if stop should be trailed up on strength\n  5. Scan for new golden crosses for Jul 9 entries\n\nKNOWN BUGS/ISSUES:\n  - check_earnings.py reads watchlist.json instead of watchlist_trend.json \u2014 workaround in evening scan\n  - yfinance TLS blocked \u2014 earnings dates verified via web search instead\n  - SPY benchmark: 0.00% (unavailable) \u2014 do not use for decisions"
+  "notes_for_next_session": "FOR EVENING SCAN AGENT (July 8, 2026 evening — trend_scan.py run):\n\nOPEN POSITIONS (4 total — all 4 GTC stops confirmed active EOD July 8):\n  SCHW: 103sh @ $97.93 entry, stop $93.28 — day 3, close ~$102.10 (+4.26%), strong, $8.82 cushion\n  PCG:  586sh @ $17.13 entry, stop $16.29 — day 3, close ~$17.00 (-0.77%), TIGHT: only $0.705 cushion; HIGH priority death-cross check\n  XLU:  218sh @ $45.66 entry, stop $44.37 — day 3, close ~$45.35 (-0.68%), thin $0.98 cushion; check death cross\n  TSLA: 12sh @ $417.62 entry, stop $381.55 — day 2, close ~$393.38 (-5.80%), WEAK; earnings Jul 22 = 14d out (AT blackout window edge)\n\nACCOUNT EOD: equity $99,927.82 (down -$286.25 / -0.29% today)\n  Starting equity this AM: $100,214.07\n\nEOD PRIORITIES FOR EVENING SCAN:\n  1. TSLA death-cross check: -5.80% from entry across 2 days; if MA-20 crosses below MA-60 tonight, flag EXIT signal for July 9 open; separately, earnings Jul 22 is EXACTLY at the 14-day blackout boundary — any position open on July 8 close = 14 days to Jul 22; evening scan agent must determine if this triggers pre-earnings exit protocol\n  2. PCG death-cross check: only $0.705 cushion above stop; a down open could trigger the GTC stop before market even stabilizes; if death cross detected, flag EXIT signal\n  3. XLU death-cross check: thin $0.98 cushion; trending slightly negative\n  4. SCHW: still strong; no immediate concern but run the cross check\n  5. Scan universe for new golden crosses for Jul 9 entries\n\nKNOWN BUGS/ISSUES:\n  - check_earnings.py reads watchlist.json instead of watchlist_trend.json — workaround in evening scan\n  - yfinance TLS blocked — earnings dates must be verified via web search instead\n  - SPY benchmark: 0.00% (unavailable) — do not use for decisions\n  - read_json('data/X') double-prepends DATA_DIR (resolves to data/data/X) — use absolute paths or pass bare filename"
 }
