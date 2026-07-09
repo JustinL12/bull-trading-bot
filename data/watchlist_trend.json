@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "symbol": "CMG",
+    "close": 34.595,
+    "atr": 1.1634,
+    "ema_fast": 33.086,
+    "ema_slow": 32.9882,
+    "avg_volume_20d": 1348419,
+    "signal": "golden_cross",
+    "scanned_at": "2026-07-09T20:04:10.060179+00:00"
+  }
+]
