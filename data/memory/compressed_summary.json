@@ -1,20 +1,20 @@
 {
   "last_updated": "2026-07-09",
-  "sessions_analyzed": 34,
+  "sessions_analyzed": 35,
   "total_trades": 7,
-  "performance_overview": "Through 34 sessions (inception 2026-06-01 through 2026-07-08 evening scan) Bull has completed 7 closed trades: 3W/4L (43% win rate). Strategy on MA-20/60 trend following with 4 open positions (SCHW, PCG, XLU, TSLA). Equity $99,933.13 evening July 8 (cumulative -0.07% vs SPY 0.00%). SCHW remains the standout at +4.26% unrealized. TSLA is the major concern at -5.80% from entry and now firmly inside the 14-day earnings blackout window (Jul 22 earnings = 13 days away). yfinance TLS block persists.",
+  "performance_overview": "Through 35 sessions (inception 2026-06-01 through 2026-07-09 EOD) Bull has completed 7 closed trades: 3W/4L (43% win rate). MA-20/60 trend-following strategy holds 4 open positions (SCHW, PCG, XLU, TSLA). Equity ~$100,093 EOD July 9 (cumulative +0.09% vs SPY 0.00%). Today was a positive session: +$153.77 (+0.15%), led by SCHW extending to +3.94% unrealized and a strong TSLA intraday bounce from -6.31% at open to -3.05% at close.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
   ],
   "avoid": [
-    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% \u2014 every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
-    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% \u2014 confirmed gap-up trap territory; skip on sight",
+    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% — every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
+    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% — confirmed gap-up trap territory; skip on sight",
     "Gap-up opens with RSI >60 on opening bar: zero qualifications across all prior sessions; any name whose live RSI exceeds 60 on the first 1-min bar is a hard skip regardless of setup quality, conviction, or premarket RSI",
-    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar \u2014 the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
+    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar — the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "July 8 evening scan: Zero golden crosses and zero death crosses across full 553-ticker universe. All 4 open positions carry into July 9 \u2014 no forced exits. SCHW ($102.10, +4.26% from entry, $8.82 above stop $93.28) remains the portfolio anchor. PCG ($16.995, -0.77%, stop cushion ~$0.70) is HIGHEST RISK of auto-exit on any soft open \u2014 GTC stop $16.29 just below. XLU ($45.35, -0.68%, stop $44.37, cushion $0.98). TSLA ($393.38, -5.80%, stop $381.55, cushion $11.83): WEAK across 3 down days; earnings Jul 22 is NOW 13 calendar days away \u2014 firmly inside the 14-day blackout window (entry was Jul 7 at 15 days, now inside). No entry candidates for Jul 9. SPY benchmark unavailable (TLS block).",
+  "recent_market_context": "July 9 EOD: No golden or death crosses detected in the 553-ticker universe. TSLA bounced sharply intraday from $391.26 (open, -6.31%) to $404.88 (close, -3.05%) — a meaningful recovery but still below entry $417.62. SCHW held at $101.78 (+3.94%), PCG flat at $17.165 (+0.22%), XLU slightly down at $45.10 (-1.23%). Portfolio up +$153.77 on the day. SPY benchmark still unavailable (yfinance TLS block). Broad market posture unclear; no cross signals suggest trend is stable.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -22,9 +22,9 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "current_price": 101.025,
-      "unrealized_pnl_pct": 3.16,
-      "notes": "Day 4; +3.16% from entry; stop 93.28, cushion 7.75 (7.67%); GTC stop confirmed active"
+      "current_price": 101.78,
+      "unrealized_pnl_pct": 3.94,
+      "notes": "Day 4; +3.94% from entry; stop $93.28, cushion $8.50 (8.35%); GTC stop confirmed active; portfolio anchor"
     },
     {
       "symbol": "PCG",
@@ -32,9 +32,9 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "current_price": 17.175,
-      "unrealized_pnl_pct": 0.28,
-      "notes": "Day 4; +0.28% from entry; cushion improved to 0.89 at open; GTC stop confirmed active"
+      "current_price": 17.165,
+      "unrealized_pnl_pct": 0.22,
+      "notes": "Day 4; +0.22% from entry; stop $16.29, cushion $0.875 (5.1%); GTC stop confirmed active; cushion remains thin — watch for any morning weakness"
     },
     {
       "symbol": "XLU",
@@ -42,9 +42,9 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "current_price": 45.6,
-      "unrealized_pnl_pct": -0.13,
-      "notes": "Day 4; -0.13% from entry; cushion 1.23 at open; GTC stop confirmed active"
+      "current_price": 45.10,
+      "unrealized_pnl_pct": -1.23,
+      "notes": "Day 4; -1.23% from entry; stop $44.37, cushion $0.73 (1.62%); GTC stop confirmed active; thin cushion, any soft open could test the stop"
     },
     {
       "symbol": "TSLA",
@@ -52,10 +52,10 @@
       "entry_price": 417.62,
       "current_stop": 381.55,
       "entry_date": "2026-07-07",
-      "current_price": 391.255,
-      "unrealized_pnl_pct": -6.31,
-      "notes": "Day 3; -6.31% from entry; WEAK continued slide; stop 381.55 has 9.71 cushion (2.48%); earnings Jul 22 = 13 days, inside blackout; GTC stop is primary protection"
+      "current_price": 404.88,
+      "unrealized_pnl_pct": -3.05,
+      "notes": "Day 3; -3.05% from entry (recovered from -6.31% intraday low); stop $381.55, cushion $23.33 (5.76%); GTC stop confirmed active; earnings Jul 22 = 13 days away (inside 14-day blackout); GTC stop is primary protection; no death cross yet"
     }
   ],
-  "notes_for_next_session": "FOR EOD AGENT (July 9, 2026 evening scan):\n\nOPEN POSITIONS (4 total -- all GTC stops confirmed active at open):\n  SCHW: 103sh @ 97.93 entry, stop 93.28 -- open ~101.03 (+3.16%), solid, 7.75 cushion\n  PCG:  586sh @ 17.13 entry, stop 16.29 -- open ~17.18 (+0.28%), cushion 0.89 (improved from 0.70 last night)\n  XLU:  218sh @ 45.66 entry, stop 44.37 -- open ~45.60 (-0.13%), cushion 1.23\n  TSLA: 12sh @ 417.62 entry, stop 381.55 -- open ~391.26 (-6.31%), WEAK; 3rd+ consecutive down day; earnings Jul 22 = 13 days (inside blackout); GTC stop primary protection\n\nMARKET OPEN ACTIONS TAKEN (Jul 9):\n  No exits executed (exit_signals.json was empty)\n  No entries executed (watchlist_trend.json was empty)\n  All 4 GTC stops verified active at Alpaca\n\nEOD PRIORITIES:\n  Run trend scan -- check for golden/death crosses across 553-ticker universe\n  TSLA: if close <390, consider flagging for exit (stop at 381.55 still provides floor; but trend is deteriorating)\n  PCG: monitor -- if it closes below 17.00 again, cushion becomes very thin\n  Check if SCHW or PCG have set new highs -- update trailing stops if Donchian rules trigger\n\nKNOWN ISSUES:\n  yfinance TLS blocked -- use web search for prices/VIX\n  check_earnings.py reads watchlist.json not watchlist_trend.json\n  read_json('data/X') double-prepends DATA_DIR -- use absolute paths\nACCOUNT: equity ~99957.91, buying_power ~353941.77"
+  "notes_for_next_session": "FOR EVENING SCAN AGENT (July 10, 2026):\n\nOPEN POSITIONS (4 total — all GTC stops confirmed active at Alpaca EOD Jul 9):\n  SCHW: 103sh @ 97.93 entry, stop $93.28, close $101.78 (+3.94%) — portfolio anchor, solid cushion $8.50\n  PCG:  586sh @ 17.13 entry, stop $16.29, close $17.165 (+0.22%) — THIN cushion $0.875; top stop-out risk\n  XLU:  218sh @ 45.66 entry, stop $44.37, close $45.10 (-1.23%) — THIN cushion $0.73; secondary stop risk\n  TSLA: 12sh @ 417.62 entry, stop $381.55, close $404.88 (-3.05%) — bounced today from -6.31%; earnings Jul 22 = 13 days (inside blackout); GTC stop is primary protection\n\nTODAY'S RESULTS (Jul 9):\n  P&L: +$153.77 (+0.15%); cumulative: +0.09% vs SPY 0.00%\n  No trades executed (no entries, no exits, no crosses)\n  All 4 GTC stops confirmed active at Alpaca\n\nEOD PRIORITIES FOR JUL 10:\n  Run trend_scan.py — check for golden/death crosses across 553-ticker universe\n  TSLA: bounced today; watch if it holds above $400 on open — death cross check is critical (earnings Jul 22 = 12 days on Jul 10)\n  PCG: cushion $0.875 — if it opens below $16.80, stop likely triggered automatically; don't re-enter same day\n  XLU: cushion $0.73 — similar thin margin; any broad market weakness could trigger GTC stop\n  SCHW: no action needed; let the winner run\n  No active watchlist candidates (all golden cross scans empty since Jul 6)\n\nKNOWN ISSUES:\n  yfinance TLS blocked — use web search for prices/VIX or Alpaca for position prices\n  read_json('data/X') double-prepends DATA_DIR — use absolute paths in scripts\n  ACCOUNT: equity ~$100,093, buying_power ~$354,195"
 }
