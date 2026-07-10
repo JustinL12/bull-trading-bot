@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-07-09",
-  "sessions_analyzed": 35,
+  "last_updated": "2026-07-10",
+  "sessions_analyzed": 36,
   "total_trades": 7,
-  "performance_overview": "Through 35 sessions (inception 2026-06-01 through 2026-07-09 EOD) Bull has completed 7 closed trades: 3W/4L (43% win rate). MA-20/60 trend-following strategy holds 4 open positions (SCHW, PCG, XLU, TSLA). Equity ~$100,093 EOD July 9 (cumulative +0.09% vs SPY 0.00%). Today was a positive session: +$153.77 (+0.15%), led by SCHW extending to +3.94% unrealized and a strong TSLA intraday bounce from -6.31% at open to -3.05% at close.",
+  "performance_overview": "Through 36 sessions (inception 2026-06-01 through 2026-07-10 market open) Bull has completed 7 closed trades: 3W/4L (43% win rate). MA-20/60 trend-following strategy now holds 5 open positions (SCHW, PCG, XLU, TSLA, CMG). Equity $100,324.24 at market open July 10 (account refreshed). CMG entered today at $35.099 (289sh), stop $32.27.",
   "best_signals": [
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
   ],
@@ -14,7 +14,7 @@
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Jul 9 evening scan: 2 golden crosses detected (NOW, CMG). NOW removed \u2014 earnings July 22 (13 days). CMG is a shallow cross: EMA-20 $33.09 vs EMA-60 $32.99 (only $0.10 gap, 0.3%). Price $34.60 ran 4.6% above EMA-20 suggesting lagging cross. CMG earnings July 29 (20 days). No death crosses. Portfolio EOD: SCHW +3.97%, PCG +0.31%, XLU -1.18%, TSLA -2.57%. Equity $100,123.",
+  "recent_market_context": "Jul 10 market open: CMG entered at $35.099 (289sh), stop $32.27. VIX 16.79 (obtained via web search; yfinance TLS blocked). No exits today. Portfolio at 5 positions (SCHW, PCG, XLU, TSLA, CMG). Equity $100,324.24 at open refresh. Jul 9 EOD context: SCHW +3.97%, PCG +0.31%, XLU -1.18%, TSLA -2.57%. CMG earnings July 29 (19 days from today).",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -24,7 +24,7 @@
       "entry_date": "2026-07-06",
       "current_price": 101.81,
       "unrealized_pnl_pct": 3.97,
-      "notes": "Day 4; +3.97% from entry; stop $93.28, cushion $8.53; portfolio anchor \u2014 let run"
+      "notes": "Day 5; +3.97% from entry (Jul 9 close); stop $93.28, cushion $8.53; portfolio anchor \u2014 let run"
     },
     {
       "symbol": "PCG",
@@ -34,7 +34,7 @@
       "entry_date": "2026-07-06",
       "current_price": 17.18,
       "unrealized_pnl_pct": 0.31,
-      "notes": "Day 4; +0.31% from entry; stop $16.29, cushion $0.89 (5.2%); thin \u2014 watch open"
+      "notes": "Day 5; +0.31% from entry (Jul 9 close); stop $16.29, cushion $0.89 (5.2%); thin \u2014 watch intraday"
     },
     {
       "symbol": "XLU",
@@ -44,7 +44,7 @@
       "entry_date": "2026-07-06",
       "current_price": 45.12,
       "unrealized_pnl_pct": -1.18,
-      "notes": "Day 4; -1.18% from entry; stop $44.37, cushion $0.75 (1.66%); thin \u2014 any weakness triggers stop"
+      "notes": "Day 5; -1.18% from entry (Jul 9 close); stop $44.37, cushion $0.75 (1.66%); thin \u2014 stop risk persists"
     },
     {
       "symbol": "TSLA",
@@ -54,8 +54,18 @@
       "entry_date": "2026-07-07",
       "current_price": 406.87,
       "unrealized_pnl_pct": -2.57,
-      "notes": "Day 3; -2.57% from entry; stop $381.55, cushion $25.32 (6.23%); earnings Jul 22 = 13 days (inside blackout on Jul 10). No death cross. GTC stop is primary protection."
+      "notes": "Day 4; -2.57% from entry (Jul 9 close); stop $381.55, cushion $25.32 (6.23%); earnings Jul 22 = 12 days. GTC stop is primary protection."
+    },
+    {
+      "symbol": "CMG",
+      "shares": 289,
+      "entry_price": 35.099447,
+      "current_stop": 32.27,
+      "entry_date": "2026-07-10",
+      "current_price": 35.099447,
+      "unrealized_pnl_pct": 0.0,
+      "notes": "Day 1; entered today at open $35.099 (gapped from $34.60 close); stop $32.27 = fill - 2xATR (ATR 1.4147); shallow EMA cross (0.3% gap); earnings Jul 29 (19 days \u2014 outside 14d blackout today, crosses into it around Jul 15)"
     }
   ],
-  "notes_for_next_session": "FOR MARKET OPEN AGENT (July 10, 2026):\n\nENTRY SIGNAL \u2014 1 candidate:\n  CMG: golden cross, close $34.60, ATR $1.16 (3.35%), avg vol 1.35M\n  WARNING: SHALLOW CROSS \u2014 EMA-20 ($33.09) only $0.10 above EMA-60 ($32.99). High reversal risk. Price has run ahead of the cross. Execute per strategy but size conservatively (consider 0.75x normal position). Earnings July 29 (20 days \u2014 outside blackout but will be inside 14-day window in ~6 days; plan to exit before Jul 22 if position lags).\n\nEXIT SIGNALS \u2014 none. All 4 GTC stops remain active.\n\nOPEN POSITIONS (verify GTC stops at open):\n  SCHW: 103sh @ 97.93 entry, close $101.81 (+3.97%), stop $93.28 \u2014 let run, no action\n  PCG:  586sh @ 17.13 entry, close $17.18 (+0.31%), stop $16.29 \u2014 THIN; monitor open\n  XLU:  218sh @ 45.66 entry, close $45.12 (-1.18%), stop $44.37 \u2014 THIN; stop risk at open\n  TSLA: 12sh @ 417.62 entry, close $406.87 (-2.57%), stop $381.55 \u2014 earnings Jul 22 (13d); no action needed\n\nKNOWN ISSUES:\n  yfinance TLS blocked \u2014 use Alpaca API or web search for prices; SPY benchmark unavailable\n  check_earnings.py reads watchlist.json not watchlist_trend.json \u2014 run manual earnings check via web search\n  ACCOUNT: equity $100,123, buying_power $354,260"
+  "notes_for_next_session": "FOR EOD AGENT (July 10, 2026):\n\nACTIONS TAKEN TODAY:\n  CMG entered: 289sh @ $35.099, stop $32.27, alpaca_order_id=46e4de4a, stop_order_id=3292008f\n  No exits (exit_signals.json was empty)\n\nOPEN POSITIONS (5 total):\n  SCHW: 103sh @ $97.93 entry, stop $93.28 \u2014 portfolio anchor, let run\n  PCG:  586sh @ $17.13 entry, stop $16.29 \u2014 THIN cushion ($0.89), watch close\n  XLU:  218sh @ $45.66 entry, stop $44.37 \u2014 THIN cushion ($0.75), stop risk persists\n  TSLA: 12sh @ $417.62 entry, stop $381.55 \u2014 earnings Jul 22 (12 days); GTC protects\n  CMG:  289sh @ $35.099 entry, stop $32.27 \u2014 Day 1; shallow cross; earnings Jul 29 (19d)\n\nKEY RISK FLAGS:\n  CMG earnings Jul 29: enters 14-day blackout around Jul 15. If position is lagging or reverses, exit before blackout.\n  TSLA earnings Jul 22: now 12 days out (firmly inside 14-day blackout). Monitor for death cross.\n  XLU and PCG: both have thin stop cushions; any weak close could mean an automatic GTC exit tomorrow.\n\nKNOWN ISSUES:\n  yfinance TLS blocked \u2014 use Alpaca API or web search for prices; SPY benchmark unavailable\n  check_earnings.py reads watchlist.json not watchlist_trend.json \u2014 run manual earnings check via web search\n  ACCOUNT: equity $100,324.24, buying_power $354,802"
 }

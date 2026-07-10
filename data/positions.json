@@ -54,5 +54,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "b482b848-a93f-43de-a1f4-740662781bbc",
     "stop_order_id": "605f9604-b7a9-474b-88e5-7dcfe93b158b"
+  },
+  "CMG": {
+    "symbol": "CMG",
+    "entry_price": 35.099447,
+    "shares": 289,
+    "entry_time": "2026-07-10T13:35:46.100738+00:00",
+    "atr_at_entry": 1.4147,
+    "initial_stop": 32.27,
+    "current_stop": 32.27,
+    "highest_close_since_entry": 35.099447,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "46e4de4a-1610-40af-bdc7-92b9bc096e63",
+    "stop_order_id": "3292008f-8be8-429b-a383-0aa5ccc418f8"
   }
 }
