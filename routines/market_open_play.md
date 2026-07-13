@@ -85,12 +85,10 @@ Re-read data/account.json. Verify:
 - Note buying_power
 
 ### VIX check
-```python
-import yfinance as yf
-vix = yf.Ticker('^VIX').fast_info.get('lastPrice', 0)
-print(f'VIX: {vix}')
 ```
-If VIX > 40 (VIX_SUSPEND_THRESHOLD in config.py): suspend all new entries. Process exits only. Log the suspension in the journal.
+python scripts/get_vix.py
+```
+Re-read data/vix.json. If `suspend_entries` is true (VIX > 40, VIX_SUSPEND_THRESHOLD in config.py -- or the fetch itself failed, in which case the script fails closed and already posted an attention alert): suspend all new entries. Process exits only. Log the suspension in the journal.
 
 ### Position cap check
 Read data/positions.json. Count open positions. If already at TURTLE_MAX_POSITIONS (20 from config.py): skip new entries entirely.
