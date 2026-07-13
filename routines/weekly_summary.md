@@ -71,11 +71,14 @@ Write a temporary Python script `_weekly_stats.py` to crunch the numbers:
 ```python
 import json, sys
 from pathlib import Path
-from datetime import date, timedelta
-import yfinance as yf
+from datetime import date, datetime, timedelta, timezone
+import pandas as pd
+from alpaca.data.requests import StockBarsRequest
+from alpaca.data.timeframe import TimeFrame
 
 sys.path.insert(0, '.')
 from lib.state import read_jsonl, read_json
+from lib.alpaca_client import get_data_client
 
 today = date.today()
 week_start = today - timedelta(days=today.weekday())  # Monday
@@ -113,13 +116,22 @@ eod_entries = [
     and e.get('date', '') in week_dates
 ]
 
-# SPY weekly return
+# SPY weekly return (Alpaca, not yfinance -- yfinance is blocked from cloud/CI IPs)
 try:
-    spy = yf.Ticker('SPY')
-    hist = spy.history(period='7d')
+    data_client = get_data_client()
+    req = StockBarsRequest(
+        symbol_or_symbols='SPY',
+        timeframe=TimeFrame.Day,
+        start=datetime.now(timezone.utc) - timedelta(days=14),
+        end=datetime.now(timezone.utc),
+        feed='iex',
+    )
+    hist = data_client.get_stock_bars(req).df
+    if isinstance(hist.index, pd.MultiIndex):
+        hist = hist.xs('SPY', level='symbol')
     if len(hist) >= 5:
-        spy_week_start = float(hist['Close'].iloc[-5])
-        spy_week_end   = float(hist['Close'].iloc[-1])
+        spy_week_start = float(hist['close'].iloc[-5])
+        spy_week_end   = float(hist['close'].iloc[-1])
         spy_weekly_pct = round((spy_week_end - spy_week_start) / spy_week_start * 100, 4)
     else:
         spy_weekly_pct = 0.0
