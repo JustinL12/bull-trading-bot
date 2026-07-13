@@ -2,19 +2,19 @@
   "last_updated": "2026-07-13",
   "sessions_analyzed": 40,
   "total_trades": 7,
-  "performance_overview": "Through 40 sessions (inception 2026-06-01) Bull has completed 7 closed trades: 3W/4L (43% win rate). MA-20/60 trend-following holds 5 open positions (SCHW, PCG, XLU, TSLA, CMG) with cumulative return +0.66% ($100,664.67 vs $100,000 initial). Today (Jul 13 EOD): +$295.29 (+0.29%), pure carry day — no exits, no entries. All gains from mark-to-market on overnight holds.",
+  "performance_overview": "Through 41 sessions (inception 2026-06-01) Bull holds 5 open positions (SCHW, PCG, XLU, TSLA, CMG). Equity $100,714.52 (+0.71% from $100K inception). Today Jul 13: +$335.79 (+0.33%). TSLA death cross triggered tonight \u2014 exit at Jul 14 open. GIS golden cross (shallow) \u2014 enter at Jul 14 open. CMG no death cross; hold through blackout.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
   ],
   "avoid": [
-    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% — every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
-    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% — confirmed gap-up trap territory; skip on sight",
+    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% \u2014 every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
+    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% \u2014 confirmed gap-up trap territory; skip on sight",
     "Gap-up opens with RSI >60 on opening bar: zero qualifications across all prior sessions; any name whose live RSI exceeds 60 on the first 1-min bar is a hard skip regardless of setup quality, conviction, or premarket RSI",
-    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar — the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
+    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar \u2014 the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Jul 7-13: Pure trend-holding week. No entries or exits across 5 sessions. VIX ~21 (inferred via VXX; yfinance TLS still blocked). Market calm enough to let MA-crossover positions run. SCHW: clear bull trend from entry, largest unrealized winner. TSLA: declining since entry (-6.02%), inside earnings blackout (Jul 22). CMG: trending up (+3.63%), blackout threshold arrives Jul 15 (Wednesday).",
+  "recent_market_context": "Jul 13 EOD: Equity $100,714.52 (+$335.79 / +0.33% day). Evening scan: 1 exit signal (TSLA death cross), 1 entry signal (GIS golden cross, shallow). TSLA declining steadily since Jul 7 entry; EMA20 now crossed below EMA60 on Jul 13 close. GIS cross spread only $0.015 \u2014 marginal signal but technically valid. CMG: no death cross, trending up +3.63%; blackout starts Jul 15. SCHW/PCG/XLU: all healthy, no signals. yfinance TLS still blocked.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -24,7 +24,7 @@
       "entry_date": "2026-07-06",
       "current_price": 102.52,
       "unrealized_pnl_pct": 4.69,
-      "notes": "Day 6 EOD; +4.69% from entry; stop $93.28, cushion $9.24 (9.01%); portfolio anchor — strong trend, let run. No death cross."
+      "notes": "Day 7 hold; +4.69% from entry; stop $93.28; strong trend, no death cross."
     },
     {
       "symbol": "PCG",
@@ -32,9 +32,9 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "current_price": 17.40,
+      "current_price": 17.4,
       "unrealized_pnl_pct": 1.59,
-      "notes": "Day 6 EOD; +1.59% from entry; stop $16.29, cushion $1.11 (6.38%); steady improvement — cushion widening."
+      "notes": "Day 7 hold; +1.59% from entry; stop $16.29; steady improvement, no death cross."
     },
     {
       "symbol": "XLU",
@@ -44,7 +44,7 @@
       "entry_date": "2026-07-06",
       "current_price": 45.77,
       "unrealized_pnl_pct": 0.24,
-      "notes": "Day 6 EOD; +0.24% from entry; stop $44.37, cushion $1.40 (3.06%); recovering from earlier flatness — first meaningful close above entry."
+      "notes": "Day 7 hold; +0.24% from entry; stop $44.37; recovering slowly, no death cross."
     },
     {
       "symbol": "TSLA",
@@ -52,9 +52,9 @@
       "entry_price": 417.62,
       "current_stop": 381.55,
       "entry_date": "2026-07-07",
-      "current_price": 392.47,
-      "unrealized_pnl_pct": -6.02,
-      "notes": "Day 5 EOD; -6.02% from entry; stop $381.55, cushion $10.92 (2.78%); NARROWING — continued decline. EARNINGS JUL 22 (9 calendar days) — firmly inside 14-day blackout. GTC stop is sole protection. Cushion now below 3%; watch for death cross in evening scan."
+      "current_price": 394.86,
+      "unrealized_pnl_pct": -5.46,
+      "notes": "DEATH CROSS CONFIRMED Jul 13. EXIT at tomorrow open. EMA20 402.84 < EMA60 403.35. Price 394.86 well below both EMAs. Earnings Jul 22."
     },
     {
       "symbol": "CMG",
@@ -64,8 +64,8 @@
       "entry_date": "2026-07-10",
       "current_price": 36.375,
       "unrealized_pnl_pct": 3.63,
-      "notes": "Day 2 EOD; +3.63% from entry; stop $32.27, cushion $4.105 (11.29%); trending strongly. CRITICAL: 14-day earnings blackout (Jul 29) opens Jul 15 (Wednesday, 2 trading days). Evening scan tonight MUST decide: EXIT before Jul 14 close or HOLD to GTC stop. CMG is trending up; hold only if no death cross AND momentum intact."
+      "notes": "Day 3 hold; +3.63% from entry; stop $32.27. No death cross Jul 13. HOLDING through blackout (Jul 15 onwards). GTC stop is sole exit mechanism through Jul 28."
     }
   ],
-  "notes_for_next_session": "FOR EVENING SCAN AGENT (July 13, 2026 — running tonight after EOD):\n\nEOD RESULT (Jul 13):\n  P&L: +$295.29 (+0.29%)\n  No exits, no entries. Pure carry day.\n  All 5 GTC stops verified active at Alpaca (exact prices).\n\nFINAL EOD PRICES (Alpaca):\n  SCHW: $102.52 (+4.69% unrealized), stop $93.28, cushion $9.24 (9.01%)\n  PCG:  $17.40 (+1.59%), stop $16.29, cushion $1.11 (6.38%)\n  XLU:  $45.77 (+0.24%), stop $44.37, cushion $1.40 (3.06%)\n  TSLA: $392.47 (-6.02%), stop $381.55, cushion $10.92 (2.78%) — THINNING\n  CMG:  $36.375 (+3.63%), stop $32.27, cushion $4.105 (11.29%)\n\nCRITICAL DECISIONS FOR EVENING SCAN:\n\n  1. CMG BLACKOUT DECISION (URGENT — last chance tonight):\n     Earnings Jul 29 = 16 calendar days. 14-day blackout opens Jul 15 (Wednesday).\n     Tomorrow Jul 14 (Tuesday) is the LAST normal trading day before blackout.\n     Evening scan MUST explicitly decide: EXIT CMG before tomorrow open (take +3.63%) OR HOLD\n     to GTC stop through the blackout. CMG is trending up strongly. Recommend hold ONLY if\n     no death cross on Jul 13 close data AND uptrend remains intact.\n     If holding: you are committed to GTC stop as the only exit mechanism through Jul 28.\n\n  2. TSLA CUSHION WATCH:\n     Cushion now only 2.78% ($10.92). TSLA has declined -6.02% since Jul 7 entry.\n     Earnings Jul 22 (9 calendar days) = inside blackout. Do NOT force-exit.\n     Watch for death cross on evening scan — if detected, exit tomorrow morning.\n     If no death cross: hold to GTC stop $381.55. Cushion is thin but not yet stopped.\n\n  3. SCHW/PCG/XLU: All healthy. Let GTC stops manage. No action needed.\n\nACCOUNT STATE:\n  Equity: ~$100,660.93, buying_power: $343,729.13\n  Cumulative: +$660.93 (+0.66% from $100K inception)\n\nKNOWN ISSUES:\n  yfinance TLS blocked — use Alpaca API only for prices\n  SPY benchmark unavailable (cumulative_spy_pct stays 0.0)"
+  "notes_for_next_session": "FOR MARKET-OPEN AGENT (July 14, 2026 \u2014 Tuesday):\n\nACTIONS AT OPEN (in priority order):\n\n  1. EXIT TSLA FIRST (death cross confirmed Jul 13 EOD):\n     - Sell all 12 shares TSLA at market open.\n     - Entry was $417.62; current ~$394.86 = ~-5.5% loss.\n     - Cancel/confirm GTC stop $381.55 is cancelled after fill.\n     - Do NOT re-enter TSLA (earnings Jul 22 = inside 14-day blackout).\n\n  2. ENTER GIS (golden cross Jul 13 EOD):\n     - Signal: EMA20 35.633 crossed above EMA60 35.618 on close $36.60.\n     - CAUTION: Cross spread only $0.015 \u2014 VERY shallow. Size conservatively.\n       Recommend 50-75% of normal position size given cross quality.\n     - ATR $1.10 (~3% of price), volume 721k \u2014 otherwise solid.\n     - Earnings: yfinance TLS blocked; GIS (General Mills) typically reports\n       September (fiscal Q1) \u2014 estimated 60+ days out, clear of 14-day window.\n     - Set ATR-based GTC stop at entry (use config formula).\n\n  3. CMG \u2014 NO ACTION (hold):\n     - No death cross on Jul 13 scan. Trend intact at +3.63%.\n     - Blackout opens Jul 15 (Wednesday) \u2014 today Jul 14 is LAST entry-eligible day\n       but CMG is an EXISTING position, not a new entry. HOLD to GTC stop $32.27.\n     - Do not force-exit. GTC stop is the exit mechanism through Jul 28.\n\n  4. SCHW / PCG / XLU \u2014 NO ACTION:\n     - All healthy, no death crosses. Let GTC stops manage.\n\nACCOUNT STATE (Jul 13 EOD):\n  Equity: $100,714.52 | Buying power: $343,863.94\n  Cumulative: +$714.52 (+0.71% from $100K inception)\n  Today: +$335.79 (+0.33%)\n\nKNOWN ISSUES:\n  - yfinance TLS still blocked \u2014 use Alpaca API only for prices\n  - SPY benchmark unavailable (cumulative_spy_pct stays 0.0)\n  - check_earnings.py reads data/watchlist.json not data/watchlist_trend.json;\n    earnings verification for trend candidates requires manual assessment"
 }

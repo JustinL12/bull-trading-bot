@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "symbol": "GIS",
+    "close": 36.6,
+    "atr": 1.0965,
+    "ema_fast": 35.633,
+    "ema_slow": 35.6177,
+    "avg_volume_20d": 721081,
+    "signal": "golden_cross",
+    "scanned_at": "2026-07-13T20:03:46.515266+00:00"
+  }
+]
