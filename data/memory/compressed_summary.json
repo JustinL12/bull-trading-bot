@@ -1,8 +1,8 @@
 {
   "last_updated": "2026-07-13",
-  "sessions_analyzed": 39,
+  "sessions_analyzed": 40,
   "total_trades": 7,
-  "performance_overview": "Through 39 sessions (inception 2026-06-01 through 2026-07-13 market open) Bull has completed 7 closed trades: 3W/4L (43% win rate). MA-20/60 trend-following strategy holds 5 open positions (SCHW, PCG, XLU, TSLA, CMG). Cumulative return ~+0.82% (equity $100,763 vs $100,000 initial). No new entries or exits at Jul 13 open (watchlist_trend and exit_signals both empty). Today P&L: +$393.88 (+0.39%). Equity $100,763.26.",
+  "performance_overview": "Through 40 sessions (inception 2026-06-01) Bull has completed 7 closed trades: 3W/4L (43% win rate). MA-20/60 trend-following holds 5 open positions (SCHW, PCG, XLU, TSLA, CMG) with cumulative return +0.66% ($100,664.67 vs $100,000 initial). Today (Jul 13 EOD): +$295.29 (+0.29%), pure carry day — no exits, no entries. All gains from mark-to-market on overnight holds.",
   "best_signals": [
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
   ],
@@ -14,7 +14,7 @@
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Jul 13 (Mon) market open: 0 exits, 0 entries. Equity $100,763.26 (+$393.88, +0.39% from prior close). 5 positions: SCHW +5.91% (portfolio anchor, trending strongly), CMG Day 4 +3.15% (strong upward momentum), PCG +1.24% (improved from flat), XLU -0.07% (essentially flat), TSLA -4.04% (continued slide, earnings Jul 22 = 9 calendar days). All GTC stops active. VIX ~21 (inferred from VXX $21.36, yfinance TLS still blocked). CMG CRITICAL: earnings blackout (14-day window before Jul 29) begins Jul 15 (Wednesday, 2 trading days). CMG trending up (+3.15% today), which favors holding; but EOD/evening scan MUST evaluate CMG exit vs hold before Wednesday open.",
+  "recent_market_context": "Jul 7-13: Pure trend-holding week. No entries or exits across 5 sessions. VIX ~21 (inferred via VXX; yfinance TLS still blocked). Market calm enough to let MA-crossover positions run. SCHW: clear bull trend from entry, largest unrealized winner. TSLA: declining since entry (-6.02%), inside earnings blackout (Jul 22). CMG: trending up (+3.63%), blackout threshold arrives Jul 15 (Wednesday).",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -22,9 +22,9 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "current_price": 103.71,
-      "unrealized_pnl_pct": 5.91,
-      "notes": "Day 6 (Mon Jul 13); +5.91% from entry; stop $93.28, cushion $10.43 (10.06%); portfolio anchor — strong trend, let run"
+      "current_price": 102.52,
+      "unrealized_pnl_pct": 4.69,
+      "notes": "Day 6 EOD; +4.69% from entry; stop $93.28, cushion $9.24 (9.01%); portfolio anchor — strong trend, let run. No death cross."
     },
     {
       "symbol": "PCG",
@@ -32,9 +32,9 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "current_price": 17.34,
-      "unrealized_pnl_pct": 1.24,
-      "notes": "Day 6 (Mon Jul 13); +1.24% from entry; stop $16.29, cushion $1.05 (6.06%); improved from flat last week — cushion widening, healthy"
+      "current_price": 17.40,
+      "unrealized_pnl_pct": 1.59,
+      "notes": "Day 6 EOD; +1.59% from entry; stop $16.29, cushion $1.11 (6.38%); steady improvement — cushion widening."
     },
     {
       "symbol": "XLU",
@@ -42,9 +42,9 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "current_price": 45.63,
-      "unrealized_pnl_pct": -0.07,
-      "notes": "Day 6 (Mon Jul 13); -0.07% from entry; stop $44.37, cushion $1.26 (2.77%); essentially flat — cushion improved slightly from last week"
+      "current_price": 45.77,
+      "unrealized_pnl_pct": 0.24,
+      "notes": "Day 6 EOD; +0.24% from entry; stop $44.37, cushion $1.40 (3.06%); recovering from earlier flatness — first meaningful close above entry."
     },
     {
       "symbol": "TSLA",
@@ -52,9 +52,9 @@
       "entry_price": 417.62,
       "current_stop": 381.55,
       "entry_date": "2026-07-07",
-      "current_price": 400.74,
-      "unrealized_pnl_pct": -4.04,
-      "notes": "Day 5 (Mon Jul 13); -4.04% from entry; stop $381.55, cushion $19.19 (4.79%); continued decline from entry. EARNINGS JUL 22 = 9 calendar days — firmly inside 14-day blackout. GTC stop is sole protection; exit ONLY on death cross from evening scan."
+      "current_price": 392.47,
+      "unrealized_pnl_pct": -6.02,
+      "notes": "Day 5 EOD; -6.02% from entry; stop $381.55, cushion $10.92 (2.78%); NARROWING — continued decline. EARNINGS JUL 22 (9 calendar days) — firmly inside 14-day blackout. GTC stop is sole protection. Cushion now below 3%; watch for death cross in evening scan."
     },
     {
       "symbol": "CMG",
@@ -62,10 +62,10 @@
       "entry_price": 35.099447,
       "current_stop": 32.27,
       "entry_date": "2026-07-10",
-      "current_price": 36.205,
-      "unrealized_pnl_pct": 3.15,
-      "notes": "Day 4 (Mon Jul 13); +3.15% from entry; stop $32.27, cushion $3.935 (10.87%); trending up strongly. EARNINGS JUL 29 = 16 days — 14-day blackout begins Jul 15 (Wed, 2 trading days). CMG is trending up; hold per rules but EOD/evening scan MUST decide exit vs hold before Jul 15 blackout window opens."
+      "current_price": 36.375,
+      "unrealized_pnl_pct": 3.63,
+      "notes": "Day 2 EOD; +3.63% from entry; stop $32.27, cushion $4.105 (11.29%); trending strongly. CRITICAL: 14-day earnings blackout (Jul 29) opens Jul 15 (Wednesday, 2 trading days). Evening scan tonight MUST decide: EXIT before Jul 14 close or HOLD to GTC stop. CMG is trending up; hold only if no death cross AND momentum intact."
     }
   ],
-  "notes_for_next_session": "FOR EOD/EVENING SCAN AGENT (July 13, 2026):\n\nMARKET OPEN RESULT (Jul 13):\n  exit_signals.json: EMPTY (0 death crosses — no exits executed)\n  watchlist_trend.json: EMPTY (0 golden crosses — no entries executed)\n  ACTION: Hold all 5 positions. All GTC stops active.\n\nOPEN POSITIONS (5 total — all GTC stops active per Alpaca as of prior session):\n  SCHW: 103sh @ $97.93 entry, last ~$103.71 (+5.91%), stop $93.28 — HOLD, wide cushion, portfolio anchor\n  PCG:  586sh @ $17.13 entry, last ~$17.34 (+1.24%), stop $16.29 — HOLD; cushion $1.05 (improved)\n  XLU:  218sh @ $45.66 entry, last ~$45.63 (-0.07%), stop $44.37 — HOLD; cushion $1.26 (improved)\n  TSLA: 12sh @ $417.62 entry, last ~$400.74 (-4.04%), stop $381.55 — HOLD; IN earnings blackout (Jul 22, 9 calendar days); GTC stop only protection\n  CMG:  289sh @ $35.099 entry, last ~$36.205 (+3.15%), stop $32.27 — HOLD TODAY; but CRITICAL DECISION NEEDED\n\nCRITICAL ACTION FOR EOD/EVENING SCAN:\n  CMG EARNINGS BLACKOUT DECISION: Earnings Jul 29 = 16 calendar days. 14-day blackout window begins Jul 15 (Wednesday). Evening scan must explicitly decide: EXIT CMG before tomorrow's open (Jul 14, Tuesday) or HOLD to GTC stop given CMG is trending strongly (+3.15% today). Recommend hold only if death cross absent AND CMG continues clearly upward.\n  TSLA: In blackout. Do not force-exit. Only exit on death cross.\n  SCHW/PCG/XLU: Cushions all improved today. Let GTC stops manage.\n\nKNOWN ISSUES:\n  yfinance TLS blocked — use Alpaca API for prices; SPY benchmark unavailable\n  ACCOUNT: equity $100,763.26, buying_power $343,941.54\n\nTODAY'S P&L: +$393.88 (+0.39%), cumulative ~+0.76%"
+  "notes_for_next_session": "FOR EVENING SCAN AGENT (July 13, 2026 — running tonight after EOD):\n\nEOD RESULT (Jul 13):\n  P&L: +$295.29 (+0.29%)\n  No exits, no entries. Pure carry day.\n  All 5 GTC stops verified active at Alpaca (exact prices).\n\nFINAL EOD PRICES (Alpaca):\n  SCHW: $102.52 (+4.69% unrealized), stop $93.28, cushion $9.24 (9.01%)\n  PCG:  $17.40 (+1.59%), stop $16.29, cushion $1.11 (6.38%)\n  XLU:  $45.77 (+0.24%), stop $44.37, cushion $1.40 (3.06%)\n  TSLA: $392.47 (-6.02%), stop $381.55, cushion $10.92 (2.78%) — THINNING\n  CMG:  $36.375 (+3.63%), stop $32.27, cushion $4.105 (11.29%)\n\nCRITICAL DECISIONS FOR EVENING SCAN:\n\n  1. CMG BLACKOUT DECISION (URGENT — last chance tonight):\n     Earnings Jul 29 = 16 calendar days. 14-day blackout opens Jul 15 (Wednesday).\n     Tomorrow Jul 14 (Tuesday) is the LAST normal trading day before blackout.\n     Evening scan MUST explicitly decide: EXIT CMG before tomorrow open (take +3.63%) OR HOLD\n     to GTC stop through the blackout. CMG is trending up strongly. Recommend hold ONLY if\n     no death cross on Jul 13 close data AND uptrend remains intact.\n     If holding: you are committed to GTC stop as the only exit mechanism through Jul 28.\n\n  2. TSLA CUSHION WATCH:\n     Cushion now only 2.78% ($10.92). TSLA has declined -6.02% since Jul 7 entry.\n     Earnings Jul 22 (9 calendar days) = inside blackout. Do NOT force-exit.\n     Watch for death cross on evening scan — if detected, exit tomorrow morning.\n     If no death cross: hold to GTC stop $381.55. Cushion is thin but not yet stopped.\n\n  3. SCHW/PCG/XLU: All healthy. Let GTC stops manage. No action needed.\n\nACCOUNT STATE:\n  Equity: ~$100,660.93, buying_power: $343,729.13\n  Cumulative: +$660.93 (+0.66% from $100K inception)\n\nKNOWN ISSUES:\n  yfinance TLS blocked — use Alpaca API only for prices\n  SPY benchmark unavailable (cumulative_spy_pct stays 0.0)"
 }
