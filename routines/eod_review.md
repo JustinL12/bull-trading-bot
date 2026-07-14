@@ -167,34 +167,62 @@ Rules for active_parameter_adjustments: only include if ≥ 10 trades in the buc
 
 ## Part 6: Post the Discord daily report
 
+The report shows exactly five things: Net P&L, vs SPY, Current Holds, Today's
+Trades (each ticker tagged BUY/SELL), and Running Total. No memory notes, no
+watchlist preview — those live in compressed_summary.json for the next agent,
+not in Discord.
+
+Current holds must be built from `positions.json` (the authoritative broker
+state), not from `compressed_summary.json` — the memory file's
+`current_open_positions` is an agent-authored narrative summary and isn't
+guaranteed to carry `shares`/`current_price` for every position.
+
 Write a temporary Python script _discord_report.py:
 
 ```python
-import sys, json
+import sys
 sys.path.insert(0, '.')
 from lib.notify import post_daily_report
 from lib.state import read_json, read_jsonl
+from lib.alpaca_client import get_data_client
+from alpaca.data.requests import StockLatestTradeRequest
 
 pnl = read_json('daily_pnl.json')
-mem = read_json('memory/compressed_summary.json')
+positions = read_json('positions.json', default={})
+today = pnl.get('date', '')
 
 trades_today = [
     t for t in read_jsonl('trade_log.jsonl')
-    if t.get('ts', '').startswith(pnl.get('date', ''))
-    and t.get('event') in ('EXIT', 'PARTIAL_EXIT', 'EMERGENCY_EXIT')
+    if t.get('ts', '').startswith(today)
+    and t.get('event') in ('ENTRY', 'EXIT', 'PARTIAL_EXIT', 'EMERGENCY_EXIT')
 ]
 
-open_positions = mem.get('current_open_positions', [])
+current_holds = []
+if positions:
+    data_client = get_data_client()
+    req = StockLatestTradeRequest(symbol_or_symbols=list(positions.keys()), feed='iex')
+    latest = data_client.get_stock_latest_trade(req)
+    for sym, pos in positions.items():
+        trade = latest.get(sym)
+        price = float(trade.price) if trade else None
+        entry = pos.get('entry_price')
+        upnl = round((price - entry) / entry * 100, 2) if price and entry else None
+        current_holds.append({
+            'symbol': sym,
+            'shares': pos.get('shares'),
+            'entry_price': entry,
+            'current_price': price,
+            'unrealized_pnl_pct': upnl,
+            'current_stop': pos.get('current_stop'),
+        })
 
 post_daily_report(
-    date=pnl.get('date', ''),
+    date=today,
     pnl_dollars=pnl.get('pnl_dollars', 0),
     pnl_pct=pnl.get('pnl_pct', 0),
     spy_return_pct=pnl.get('spy_return_today', 0),
-    trades=len(trades_today),
-    overnight_holds=open_positions,
-    memory_update=mem.get('notes_for_next_session', ''),
-    top_watchlist=[p['symbol'] for p in open_positions[:5]],
+    trades=trades_today,
+    current_holds=current_holds,
     cumulative_bull_pct=pnl.get('cumulative_bull_pct', 0),
     cumulative_spy_pct=pnl.get('cumulative_spy_pct', 0),
 )
