@@ -2,15 +2,15 @@
   "last_updated": "2026-07-14",
   "sessions_analyzed": 42,
   "total_trades": 8,
-  "performance_overview": "Through 42 sessions (inception 2026-06-01) Bull holds 5 open positions (SCHW, PCG, XLU, CMG, GIS). Account equity $100,717.75 (+0.72% from $100K inception). Today: TSLA exited on confirmed death cross (-$199.70, -4.78%); GIS entered at $35.89 (207 shares, 75% unit due to shallow cross). Net day P&L -$3.01 as TSLA loss was nearly fully offset by broad gains across remaining positions. Total unrealized P&L across 5 open positions is approximately +$1,019. Strategy is working — trend entries from Jul 6-14 are all profitable with strong stop cushions.",
+  "performance_overview": "Through 42 sessions (inception 2026-06-01) Bull holds 5 open positions (SCHW, PCG, XLU, CMG, GIS). Account equity $100,717.75 (+0.72% from $100K inception). Today: TSLA exited on confirmed death cross (-$199.70, -4.78%); GIS entered at $35.89 (207 shares, 75% unit due to shallow cross). Net day P&L -$3.01 as TSLA loss was nearly fully offset by broad gains across remaining positions. Total unrealized P&L across 5 open positions is approximately +$1,019. Strategy is working \u2014 trend entries from Jul 6-14 are all profitable with strong stop cushions.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
   ],
   "avoid": [
-    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% — every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
-    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% — confirmed gap-up trap territory; skip on sight",
+    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% \u2014 every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
+    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% \u2014 confirmed gap-up trap territory; skip on sight",
     "Gap-up opens with RSI >60 on opening bar: zero qualifications across all prior sessions; any name whose live RSI exceeds 60 on the first 1-min bar is a hard skip regardless of setup quality, conviction, or premarket RSI",
-    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar — the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
+    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar \u2014 the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced",
     "Shallow EMA cross entries on earnings-adjacent names: TSLA (Jul 7 entry, 0.06% cross spread, earnings Jul 22) lost -4.78% on exit. Rule: skip (do not size down) when BOTH shallow cross spread (<0.5%) AND earnings within 14 days apply simultaneously"
   ],
@@ -25,7 +25,7 @@
       "entry_date": "2026-07-06",
       "current_price": 101.22,
       "unrealized_pnl_pct": 3.36,
-      "notes": "Day 9; stop $93.28; cushion $7.94 (7.8%). Portfolio anchor — steady uptrend, no death cross concerns. Full unit size."
+      "notes": "Day 9; stop $93.28; cushion $7.94 (7.8%). Portfolio anchor \u2014 steady uptrend, no death cross concerns. Full unit size."
     },
     {
       "symbol": "PCG",
@@ -45,7 +45,7 @@
       "entry_date": "2026-07-06",
       "current_price": 45.72,
       "unrealized_pnl_pct": 0.12,
-      "notes": "Day 9; stop $44.37; cushion $1.35 (2.95%). Weakest position — slow trend, minimal progress. GTC stop sole protection. Watch for death cross. Full unit size."
+      "notes": "Day 9; stop $44.37; cushion $1.35 (2.95%). Weakest position \u2014 slow trend, minimal progress. GTC stop sole protection. Watch for death cross. Full unit size."
     },
     {
       "symbol": "CMG",
@@ -55,7 +55,7 @@
       "entry_date": "2026-07-10",
       "current_price": 36.41,
       "unrealized_pnl_pct": 3.72,
-      "notes": "Day 5; stop $32.27; cushion $4.14 (11.4%). EARNINGS BLACKOUT starts Jul 15 — GTC stop $32.27 is SOLE exit through Jul 29. Do NOT manually exit regardless of price. Strong trend. Full unit size."
+      "notes": "Day 5; stop $32.27; cushion $4.14 (11.4%). EARNINGS BLACKOUT starts Jul 15 \u2014 GTC stop $32.27 is SOLE exit through Jul 29. Do NOT manually exit regardless of price. Strong trend. Full unit size."
     },
     {
       "symbol": "GIS",
@@ -65,8 +65,8 @@
       "entry_date": "2026-07-14",
       "current_price": 36.59,
       "unrealized_pnl_pct": 1.96,
-      "notes": "Day 1 — NEW entry Jul 14. Golden cross Jul 13 (shallow EMA spread $0.015 — high reversal risk). 207 shares (75% of normal 276-unit). Stop $34.41 (ATR $0.7417, live 2×ATR below fill). Strong first-day close. Watch closely first 3 days given shallow cross."
+      "notes": "Day 1 \u2014 NEW entry Jul 14. Golden cross Jul 13 (shallow EMA spread $0.015 \u2014 high reversal risk). 207 shares (75% of normal 276-unit). Stop $34.41 (ATR $0.7417, live 2\u00d7ATR below fill). Strong first-day close. Watch closely first 3 days given shallow cross."
     }
   ],
-  "notes_for_next_session": "FOR EVENING SCAN AGENT (Jul 14, 2026):\n\nCRITICAL — CMG BLACKOUT:\n  CMG earnings Jul 29. 14-day blackout begins TODAY Jul 15. Do NOT place any exit order for CMG.\n  GTC stop $32.27 is sole protection. Current cushion $4.14 (11.4%). Hold to stop only.\n\nACTION ITEMS FOR TREND_SCAN.PY:\n  - Run death cross check on all 5 positions (SCHW, PCG, XLU, CMG, GIS)\n  - XLU is the laggard (+0.12%); monitor for early death cross signal\n  - SCHW and CMG are strong — no near-term cross risk expected\n  - GIS Day 1 close at $36.59 (+1.96%) is constructive for a shallow-cross entry\n  - Scan for new golden crosses in full universe\n\nOPEN POSITIONS (5) — all stops active at Alpaca:\n  SCHW: 103sh, entry $97.93, stop $93.28, current $101.22 (+3.36%, Day 9)\n  PCG:  586sh, entry $17.13, stop $16.29, current $17.38 (+1.44%, Day 9)\n  XLU:  218sh, entry $45.66, stop $44.37, current $45.72 (+0.12%, Day 9)\n  CMG:  289sh, entry $35.10, stop $32.27, current $36.41 (+3.72%, Day 5 — BLACKOUT)\n  GIS:  207sh, entry $35.89, stop $34.41, current $36.59 (+1.96%, Day 1)\n\nACCOUNT:\n  Equity $100,717.75 | Cumulative +0.72% from $100K inception\n  SPY benchmark still unavailable (yfinance TLS blocked — use Alpaca or web search only)\n\nKNOWN ISSUES:\n  - yfinance TLS blocked: use Alpaca API for prices, web search for earnings dates\n  - check_earnings.py reads data/watchlist.json not data/watchlist_trend.json (known bug)\n  - TSLA exit (Jul 14) + GIS entry were missing from trade_log.jsonl and reconstructed by EOD agent — 6th fill-reconciliation gap; root cause still unresolved\n  - lib/state.py read_json/write_json prepends DATA_DIR automatically; pass bare filenames (e.g., 'positions.json') not 'data/positions.json'"
+  "notes_for_next_session": "EVENING SCAN 2026-07-14 \u2014 2 golden cross signals: META and NVDA. CAUTION: Both are low-conviction. META (close $661.04): EMA-20 only 0.29% above EMA-60 \u2014 very shallow cross. Price is 8.5% above EMA-20, already extended. If entering, use 75% unit size maximum and set stop at EMA-60 ($607.55). NVDA (close $211.79): EMA-20 only 0.08% above EMA-60 \u2014 barely a cross, essentially a slow grind. Price 4% above EMA-20. Very high reversal risk on this one. Consider skipping or using 50% unit. EARNINGS RISK UNVERIFIED: check_earnings.py degraded (2/2 API lookups failed at scan time). Before placing any trades, manually verify META and NVDA do not have earnings in the next 14 days. No exit signals. No open positions currently. Account equity: $100,715.38. Daily P&L: -$5.38. Cumulative since inception: +0.72%."
 }

@@ -1,10 +1,1 @@
-[
-  {
-    "symbol": "TSLA",
-    "exit_reason": "death_cross",
-    "current_close": 394.86,
-    "ema_fast": 402.8387,
-    "ema_slow": 403.3522,
-    "entry_price": 417.62
-  }
-]
+[]
