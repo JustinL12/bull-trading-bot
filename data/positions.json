@@ -41,20 +41,6 @@
     "alpaca_order_id": "c57b35ee-c86b-4454-bf2b-c8ae0c853bc0",
     "stop_order_id": "4c75a3bf-5ade-4370-99a6-843f8a522e38"
   },
-  "TSLA": {
-    "symbol": "TSLA",
-    "entry_price": 417.62,
-    "shares": 12,
-    "entry_time": "2026-07-07T13:35:07.681585+00:00",
-    "atr_at_entry": 18.035,
-    "initial_stop": 381.55,
-    "current_stop": 381.55,
-    "highest_close_since_entry": 417.62,
-    "partial_sold": false,
-    "partial_sold_shares": 0,
-    "alpaca_order_id": "b482b848-a93f-43de-a1f4-740662781bbc",
-    "stop_order_id": "605f9604-b7a9-474b-88e5-7dcfe93b158b"
-  },
   "CMG": {
     "symbol": "CMG",
     "entry_price": 35.099447,
@@ -68,5 +54,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "46e4de4a-1610-40af-bdc7-92b9bc096e63",
     "stop_order_id": "3292008f-8be8-429b-a383-0aa5ccc418f8"
+  },
+  "GIS": {
+    "symbol": "GIS",
+    "entry_price": 35.89343,
+    "shares": 207,
+    "entry_time": "2026-07-14T13:34:40.395460+00:00",
+    "atr_at_entry": 0.7417,
+    "initial_stop": 34.41,
+    "current_stop": 34.41,
+    "highest_close_since_entry": 35.89343,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "651315b0-861f-4781-8245-a8c75ac09255",
+    "stop_order_id": "84995614-d2a5-43e9-b128-18472976f695"
   }
 }

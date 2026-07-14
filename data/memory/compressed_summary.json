@@ -1,20 +1,20 @@
 {
-  "last_updated": "2026-07-13",
-  "sessions_analyzed": 40,
-  "total_trades": 7,
-  "performance_overview": "Through 41 sessions (inception 2026-06-01) Bull holds 5 open positions (SCHW, PCG, XLU, TSLA, CMG). Equity $100,714.52 (+0.71% from $100K inception). Today Jul 13: +$335.79 (+0.33%). TSLA death cross triggered tonight \u2014 exit at Jul 14 open. GIS golden cross (shallow) \u2014 enter at Jul 14 open. CMG no death cross; hold through blackout.",
+  "last_updated": "2026-07-14",
+  "sessions_analyzed": 41,
+  "total_trades": 8,
+  "performance_overview": "Through 42 sessions (inception 2026-06-01) Bull holds 5 open positions (SCHW, PCG, XLU, CMG, GIS). Equity $101,084.69 (+1.08% from $100K inception) at Jul 14 open. Jul 14 actions: exited TSLA at $397.65 (-4.78%, -$199.70); entered GIS at $35.89 (207 shares, 75% unit, stop $34.41). GIS golden cross signal was shallow ($0.015 EMA spread) so conservative sizing applied.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample — maintain until n≥10)"
   ],
   "avoid": [
-    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% \u2014 every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
-    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% \u2014 confirmed gap-up trap territory; skip on sight",
+    "RSI 60-65 at entry: 0/3 wins (0%), avg -1.06% — every overbought chase entry has lost; hard ceiling at 60, no exceptions ever",
+    "RSI 65-75 at entry: 0/1 wins (0%), avg -0.61% — confirmed gap-up trap territory; skip on sight",
     "Gap-up opens with RSI >60 on opening bar: zero qualifications across all prior sessions; any name whose live RSI exceeds 60 on the first 1-min bar is a hard skip regardless of setup quality, conviction, or premarket RSI",
-    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar \u2014 the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
+    "Opening-bar RSI surge pattern: premarket-clean RSI names have routinely surged past 60 on the opening bar — the gap-up trap is systematic; do NOT enter within first 5-10 minutes of open even if premarket RSI was clean",
     "Current defensives/utilities/managed-care universe (DTE, WEC, CNC, D, FRT, ED, EIX, NSC, KIM, AMGN, MTB, FITB, CL, SJM, CNC, ES): chronic ATR% compression 0.042-0.189% far below 0.30% floor; this entire universe is effectively dead for the intraday RSI strategy and MUST be replaced"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Jul 13 EOD: Equity $100,714.52 (+$335.79 / +0.33% day). Evening scan: 1 exit signal (TSLA death cross), 1 entry signal (GIS golden cross, shallow). TSLA declining steadily since Jul 7 entry; EMA20 now crossed below EMA60 on Jul 13 close. GIS cross spread only $0.015 \u2014 marginal signal but technically valid. CMG: no death cross, trending up +3.63%; blackout starts Jul 15. SCHW/PCG/XLU: all healthy, no signals. yfinance TLS still blocked.",
+  "recent_market_context": "Jul 14 market open: TSLA exited at $397.65 (-4.78%, loss $199.70). GIS entered 207 shares at $35.89, stop $34.41, ATR $0.7417. GIS open price ($35.89) was ~$0.71 below last night's scan close ($36.60) — gap-down at open. Stop correctly calibrated by script using live ATR. Account equity $101,084.69 at open. 5 open positions: SCHW, PCG, XLU, CMG, GIS. yfinance TLS still blocked. CMG blackout starts Jul 15.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -22,9 +22,9 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "current_price": 102.52,
-      "unrealized_pnl_pct": 4.69,
-      "notes": "Day 7 hold; +4.69% from entry; stop $93.28; strong trend, no death cross."
+      "current_price": null,
+      "unrealized_pnl_pct": null,
+      "notes": "Day 8; stop $93.28; strong trend, no death cross. yfinance blocked, price unknown."
     },
     {
       "symbol": "PCG",
@@ -32,9 +32,9 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "current_price": 17.4,
-      "unrealized_pnl_pct": 1.59,
-      "notes": "Day 7 hold; +1.59% from entry; stop $16.29; steady improvement, no death cross."
+      "current_price": null,
+      "unrealized_pnl_pct": null,
+      "notes": "Day 8; stop $16.29; steady trend, no death cross. yfinance blocked, price unknown."
     },
     {
       "symbol": "XLU",
@@ -42,19 +42,9 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "current_price": 45.77,
-      "unrealized_pnl_pct": 0.24,
-      "notes": "Day 7 hold; +0.24% from entry; stop $44.37; recovering slowly, no death cross."
-    },
-    {
-      "symbol": "TSLA",
-      "shares": 12,
-      "entry_price": 417.62,
-      "current_stop": 381.55,
-      "entry_date": "2026-07-07",
-      "current_price": 394.86,
-      "unrealized_pnl_pct": -5.46,
-      "notes": "DEATH CROSS CONFIRMED Jul 13. EXIT at tomorrow open. EMA20 402.84 < EMA60 403.35. Price 394.86 well below both EMAs. Earnings Jul 22."
+      "current_price": null,
+      "unrealized_pnl_pct": null,
+      "notes": "Day 8; stop $44.37; recovering slowly, no death cross. yfinance blocked, price unknown."
     },
     {
       "symbol": "CMG",
@@ -62,10 +52,20 @@
       "entry_price": 35.099447,
       "current_stop": 32.27,
       "entry_date": "2026-07-10",
-      "current_price": 36.375,
-      "unrealized_pnl_pct": 3.63,
-      "notes": "Day 3 hold; +3.63% from entry; stop $32.27. No death cross Jul 13. HOLDING through blackout (Jul 15 onwards). GTC stop is sole exit mechanism through Jul 28."
+      "current_price": null,
+      "unrealized_pnl_pct": null,
+      "notes": "Day 4; stop $32.27. BLACKOUT starts Jul 15 — GTC stop is sole exit through Jul 28. Do not manually exit. yfinance blocked, price unknown."
+    },
+    {
+      "symbol": "GIS",
+      "shares": 207,
+      "entry_price": 35.89343,
+      "current_stop": 34.41,
+      "entry_date": "2026-07-14",
+      "current_price": 35.89343,
+      "unrealized_pnl_pct": 0.0,
+      "notes": "NEW ENTRY Jul 14. Golden cross Jul 13 (shallow spread $0.015). Entered at $35.89, stop $34.41 (ATR $0.7417, live stop = fill - 2xATR). 207 shares (75% of full 276-unit due to shallow cross). GTC stop active (stop_order_id: 84995614-d2a5-43e9-b128-18472976f695)."
     }
   ],
-  "notes_for_next_session": "FOR MARKET-OPEN AGENT (July 14, 2026 \u2014 Tuesday):\n\nACTIONS AT OPEN (in priority order):\n\n  1. EXIT TSLA FIRST (death cross confirmed Jul 13 EOD):\n     - Sell all 12 shares TSLA at market open.\n     - Entry was $417.62; current ~$394.86 = ~-5.5% loss.\n     - Cancel/confirm GTC stop $381.55 is cancelled after fill.\n     - Do NOT re-enter TSLA (earnings Jul 22 = inside 14-day blackout).\n\n  2. ENTER GIS (golden cross Jul 13 EOD):\n     - Signal: EMA20 35.633 crossed above EMA60 35.618 on close $36.60.\n     - CAUTION: Cross spread only $0.015 \u2014 VERY shallow. Size conservatively.\n       Recommend 50-75% of normal position size given cross quality.\n     - ATR $1.10 (~3% of price), volume 721k \u2014 otherwise solid.\n     - Earnings: yfinance TLS blocked; GIS (General Mills) typically reports\n       September (fiscal Q1) \u2014 estimated 60+ days out, clear of 14-day window.\n     - Set ATR-based GTC stop at entry (use config formula).\n\n  3. CMG \u2014 NO ACTION (hold):\n     - No death cross on Jul 13 scan. Trend intact at +3.63%.\n     - Blackout opens Jul 15 (Wednesday) \u2014 today Jul 14 is LAST entry-eligible day\n       but CMG is an EXISTING position, not a new entry. HOLD to GTC stop $32.27.\n     - Do not force-exit. GTC stop is the exit mechanism through Jul 28.\n\n  4. SCHW / PCG / XLU \u2014 NO ACTION:\n     - All healthy, no death crosses. Let GTC stops manage.\n\nACCOUNT STATE (Jul 13 EOD):\n  Equity: $100,714.52 | Buying power: $343,863.94\n  Cumulative: +$714.52 (+0.71% from $100K inception)\n  Today: +$335.79 (+0.33%)\n\nKNOWN ISSUES:\n  - yfinance TLS still blocked \u2014 use Alpaca API only for prices\n  - SPY benchmark unavailable (cumulative_spy_pct stays 0.0)\n  - check_earnings.py reads data/watchlist.json not data/watchlist_trend.json;\n    earnings verification for trend candidates requires manual assessment"
+  "notes_for_next_session": "FOR EOD/EVENING AGENT (July 14, 2026):\n\nMARKET OPEN SUMMARY:\n  - TSLA EXITED: sold 10 shares at $397.65 (entry $417.62, loss -$199.70, -4.78%). GTC stop cancelled. TSLA is now flat. Do NOT re-enter (earnings Jul 22, inside 14-day blackout).\n  - GIS ENTERED: 207 shares at $35.89, stop $34.41, ATR $0.7417 (live). Golden cross Jul 13 (shallow EMA spread $0.015). 75% unit size.\n  - Note: positions.json had 12 TSLA shares but Alpaca fill was 10 shares — broker-held count was authoritative. Slight discrepancy to investigate.\n\nOPEN POSITIONS (5):\n  SCHW: 103 shares, entry $97.93, stop $93.28 (Day 8)\n  PCG:  586 shares, entry $17.13, stop $16.29 (Day 8)\n  XLU:  218 shares, entry $45.66, stop $44.37 (Day 8)\n  CMG:  289 shares, entry $35.10, stop $32.27 (Day 4; BLACKOUT starts Jul 15 — hold to stop only)\n  GIS:  207 shares, entry $35.89, stop $34.41 (Day 1 — NEW)\n\nACCOUNT:\n  Equity $101,084.69 | Buying power $344,868.20\n  Cumulative: +$1,084.69 (+1.08% from $100K inception)\n\nKNOWN ISSUES:\n  - yfinance TLS still blocked — use Alpaca API only for prices\n  - SPY benchmark unavailable\n  - check_earnings.py reads data/watchlist.json not data/watchlist_trend.json\n  - TSLA share count discrepancy: positions.json said 12, Alpaca sold 10. Check if this is a partial fill from prior session or data sync issue."
 }
