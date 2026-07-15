@@ -1,16 +1,16 @@
 {
-  "date": "2026-07-14",
-  "starting_equity": 100720.76,
-  "current_equity": 100715.38,
-  "pnl_dollars": -5.38,
-  "pnl_pct": -0.0053,
-  "spy_return_today": 0.3751,
-  "vs_spy_pct": -0.3804,
+  "date": "2026-07-15",
+  "starting_equity": 100717.54,
+  "current_equity": 100692.52,
+  "pnl_dollars": -25.02,
+  "pnl_pct": -0.0248,
+  "spy_return_today": 0.274,
+  "vs_spy_pct": -0.2988,
   "pdt_trades_today": 0,
   "overnight_holds": [],
   "kill_switch_triggered": false,
   "inception_date": "2026-06-01",
   "inception_equity": 100000.0,
-  "cumulative_bull_pct": 0.7154,
-  "cumulative_spy_pct": -0.857
+  "cumulative_bull_pct": 0.6925,
+  "cumulative_spy_pct": -0.5854
 }
