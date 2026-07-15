@@ -1,22 +1,12 @@
 [
   {
-    "symbol": "META",
-    "close": 661.04,
-    "atr": 23.7276,
-    "ema_fast": 609.3241,
-    "ema_slow": 607.549,
-    "avg_volume_20d": 736824,
+    "symbol": "BMY",
+    "close": 58.7,
+    "atr": 1.4723,
+    "ema_fast": 57.3252,
+    "ema_slow": 57.2482,
+    "avg_volume_20d": 786169,
     "signal": "golden_cross",
-    "scanned_at": "2026-07-14T20:03:34.484391+00:00"
-  },
-  {
-    "symbol": "NVDA",
-    "close": 211.79,
-    "atr": 7.2613,
-    "ema_fast": 203.6454,
-    "ema_slow": 203.494,
-    "avg_volume_20d": 4678090,
-    "signal": "golden_cross",
-    "scanned_at": "2026-07-14T20:03:34.716672+00:00"
+    "scanned_at": "2026-07-15T20:04:00.222439+00:00"
   }
 ]
