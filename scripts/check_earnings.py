@@ -1,14 +1,20 @@
 """Fetch upcoming earnings dates and write data/earnings_blacklist.json.
 
-Uses yfinance as a free earnings calendar source.
-Returns a set of symbol strings that are within the blackout window.
+Uses the Nasdaq public earnings calendar API instead of yfinance — yfinance's
+Yahoo endpoint is blocked from cloud/CI IPs (the same issue that affected the
+VIX and SPY lookups, see scripts/get_vix.py and scripts/update_pnl.py).
+
+The Nasdaq API returns a day-by-day earnings schedule with no auth required.
+We query every calendar day from today through today + EARNINGS_BLACKOUT_DAYS
+and flag any watchlist symbol that appears.
 """
 
 import sys
-from datetime import datetime, timedelta
+import time
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
-import yfinance as yf
+import requests
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -20,34 +26,28 @@ from lib.state import read_json, write_json
 WATCHLIST_PATH = "watchlist_trend.json"
 BLACKLIST_PATH = "earnings_blacklist.json"
 
-# Above this fraction of lookup failures, treat the run as a systemic outage
-# (e.g. yfinance blocked from this IP) rather than "no symbols have upcoming
-# earnings" -- see scripts/update_pnl.py for the same yfinance-blocked issue.
+NASDAQ_CALENDAR_URL = "https://api.nasdaq.com/api/calendar/earnings"
+NASDAQ_HEADERS = {"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+
+# Fraction of date-queries that must succeed; below this we treat the run as
+# a network outage and keep the previous blacklist rather than clearing it.
 FAILURE_RATE_ALERT_THRESHOLD = 0.5
 
 
-def check_symbol_earnings(symbol: str, blackout_days: int) -> tuple[dict | None, bool]:
-    """Return (earnings info if within blackout window else None, errored)."""
+def fetch_earnings_on_date(d: date) -> tuple[list[dict], bool]:
+    """Return (rows, errored) for the given calendar date."""
     try:
-        ticker = yf.Ticker(symbol)
-        cal = ticker.calendar
-        if cal is None or cal.empty:
-            return None, False
-        # calendar index has 'Earnings Date' etc.
-        if "Earnings Date" in cal.index:
-            earnings_date = cal.loc["Earnings Date"].iloc[0]
-            if not isinstance(earnings_date, datetime):
-                earnings_date = datetime.combine(earnings_date, datetime.min.time())
-            days_until = (earnings_date.date() - datetime.now().date()).days
-            if -1 <= days_until <= blackout_days:
-                return {
-                    "symbol": symbol,
-                    "earnings_date": earnings_date.strftime("%Y-%m-%d"),
-                    "days_until": days_until,
-                }, False
-        return None, False
+        resp = requests.get(
+            NASDAQ_CALENDAR_URL,
+            params={"date": d.isoformat()},
+            headers=NASDAQ_HEADERS,
+            timeout=15,
+        )
+        resp.raise_for_status()
+        rows = resp.json().get("data", {}).get("rows") or []
+        return rows, False
     except Exception:
-        return None, True
+        return [], True
 
 
 def load_earnings_blacklist() -> set[str]:
@@ -67,40 +67,58 @@ def load_earnings_blacklist() -> set[str]:
 
 def main():
     watchlist = read_json(WATCHLIST_PATH, default=[])
-    symbols = [item["symbol"] for item in watchlist if "symbol" in item]
+    symbols = {item["symbol"] for item in watchlist if "symbol" in item}
 
     if not symbols:
         print("No watchlist symbols to check.")
         write_json(BLACKLIST_PATH, [])
-        return
+        return []
 
-    blacklist = []
+    today = date.today()
+    days_to_check = config.EARNINGS_BLACKOUT_DAYS + 1  # inclusive of the boundary day
+
+    found: dict[str, dict] = {}  # symbol -> first match
     errors = 0
-    for symbol in symbols:
-        result, errored = check_symbol_earnings(symbol, config.EARNINGS_BLACKOUT_DAYS)
-        errors += errored
-        if result:
-            blacklist.append(result)
-            print(f"  {symbol}: earnings in {result['days_until']} days ({result['earnings_date']}) — BLACKOUT")
 
-    error_rate = errors / len(symbols)
+    for i in range(days_to_check):
+        d = today + timedelta(days=i)
+        rows, errored = fetch_earnings_on_date(d)
+        if errored:
+            errors += 1
+        for row in rows:
+            sym = row.get("symbol", "")
+            if sym in symbols and sym not in found:
+                found[sym] = {
+                    "symbol": sym,
+                    "earnings_date": d.isoformat(),
+                    "days_until": i,
+                    "time_of_day": row.get("time", ""),
+                }
+                print(f"  {sym}: earnings in {i} days ({d}) — BLACKOUT")
+        # Light rate-limit courtesy (15 requests over 14 days is already gentle)
+        if i < days_to_check - 1:
+            time.sleep(0.1)
+
+    error_rate = errors / days_to_check
     if error_rate > FAILURE_RATE_ALERT_THRESHOLD:
-        # Don't overwrite a real blacklist with an empty one built from mostly
-        # failed lookups -- that would silently disable the earnings blackout.
         previous = read_json(BLACKLIST_PATH, default=[])
         post_attention(
             "Earnings check degraded",
-            f"{errors}/{len(symbols)} symbol earnings lookups failed (yfinance may be "
-            "blocked). Keeping the previous earnings_blacklist.json rather than "
-            "overwriting it with an incomplete scan -- verify earnings dates manually "
-            "before entering new positions.",
+            f"{errors}/{days_to_check} Nasdaq calendar date queries failed. "
+            "Keeping the previous earnings_blacklist.json rather than overwriting "
+            "it with an incomplete scan — verify earnings dates manually before "
+            "entering new positions.",
             level="warning",
         )
-        print(f"Earnings check degraded: {errors}/{len(symbols)} lookups failed. Keeping previous blacklist ({len(previous)} symbols).")
+        print(
+            f"Earnings check degraded: {errors}/{days_to_check} date queries failed. "
+            f"Keeping previous blacklist ({len(previous)} symbols)."
+        )
         return previous
 
+    blacklist = list(found.values())
     write_json(BLACKLIST_PATH, blacklist)
-    print(f"Earnings blacklist: {len(blacklist)} symbols blocked.")
+    print(f"Earnings blacklist: {len(blacklist)} symbols blocked. ({errors} date-query errors out of {days_to_check})")
     return blacklist
 
 
