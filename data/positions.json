@@ -68,5 +68,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "651315b0-861f-4781-8245-a8c75ac09255",
     "stop_order_id": "84995614-d2a5-43e9-b128-18472976f695"
+  },
+  "META": {
+    "symbol": "META",
+    "entry_price": 661.19,
+    "shares": 11,
+    "entry_time": "2026-07-15T13:34:58.098670+00:00",
+    "atr_at_entry": 23.805,
+    "initial_stop": 613.58,
+    "current_stop": 613.58,
+    "highest_close_since_entry": 661.19,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "e70b0f0f-fbd3-486f-8d58-e9e2fb4e410a",
+    "stop_order_id": "cbe7f62a-5cd9-4a44-a521-1cdadf69971f"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-07-14",
-  "sessions_analyzed": 42,
-  "total_trades": 8,
-  "performance_overview": "Through 42 sessions (inception 2026-06-01) Bull holds 5 open positions (SCHW, PCG, XLU, CMG, GIS). Account equity $100,717.75 (+0.72% from $100K inception). Today: TSLA exited on confirmed death cross (-$199.70, -4.78%); GIS entered at $35.89 (207 shares, 75% unit due to shallow cross). Net day P&L -$3.01 as TSLA loss was nearly fully offset by broad gains across remaining positions. Total unrealized P&L across 5 open positions is approximately +$1,019. Strategy is working \u2014 trend entries from Jul 6-14 are all profitable with strong stop cushions.",
+  "last_updated": "2026-07-15",
+  "sessions_analyzed": 43,
+  "total_trades": 9,
+  "performance_overview": "Through 43 sessions (inception 2026-06-01) Bull holds 6 open positions (SCHW, PCG, XLU, CMG, GIS, META). Account equity ~$100,697 (+0.70% from $100K inception). Market-open Jul 15: no exits; entered META 11 shares @ $661.19 (75% unit, shallow 0.29% EMA cross + price 8.5% extended). Skipped NVDA (0.07% EMA cross \u2014 matches TSLA failed pattern). All prior 5 positions remain profitable. CMG earnings blackout active Jul 15\u201329; GTC stop $32.27 is sole CMG exit.",
   "best_signals": [
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the legacy intraday RSI strategy; enforce hard floor+ceiling (RSI between 55 and 60 inclusive); n=2 (directionally clean but thin sample \u2014 maintain until n\u226510)"
   ],
@@ -15,7 +15,7 @@
     "Shallow EMA cross entries on earnings-adjacent names: TSLA (Jul 7 entry, 0.06% cross spread, earnings Jul 22) lost -4.78% on exit. Rule: skip (do not size down) when BOTH shallow cross spread (<0.5%) AND earnings within 14 days apply simultaneously"
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Jul 7-14: MA-20/60 trend strategy generating consistent open P&L. All 5 positions entered on golden cross signals are currently profitable: SCHW +3.36%, CMG +3.72%, PCG +1.44%, GIS +1.96% (Day 1), XLU +0.12%. TSLA exited today on death cross (-4.78%). SPY benchmark tracking is fixed as of Jul 14 (Alpaca replaces yfinance, which was blocked from this cloud environment) -- SPY today +0.38%, real cumulative figures resume from here. VIX now sourced from CBOE directly (see data/vix.json / scripts/get_vix.py) instead of the old inferred-from-VXX workaround. CMG earnings blackout opens Jul 15.",
+  "recent_market_context": "Jul 7-15: MA-20/60 trend strategy generating consistent open P&L. 6 positions held. META entered Jul 15 @ $661.19 (75% unit, shallow cross). NVDA skipped (0.07% EMA spread). CMG earnings blackout active (Jul 15–29, GTC stop $32.27 only). VIX 16.50 on Jul 15. check_earnings.py STILL TLS-degraded (2/2 yfinance lookups failing from cloud IP, new occurrence post-bugfix). SPY benchmark tracking via Alpaca (fixed Jul 14). Treat future check_earnings failures as new/ongoing issue since the prior filename bug is fixed.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -23,9 +23,7 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "current_price": 101.22,
-      "unrealized_pnl_pct": 3.36,
-      "notes": "Day 9; stop $93.28; cushion $7.94 (7.8%). Portfolio anchor \u2014 steady uptrend, no death cross concerns. Full unit size."
+      "notes": "Day 10; stop $93.28. Portfolio anchor \u2014 steady uptrend. Full unit size."
     },
     {
       "symbol": "PCG",
@@ -33,9 +31,7 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "current_price": 17.38,
-      "unrealized_pnl_pct": 1.44,
-      "notes": "Day 9; stop $16.29; cushion $1.09 (6.3%). Recovered well from early weakness; no death cross. Full unit size."
+      "notes": "Day 10; stop $16.29. Recovered from early weakness; no death cross. Full unit size."
     },
     {
       "symbol": "XLU",
@@ -43,9 +39,7 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "current_price": 45.72,
-      "unrealized_pnl_pct": 0.12,
-      "notes": "Day 9; stop $44.37; cushion $1.35 (2.95%). Weakest position \u2014 slow trend, minimal progress. GTC stop sole protection. Watch for death cross. Full unit size."
+      "notes": "Day 10; stop $44.37. Weakest position \u2014 slow trend, minimal progress. Watch for death cross. Full unit size."
     },
     {
       "symbol": "CMG",
@@ -53,9 +47,7 @@
       "entry_price": 35.099447,
       "current_stop": 32.27,
       "entry_date": "2026-07-10",
-      "current_price": 36.41,
-      "unrealized_pnl_pct": 3.72,
-      "notes": "Day 5; stop $32.27; cushion $4.14 (11.4%). EARNINGS BLACKOUT starts Jul 15 \u2014 GTC stop $32.27 is SOLE exit through Jul 29. Do NOT manually exit regardless of price. Strong trend. Full unit size."
+      "notes": "Day 6; stop $32.27. EARNINGS BLACKOUT Jul 15\u201329 \u2014 GTC stop is SOLE exit. Do NOT manually exit regardless of price. Full unit size."
     },
     {
       "symbol": "GIS",
@@ -63,10 +55,16 @@
       "entry_price": 35.89343,
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
-      "current_price": 36.59,
-      "unrealized_pnl_pct": 1.96,
-      "notes": "Day 1 \u2014 NEW entry Jul 14. Golden cross Jul 13 (shallow EMA spread $0.015 \u2014 high reversal risk). 207 shares (75% of normal 276-unit). Stop $34.41 (ATR $0.7417, live 2\u00d7ATR below fill). Strong first-day close. Watch closely first 3 days given shallow cross."
+      "notes": "Day 2; stop $34.41. Shallow EMA cross (0.29% spread). 75% unit (207 of normal 276). Watch first 3 days closely."
+    },
+    {
+      "symbol": "META",
+      "shares": 11,
+      "entry_price": 661.19,
+      "current_stop": 613.58,
+      "entry_date": "2026-07-15",
+      "notes": "Day 1 \u2014 NEW entry Jul 15. 75% unit (11 of full 15) due to shallow 0.29% EMA cross + price 8.5% extended above EMA-20. Stop $613.58 (2\u00d7ATR=$23.805). Earnings unverified (yfinance TLS blocked). Watch closely."
     }
   ],
-  "notes_for_next_session": "EVENING SCAN 2026-07-14 \u2014 2 golden cross signals: META and NVDA. CAUTION: Both are low-conviction. META (close $661.04): EMA-20 only 0.29% above EMA-60 \u2014 very shallow cross. Price is 8.5% above EMA-20, already extended. If entering, use 75% unit size maximum and set stop at EMA-60 ($607.55). NVDA (close $211.79): EMA-20 only 0.08% above EMA-60 \u2014 barely a cross, essentially a slow grind. Price 4% above EMA-20. Very high reversal risk on this one. Consider skipping or using 50% unit. EARNINGS RISK: the prior check_earnings.py run on Jul 14 hit yfinance's data-center IP block (2/2 lookups failed) and correctly kept the previous blacklist rather than overwrite it -- that block is now fixed as of Jul 14 (check_earnings.py was also pointed at the wrong watchlist filename before this fix, so treat any earnings-filter results from before Jul 14 as unverified). Re-run check_earnings.py fresh before trusting its output for META/NVDA. No exit signals. No open positions currently. Account equity: $100,715.38. Daily P&L: -$5.38. Cumulative since inception: +0.72%. INFRA NOTE: SPY tracking, VIX check, and Discord EOD report bugs were fixed today -- see the 'bugfix' entry in session_journal.jsonl for full detail before re-diagnosing any of those as new issues."
+  "notes_for_next_session": "MARKET OPEN 2026-07-15 \u2014 No exits. Entered META 11 shares @ $661.19, stop $613.58 (75% unit). Skipped NVDA: 0.07% EMA cross is comparable to the failed TSLA pattern (0.06% cross, lost -4.78%); too shallow for conviction. INFRA: check_earnings.py is STILL TLS-degraded from this cloud IP (2/2 yfinance lookups failing) \u2014 this is a new/ongoing issue since the Jul 14 bugfix resolved the filename problem but yfinance itself remains blocked. Earnings risk for META is unverified; if evening scan surface a cheaper alternative earnings data source, consider wiring it in. CMG earnings blackout is active (Jul 15\u201329): GTC stop $32.27 is sole exit, do NOT touch CMG manually. XLU is lagging (+0.12% unrealized) \u2014 watch for death cross. 6 positions now open, 14 slots remaining. Account equity $100,697.42 (VIX 16.50, account healthy)."
 }
