@@ -82,5 +82,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "e70b0f0f-fbd3-486f-8d58-e9e2fb4e410a",
     "stop_order_id": "cbe7f62a-5cd9-4a44-a521-1cdadf69971f"
+  },
+  "BMY": {
+    "symbol": "BMY",
+    "entry_price": 58.71,
+    "shares": 85,
+    "entry_time": "2026-07-16T13:34:13.503461+00:00",
+    "atr_at_entry": 1.475,
+    "initial_stop": 55.76,
+    "current_stop": 55.76,
+    "highest_close_since_entry": 58.71,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "d3c962a8-0c66-4ade-a8ab-811d3a35215a",
+    "stop_order_id": "75726d1f-4944-452d-bb4e-0503af27f502"
   }
 }

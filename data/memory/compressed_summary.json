@@ -1,18 +1,18 @@
 {
-  "last_updated": "2026-07-15",
+  "last_updated": "2026-07-16",
   "sessions_analyzed": 44,
   "total_trades": 9,
-  "performance_overview": "Through 44 sessions (inception 2026-06-01) Bull holds 6 open positions (SCHW, PCG, XLU, CMG, GIS, META). Account equity ~$100,692 (+0.69% since $100K inception) vs SPY -0.59% cumulative — Bull leads the benchmark by ~1.28pts. Today (Jul 15 EOD) was a quiet no-exit day: net -$25.02 (-0.02%) vs SPY +0.27%, a modest -0.30% single-day drag. Unrealized book is healthy: SCHW +5.29% (anchor), META +2.83% (Day 1), GIS +2.44% (Day 2), PCG +1.97%; only CMG (-0.34%, blackout) and XLU (-0.92%, laggard) are red.",
+  "performance_overview": "Through 44 sessions (inception 2026-06-01) Bull holds 6 open positions (SCHW, PCG, XLU, CMG, GIS, META). Account equity ~$100,692 (+0.69% since $100K inception) vs SPY -0.59% cumulative \u2014 Bull leads the benchmark by ~1.28pts. Today (Jul 15 EOD) was a quiet no-exit day: net -$25.02 (-0.02%) vs SPY +0.27%, a modest -0.30% single-day drag. Unrealized book is healthy: SCHW +5.29% (anchor), META +2.83% (Day 1), GIS +2.44% (Day 2), PCG +1.97%; only CMG (-0.34%, blackout) and XLU (-0.92%, laggard) are red.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the LEGACY intraday RSI strategy; n=2, thin sample, informational only now that the strategy is MA-20/60 trend-following. Do not act on it without n>=10."
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the LEGACY intraday RSI strategy; n=2, thin sample, informational only now that the strategy is MA-20/60 trend-following. Do not act on it without n>=10."
   ],
   "avoid": [
     "Shallow EMA cross entries on earnings-adjacent names: TSLA (Jul 7 entry, 0.06% cross spread, earnings Jul 22) lost -4.78% on exit. Rule: SKIP (do not size down) when BOTH shallow cross spread (<0.5%) AND earnings within 14 days apply simultaneously. This is the live rule under the current trend strategy.",
-    "Very shallow golden crosses (<0.1% EMA-20/60 spread): NVDA (0.07%) skipped Jul 15 as a near-clone of the failed TSLA pattern (0.06%). Treat sub-0.1% crosses as noise-level, high reversal risk — skip on sight.",
-    "LEGACY intraday RSI buckets (informational, strategy retired): RSI 60-65 0/3, RSI 65-75 0/1, gap-up opens with RSI>60 — all losers historically. Retained only as a record of why the intraday RSI approach was abandoned in favor of trend-following."
+    "Very shallow golden crosses (<0.1% EMA-20/60 spread): NVDA (0.07%) skipped Jul 15 as a near-clone of the failed TSLA pattern (0.06%). Treat sub-0.1% crosses as noise-level, high reversal risk \u2014 skip on sight.",
+    "LEGACY intraday RSI buckets (informational, strategy retired): RSI 60-65 0/3, RSI 65-75 0/1, gap-up opens with RSI>60 \u2014 all losers historically. Retained only as a record of why the intraday RSI approach was abandoned in favor of trend-following."
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Jul 7-15: MA-20/60 trend strategy running steadily; 6 positions held, book net positive on unrealized. VIX 16.50 (CBOE, low/calm). SPY tracking real again via Alpaca (yfinance fix Jul 14). Market broadly constructive/low-vol; trends holding, no death crosses triggered recently. INFRA UPDATE (Jul 15 evening scan): check_earnings.py ran CLEANLY — 0 date-query errors out of 15 lookups, correctly flagged PYPL (earnings Jul 28). The prior yfinance-TLS block from this cloud IP appears RESOLVED; earnings risk is verifiable again at the script level.",
+  "recent_market_context": "Jul 7-15: MA-20/60 trend strategy running steadily; 6 positions held, book net positive on unrealized. VIX 16.50 (CBOE, low/calm). SPY tracking real again via Alpaca (yfinance fix Jul 14). Market broadly constructive/low-vol; trends holding, no death crosses triggered recently. INFRA UPDATE (Jul 15 evening scan): check_earnings.py ran CLEANLY \u2014 0 date-query errors out of 15 lookups, correctly flagged PYPL (earnings Jul 28). The prior yfinance-TLS block from this cloud IP appears RESOLVED; earnings risk is verifiable again at the script level.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -21,7 +21,7 @@
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
       "unrealized_pnl_pct": 5.29,
-      "notes": "Day 11; stop $93.28 (fixed, 2xATR). Portfolio anchor — strongest hold, steady uptrend. Full unit."
+      "notes": "Day 11; stop $93.28 (fixed, 2xATR). Portfolio anchor \u2014 strongest hold, steady uptrend. Full unit."
     },
     {
       "symbol": "PCG",
@@ -39,7 +39,7 @@
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
       "unrealized_pnl_pct": -0.92,
-      "notes": "Day 11; stop $44.37. Weakest position — now slightly red, no trend progress. Prime death-cross watch."
+      "notes": "Day 11; stop $44.37. Weakest position \u2014 now slightly red, no trend progress. Prime death-cross watch."
     },
     {
       "symbol": "CMG",
@@ -48,7 +48,7 @@
       "current_stop": 32.27,
       "entry_date": "2026-07-10",
       "unrealized_pnl_pct": -0.34,
-      "notes": "Day 7; stop $32.27. EARNINGS BLACKOUT Jul 15–29 — GTC stop is SOLE exit. Do NOT manually exit regardless of price or death cross. Full unit."
+      "notes": "Day 7; stop $32.27. EARNINGS BLACKOUT Jul 15\u201329 \u2014 GTC stop is SOLE exit. Do NOT manually exit regardless of price or death cross. Full unit."
     },
     {
       "symbol": "GIS",
@@ -57,7 +57,7 @@
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
       "unrealized_pnl_pct": 2.44,
-      "notes": "Day 3; stop $34.41. Shallow EMA cross (0.29%) but working — +2.44%. 75% unit (207 of 276). Continue watching early days."
+      "notes": "Day 3; stop $34.41. Shallow EMA cross (0.29%) but working \u2014 +2.44%. 75% unit (207 of 276). Continue watching early days."
     },
     {
       "symbol": "META",
@@ -66,8 +66,17 @@
       "current_stop": 613.58,
       "entry_date": "2026-07-15",
       "unrealized_pnl_pct": 2.83,
-      "notes": "Day 1 — NEW Jul 15. 75% unit (11 of 15), shallow 0.29% cross + price extended 8.5% above EMA-20. Stop $613.58 (2xATR=$23.805). +2.83% Day 1 close. Earnings unverified (yfinance TLS blocked) — watch closely for reversal given extended entry."
+      "notes": "Day 1 \u2014 NEW Jul 15. 75% unit (11 of 15), shallow 0.29% cross + price extended 8.5% above EMA-20. Stop $613.58 (2xATR=$23.805). +2.83% Day 1 close. Earnings unverified (yfinance TLS blocked) \u2014 watch closely for reversal given extended entry."
+    },
+    {
+      "symbol": "BMY",
+      "shares": 85,
+      "entry_price": 58.71,
+      "current_stop": 55.76,
+      "entry_date": "2026-07-16",
+      "unrealized_pnl_pct": 0.0,
+      "notes": "Day 0 \u2014 NEW Jul 16. 50% unit (85 of 171 full) size-down per evening-scan caution: shallowest golden cross yet (0.13% EMA20/60 spread, shallower than GIS/META 0.29% probation). Stop $55.76 (2xATR=1.4723). Fill $58.71 matched last-night close. Earnings confirmed clear within 14d. Watch closely for early reversal given marginal cross."
     }
   ],
-  "notes_for_next_session": "EVENING SCAN 2026-07-15 → for tomorrow's (Jul 16) MARKET-OPEN agent. EXITS AT OPEN: none — 0 death crosses across all 6 open positions; expect zero exit executions. ENTRIES: exactly 1 candidate in watchlist_trend.json → BMY. CAUTION on BMY: it is a VERY shallow golden cross (EMA20 57.3252 vs EMA60 57.2482 = 0.13% spread), SHALLOWER than the GIS/META (0.29%) probation entries and just above the sub-0.1% skip-on-sight noise line. Price 58.70 ~2.4% above EMA20 (modest momentum), ATR 1.47 (2.5%), vol 786k — mechanics OK, no earnings conflict. Given the shallow-cross loss record (TSLA 0.06% -4.78%; NVDA 0.07% skipped Jul 15), treat BMY as marginal: recommend a HEAVY size-down (≤50% unit) or a skip if conviction filters tighten — do NOT full-unit it. PYPL also crossed today but was EARNINGS-FILTERED (earnings Jul 28, 13 days, inside 14-day blackout) — do not enter PYPL. OPEN-BOOK WATCH (carry-over): (1) XLU still the weakest hold (-0.92%, 11 days, no trend progress) — closest death-cross candidate; (2) CMG blackout Jul 15–29 — GTC stop $32.27 is the SOLE exit, do NOT manually exit even on a death cross; (3) META (Day 1) & GIS (Day 3) remain shallow-cross probation, both green, watch for early reversal; (4) SCHW/PCG anchor. INFRA GOOD NEWS: check_earnings.py is working again (0/15 errors today) — earnings risk is verifiable; no need to treat earnings as unknown for BMY (confirmed clear within 14 days). 6 positions open, 14 slots free. Account equity ~$100,675; today EOD -$49.98 (-0.05%) vs SPY +0.38%; cumulative Bull +0.67% vs SPY -0.48%. VIX low/calm."
+  "notes_for_next_session": "MARKET-OPEN 2026-07-16 EXECUTED -> for tonight's EOD agent. EXITS: none (exit_signals empty; 0 death crosses). ENTRIES: 1 filled -> BMY 85sh @ $58.71, stop $55.76, broker stop order live. Entered at 50% unit (85 of 171 full) honoring the evening scan's HEAVY size-down guidance on the shallowest cross yet (0.13% spread). NOT full-unit. PYPL was earnings-filtered, not entered. Now 7/20 positions open, 13 slots free. PROBATION WATCH: BMY (Day 0, marginal 0.13% cross) + META (Day 1 area) + GIS -- all shallow-cross probation, watch for early reversal. XLU still weakest laggard (~-0.9%, prime death-cross candidate). CMG earnings blackout Jul 15-29 -> GTC stop $32.27 is SOLE exit, do NOT manually exit. Pre-flight was clean: acct not blocked, VIX 15.67 low/calm, no kill switch. Equity ~$100,799 at open. Note: env needed pip install (dotenv/portalocker) before scripts ran -- expected on fresh clone."
 }
