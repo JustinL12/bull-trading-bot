@@ -10,3 +10,4 @@
 {"type": "archive_digest", "date_range": "2026-06-24 to 2026-06-25", "sessions": 5, "avg_pnl_pct": 0.0, "total_pnl_pct": 0.0, "archived_at": "2026-07-15"}
 {"type": "archive_digest", "date_range": "2026-06-25 to 2026-06-26", "sessions": 4, "avg_pnl_pct": 0.0, "total_pnl_pct": 0.0, "archived_at": "2026-07-16"}
 {"type": "archive_digest", "date_range": "2026-06-26 to 2026-06-26", "sessions": 4, "avg_pnl_pct": 0.0, "total_pnl_pct": 0.0, "archived_at": "2026-07-17"}
+{"type": "archive_digest", "date_range": "2026-06-27 to 2026-06-29", "sessions": 5, "avg_pnl_pct": 0.0, "total_pnl_pct": 0.0, "archived_at": "2026-07-20"}
