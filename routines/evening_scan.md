@@ -99,11 +99,11 @@ import sys, json
 sys.path.insert(0, '.')
 from lib.state import read_json, write_json
 
-watchlist = read_json('data/watchlist_trend.json') or []
-blacklist = set(read_json('data/earnings_blacklist.json') or [])
+watchlist = read_json('watchlist_trend.json') or []
+blacklist = set(read_json('earnings_blacklist.json') or [])
 filtered = [c for c in watchlist if c['symbol'] not in blacklist]
 removed = len(watchlist) - len(filtered)
-write_json('data/watchlist_trend.json', filtered)
+write_json('watchlist_trend.json', filtered)
 print(f'Earnings filter: removed {removed} symbols, {len(filtered)} remain')
 ```
 

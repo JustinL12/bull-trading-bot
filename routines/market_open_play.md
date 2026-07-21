@@ -127,8 +127,8 @@ from lib.risk import turtle_unit_size, turtle_stop_price
 from lib.state import read_json
 
 sym = 'REPLACE_WITH_SYMBOL'
-acct = read_json('data/account.json')
-wl = read_json('data/watchlist_trend.json')
+acct = read_json('account.json')
+wl = read_json('watchlist_trend.json')
 
 # Find this symbol's ATR from the watchlist
 entry = next((c for c in wl if c['symbol'] == sym), None)

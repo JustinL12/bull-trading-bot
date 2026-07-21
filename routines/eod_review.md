@@ -85,7 +85,7 @@ from lib.alpaca_client import get_trading_client
 from lib.state import read_json
 
 trading_client = get_trading_client()
-positions = read_json('data/positions.json') or {}
+positions = read_json('positions.json') or {}
 
 # Fetch all open orders from Alpaca
 orders = trading_client.get_orders()
