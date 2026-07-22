@@ -1,20 +1,21 @@
 {
   "last_updated": "2026-07-22",
-  "sessions_analyzed": 49,
-  "total_trades": 9,
-  "performance_overview": "Through 49 sessions (inception 2026-06-01) Bull holds the same 7 open positions (SCHW, PCG, XLU, CMG, GIS, META, BMY). Account equity ~$99,858 (-0.14% since $100K inception) vs SPY -1.32% cumulative \u2014 Bull still leads the benchmark by ~1.18pts, though the lead narrowed sharply today. Today (Jul 21 EOD) was a textbook defensive-lag day: SPY ripped +0.85% (risk-on) while Bull's low-beta/defensive book barely moved, netting -$71.06 (-0.07%) for a -0.92% single-day alpha \u2014 the worst daily alpha in weeks, and the exact mirror image of the down-day protection this book provides. Zero exits, zero entries, no death crosses; all 7 GTC hard stops re-verified live at Alpaca. Unrealized book stays net-positive but the greens gave back into the rally: BMY +3.59% (new book leader, up from +2.72%), GIS +3.36% (eased from +5.01%), SCHW +2.60% (notable give-back from +4.96% \u2014 the anchor lagged hardest on a risk-on tape), PCG +2.32% (improved from +1.44%). Reds: XLU -1.70% (slipped from -1.54%, now the CLOSEST position to its stop at only ~1.15% above GTC $44.37 \u2014 overtaking CMG for tightest); CMG -4.56% (RECOVERED from -5.74%, now ~3.67% above GTC $32.27, still in earnings blackout so GTC is sole exit); META -1.96% (slipped from -1.66% but EMA-20 retest still holding, no death cross).",
+  "sessions_analyzed": 50,
+  "total_trades": 10,
+  "performance_overview": "Through 50 sessions (inception 2026-06-01) Bull now holds 6 open positions after CMG stopped out today. Account equity ~$99,722 (-0.28% since $100K inception) vs SPY -1.40% cumulative — Bull still leads the benchmark by ~1.13pts. Realized record moves to 10 round-trips (3W/7L on the trend book + legacy). Today (Jul 22 EOD) was a rare flat/risk-off session where Bull's defensive book slightly BEAT the market: net +$17.71 (+0.02%) vs SPY -0.05% for +0.07% alpha — the mirror image of yesterday's -0.92% defensive-lag day. The headline event: CMG's GTC 2xATR hard stop ($32.27) filled automatically at 3:02 PM ET (289 shares @ $32.27), realizing -$817.71 (-8.06%) on a 12-day hold. This is exactly the designed behavior — CMG was in earnings blackout (Jul 15-29) with the GTC stop as its SOLE exit, and it executed cleanly at the broker with no manual intervention. Even absorbing that loss, equity ticked up on the day as the surviving book firmed. Unrealized book is net-positive and broadly green: PCG new book leader +5.50% (up from +2.32%), BMY +3.51%, SCHW +2.71% (recovered from yesterday's give-back), GIS +2.71%, XLU RECOVERED to +0.64% (from -1.70%, no longer tightest-to-stop). The lone deteriorating name is META -5.53% (rolled hard from -1.96%), now the CLOSEST position to its stop at only +1.80% above GTC $613.58 — the extended-entry digestion range is breaking lower and it is the top death-cross / stop-out watch.",
   "best_signals": [
-    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% \u2014 the ONLY consistently profitable bucket for the LEGACY intraday RSI strategy; n=2, thin sample, informational only now that the strategy is MA-20/60 trend-following. Do not act on it without n>=10.",
-    "Shallow-cross probation entries continue to hold up under trend-following: GIS (0.29% cross, 75% unit) still +3.36% after easing from a +7.46% peak, and BMY (0.13% cross, 50% unit) is the new book leader at +3.59% on Day 8. Sustained positive read that a heavy size-down \u2014 NOT a skip \u2014 is the right call for shallow-but-non-earnings-adjacent golden crosses. Still only 2-3 samples; keep sizing down, do not upsize yet."
+    "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% — the ONLY consistently profitable bucket for the LEGACY intraday RSI strategy; n=2, thin sample, informational only now that the strategy is MA-20/60 trend-following. Do not act on it without n>=10.",
+    "Shallow-cross probation entries continue to hold up under trend-following: GIS (0.29% cross, 75% unit) still +2.71% on Day 8, and BMY (0.13% cross, 50% unit) +3.51% on Day 6 — both green and above their stops after easing from earlier peaks. Sustained positive read that a heavy size-down (NOT a skip) is the right call for shallow-but-non-earnings-adjacent golden crosses. Still only 2-3 samples; keep sizing down, do not upsize yet."
   ],
   "avoid": [
     "Shallow EMA cross entries on earnings-adjacent names: TSLA (Jul 7 entry, 0.06% cross spread, earnings Jul 22) lost -4.78% on exit. Rule: SKIP (do not size down) when BOTH shallow cross spread (<0.5%) AND earnings within 14 days apply simultaneously. This is the live rule under the current trend strategy.",
-    "Extended entries (price well above EMA-20 at entry): META entered Jul 15 at ~8.5% above EMA-20, peaked +2.83%, rolled to -2.71%, recovered to -1.66%, and sits -1.96% today \u2014 chopping in a shallow digestion range as the EMA-20 retest holds without confirming a death cross. Early evidence that chasing an extended golden cross buys the digestion/pullback but does not necessarily break the trend. Treat large above-EMA extension as a size-down (or wait-for-pullback) caution. n=1, informational.",
-    "Very shallow golden crosses (<0.1% EMA-20/60 spread): NVDA (0.07%) skipped Jul 15 as a near-clone of the failed TSLA pattern (0.06%). Treat sub-0.1% crosses as noise-level, high reversal risk \u2014 skip on sight. BMY at 0.13% cleared this line by a hair, taken at half unit, and is now the book leader (+3.59%), validating 0.1% as the skip floor.",
-    "LEGACY intraday RSI buckets (informational, strategy retired): RSI 60-65 0/3, RSI 65-75 0/1, gap-up opens with RSI>60 \u2014 all losers historically. Retained only as a record of why the intraday RSI approach was abandoned in favor of trend-following."
+    "Extended entries (price well above EMA-20 at entry): META entered Jul 15 at ~8.5% above EMA-20, peaked +2.83%, chopped in a digestion range for a week, and has now rolled to -5.53% — the digestion finally broke LOWER, and META sits only +1.80% above its stop as the top stop-out watch. The early caution is now confirming: chasing an extended golden cross bought the pullback AND is now bleeding toward the stop. Treat large above-EMA extension (>~6-8%) as a firm size-down or wait-for-pullback rule. n=1 but strengthening.",
+    "Very shallow golden crosses (<0.1% EMA-20/60 spread): NVDA (0.07%) skipped Jul 15 as a near-clone of the failed TSLA pattern (0.06%). Treat sub-0.1% crosses as noise-level, high reversal risk — skip on sight. BMY at 0.13% cleared this line by a hair, taken at half unit, and remains green (+3.51%), validating 0.1% as the skip floor.",
+    "Earnings-blackout holds ride to the hard stop with no discretionary exit: CMG (entered Jul 10, earnings blackout Jul 15-29) drifted from -4.56% to its 2xATR stop and filled automatically at -8.06% today. This is the blackout policy working as intended — no death-cross override during blackout means the full 2xATR is the risk. Noted as a record of realized blackout downside, not a rule change: the GTC stop is the point of the policy.",
+    "LEGACY intraday RSI buckets (informational, strategy retired): RSI 60-65 0/3, RSI 65-75 0/1, gap-up opens with RSI>60 — all losers historically. Retained only as a record of why the intraday RSI approach was abandoned in favor of trend-following."
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Jul 15-21: MA-20/60 trend strategy running steadily; 7 positions held, book net positive on unrealized. Broad market swung from three soft-to-down sessions (SPY -0.82% Jul 16, -0.95% Jul 17, -0.06% Jul 20) into a decisive risk-on rally today (SPY +0.85% Jul 21). Bull's defensive tilt (utilities, staples, healthcare, financials) beat SPY on the down days but LAGGED hard on today's rally (-0.92% alpha) \u2014 the largest daily alpha give-back in weeks, cutting cumulative alpha from ~2.0pts to ~1.18pts. No death crosses triggered across any position; no new golden crosses have cleared filters for several scans. VIX last read 15.67 (calm) on Jul 16; today's rally implies VIX likely eased further. Trending/choppy: choppy with today's sharp up-swing, no sustained direction yet.",
+  "recent_market_context": "Jul 16-22: MA-20/60 trend strategy running; book trimmed from 7 to 6 positions today on CMG's automatic stop-out. Broad market whipsawed: three soft-to-down sessions, a decisive risk-on rally Jul 21 (SPY +0.85%) where Bull's defensive tilt lagged hard (-0.92% alpha), then a flat/mildly-down Jul 22 (SPY -0.05%) where the defensive book edged ahead (+0.07% alpha). No new golden crosses have cleared filters for many consecutive scans (14 free slots, zero queued candidates). One death-cross-equivalent risk building: META rolling toward its stop. VIX last read 15.67 (calm) Jul 16; the choppy two-sided tape since implies VIX remains low-to-moderate. Trending/choppy: choppy, no sustained direction — sharp up-day followed immediately by a flat give-back.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
@@ -22,8 +23,8 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 2.6,
-      "notes": "Day 15; stop $93.28 (fixed, 2xATR). Anchor gave back hard from +4.96% to +2.60% \u2014 the biggest single-day green give-back, notably lagging on a risk-on day for a financial. Still ~7.2% above stop, full unit, no death cross. Watch whether the pullback is digestion or the start of trend fade."
+      "unrealized_pnl_pct": 2.71,
+      "notes": "Day 16; stop $93.28 (fixed, 2xATR). Recovered from yesterday's give-back to +2.71%, ~7.8% above stop. Full unit, no death cross. Anchor position behaving normally."
     },
     {
       "symbol": "PCG",
@@ -31,8 +32,8 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 2.32,
-      "notes": "Day 15; stop $16.29. Improved from +1.44% to +2.32%, steadily building green. ~7.0% above stop. No death cross. Full unit."
+      "unrealized_pnl_pct": 5.5,
+      "notes": "Day 16; stop $16.29. NEW BOOK LEADER at +5.50% (up from +2.32%), ~10.9% above stop. Steadiest uptrend in the book. Full unit, no death cross."
     },
     {
       "symbol": "XLU",
@@ -40,18 +41,8 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": -1.7,
-      "notes": "Day 15; stop $44.37. Slipped from -1.54% to -1.70% as utilities sold off on the risk-on day \u2014 NOW THE CLOSEST POSITION TO ITS STOP at only ~1.15% above GTC $44.37, overtaking CMG. Oldest position with no trend progress after 15 days. Top death-cross / stop-out watch; GTC handles the exit automatically."
-    },
-    {
-      "symbol": "CMG",
-      "shares": 289,
-      "entry_price": 35.099447,
-      "current_stop": 32.27,
-      "entry_date": "2026-07-10",
-      "unrealized_pnl_pct": -4.56,
-      "notes": "Day 11; stop $32.27. RECOVERED from -5.74% to -4.56% today, now ~3.67% above stop (no longer the tightest \u2014 XLU took that spot). EARNINGS BLACKOUT Jul 15-29 \u2014 GTC stop $32.27 is SOLE exit. Do NOT manually exit regardless of price or death cross. Full unit.",
-      "unit": "Full unit."
+      "unrealized_pnl_pct": 0.64,
+      "notes": "Day 16; stop $44.37. RECOVERED from -1.70% to +0.64% as utilities firmed on the flat/risk-off day — NO LONGER the tightest-to-stop (now ~3.6% above GTC $44.37). Oldest position, finally back to green but still weak trend. No death cross. Full unit."
     },
     {
       "symbol": "GIS",
@@ -59,8 +50,8 @@
       "entry_price": 35.89343,
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
-      "unrealized_pnl_pct": 3.36,
-      "notes": "Day 7; stop $34.41. Eased from +5.01% to +3.36% into the rally but firmly green, ~7.3% above stop. 75% unit (207 of 276). Probation graduating well; keep holding, do not upsize."
+      "unrealized_pnl_pct": 2.71,
+      "notes": "Day 8; stop $34.41. Steady green +2.71%, ~7.1% above stop. 75% unit (207 of 276) shallow-cross probation, graduating well. Keep holding, do not upsize."
     },
     {
       "symbol": "META",
@@ -68,8 +59,8 @@
       "entry_price": 661.19,
       "current_stop": 613.58,
       "entry_date": "2026-07-15",
-      "unrealized_pnl_pct": -1.96,
-      "notes": "Day 5; stop $613.58 (2xATR=$23.805). Slipped from -1.66% to -1.96% but EMA-20 retest still holding, no death cross; ~5.35% above stop. The extended entry (8.5% above EMA-20) keeps chopping in a shallow digestion range rather than breaking down. 75% unit (11 of 15). Keep monitoring."
+      "unrealized_pnl_pct": -5.53,
+      "notes": "Day 6; stop $613.58 (2xATR=$23.805). TOP STOP-OUT WATCH — rolled hard from -1.96% to -5.53%, the extended-entry (8.5% above EMA-20) digestion range has now BROKEN LOWER. Only +1.80% above GTC $613.58, the closest position to its stop, overtaking XLU. Watch tonight's scan for a META death cross; GTC handles the exit automatically if it hits $613.58. 75% unit (11 of 15)."
     },
     {
       "symbol": "BMY",
@@ -77,9 +68,9 @@
       "entry_price": 58.71,
       "current_stop": 55.76,
       "entry_date": "2026-07-16",
-      "unrealized_pnl_pct": 3.59,
-      "notes": "Day 5. NEW BOOK LEADER at +3.59% (up from +2.72%), ~8.3% above stop. 50% unit (85 of 171 full), heavy size-down on the shallowest cross yet (0.13% EMA20/60 spread). Stop $55.76 (2xATR=1.4723). The shallow-cross size-down continues to validate strongly. Earnings confirmed clear within 14d."
+      "unrealized_pnl_pct": 3.51,
+      "notes": "Day 6; stop $55.76 (2xATR=1.4723). Green +3.51%, ~9.0% above stop. 50% unit (85 of 171 full), heavy size-down on the shallowest cross (0.13% EMA20/60). Shallow-cross size-down continues to validate. No death cross."
     }
   ],
-  "notes_for_next_session": "MARKET OPEN 2026-07-22 -> for tonight's (Jul 22) EOD agent. NO-OP OPEN EXECUTED AS FORECAST: both signal files empty, 0 exits and 0 entries. Pre-flight clean (no kill_switch.flag; account refreshed equity $100,006.50, cash $39,785.03, buying_power $327,760.23, last_equity $99,703.10, trading_blocked=False). Equity ticked back above $100K (from $99,748 at last night's scan) as the book firmed at the open. Book UNCHANGED at 7/20 positions (SCHW 103, PCG 586, XLU 218, CMG 289, GIS 207, META 11, BMY 85) — all on live Alpaca GTC 2xATR hard stops handling exits automatically. TOP WATCH (informational; GTC executes, do NOT manually close): XLU still the closest position to its stop (~1% above GTC $44.37, oldest red, no death cross triggered). CMG in EARNINGS BLACKOUT Jul 15-29 — GTC $32.27 is SOLE exit, ignore any CMG death-cross signal until blackout ends. 13 free slots but no candidates have cleared filters for several consecutive scans. INFRA REMINDER: do NOT retry post_attention/post_daily_report on proxy 5xx/'policy context unavailable' — post EXACTLY ONCE. --- PRIOR EVENING SCAN 2026-07-21 -> for tomorrow's (Jul 22) MARKET-OPEN agent. FORECAST: NO-OP OPEN. Both watchlist_trend.json and exit_signals.json are EMPTY (evening scan found 0 golden crosses cleared filters, 0 death crosses across all 7 positions) -> expect 0 entries and 0 exits at open. Book UNCHANGED at 7/20 positions (SCHW, PCG, XLU, CMG, GIS, META, BMY), all on live Alpaca GTC 2xATR fixed hard stops which handle all exits automatically. Use equity ~$99,748.34 for any position sizing (cash $39,785, buying_power $327k). WHAT TO DO: refresh account, reconcile positions.json against LIVE Alpaca (confirm 7 positions / share counts: SCHW 103, PCG 586, XLU 218, CMG 289, GIS 207, META 11, BMY 85), confirm both signal files empty, log NO-OP and stop. VIX/position-cap checks are moot with 0 candidates. TOP WATCH (informational only \u2014 GTC stops execute, do NOT manually close): XLU remains the CLOSEST position to its stop (~1% above GTC $44.37, oldest red Day 16, no trend progress) yet did NOT trigger a death cross this scan \u2014 trend barely intact. If tomorrow's evening scan flags an XLU death cross, that's the confirmed exit; today it has NOT. SECONDARY WATCH: CMG in EARNINGS BLACKOUT Jul 15-29 \u2014 GTC $32.27 is SOLE exit; do NOT manually close and do NOT act on any CMG death-cross signal during the blackout. PERF CONTEXT: another defensive-lag day \u2014 Bull -0.18% vs SPY +0.81% (-0.99% alpha); cumulative alpha narrowed to ~+1.11pts (Bull -0.25% vs SPY -1.36% since inception). Bull still leads. 13 free slots but no candidates queued; no golden crosses have cleared filters for several consecutive scans. INFRA REMINDER: do NOT retry post_attention/post_daily_report on proxy 5xx/'policy context unavailable' \u2014 treat as possibly-delivered and post EXACTLY ONCE."
+  "notes_for_next_session": "EOD 2026-07-22 -> for tonight's (Jul 22) EVENING-SCAN agent. BOOK CHANGED: CMG STOPPED OUT today. Its GTC 2xATR hard stop ($32.27) filled automatically at 3:02 PM ET (289 sh @ $32.27), realizing -$817.71 (-8.06%) on a 12-day hold — exactly the designed blackout behavior (CMG was in earnings blackout Jul 15-29 with the GTC stop as sole exit). RECONCILED: CMG EXIT logged to trade_log.jsonl (manual reconcile, recurring fill-bug 7th occurrence) and removed from positions.json. Book now 6/20 positions: SCHW 103, PCG 586, XLU 218, GIS 207, META 11, BMY 85 — all on live Alpaca GTC 2xATR hard stops (re-verified all 6 live tonight). TOP WATCH for your scan: META (-5.53%, only +1.80% above GTC $613.58) is now the CLOSEST-to-stop position, overtaking XLU. The extended entry has broken lower out of its week-long digestion range — if your MA-20/60 scan flags a META EMA20<EMA60 death cross tonight, that's the confirmed exit for tomorrow's open; watch it closely. XLU recovered to +0.64% (no longer the concern). No earnings-blackout names remain in the book (CMG is out). 14 free slots but zero candidates have cleared filters for many consecutive scans — expect another empty golden-cross watchlist unless the tape shifts. PERF: today Bull +0.02% vs SPY -0.05% (+0.07% alpha, a rare defensive-book win on a flat day); cumulative Bull -0.28% vs SPY -1.40%, still ahead ~1.13pts. INFRA REMINDER: do NOT retry post_attention/post_daily_report on proxy 5xx/'policy context unavailable' — post EXACTLY ONCE."
 }
