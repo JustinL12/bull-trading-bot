@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "symbol": "XLE",
+    "close": 59.18,
+    "atr": 1.1303,
+    "ema_fast": 56.4446,
+    "ema_slow": 56.3657,
+    "avg_volume_20d": 2053905,
+    "signal": "golden_cross",
+    "scanned_at": "2026-07-22T20:05:07.524536+00:00"
+  }
+]
