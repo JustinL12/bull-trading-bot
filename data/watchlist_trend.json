@@ -1,12 +1,12 @@
 [
   {
-    "symbol": "XLE",
-    "close": 59.18,
-    "atr": 1.1303,
-    "ema_fast": 56.4446,
-    "ema_slow": 56.3657,
-    "avg_volume_20d": 2053905,
+    "symbol": "PDBC",
+    "close": 18.09,
+    "atr": 0.2672,
+    "ema_fast": 17.0587,
+    "ema_slow": 17.0332,
+    "avg_volume_20d": 501260,
     "signal": "golden_cross",
-    "scanned_at": "2026-07-22T20:05:07.524536+00:00"
+    "scanned_at": "2026-07-23T20:04:36.259334+00:00"
   }
 ]
