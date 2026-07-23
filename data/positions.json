@@ -82,5 +82,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "d3c962a8-0c66-4ade-a8ab-811d3a35215a",
     "stop_order_id": "75726d1f-4944-452d-bb4e-0503af27f502"
+  },
+  "XLE": {
+    "symbol": "XLE",
+    "entry_price": 60.167738,
+    "shares": 84,
+    "entry_time": "2026-07-23T13:34:21.884261+00:00",
+    "atr_at_entry": 1.6239,
+    "initial_stop": 56.92,
+    "current_stop": 56.92,
+    "highest_close_since_entry": 60.167738,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "9eec3c22-084a-4743-a3a4-84f3a47cab13",
+    "stop_order_id": "aab67487-a636-4257-a613-240d783ebf9f"
   }
 }
