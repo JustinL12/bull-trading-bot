@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-24",
+  "last_updated": "2026-07-27",
   "sessions_analyzed": 52,
   "total_trades": 11,
   "performance_overview": "Through 52 sessions (inception 2026-06-01) Bull holds 7 open positions and closed +$347.76 (+0.35%) on a flat tape (SPY -0.01%) for +0.36% alpha. Account equity ~$99,482 (-0.52% since $100K inception) vs SPY -2.70% cumulative \u2014 Bull's lead over the benchmark WIDENED again to ~+2.18pts (from +2.09 yesterday) as the book recovered ground with no drag from stop-outs. Realized record unchanged at 11 round-trips, 3W/8L (no exits today \u2014 zero death crosses, zero stop-fills, clean session). The book is broadly green and healing after two risk-off days: BMY remains leader +5.99% (~10.4% above stop), SCHW firmed to +3.94%, PCG +3.93%, XLU +1.26%, GIS recovered to +0.49%. Two mild reds are the newest low-conviction probes: XLE -1.02% (Day 2 thin-cross) and PDBC -0.08% (Day 0/1 stacked-flags). Key structural note: PDBC is now the TIGHTEST-to-stop in the book at only ~1.95% above its $17.56 GTC \u2014 it displaces GIS as the #1 stop-out watch. All 7 positions reconciled EXACT against live Alpaca (7 positions, 7 active GTC 2xATR stops, zero self-fills this cycle \u2014 the morning agent's pre-entry reconcile plus this EOD verify caught nothing amiss, first clean two-check day in a while).",
@@ -23,8 +23,8 @@
       "entry_price": 97.925243,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 3.94,
-      "notes": "Day 19; stop $93.28 (fixed 2xATR). +3.94%, ~8.4% above stop. Full unit, no death cross. Anchor position, behaving normally."
+      "unrealized_pnl_pct": 5.51,
+      "notes": "Day 20; stop $93.28. +5.51%, ~9.7% above stop. Anchor, strongest core. No death cross."
     },
     {
       "symbol": "PCG",
@@ -32,8 +32,8 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 3.93,
-      "notes": "Day 19; stop $16.29. +3.93%, ~8.5% above stop. Steadiest low-beta uptrend in book. Full unit, no death cross."
+      "unrealized_pnl_pct": 4.33,
+      "notes": "Day 20; stop $16.29. +4.33%, ~8.8% above stop. Steady low-beta uptrend. No death cross."
     },
     {
       "symbol": "XLU",
@@ -41,8 +41,8 @@
       "entry_price": 45.66,
       "current_stop": 44.37,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 1.26,
-      "notes": "Day 19; stop $44.37. +1.26%, ~4.0% above GTC. Oldest position, weak but positive. No death cross. Full unit. Weakest core watch."
+      "unrealized_pnl_pct": 0.95,
+      "notes": "Day 20; stop $44.37. +0.95%, ~3.75% above stop. Oldest, weak-but-positive. #2 stop-out watch now. No death cross."
     },
     {
       "symbol": "GIS",
@@ -50,8 +50,8 @@
       "entry_price": 35.89343,
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
-      "unrealized_pnl_pct": 0.49,
-      "notes": "Day 11; stop $34.41. Recovered to +0.49% (~4.6% above GTC) after dipping red. 75% unit (207/276) shallow-cross probation. No death cross. Second-tightest to stop behind PDBC."
+      "unrealized_pnl_pct": 0.91,
+      "notes": "Day 13; stop $34.41. +0.91%, ~5.0% above stop. 75% unit shallow-cross probation. No death cross."
     },
     {
       "symbol": "BMY",
@@ -59,8 +59,8 @@
       "entry_price": 58.71,
       "current_stop": 55.76,
       "entry_date": "2026-07-16",
-      "unrealized_pnl_pct": 5.99,
-      "notes": "Day 9; stop $55.76 (2xATR=1.4723). BOOK LEADER +5.99%, ~10.4% above stop. 50% unit (85/171) heaviest size-down on shallowest cross (0.13%). Shallow-cross size-down strongly validating. No death cross."
+      "unrealized_pnl_pct": 6.35,
+      "notes": "Day 11; stop $55.76. BOOK LEADER +6.35%, ~10.7% above stop. 50% unit heaviest size-down on shallowest cross (0.13%) \u2014 validating. No death cross."
     },
     {
       "symbol": "XLE",
@@ -68,18 +68,18 @@
       "entry_price": 60.167738,
       "current_stop": 56.92,
       "entry_date": "2026-07-23",
-      "unrealized_pnl_pct": -1.02,
-      "notes": "Day 2; stop $56.92 (fill-2xATR 1.6239). Golden cross shallow 0.14% -> HALF unit (84/168). -1.02% (energy soft), ~4.4% above stop. Thin-cross reversal watch. Keep half size."
+      "unrealized_pnl_pct": -2.26,
+      "notes": "Day 4; stop $56.92. -2.26% (energy soft), only ~3.2% above stop \u2014 now the #1 STOP-OUT WATCH (tightest cushion). Half unit thin-cross. Watch closely."
     },
     {
-      "symbol": "PDBC",
-      "shares": 137,
-      "entry_price": 17.92,
-      "current_stop": 17.56,
-      "entry_date": "2026-07-24",
-      "unrealized_pnl_pct": -0.08,
-      "notes": "Day 0/1 (entered @ open $17.92). Invesco diversified commodity ETF. LOW-CONVICTION, 3 stacked flags: shallow 0.15% cross + EXTENDED 6.05% above EMA-20 + thin liquidity 501k. QUARTER unit (137). Stop $17.56 = fill-2xATR (live ATR 0.18). Flat at -0.08% BUT now the TIGHTEST-TO-STOP in book at only ~1.95% above its GTC \u2014 #1 stop-out watch and the live test of whether stacked-flags entries should be skipped, not just sized down."
+      "symbol": "CAG",
+      "shares": 336,
+      "entry_price": 14.990417,
+      "current_stop": 13.94,
+      "entry_date": "2026-07-27",
+      "unrealized_pnl_pct": -0.2,
+      "notes": "Day 0 (entered @ open $14.99, +1.35% above $14.79 scan close). Conagra. Shallow-cross size-DOWN: HALF unit (336/673), 0.113% cross ~ BMY 0.13%, ext +4.1% (modest). Stop $13.94 = fill-2xATR (0.5247), adjusted up from close-based $13.74. Newest probe, flat."
     }
   ],
-  "notes_for_next_session": "EVENING-SCAN 2026-07-24 -> for tomorrow (2026-07-27 Mon) market-open agent. SIGNALS: 3 raw golden crosses, XOM dropped by 14-day earnings blackout (reports 07-31), leaving 2 in watchlist_trend.json: CAG and MDT. 0 exits \u2014 exit_signals.json is EMPTY (no death crosses); expect ZERO exits at the open, all 7 positions hold their trend. ENTRY GUIDANCE (weak scan night): (1) CAG is the ONLY clean actionable name \u2014 cross_spread 0.113% just clears the 0.1% skip floor (mirrors BMY 0.13%, the book leader), ext +3.98% above EMA-20 (modest, NOT in the >6-8% extension caution zone), vol 952k healthy, ATR ~3.55% of a $15 price. Take it SIZE-DOWN per the validated shallow-cross playbook (half-unit-ish, like BMY/XLE); do NOT full-size and do NOT skip. (2) MDT is a RECOMMENDED SKIP \u2014 cross_spread is only 0.014%, ~1/7th of the 0.1% skip floor, squarely in the documented skip-on-sight noise band (cf. NVDA 0.07% / TSLA 0.06%, both skipped). Ext just +1.55% (slow grind, no momentum) and vol 533k barely over the 500k floor. The EMAs are touching, not crossing with conviction \u2014 high fake-out risk. If the market-open logic auto-executes all non-earnings signals, MDT is the one to override/skip; at most a token quarter-unit probe, but a clean skip is the better read. BOOK / WATCH ORDER unchanged from EOD: (1) PDBC still #1 stop-out watch \u2014 tightest cushion (~1.95% above $17.56 GTC), 3 stacked flags (shallow 0.15% + 6% extended + thin liq), the live test of skip-vs-size-down for stacked flags; no death cross tonight. (2) GIS ~4.6% above $34.41 (+0.49%). (3) XLE Day-2 thin-cross (-1.02%, ~4.4% above stop). (4) XLU weakest core (+1.26%). Strong core BMY/SCHW/PCG all >+3.9%, 8-10% above stops. Book now 7/20 \u2014 room for CAG. RECONCILE before entering (per standing guidance): query live Alpaca positions vs positions.json; the CMG/META self-fill history means verify all 7 GTC 2xATR stops are live and match before adding CAG. MARKET/VIX: tape recovered today (SPY +0.11%) after two risk-off sessions; VIX last read 18.70 (well under 40 suspend) \u2014 REFRESH at open. Bull +0.42% today, +0.31% alpha, cumulative lead now ~+2.13pts (-0.45% vs SPY -2.58%). INFRA (recurring, escalate to routine owner \u2014 STILL UNADDRESSED): (b) lib.state read_json double-nests when passed a \"data/\"-prefixed path \u2014 the routine Part-3 earnings-filter snippet HAS THIS BUG and silently no-opped the XOM filter tonight until I re-ran with bare filenames + handled the blacklist being dicts not strings; the snippet in the routine doc should be fixed to use read_json(\"watchlist_trend.json\") and extract b[\"symbol\"] from the blacklist. (a) update_pnl.py still needs a last_equity==0 guard (clean tonight). (c) a scripts/reconcile_positions.py would replace the hand-written inline reconcile each session."
+  "notes_for_next_session": "MARKET-OPEN 2026-07-27 (Mon) executed -> for tonight's EOD agent. EXITS: zero death-cross signals (exit_signals.json empty). BUT pre-entry reconcile caught PDBC STOPPED OUT at the open: GTC 2xATR stop $17.56 self-filled 13:30:55Z @ $17.49 (137 sh, entry $17.92) = realized -$58.91 (-2.40%), an UNLOGGED self-fill (9th occ of the recurring bug; CMG/META precedent). Manually reconciled: removed from positions.json, wrote full EXIT to trade_log.jsonl, posted warning attention alert. REALIZED RECORD advances to 12 round-trips (was 11); PDBC is the loss that makes it ~3W/9L \u2014 EOD please recompute/verify realized stats to include PDBC. PDBC VERDICT: the stacked-flags probe (shallow cross + 6% extended + thin liq) should be SKIPPED, not sized down \u2014 it was the tightest-to-stop and duly stopped; log this as the resolution of the skip-vs-size-down-for-stacked-flags test (SKIP wins). ENTRY: CAG taken (only clean actionable name) at HALF unit 336 sh @ $14.99, stop $13.94 (fill-2xATR, adjusted up from close-based $13.74; atr_at_entry corrected to true 0.5247). Shallow 0.113% cross ~ BMY playbook. SKIP: MDT (0.014% cross, noise band) per prior guidance \u2014 correctly overridden. BOOK now 7/20. WATCH ORDER (updated, PDBC gone): (1) XLE is now #1 stop-out watch \u2014 Day-4 thin-cross -2.26%, only ~3.2% above $56.92 stop, energy soft. (2) XLU #2 (+0.95%, ~3.75% above $44.37). (3) GIS (+0.91%, ~5.0%). (4) CAG Day-0 (~6.8% above $13.94). Strong core BMY/SCHW/PCG all +4.3% to +6.4%, 8.8-10.7% above stops. VIX 18.58 (<40, no suspend). No kill switch; trading not blocked. Equity ~$99,615 (roughly flat). INFRA (recurring, escalate to routine owner \u2014 STILL UNADDRESSED): (a) stop self-fills remain unlogged/unreconciled (9th occ, PDBC) \u2014 a scripts/reconcile_positions.py that syncs positions.json to live Alpaca + auto-logs EXITs would end the hand-reconcile each session. (b) lib.state read_json double-nests on a 'data/'-prefixed path \u2014 use bare filenames. (c) update_pnl.py still needs a last_equity==0 guard."
 }

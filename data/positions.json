@@ -83,18 +83,18 @@
     "alpaca_order_id": "9eec3c22-084a-4743-a3a4-84f3a47cab13",
     "stop_order_id": "aab67487-a636-4257-a613-240d783ebf9f"
   },
-  "PDBC": {
-    "symbol": "PDBC",
-    "entry_price": 17.92,
-    "shares": 137,
-    "entry_time": "2026-07-24T13:34:17.958701+00:00",
-    "atr_at_entry": 0.18,
-    "initial_stop": 17.56,
-    "current_stop": 17.56,
-    "highest_close_since_entry": 17.92,
+  "CAG": {
+    "symbol": "CAG",
+    "entry_price": 14.990417,
+    "shares": 336,
+    "entry_time": "2026-07-27T13:36:37.586490+00:00",
+    "atr_at_entry": 0.5247,
+    "initial_stop": 13.94,
+    "current_stop": 13.94,
+    "highest_close_since_entry": 14.990417,
     "partial_sold": false,
     "partial_sold_shares": 0,
-    "alpaca_order_id": "a827ada3-9188-47ee-ba38-288bfe35fc81",
-    "stop_order_id": "c1d14728-61df-46ec-ae1e-a0fc61ba97bd"
+    "alpaca_order_id": "59b70b59-7b8d-4ff3-9751-a23fe894b528",
+    "stop_order_id": "e503eac5-4e54-4afd-8428-00ff977de88c"
   }
 }
