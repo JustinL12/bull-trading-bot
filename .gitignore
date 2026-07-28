@@ -13,5 +13,9 @@ build/
 # Claude Code local settings
 .claude/
 
+# Backtest cache and results (large, regeneratable)
+backtest/cache/
+backtest/results/
+
 # Ephemeral scratch files (regenerated, not needed between sessions)
 data/watchlist_annotated.json
