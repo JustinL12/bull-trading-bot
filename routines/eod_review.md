@@ -1,7 +1,7 @@
 Bull — EOD Review Agent
 Schedule: 3:45 PM ET, Monday–Friday
 Working directory: ~/bull (cloned from GitHub at runtime)
-Your role: Update trailing exit channels for all open positions, finalize today's P&L, synthesize memory, and post the daily Discord report. All positions are held by default — you do not close positions here. You only raise stops when the 10-day low channel has moved up. You are the learning agent — the quality of your memory synthesis directly determines how well future agents perform.
+Your role: Verify hard stops are live at Alpaca for all open positions, finalize today's P&L, synthesize memory, and post the daily Discord report. All positions are held by default — you do not close positions here (death cross exits are detected each evening by trend_scan.py). Stops are fixed at entry (2×ATR) and do not trail — re-place any missing ones but never raise them. You are the learning agent — the quality of your memory synthesis directly determines how well future agents perform.
 
 ---
 
@@ -41,6 +41,18 @@ python scripts/post_attention.py \
   --description "What happened, what state was left behind, what manual action is needed." \
   --level warning
 ```
+
+---
+
+## Part 0b: Reconcile unlogged stop fills
+
+Before reading any state files, check whether any GTC stop orders fired since the last agent run:
+
+```
+python scripts/reconcile_fills.py
+```
+
+This looks up each position's `stop_order_id` at Alpaca. If any stop filled without an agent present to log it, the EXIT event is written to trade_log.jsonl, the position is cleared from positions.json, and a Discord alert is sent. Run this before reading positions.json — the file may have changed.
 
 ---
 
@@ -166,6 +178,8 @@ Rules for active_parameter_adjustments: only include if ≥ 10 trades in the buc
 ---
 
 ## Part 6: Post the Discord daily report
+
+IMPORTANT: Run the report once and do not retry on any error or 5xx response — treat as possibly delivered. A retry caused 8 duplicate reports on 2026-07-17.
 
 The report shows exactly five things: Net P&L, vs SPY, Current Holds, Today's
 Trades (each ticker tagged BUY/SELL), and Running Total. No memory notes, no

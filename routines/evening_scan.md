@@ -55,6 +55,18 @@ Use --level critical for: scan script failure, inability to write watchlist_tren
 
 ---
 
+## Part 0b: Reconcile unlogged stop fills
+
+Before doing anything else, check whether any GTC stop orders fired since the last agent run:
+
+```
+python scripts/reconcile_fills.py
+```
+
+This looks up each position's `stop_order_id` at Alpaca. If any stop filled without an agent present to log it, the EXIT event is written to trade_log.jsonl, the position is cleared from positions.json, and a Discord alert is sent. Run this before reading positions.json — the file may have changed.
+
+---
+
 ## Part 1: Refresh account snapshot
 
 ```
@@ -100,7 +112,7 @@ sys.path.insert(0, '.')
 from lib.state import read_json, write_json
 
 watchlist = read_json('watchlist_trend.json') or []
-blacklist = set(read_json('earnings_blacklist.json') or [])
+blacklist = {b['symbol'] for b in (read_json('earnings_blacklist.json') or [])}
 filtered = [c for c in watchlist if c['symbol'] not in blacklist]
 removed = len(watchlist) - len(filtered)
 write_json('watchlist_trend.json', filtered)

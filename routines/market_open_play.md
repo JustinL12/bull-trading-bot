@@ -56,6 +56,18 @@ Use --level critical for: unprotected open positions, failed emergency closes. U
 
 ---
 
+## Part 0b: Reconcile unlogged stop fills
+
+Before reading any state files, check whether any GTC stop orders fired since the last agent run:
+
+```
+python scripts/reconcile_fills.py
+```
+
+This looks up each position's `stop_order_id` at Alpaca. If any stop filled without an agent present to log it, the EXIT event is written to trade_log.jsonl, the position is cleared from positions.json, and a Discord alert is sent. Run this before reading watchlist/exit signals — the positions file may have changed.
+
+---
+
 ## Part 1: Orient yourself
 
 Read these files before doing anything else:
@@ -103,7 +115,7 @@ For each symbol in data/exit_signals.json, close the position immediately at mar
 python scripts/place_order.py \
   --action sell \
   --symbol SYMBOL \
-  --reason "Trend exit: Donchian 10-day low breach"
+  --reason "Trend exit: MA-20/60 death cross"
 ```
 
 Execute all exits before looking at entries. This frees capital and is the most important step — do not delay or skip exits.

@@ -74,6 +74,10 @@ def main():
     existing = read_json("daily_pnl.json", default={})
     today = datetime.now().strftime("%Y-%m-%d")
 
+    if last_equity <= 0:
+        print(f"WARNING: Alpaca returned last_equity={last_equity}; using existing starting_equity as baseline.")
+        last_equity = existing.get("starting_equity", equity)
+
     starting_equity = existing.get("starting_equity", last_equity)
     if existing.get("date") != today:
         starting_equity = last_equity  # reset for new day
