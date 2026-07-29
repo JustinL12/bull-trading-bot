@@ -1,12 +1,12 @@
 [
   {
-    "symbol": "NOW",
-    "close": 110.62,
-    "atr": 6.3047,
-    "ema_fast": 103.2057,
-    "ema_slow": 103.1457,
-    "avg_volume_20d": 968725,
+    "symbol": "XLB",
+    "close": 51.73,
+    "atr": 0.8892,
+    "ema_fast": 51.0626,
+    "ema_slow": 51.0476,
+    "avg_volume_20d": 980751,
     "signal": "golden_cross",
-    "scanned_at": "2026-07-28T20:04:18.182290+00:00"
+    "scanned_at": "2026-07-29T20:04:38.420163+00:00"
   }
 ]
