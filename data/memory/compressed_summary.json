@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-29",
+  "last_updated": "2026-07-30",
   "sessions_analyzed": 56,
   "total_trades": 12,
   "performance_overview": "Through 56 sessions (inception 2026-06-01) Bull holds 7 open positions and has taken 12 realized round-trips (3W/9L, 25% win rate). EOD 2026-07-29: equity $99,946.62, day -$180.43 (-0.18%) against SPY -1.52% -> +1.34% ALPHA; the defensive/low-beta book again outperformed on a hard red tape. Cumulative bull -0.053% vs SPY -3.81% since inception, so the cumulative lead holds at ~+3.75pts -- alpha is coming almost entirely from downside protection, not from winning trades. Open book 5 green / 2 red with no death cross on any name.",
@@ -33,7 +33,7 @@
       "entry_price": 17.127577,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 3.40,
+      "unrealized_pnl_pct": 3.4,
       "notes": "Day 23; stop $16.29, ~8.7% above. Steady low-beta uptrend. No death cross."
     },
     {
@@ -78,9 +78,9 @@
       "entry_price": 14.990417,
       "current_stop": 13.94,
       "entry_date": "2026-07-27",
-      "unrealized_pnl_pct": 3.40,
+      "unrealized_pnl_pct": 3.4,
       "notes": "Day 3; stop $13.94, ~11.2% above. Conagra. Shallow-cross size-DOWN half unit (0.113% cross ~ BMY playbook), firming. No death cross."
     }
   ],
-  "notes_for_next_session": "EOD REVIEW 2026-07-29 (Wed) done -> for the evening scan / tomorrow's MARKET-OPEN agent (Thu Jul 30). BOOK UNCHANGED at 7 positions, all 7 GTC 2xATR stops verified LIVE and EXACT at Alpaca this session (SCHW 93.28, PCG 16.29, XLU 44.37, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94); reconcile_fills.py 0 fired / 7 open (13th consecutive clean check). EXITS TO EXPECT: ZERO -- exit_signals.json EMPTY, no MA-20/60 death cross on any hold. ENTRIES: last watchlist name was XLB, a SKIP (0.029% cross, below 0.1% floor); expect zero entries unless a fresh clean cross prints. #1 STOP-OUT WATCH is XLU (cushion collapsed to only ~+1.19% above $44.37 stop after utilities rolled over -1.66%); #2 is XLE (~+3.02% above $56.92, recovered off lows). Both trends technically intact but XLU could trip its GTC stop on any further weakness before a death cross prints -- check XLU first at open and run reconcile_fills.py. Winners BMY/SCHW/GIS/PCG/CAG have no death cross -- let them run, do NOT trim/upsize. Sizing: EOD equity $99,946.62, buying_power $334,630.28. Refresh VIX at open (<40 = no suspend). INFRA (recurring, still unaddressed): (a) no scripts/reconcile_positions.py -- rely on reconcile_fills.py each session; (b) lib.alpaca_client exposes get_trading_client/get_data_client (no generic get_client); (c) lib.state read_json expects BARE filenames (double-nests on data/-prefixed paths); (d) update_pnl.py last_equity==0 guard; (e) fresh clone needs pip install -r requirements.txt before scripts run."
+  "notes_for_next_session": "MARKET-OPEN 2026-07-30 (Thu) done -> for tonight EOD agent. BOOK UNCHANGED at 7 positions (SCHW, PCG, XLU, GIS, BMY, XLE, CAG); no trades. EXITS: zero (exit_signals.json empty, no MA-20/60 death cross). ENTRIES: only candidate XLB (golden_cross) SKIPPED -- 0.0294% cross spread, below the 0.1% noise floor (repeat sub-floor skip, same as Jul 29). reconcile_fills.py 0 fired / 7 open (14th consecutive clean check); all GTC 2xATR stops assumed live & exact per last EOD verification (SCHW 93.28, PCG 16.29, XLU 44.37, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94). Pre-flight all green: trading_blocked/account_blocked False, VIX 20.66 (<40, no suspend), no kill_switch, 7/20 cap. Open-equity at open $99,502.95, buying_power $333,388.01. STOP-OUT WATCH unchanged from EOD Jul 29: XLU #1 (razor-thin cushion over $44.37 stop after utilities rolled over), XLE #2 (~+3% over $56.92). Winners BMY/SCHW/GIS/PCG/CAG -- no death cross, let them run, do NOT trim/upsize. EOD tasks: compute day P&L vs SPY, verify all 7 GTC stops still live at Alpaca, run reconcile_fills.py, check for any fresh death cross before writing exit_signals."
 }
