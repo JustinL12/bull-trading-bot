@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "symbol": "MSFT",
+    "close": 464.7,
+    "atr": 14.6402,
+    "ema_fast": 402.2501,
+    "ema_slow": 399.2632,
+    "avg_volume_20d": 1429676,
+    "signal": "golden_cross",
+    "scanned_at": "2026-07-31T20:06:37.107338+00:00"
+  }
+]
