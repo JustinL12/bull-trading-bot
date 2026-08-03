@@ -1,12 +1,32 @@
 [
   {
-    "symbol": "MSFT",
-    "close": 464.7,
-    "atr": 14.6402,
-    "ema_fast": 402.2501,
-    "ema_slow": 399.2632,
-    "avg_volume_20d": 1429676,
+    "symbol": "CRM",
+    "close": 185.96,
+    "atr": 8.1066,
+    "ema_fast": 173.5445,
+    "ema_slow": 172.9571,
+    "avg_volume_20d": 511303,
     "signal": "golden_cross",
-    "scanned_at": "2026-07-31T20:06:37.107338+00:00"
+    "scanned_at": "2026-08-03T20:03:57.245044+00:00"
+  },
+  {
+    "symbol": "AMZN",
+    "close": 284.125,
+    "atr": 9.1062,
+    "ema_fast": 246.5862,
+    "ema_slow": 245.2865,
+    "avg_volume_20d": 2239603,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-03T20:03:57.149851+00:00"
+  },
+  {
+    "symbol": "QQQ",
+    "close": 700.095,
+    "atr": 15.0084,
+    "ema_fast": 696.82,
+    "ema_slow": 696.7276,
+    "avg_volume_20d": 576846,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-03T20:03:57.029508+00:00"
   }
 ]
