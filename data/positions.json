@@ -82,5 +82,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "59b70b59-7b8d-4ff3-9751-a23fe894b528",
     "stop_order_id": "e503eac5-4e54-4afd-8428-00ff977de88c"
+  },
+  "MSFT": {
+    "symbol": "MSFT",
+    "entry_price": 485.41381,
+    "shares": 21,
+    "entry_time": "2026-08-03T13:36:19.891923+00:00",
+    "atr_at_entry": 14.6402,
+    "initial_stop": 456.13,
+    "current_stop": 456.13,
+    "highest_close_since_entry": 485.41381,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "df866832-4e62-4283-bcd6-60dd2f57d3b2",
+    "stop_order_id": "d1da433d-441b-4d5c-a49f-e1b55f116c1c"
   }
 }
