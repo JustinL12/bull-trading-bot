@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-03",
+  "last_updated": "2026-08-04",
   "sessions_analyzed": 59,
   "total_trades": 13,
   "performance_overview": "Through 59 sessions (inception 2026-06-01) Bull holds 7 open positions and 13 realized round-trips (3W/10L, 23% win rate). EOD 2026-08-03 (Mon): equity $99,368.96, day +$195.19 (+0.20%) vs SPY +1.51% -> -1.32% ALPHA -- a green day in dollars but the FOURTH straight sub-SPY session as the broad risk-on drift continues. The milestone this session: SPY's cumulative return since inception (-0.05%) has now OVERTAKEN Bull's (-0.63%), erasing the entire defensive-tilt lead that was ~+3.75pts as recently as Jul 29. The low-beta/defensive book is no longer ahead on the cumulative scoreboard -- it is now ~0.58pts BEHIND SPY over the full run. Intra-book the split held: higher-beta winners kept extending (SCHW +8.16%, BMY +11.45% book leader) while the staples that rolled over last week actually RECOVERED toward flat today (GIS -0.25% -> +0.34%, CAG -2.97% -> -0.34%). The new soft spot is energy: XLE deepened -0.87% -> -2.51%, now the deepest underwater name and thinnest stop cushion in the book.",
@@ -80,7 +80,25 @@
       "entry_date": "2026-08-03",
       "unrealized_pnl_pct": 0.69,
       "notes": "Day 0 open-day entry. golden_cross but HEAVILY EXTENDED (+15.5% above EMA20, post-earnings gap) -- the confirmed-loser extension signature. Notional-capped to 21 sh (~9.8% equity). Stop 456.13 = fill - 2xATR(14.64), ~+6.7% cushion. Held +0.69% Day 0, no reversal yet. HIGHEST mean-reversion / fast-death-cross risk in the book -- watch closely."
+    },
+    {
+      "symbol": "CRM",
+      "shares": 53,
+      "entry_price": 186.41,
+      "current_stop": 169.75,
+      "entry_date": "2026-08-04",
+      "unrealized_pnl_pct": 0.0,
+      "notes": "Day 0 open-day entry. golden_cross, notional-capped 53sh (~10% eq). TWO soft flags at scan (shallow cross 0.34% + extended +7.2% above EMA20). Fill 186.41 ~+0.24% vs close, stop 169.75 (~2xATR). Watch it does not stack a third flag."
+    },
+    {
+      "symbol": "AMZN",
+      "shares": 34,
+      "entry_price": 277.57,
+      "current_stop": 259.36,
+      "entry_date": "2026-08-04",
+      "unrealized_pnl_pct": 0.0,
+      "notes": "Day 0 open-day entry. golden_cross but HEAVILY EXTENDED (+15.2% above EMA20, post-earnings gap) -- same confirmed-loser signature as MSFT. Notional-capped 34sh (~9.8% eq). GAPPED DOWN -2.3% at open (fill 277.57 vs close 284.12); stop reset from close-based 265.91 to 259.36 = fill - 2xATR(9.1062). High mean-reversion / fast-death-cross risk -- watch closely alongside MSFT."
     }
   ],
-  "notes_for_next_session": "EVENING SCAN 2026-08-03 (Mon) done -> for TOMORROW's (Tue 8/4) market-open agent. EXITS AT OPEN: ZERO -- exit_signals.json is EMPTY, no death crosses on the 7-name book (XLE and MSFT both held, no cross). ENTRY CANDIDATES: 3 in watchlist_trend.json (AMZN, CRM, QQQ), none earnings-blocked. The market-open agent executes all non-earnings signals mechanically -- but EVERY candidate here carries a flag, size accordingly: (1) AMZN close 284.12, cross gap 0.53%, but price +15.2% ABOVE EMA20 -- post-earnings gap, the SAME confirmed-loser extension signature as MSFT (+15.5%) taken today; treat as heavy size-DOWN / notional-cap per the extension rule (>6-8% above EMA), highest chase/reversal risk. Liquid (2.24M). (2) CRM close 185.96, cross gap 0.34% (shallow) + price +7.2% above EMA20 (extended) + vol 511k BARELY over the 500k floor + ATR 4.4% (elevated) -- TWO soft flags (shallow cross + extended); near but not at the stacked-flag SKIP line (no thin-liq strike), lean size-DOWN and watch it does not stack a third flag. (3) QQQ cross gap 0.013% -- BELOW the 0.1% skip floor, EMAs essentially touching, price only +0.5% above EMA20 (no momentum, slow grind); this is the noise-level fake-out signature we skip on sight (cf NVDA 0.07%, MDT 0.014%, XLB 0.029%) -- STRONG SKIP CANDIDATE. Net read: thin, low-conviction night; AMZN=size-down extension play, CRM=size-down two-flag, QQQ=likely skip. Book: all 7 GTC 2xATR stops were verified live at today's open (SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13); XLE stays death-cross/stop-out WATCH #1, MSFT the extension gamble watch #2. Winners BMY/SCHW/PCG let run, do not trim. Account: equity 99460.28, not blocked, no kill_switch, VIX ~16 (calm), 7/20 positions (room for up to 3 more if all fire, but see the flags). Structural note persists: defensive book now trails SPY cumulatively (SPY -0.05% vs Bull -0.63%) -- 4th straight sub-SPY day."
+  "notes_for_next_session": "MARKET-OPEN 2026-08-04 (Tue) done -> for TONIGHT's EOD agent. EXITS: ZERO (exit_signals.json was empty, no death crosses). ENTRIES: 2 of 3 candidates filled mechanically at the ~10% notional cap. (1) CRM 53sh @ $186.41, stop $169.75 (~2xATR) -- two soft flags (shallow 0.34% cross + +7.2% extended), size handled by notional cap; open +0.24% vs close so stop left as placed. (2) AMZN 34sh @ $277.57, stop $259.36 -- the +15% extended post-earnings-gap signature (like MSFT). NOTE: AMZN gapped DOWN -2.3% at the open (fill 277.57 vs last-night close 284.12), so the close-based stop (265.91) was only 1.28xATR; I CANCELLED it and re-placed the GTC stop at 259.36 = fill - 2xATR(9.1062), and corrected atr_at_entry to 9.1062. SKIPPED QQQ: cross gap 0.013%, far below the standing 0.1% skip-floor -- noise-level fake-out (MDT/XLB/OXY signature); honored last night's explicit 'STRONG SKIP CANDIDATE' handoff. Book now 9/20 open. Two extension gambles now live (MSFT +15.5%, AMZN +15.2%) -- both highest fast-reversal risk; XLE stays stop-out WATCH #1 (thinnest cushion). Account at open: equity $99,031.96, not blocked, no kill_switch, VIX 15.86 (calm). Winners BMY/SCHW/PCG let run, do not trim. All 9 GTC 2xATR stops confirmed live: SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, AMZN 259.36."
 }

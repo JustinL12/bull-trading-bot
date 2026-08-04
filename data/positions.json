@@ -96,5 +96,33 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "df866832-4e62-4283-bcd6-60dd2f57d3b2",
     "stop_order_id": "d1da433d-441b-4d5c-a49f-e1b55f116c1c"
+  },
+  "CRM": {
+    "symbol": "CRM",
+    "entry_price": 186.413208,
+    "shares": 53,
+    "entry_time": "2026-08-04T13:36:04.068974+00:00",
+    "atr_at_entry": 8.3316,
+    "initial_stop": 169.75,
+    "current_stop": 169.75,
+    "highest_close_since_entry": 186.413208,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "236eef78-904c-44e8-9973-dd55f5de4ddd",
+    "stop_order_id": "68eddf97-3584-4db1-8209-c28c42f6ba98"
+  },
+  "AMZN": {
+    "symbol": "AMZN",
+    "entry_price": 277.57,
+    "shares": 34,
+    "entry_time": "2026-08-04T13:36:22.702678+00:00",
+    "atr_at_entry": 9.1062,
+    "initial_stop": 259.36,
+    "current_stop": 259.36,
+    "highest_close_since_entry": 277.57,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "9791b807-fe35-4cb6-84b5-9cba3a6b8e98",
+    "stop_order_id": "250963ad-3fd2-4b13-b41e-7ebf4670c63d"
   }
 }
