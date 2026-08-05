@@ -22,3 +22,4 @@
 {"type": "archive_digest", "date_range": "2026-07-10 to 2026-07-13", "sessions": 4, "avg_pnl_pct": 0.075, "total_pnl_pct": 0.301, "archived_at": "2026-07-31"}
 {"type": "archive_digest", "date_range": "2026-07-13 to 2026-07-14", "sessions": 5, "avg_pnl_pct": 0.117, "total_pnl_pct": 0.585, "archived_at": "2026-08-03"}
 {"type": "archive_digest", "date_range": "2026-07-14 to 2026-07-15", "sessions": 4, "avg_pnl_pct": -0.001, "total_pnl_pct": -0.003, "archived_at": "2026-08-04"}
+{"type": "archive_digest", "date_range": "2026-07-15 to 2026-07-16", "sessions": 4, "avg_pnl_pct": -0.012, "total_pnl_pct": -0.05, "archived_at": "2026-08-05"}
