@@ -1,52 +1,12 @@
 [
   {
-    "symbol": "PLTR",
-    "close": 158.47,
-    "atr": 7.9443,
-    "ema_fast": 132.9145,
-    "ema_slow": 132.8071,
-    "avg_volume_20d": 1213954,
+    "symbol": "VZ",
+    "close": 46.98,
+    "atr": 1.3378,
+    "ema_fast": 45.7754,
+    "ema_slow": 45.7718,
+    "avg_volume_20d": 1869910,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-05T20:05:24.303007+00:00"
-  },
-  {
-    "symbol": "CTSH",
-    "close": 55.795,
-    "atr": 2.4716,
-    "ema_fast": 49.6347,
-    "ema_slow": 49.5347,
-    "avg_volume_20d": 706919,
-    "signal": "golden_cross",
-    "scanned_at": "2026-08-05T20:05:24.494989+00:00"
-  },
-  {
-    "symbol": "FCX",
-    "close": 69.36,
-    "atr": 2.8929,
-    "ema_fast": 63.2864,
-    "ema_slow": 63.0812,
-    "avg_volume_20d": 921243,
-    "signal": "golden_cross",
-    "scanned_at": "2026-08-05T20:05:24.621858+00:00"
-  },
-  {
-    "symbol": "AVGO",
-    "close": 418.49,
-    "atr": 16.9973,
-    "ema_fast": 391.3718,
-    "ema_slow": 389.7591,
-    "avg_volume_20d": 585375,
-    "signal": "golden_cross",
-    "scanned_at": "2026-08-05T20:05:24.569930+00:00"
-  },
-  {
-    "symbol": "NVDA",
-    "close": 219.16,
-    "atr": 7.6728,
-    "ema_fast": 204.8628,
-    "ema_slow": 204.1477,
-    "avg_volume_20d": 4786678,
-    "signal": "golden_cross",
-    "scanned_at": "2026-08-05T20:05:24.295159+00:00"
+    "scanned_at": "2026-08-06T20:05:08.965087+00:00"
   }
 ]

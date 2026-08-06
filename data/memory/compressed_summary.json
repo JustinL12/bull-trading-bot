@@ -47,7 +47,7 @@
       "entry_price": 58.71,
       "current_stop": 55.76,
       "entry_date": "2026-07-16",
-      "unrealized_pnl_pct": 9.10,
+      "unrealized_pnl_pct": 9.1,
       "notes": "Day 21; stop $55.76, ~12.9% cushion. BOOK LEADER, recovered off yesterday's ~3% pullback (+8.63%->+9.10%). 50% unit heaviest size-down on shallowest cross (0.13%). Let run, do not trim. No death cross."
     },
     {
@@ -55,7 +55,7 @@
       "entry_price": 60.17,
       "current_stop": 56.92,
       "entry_date": "2026-07-23",
-      "unrealized_pnl_pct": -3.30,
+      "unrealized_pnl_pct": -3.3,
       "notes": "Day 14; stop $56.92, cushion RECOVERED to ~2.2% (last $58.19 vs stop $56.92). Bounced off its stop (-4.69%->-3.30%) and did NOT death-cross -- survives, but still one of the two thinnest cushions and the energy laggard. Half unit thin-cross. Remains a front-line stop-out / death-cross watch alongside QQQ. WATCH."
     },
     {
@@ -63,7 +63,7 @@
       "entry_price": 14.99,
       "current_stop": 13.94,
       "entry_date": "2026-07-27",
-      "unrealized_pnl_pct": -1.10,
+      "unrealized_pnl_pct": -1.1,
       "notes": "Day 10; stop $13.94, ~6.0% cushion. Conagra staple SLIPPED RED for the first time (+0.20%->-1.10%) -- first shallow-cross staple to go negative. 20/60 trend still intact, no death cross, but WATCH for a trend break."
     },
     {
@@ -99,5 +99,5 @@
       "notes": "Day 2; 13 sh @ $727.04, GTC stop $695.97 (fill - 2xATR 15.5352), ~2.6% cushion (thinnest tech, now the thinnest cushion in the book after XLE recovered). golden_cross, +3.5% mild extension. Deteriorated further (-1.04%->-1.71%). Front-line stop-out / death-cross watch alongside XLE."
     }
   ],
-  "notes_for_next_session": "EOD 2026-08-06 (Thu) done -> for the evening scan / next agent. NO TRADES today (0 exits, 0 entries). Book UNCHANGED at 10/20: SCHW, PCG, GIS, BMY, XLE, CAG, MSFT, CRM, AMZN, QQQ. All 10 GTC 2xATR stops verified LIVE and EXACT at Alpaca, fixed (do NOT trail): SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, AMZN 259.36, QQQ 695.97. Reconcile clean (0 unlogged fills). WATCHES for tonight's death-cross scan, in priority order: (1) QQQ -- now the THINNEST cushion (2.6%), red Day 2 (-1.71%), highest death-cross risk. (2) XLE -- recovered off its stop today (cushion 0.7%->2.2%) and did NOT death-cross, but still the second-thinnest cushion and structurally the weakest sector; flag it. (3) AMZN -- red two days running (-2.15%), the extension-loser confirmation, ~4.5% cushion. Secondary structural concern: the shallow-cross staples are softening -- CAG went red for the FIRST time (-1.10%) and GIS/PCG are barely green/red; watch for a trend break in the low-beta middle of the book. STRATEGIC: the 80% deployment cap is BINDING (book was 82.2% deployed) -- new golden crosses CANNOT be taken until an exit frees capital. Evening scan on Aug 5 surfaced 5 extended high-beta candidates (NVDA best-quality, AVGO/FCX/CTSH size-down, PLTR hard skip) all locked out by the cap. A death cross on a laggard (QQQ/XLE/AMZN) would BOTH cut risk and unblock the book -- that is the key event to watch for. Market: rally paused, tape drifting down (SPY -0.18%), VIX ~15.8 calm (well below the 40 suspend line). Bull -1.01% cumulative vs SPY +1.31%."
+  "notes_for_next_session": "EVENING SCAN 2026-08-06 (Thu) done -> for tomorrow (Fri 8/7) market-open agent. ENTRY CANDIDATES: watchlist_trend.json has exactly ONE name -- VZ -- and it is a WEAK/DO-NOT-RUSH signal: the golden cross is NOISE-LEVEL (EMA20 45.7754 vs EMA60 45.7718 = 0.008% spread, ~12x below the 0.1% skip floor). Per the very-shallow-cross rule this is a skip-on-sight; VZ is otherwise clean (+2.6% above EMA20, ATR 1.34=2.85%, vol 1.87M) but do NOT deploy on a 0.008% cross. Two independent reasons it will not (and should not) be taken at open: (1) cross quality = skip, (2) the 80% deployment cap is STILL BINDING (book was ~82% deployed) so there is no free capital regardless. Net expectation: 0 entries at open. EXITS: expect 0 exits -- exit_signals.json is EMPTY, no death crosses. All three death-cross watches held their 20/60 trend today (QQQ thinnest cushion ~2.6%, XLE recovered off its stop and did not cross, AMZN the extension-loser ~4.5% cushion). Book UNCHANGED at 10/20: SCHW, PCG, GIS, BMY, XLE, CAG, MSFT, CRM, AMZN, QQQ. All 10 GTC 2xATR stops are fixed (do NOT trail): SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, AMZN 259.36, QQQ 695.97. Reconcile clean this run (0 unlogged stop fills). STRATEGIC UNCHANGED: a death cross on a laggard (QQQ/XLE/AMZN) remains the key event -- it would both cut risk and unblock the capped book; none fired today, so the cap stays binding and no new entries can be added until an exit frees room. Softening watch persists: the shallow-cross staples (CAG went red first at -1.10%, GIS/PCG barely green/red) -- watch for a low-beta trend break. Market: rally paused, tape drifting down, VIX ~15.8 (well below 40 suspend). Bull ~-1% cumulative vs SPY ~+1.3%."
 }
