@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "symbol": "PFE",
+    "close": 27.05,
+    "atr": 0.5367,
+    "ema_fast": 25.43,
+    "ema_slow": 25.403,
+    "avg_volume_20d": 2227431,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-10T20:05:41.940644+00:00"
+  },
+  {
+    "symbol": "XLY",
+    "close": 119.69,
+    "atr": 2.0129,
+    "ema_fast": 116.2169,
+    "ema_slow": 116.004,
+    "avg_volume_20d": 563176,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-10T20:05:41.913476+00:00"
+  }
+]
