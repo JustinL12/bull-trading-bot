@@ -1,22 +1,32 @@
 [
   {
-    "symbol": "PFE",
-    "close": 27.05,
-    "atr": 0.5367,
-    "ema_fast": 25.43,
-    "ema_slow": 25.403,
-    "avg_volume_20d": 2227431,
+    "symbol": "UBER",
+    "close": 78.55,
+    "atr": 2.5843,
+    "ema_fast": 72.5632,
+    "ema_slow": 72.424,
+    "avg_volume_20d": 1224437,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-10T20:05:41.940644+00:00"
+    "scanned_at": "2026-08-11T20:05:46.222827+00:00"
   },
   {
-    "symbol": "XLY",
-    "close": 119.69,
-    "atr": 2.0129,
-    "ema_fast": 116.2169,
-    "ema_slow": 116.004,
-    "avg_volume_20d": 563176,
+    "symbol": "BKR",
+    "close": 64.825,
+    "atr": 1.8189,
+    "ema_fast": 60.408,
+    "ema_slow": 60.1855,
+    "avg_volume_20d": 581211,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-10T20:05:41.913476+00:00"
+    "scanned_at": "2026-08-11T20:05:46.086823+00:00"
+  },
+  {
+    "symbol": "DIS",
+    "close": 103.515,
+    "atr": 2.2754,
+    "ema_fast": 99.7646,
+    "ema_slow": 99.6842,
+    "avg_volume_20d": 602863,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-11T20:05:46.292592+00:00"
   }
 ]
