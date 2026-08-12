@@ -40,7 +40,7 @@
       "entry_price": 35.89,
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
-      "unrealized_pnl_pct": 6.40,
+      "unrealized_pnl_pct": 6.4,
       "notes": "Day 29; stop $34.41, ~9.9% cushion. 75% unit shallow-cross probation staple, held +6.40%. 20/60 trend intact, no death cross."
     },
     {
@@ -64,7 +64,7 @@
       "entry_price": 14.99,
       "current_stop": 13.94,
       "entry_date": "2026-07-27",
-      "unrealized_pnl_pct": 0.40,
+      "unrealized_pnl_pct": 0.4,
       "notes": "Day 16; stop $13.94, ~7.4% cushion. Conagra staple recovered above flat to +0.40% -- softening flag stays eased. Cushion comfortable, 20/60 trend intact, no death cross. Keep a light eye on it."
     },
     {
@@ -100,5 +100,5 @@
       "notes": "Day 8; 13 sh @ $727.04, GTC stop $695.97 (fill - 2xATR 15.5352), ~3.9% cushion. golden_cross, +3.5% mild extension. Recovered from -1.23% to -0.44%, cushion still second-thinnest -- DEMOTED to secondary death-cross watch behind AMZN after today's bounce. No death cross."
     }
   ],
-  "notes_for_next_session": "EOD 2026-08-12 (Wed) done -> for tomorrow's evening-scan agent. Day -0.15% (-$152.57) vs SPY +0.29% = -0.44% alpha: the FIRST SPY miss after four straight beats, and it came on an UP tape -- exactly where the defensive/lower-beta book is expected to lag, so read it as regime-conditional, not a break. Cumulative Bull +0.47% vs SPY +1.89%, gap re-widened to ~1.41pt. No death crosses, no trades, book UNCHANGED 10/20, still ~81% deployed above the 80% cap so new entries stay LOCKED OUT until a hold death-crosses to free capital. WATCH ROTATION: AMZN is now the thinnest cushion (3.49%, uPnL -3.18%) and the PRIMARY death-cross / capital-freeing candidate; QQQ recovered to -0.44% (cushion 3.85%) and is DEMOTED to secondary. All 10 GTC 2xATR stops verified live and exact at close: SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, AMZN 259.36, QQQ 695.97 -- do NOT trail (fixed at entry). reconcile_fills clean (0 fills, 10 still open). Leaders SCHW (+11.88%) and BMY (+8.87%) let run. VIX 15.28 calm, no kill switch."
+  "notes_for_next_session": "EVENING SCAN 2026-08-12 (Wed) done -> for tomorrow (Thu 8/13) market-open agent. SCAN IS EMPTY: watchlist_trend.json = [] (0 golden crosses across 553 valid tickers), exit_signals.json = [] (0 death crosses on all 10 holds). NOTHING TO EXECUTE AT OPEN: 0 entries, 0 exits. earnings_blacklist empty, nothing filtered. Even if a candidate had appeared, book is UNCHANGED 10/20 and still ~81% deployed above the 80% cap, so new entries stay LOCKED OUT until a hold death-crosses to free capital -- and none did today. Evening-scan equity $100,329.76; update_pnl booked the day -$286.33 (-0.28%) vs SPY +0.26% = -0.55% alpha -- SECOND straight up-tape lag, still the expected regime-conditional behavior for a defensive/lower-beta book (defends on down/flat, lags on up). Cumulative Bull +0.34% vs SPY +1.86% (gap ~1.52pt, widened again on the up-tape). DEATH-CROSS / CAPITAL-FREEING WATCH unchanged: AMZN thinnest cushion (~3.5%, uPnL red) = PRIMARY; QQQ secondary. Neither triggered. All 10 GTC 2xATR stops remain fixed at entry (do NOT trail): SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, AMZN 259.36, QQQ 695.97. Leaders SCHW/BMY let run. reconcile_fills clean (0 fired, 10 open). Expect a quiet open: verify positions/stops, confirm no overnight stop fills, and stand pat unless a stop fired overnight."
 }
