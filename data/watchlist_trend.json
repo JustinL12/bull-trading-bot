@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "symbol": "SMCI",
+    "close": 39.17,
+    "atr": 2.623,
+    "ema_fast": 31.1621,
+    "ema_slow": 30.7261,
+    "avg_volume_20d": 2369981,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-13T20:05:36.892685+00:00"
+  },
+  {
+    "symbol": "TSCO",
+    "close": 36.18,
+    "atr": 1.1656,
+    "ema_fast": 33.0971,
+    "ema_slow": 33.0072,
+    "avg_volume_20d": 1100307,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-13T20:05:36.858578+00:00"
+  },
+  {
+    "symbol": "SLB",
+    "close": 52.06,
+    "atr": 1.5824,
+    "ema_fast": 50.5653,
+    "ema_slow": 50.5492,
+    "avg_volume_20d": 854082,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-13T20:05:36.955704+00:00"
+  }
+]
