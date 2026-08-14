@@ -57,7 +57,7 @@
       "entry_price": 60.17,
       "current_stop": 56.92,
       "entry_date": "2026-07-23",
-      "unrealized_pnl_pct": 2.90,
+      "unrealized_pnl_pct": 2.9,
       "notes": "Day 22; stop $56.92, ~8.1% cushion. Energy held its recovery (+2.90%). Half unit thin-cross. Watch normal; no death cross."
     },
     {
@@ -65,7 +65,7 @@
       "entry_price": 14.99,
       "current_stop": 13.94,
       "entry_date": "2026-07-27",
-      "unrealized_pnl_pct": 4.30,
+      "unrealized_pnl_pct": 4.3,
       "notes": "Day 18; stop $13.94, ~10.8% cushion. Conagra staple at +4.30% -- softening flag long eased, comfortable cushion, 20/60 trend intact, no death cross."
     },
     {
@@ -101,5 +101,5 @@
       "notes": "Day 10; 13 sh @ $727.04, GTC stop $695.97 (fill - 2xATR 15.5352), ~4.67% cushion. golden_cross, +3.5% mild extension. Barely green at +0.42% -- SECONDARY death-cross watch behind AMZN. No death cross."
     }
   ],
-  "notes_for_next_session": "EOD 2026-08-14 (Fri) -> for the evening scan / next agent. NO TRADES: 0 exits (0 death crosses), 0 entries (locked out on the 80% deployment cap, 80.6% deployed; the 3 golden crosses SMCI/TSCO/SLB were all skipped on the cap, and were weak anyway). Book UNCHANGED 10/20 (SCHW, PCG, GIS, BMY, XLE, CAG, MSFT, CRM, AMZN, QQQ). Day +$20.23 (+0.02%) vs SPY -0.23% -> +0.25% alpha, a clean down-tape defensive beat. reconcile_fills clean this morning (0 overnight fills, 10/10 still open). All 10 GTC 2xATR stops verified LIVE, EXACT, and UNCHANGED at EOD -- do NOT trail: SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, AMZN 259.36, QQQ 695.97. TOP WATCH: AMZN is now the IMMINENT capital-freeing catalyst -- cushion collapsed to just 1.50% (px $263.32 vs stop $259.36, ~$4/1.5% away) and it is the lone red hold at -5.13%; a small further slide fires the GTC stop overnight or triggers a 20/60 death cross on the next evening scan. Watch AMZN first at every scan. QQQ secondary (~4.67% cushion, +0.42%). Entries stay LOCKED until an exit (most likely AMZN) frees capital below the 80% cap. Leaders healthy (SCHW +13.18% fresh high, GIS/BMY anchoring). Open equity ~$101,434."
+  "notes_for_next_session": "EVENING SCAN 2026-08-14 (Fri) -> for tomorrow (Mon 2026-08-18) market-open agent. SCAN RESULT: 4 golden-cross entry candidates written to watchlist_trend.json, 0 death-cross exits (exit_signals.json EMPTY). 0 earnings-filtered. Equity snapshot $101,483.15 (use for sizing). DEPLOYMENT REALITY CHECK FIRST: book is ~84% deployed (cash $16.4k of $101.5k, 10/20 positions) -- OVER the 80% cap. Unless an exit fires overnight/at-open to free capital, ALL 4 entries stay LOCKED OUT (same lockout as Fri). CANDIDATE RANKING if capital frees: (1) T -- 0.343% spread, close +5.2% above EMA20, best liquidity (3.4M vol), CLEAN, strongest. (2) CMCSA -- 0.241% spread, close +5.7% above EMA20, vol 1.9M, CLEAN. Both clear the 0.1% floor with real momentum; take at shallow-cross probation size (single-flag size-DOWN, do not upsize), weight sector trend (both telecom/media). SKIP OUTRIGHT: EEM (0.059% spread) and WBD (0.024% spread) are BELOW the 0.1% noise floor -- reversal-prone; WBD has momentum but a razor-thin cross, EEM is sub-floor AND weak. Do not take either even if unlocked (re-check next scan in case the cross matures). TOP WATCH UNCHANGED: AMZN survived todays scan (NO death cross) but remains the imminent capital-freeing catalyst -- lone red hold, ~1.5% stop cushion (stop $259.36). It is the single most likely overnight stop-fire / next-scan death-cross; RUN reconcile_fills FIRST at open in case its GTC stop filled overnight. QQQ secondary watch (~4.67% cushion). STOPS: all 10 GTC 2xATR stops fixed at entry, do NOT trail -- SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, AMZN 259.36, QQQ 695.97. Day +$55.77 (+0.06%) vs SPY -0.20% -> +0.25% alpha, another clean defensive beat; leaders healthy (SCHW top). EXITS TO EXPECT AT OPEN: 0 signalled by the scan; only risk is an AMZN overnight stop-fill (reconcile first)."
 }

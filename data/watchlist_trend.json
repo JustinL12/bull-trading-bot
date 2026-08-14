@@ -1,32 +1,42 @@
 [
   {
-    "symbol": "SMCI",
-    "close": 39.17,
-    "atr": 2.623,
-    "ema_fast": 31.1621,
-    "ema_slow": 30.7261,
-    "avg_volume_20d": 2369981,
+    "symbol": "CMCSA",
+    "close": 26.2,
+    "atr": 0.7806,
+    "ema_fast": 24.7928,
+    "ema_slow": 24.7331,
+    "avg_volume_20d": 1906585,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-13T20:05:36.892685+00:00"
+    "scanned_at": "2026-08-14T20:05:31.487225+00:00"
   },
   {
-    "symbol": "TSCO",
-    "close": 36.18,
-    "atr": 1.1656,
-    "ema_fast": 33.0971,
-    "ema_slow": 33.0072,
-    "avg_volume_20d": 1100307,
+    "symbol": "T",
+    "close": 24.88,
+    "atr": 0.6459,
+    "ema_fast": 23.6645,
+    "ema_slow": 23.5837,
+    "avg_volume_20d": 3410693,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-13T20:05:36.858578+00:00"
+    "scanned_at": "2026-08-14T20:05:31.606177+00:00"
   },
   {
-    "symbol": "SLB",
-    "close": 52.06,
-    "atr": 1.5824,
-    "ema_fast": 50.5653,
-    "ema_slow": 50.5492,
-    "avg_volume_20d": 854082,
+    "symbol": "EEM",
+    "close": 66.615,
+    "atr": 1.3491,
+    "ema_fast": 65.3535,
+    "ema_slow": 65.315,
+    "avg_volume_20d": 1205788,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-13T20:05:36.955704+00:00"
+    "scanned_at": "2026-08-14T20:05:31.378181+00:00"
+  },
+  {
+    "symbol": "WBD",
+    "close": 28.0,
+    "atr": 0.5172,
+    "ema_fast": 26.7151,
+    "ema_slow": 26.7086,
+    "avg_volume_20d": 1746844,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-14T20:05:31.629439+00:00"
   }
 ]
