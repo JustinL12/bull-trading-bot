@@ -1,42 +1,12 @@
 [
   {
-    "symbol": "CMCSA",
-    "close": 26.2,
-    "atr": 0.7806,
-    "ema_fast": 24.7928,
-    "ema_slow": 24.7331,
-    "avg_volume_20d": 1906585,
+    "symbol": "DVN",
+    "close": 47.58,
+    "atr": 1.3652,
+    "ema_fast": 44.535,
+    "ema_slow": 44.463,
+    "avg_volume_20d": 775033,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-14T20:05:31.487225+00:00"
-  },
-  {
-    "symbol": "T",
-    "close": 24.88,
-    "atr": 0.6459,
-    "ema_fast": 23.6645,
-    "ema_slow": 23.5837,
-    "avg_volume_20d": 3410693,
-    "signal": "golden_cross",
-    "scanned_at": "2026-08-14T20:05:31.606177+00:00"
-  },
-  {
-    "symbol": "EEM",
-    "close": 66.615,
-    "atr": 1.3491,
-    "ema_fast": 65.3535,
-    "ema_slow": 65.315,
-    "avg_volume_20d": 1205788,
-    "signal": "golden_cross",
-    "scanned_at": "2026-08-14T20:05:31.378181+00:00"
-  },
-  {
-    "symbol": "WBD",
-    "close": 28.0,
-    "atr": 0.5172,
-    "ema_fast": 26.7151,
-    "ema_slow": 26.7086,
-    "avg_volume_20d": 1746844,
-    "signal": "golden_cross",
-    "scanned_at": "2026-08-14T20:05:31.629439+00:00"
+    "scanned_at": "2026-08-17T20:05:35.941487+00:00"
   }
 ]
