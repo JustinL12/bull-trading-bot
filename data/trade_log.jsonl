@@ -35,3 +35,4 @@
 {"ts": "2026-08-04T13:36:22.703511+00:00", "event": "ENTRY", "symbol": "AMZN", "shares": 34, "price": 277.57, "stop": 265.91}
 {"ts": "2026-08-05T13:35:26.233977+00:00", "event": "ENTRY", "symbol": "QQQ", "shares": 13, "price": 727.039231, "stop": 695.97}
 {"ts": "2026-08-17T16:57:06.605603+00:00", "event": "EXIT", "symbol": "AMZN", "shares": 34, "price": 259.34, "pnl_dollars": -619.82, "pnl_pct": -6.57, "exit_reason": "stop_fill (reconciled)"}
+{"ts": "2026-08-18T13:36:12.180768+00:00", "event": "ENTRY", "symbol": "DVN", "shares": 211, "price": 48.186161, "stop": 44.85}

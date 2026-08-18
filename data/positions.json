@@ -124,5 +124,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "b817d31f-1593-4f28-9d00-5ea7e04a5e13",
     "stop_order_id": "89e33628-c1f8-4cbc-ac5f-1987a9477fce"
+  },
+  "DVN": {
+    "symbol": "DVN",
+    "entry_price": 48.186161,
+    "shares": 211,
+    "entry_time": "2026-08-18T13:36:12.179686+00:00",
+    "atr_at_entry": 1.6681,
+    "initial_stop": 44.85,
+    "current_stop": 44.85,
+    "highest_close_since_entry": 48.186161,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "3754b100-688f-430c-b060-b3843ea3aab2",
+    "stop_order_id": "b1699870-5cc5-4f83-a362-b520e8a01cae"
   }
 }
