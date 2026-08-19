@@ -1,105 +1,105 @@
 {
-  "last_updated": "2026-08-18",
-  "sessions_analyzed": 70,
+  "last_updated": "2026-08-19",
+  "sessions_analyzed": 71,
   "total_trades": 14,
-  "performance_overview": "Through 70 sessions (inception 2026-06-01) Bull holds 10 open positions and 14 realized round-trips (3W/11L, ~21% win rate); no new exits today. EOD 2026-08-18 (Tue) was the book's best alpha day in weeks: equity $101,049.26, day +$698.83 (+0.70%) vs SPY -0.61% -> +1.31% BEAT. The defensive/quality book rallied broadly on a down tape -- SCHW +13.97%, BMY +12.62%, GIS +6.50%, XLE +5.77%, CRM +5.64%, CAG +4.13%, PCG +3.75% all green -- while SPY slipped, the clean inverse of yesterday's single-name-stop-out miss. Cumulative since inception: Bull +1.05% vs SPY +1.25% -- the gap NARROWED hard to ~0.20pt (from ~1.53pt on Aug 17), essentially erasing the AMZN-loss damage in one session as the standing book out-earned a falling market by +1.31pt. The only red holds are the two thin-cushion extended tech admits (QQQ -1.26%, MSFT -0.70%) and the fresh DVN entry (-0.52%, Day 0).",
+  "performance_overview": "Through 71 sessions (inception 2026-06-01) Bull holds 10 open positions and 14 realized round-trips (3W/11L, ~21% win rate); no new exits today, second straight quiet no-trade session. EOD 2026-08-19 (Wed) was a second consecutive strong alpha day and the day Bull RETOOK the lead: equity $102,085.18, day +$1,141.80 (+1.13%) vs SPY +0.18% -> +0.95% BEAT. Unlike Tue's inverse-tape gain, today the quality book out-earned a mildly UP market -- staples ripped (GIS +11.34%, CAG +8.24%), CRM +10.71%, SCHW +13.10%, BMY +15.25%. Cumulative since inception: Bull +2.09% vs SPY +1.36% -- Bull now LEADS by ~0.73pt after two days added ~2.26pt of alpha and fully erased the AMZN-loss deficit. Only red holds remain the two thin-cushion extended tech admits (QQQ -1.54%, MSFT -0.46%) and DVN (-0.42%, Day 1).",
   "best_signals": [
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% -- the ONLY consistently profitable bucket for the LEGACY intraday RSI strategy; n=2, thin sample, INFORMATIONAL ONLY now that the live strategy is MA-20/60 trend-following. Do not act on it without n>=10.",
-    "Single shallow-cross probation entries (heavy size-DOWN, NOT skip) -- verdict POSITIVE and durable. BMY (0.13% cross, 50% unit) is the book's premier anchor, ripped to +12.62% Day 33. GIS (0.29% cross, 75% unit) at +6.50% Day 35. CAG (0.113% cross, 50% unit) at +4.13% Day 22. Read: the discipline keeps validating; size down on a single clean shallow cross, do not upsize, weight the entry's SECTOR trend.",
-    "Defensive/quality tilt is a REGIME-CONDITIONAL edge, and today was its clean payoff: on a -0.61% SPY tape the book's financials/staples/energy leaders (SCHW, BMY, GIS, XLE, CRM) all rallied for a +1.31pt beat, holding and gaining value while the broad market fell. Confirms the edge is portfolio-level and tape-conditional -- it cushions AND can out-earn on down/flat tapes when its leaders participate; the Aug 17 limit still stands (it does NOT immunize against an idiosyncratic single-name stop-out like AMZN), but on a diversified up-day-for-quality it delivers real alpha."
+    "Single shallow-cross probation entries (heavy size-DOWN, NOT skip) -- verdict POSITIVE and durable, and STRENGTHENING. BMY (0.13% cross, 50% unit) is the book's premier anchor, now +15.25% Day 34. GIS (0.29% cross, 75% unit) surged to +11.34% Day 36. CAG (0.113% cross, 50% unit) jumped to +8.24% Day 23. Read: the discipline keeps validating and compounding; size down on a single clean shallow cross, do not upsize, weight the entry's SECTOR trend.",
+    "Defensive/quality tilt -- reclassify from REGIME-CONDITIONAL toward STRUCTURAL: it paid on Tue's DOWN tape (+1.31pt beat) AND again on Wed's mildly-UP tape (+0.95pt beat) with staples leading BOTH days. Two-day read: the book's financials/staples leaders (SCHW, BMY, GIS, CAG, CRM) are in strong individual uptrends that carry regardless of the broad tape's direction; the edge is portfolio-level trend participation, not merely a hedge. The Aug 17 limit still stands (it does NOT immunize against an idiosyncratic single-name stop-out like AMZN), but across two sessions it delivered real alpha in both tape regimes."
   ],
   "avoid": [
-    "Extended entries (price well above EMA-20 at entry) -- CONFIRMED LOSER, thesis RESOLVED by AMZN (entered Aug 4 at +15.2% above EMA20, stopped out Aug 17 at -6.57%, -$619.82; prior confirm META Jul 15 ~8.5% ext, stopped -8.04% Jul 23). The surviving extended admits remain the book's thin-cushion soft spots: QQQ (Aug 5, +3.5% mild ext) now -1.26%, cushion just 3.06% -- the THINNEST in the book and new co-top death-cross/stop watch; MSFT (Aug 3, +15.5% ext) -0.70%, cushion 5.37% (cushion actually widened today). CRM (Aug 4, +7.2% ext) is the exception at +5.64%, cushion 13.8%. Firm rule stands: treat >~6-8% above-EMA extension as size-DOWN or wait-for-pullback; when it co-occurs with a shallow cross, SKIP outright.",
-    "STACKED-FLAG entries (shallow cross + extended above EMA + thin liquidity together) -- RESOLVED as a SKIP, not a size-down: PDBC (0.15% cross + ~6.05% extended + thin liq, quarter-unit Jul 24) stopped out -2.40% Day 3. Distinguish from a SINGLE shallow-cross flag (BMY/GIS/CAG), a valid size-DOWN. Rule: one flag -> size down; two or more stacked -> skip. CRM (Aug 4) carried TWO soft flags (0.34% cross + 7.2% ext) but no thin-liq strike; taken via notional cap -- now +5.64% by Day 14, so the two-soft-flag boundary test reads POSITIVE. DVN (Aug 18) is the newest two-soft-flag test (0.162% near-floor cross + ~6.8% ext, no thin-liq strike; size-down turtle unit) -- Day 0 at -0.52%, watch for a shallow-cross fake-out if the energy pop fades. Keep the one-flag-size-down / two-flag-skip rule as is.",
+    "Extended entries (price well above EMA-20 at entry) -- CONFIRMED LOSER, thesis RESOLVED by AMZN (entered Aug 4 at +15.2% above EMA20, stopped out Aug 17 at -6.57%, -$619.82; prior confirm META Jul 15 ~8.5% ext, stopped -8.04% Jul 23). The surviving extended admits remain the book's thin-cushion soft spots: QQQ (Aug 5, +3.5% mild ext) now -1.54%, cushion just 2.78% -- the THINNEST in the book and top death-cross/stop watch; MSFT (Aug 3, +15.5% ext) -0.46%, cushion 5.59%. CRM (Aug 4, +7.2% ext) stays the exception at +10.71%, cushion 17.75%. Firm rule stands: treat >~6-8% above-EMA extension as size-DOWN or wait-for-pullback; when it co-occurs with a shallow cross, SKIP outright.",
+    "STACKED-FLAG entries (shallow cross + extended above EMA + thin liquidity together) -- RESOLVED as a SKIP, not a size-down: PDBC (0.15% cross + ~6.05% extended + thin liq, quarter-unit Jul 24) stopped out -2.40% Day 3. Distinguish from a SINGLE shallow-cross flag (BMY/GIS/CAG), a valid size-DOWN. Rule: one flag -> size down; two or more stacked -> skip. CRM (Aug 4) carried TWO soft flags (0.34% cross + 7.2% ext) but no thin-liq strike; taken via notional cap -- now +10.71% by Day 15, so the two-soft-flag boundary test reads POSITIVE. DVN (Aug 18) is the newest two-soft-flag test (0.162% near-floor cross + ~6.8% ext, no thin-liq strike; size-down turtle unit) -- Day 1 at -0.42%, holding flat, still watch for a shallow-cross fake-out if the energy pop fades. Keep the one-flag-size-down / two-flag-skip rule as is.",
     "Shallow EMA cross entries on earnings-adjacent names: TSLA (Jul 7, 0.06% cross, earnings Jul 22) lost -4.78%. Rule: SKIP (do not size down) when BOTH shallow cross (<0.5%) AND earnings within 14 days. Re-validated Jul 30 (OXY skipped) and Aug 17 (MRVL filtered on earnings Aug 27, 10d).",
-    "Very shallow golden crosses (<0.1% EMA-20/60 spread): NVDA (0.07%), MDT (0.014%), XLB (0.029% & 0.067%), OXY (0.075%), CCL (0.048%), QQQ (0.013% on Aug 4), PLTR (0.081% on Aug 5), VZ (0.0079% on Aug 6-7, skipped twice), PFE (~0.10% on Aug 10, skipped Aug 11), DIS (0.081% on Aug 11-12, skipped), SLB (0.032% on Aug 13-14, skipped), EEM (0.059%) and WBD (0.024%) on Aug 14-17 are noise-level, high reversal risk -- skip on sight. BMY at 0.13%, CAG at 0.113% and DVN at 0.162% cleared this line at size-down and validated (DVN pending). 0.1% remains the skip floor. NOTE: a cross below the floor at one snapshot can MATURE -- QQQ's cross widened 0.013%->0.224% intraday; NVDA's 0.07% flag matured to 0.350% by the Aug 5 scan. Re-check on the next scan rather than permanently blacklisting.",
+    "Very shallow golden crosses (<0.1% EMA-20/60 spread): NVDA (0.07%), MDT (0.014%), XLB (0.029% & 0.067%), OXY (0.075%), CCL (0.048%), QQQ (0.013% on Aug 4), PLTR (0.081% on Aug 5), VZ (0.0079% on Aug 6-7, skipped twice), PFE (~0.10% on Aug 10, skipped Aug 11), DIS (0.081% on Aug 11-12, skipped), SLB (0.032% on Aug 13-14, skipped), EEM (0.059%) and WBD (0.024%) on Aug 14-17 are noise-level, high reversal risk -- skip on sight. BMY at 0.13%, CAG at 0.113% and DVN at 0.162% cleared this line at size-down and validated (DVN pending, Day 1 flat). 0.1% remains the skip floor. NOTE: a cross below the floor at one snapshot can MATURE -- QQQ's cross widened 0.013%->0.224% intraday; NVDA's 0.07% flag matured to 0.350% by the Aug 5 scan. Re-check on the next scan rather than permanently blacklisting.",
     "Earnings-blackout holds ride to the hard stop with no discretionary exit: CMG (Jul 10 entry, blackout Jul 15-29) drifted to its 2xATR stop and filled at -8.06% Jul 22. Blackout policy working as intended -- record of realized blackout downside, not a rule change.",
     "Grotesquely-extended/parabolic golden crosses -- SMCI (Aug 13-14 scan): WIDE decisive cross (+1.42% spread) but +25.7% above EMA20 (worst the book has ever scanned) with a hot 6.7% ATR. Prime chase/reversal risk; treat as size-DOWN/wait-for-pullback per the extended-loser rule even when the cross itself is clean. Skipped both scans.",
     "LEGACY intraday RSI buckets (informational, strategy retired): RSI 60-65 0/3, RSI 65-75 0/1, gap-up opens with RSI>60 -- all losers historically. Retained only as a record of why the intraday RSI approach was abandoned for trend-following."
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Aug 12 - Aug 18: MA-20/60 trend book took its first real drawdown Aug 17 (-0.98% vs SPY -0.40%) as AMZN's 2xATR stop fired (-6.57%, extended-admit loser resolving), then snapped straight back Aug 18 with its best alpha day in weeks: +0.70% vs SPY -0.61% = +1.31% BEAT, the quality/defensive book rallying broadly (SCHW +13.97%, BMY +12.62%, GIS +6.50%, XLE +5.77%, CRM +5.64%) against a falling market. Cumulative scoreboard: SPY +1.25% now leads Bull +1.05% by just ~0.20pt -- the gap NARROWED ~1.33pt in one session, nearly erasing the AMZN damage. Book now 10/20 positions after Tue's DVN energy entry (size-down shallow-cross, Day 0 -0.52%). Thin-cushion watches: QQQ -1.26% (cushion 3.06%, now THINNEST) and MSFT -0.70% (cushion 5.37%) -- the surviving extended tech admits, co-top death-cross candidates. VIX ~15 area, calm. Regime: low-VIX, choppy tape where broad indices slip but quality/value names bid -- the exact environment where this defensive book earns its keep. Deployment ~84% invested (cash ~$25k of $101k) after the DVN add, still under the 20-name and notional caps.",
+  "recent_market_context": "Aug 13 - Aug 19: MA-20/60 trend book took its only real drawdown Aug 17 (-0.98% vs SPY -0.40%, AMZN 2xATR stop firing), then delivered back-to-back alpha days: Aug 18 +0.70% vs SPY -0.61% (+1.31 beat, quality bid on a red tape) and Aug 19 +1.13% vs SPY +0.18% (+0.95 beat, staples GIS/CAG and CRM/SCHW/BMY leading on a mildly-up tape). Two-day swing added ~2.26pt of alpha and flipped the scoreboard: Bull +2.09% now LEADS SPY +1.36% by ~0.73pt (was trailing by ~1.53pt on Aug 17). Book steady at 10/20 positions; two consecutive no-trade sessions (Aug 18 add of DVN was the last entry, no exits since). Thin-cushion watches: QQQ -1.54% (cushion 2.78%, THINNEST) and MSFT -0.46% (cushion 5.59%) -- surviving extended tech admits, top death-cross candidates. VIX ~15 area, calm. Regime: low-VIX, choppy-to-mildly-up tape where the defensive/quality book's individual uptrends are carrying regardless of index direction. Deployment ~84% invested (cash ~$25k of $102k), under the 20-name and notional caps.",
   "current_open_positions": [
     {
       "symbol": "SCHW",
       "entry_price": 97.93,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 13.97,
-      "notes": "Day 43; stop $93.28, ~16.4% cushion. Higher-beta financial and top book leader, ripped to +13.97% near its high. 20/60 trend intact, no death cross. Let run, no trailing."
+      "unrealized_pnl_pct": 13.10,
+      "notes": "Day 44; stop $93.28, ~15.8% cushion. Higher-beta financial and top book leader at +13.10%. 20/60 trend intact, no death cross. Let run, no trailing."
     },
     {
       "symbol": "PCG",
       "entry_price": 17.13,
       "current_stop": 16.29,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 3.75,
-      "notes": "Day 43; stop $16.29, ~8.3% cushion. Low-beta utility at +3.75% -- classic down-tape defense, gained on today's red SPY. 20/60 trend intact, no death cross."
+      "unrealized_pnl_pct": 3.11,
+      "notes": "Day 44; stop $16.29, ~7.8% cushion. Low-beta utility at +3.11% -- steady defensive anchor. 20/60 trend intact, no death cross."
     },
     {
       "symbol": "GIS",
       "entry_price": 35.89,
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
-      "unrealized_pnl_pct": 6.5,
-      "notes": "Day 35; stop $34.41, ~10.0% cushion. 75% unit shallow-cross probation staple at +6.50%. 20/60 trend intact, no death cross."
+      "unrealized_pnl_pct": 11.34,
+      "notes": "Day 36; stop $34.41, ~13.9% cushion. 75% unit shallow-cross probation staple, surged to +11.34% today. 20/60 trend intact, no death cross."
     },
     {
       "symbol": "BMY",
       "entry_price": 58.71,
       "current_stop": 55.76,
       "entry_date": "2026-07-16",
-      "unrealized_pnl_pct": 12.62,
-      "notes": "Day 33; stop $55.76, ~15.7% cushion. Premier book anchor, surged to +12.62%. 50% unit heaviest size-down on shallowest cross (0.13%) -- keeps validating the discipline. Let run, do not trim. No death cross."
+      "unrealized_pnl_pct": 15.25,
+      "notes": "Day 34; stop $55.76, ~17.6% cushion. Premier book anchor, now +15.25%. 50% unit heaviest size-down on shallowest cross (0.13%) -- keeps validating the discipline. Let run, do not trim. No death cross."
     },
     {
       "symbol": "XLE",
       "entry_price": 60.17,
       "current_stop": 56.92,
       "entry_date": "2026-07-23",
-      "unrealized_pnl_pct": 5.77,
-      "notes": "Day 26; stop $56.92, ~10.6% cushion. Energy ETF at +5.77% -- energy sector bid supports the fresh DVN add. Half unit thin-cross. Watch normal; no death cross."
+      "unrealized_pnl_pct": 5.47,
+      "notes": "Day 27; stop $56.92, ~10.3% cushion. Energy ETF at +5.47% -- energy sector bid supports the DVN sibling hold. Half unit thin-cross. Watch normal; no death cross."
     },
     {
       "symbol": "CAG",
       "entry_price": 14.99,
       "current_stop": 13.94,
       "entry_date": "2026-07-27",
-      "unrealized_pnl_pct": 4.13,
-      "notes": "Day 22; stop $13.94, ~10.7% cushion. Conagra staple at +4.13% -- comfortable cushion, 20/60 trend intact, no death cross."
+      "unrealized_pnl_pct": 8.24,
+      "notes": "Day 23; stop $13.94, ~14.1% cushion. Conagra staple jumped to +8.24% today. 20/60 trend intact, no death cross."
     },
     {
       "symbol": "MSFT",
       "entry_price": 485.41,
       "current_stop": 456.13,
       "entry_date": "2026-08-03",
-      "unrealized_pnl_pct": -0.7,
-      "notes": "Day 15; stop $456.13, ~5.4% cushion (widened today). Heavily EXTENDED entry (+15.5% above EMA20), red at -0.70% but cushion improved. Co-top death-cross/stop watch. No death cross yet."
+      "unrealized_pnl_pct": -0.46,
+      "notes": "Day 16; stop $456.13, ~5.6% cushion. Heavily EXTENDED entry (+15.5% above EMA20), roughly flat at -0.46%. Second death-cross/stop watch behind QQQ. No death cross yet."
     },
     {
       "symbol": "CRM",
       "entry_price": 186.41,
       "current_stop": 169.75,
       "entry_date": "2026-08-04",
-      "unrealized_pnl_pct": 5.64,
-      "notes": "Day 14; stop $169.75 (~2xATR), ~13.8% cushion. golden_cross, notional-capped 53sh, TWO soft flags (0.34% cross + 7.2% ext). Jumped to +5.64% -- the two-soft-flag boundary test reads clearly POSITIVE. No death cross."
+      "unrealized_pnl_pct": 10.71,
+      "notes": "Day 15; stop $169.75 (~2xATR), ~17.8% cushion. golden_cross, notional-capped 53sh, TWO soft flags (0.34% cross + 7.2% ext). Now +10.71% -- the two-soft-flag boundary test reads clearly POSITIVE. No death cross."
     },
     {
       "symbol": "QQQ",
       "entry_price": 727.04,
       "current_stop": 695.97,
       "entry_date": "2026-08-05",
-      "unrealized_pnl_pct": -1.26,
-      "notes": "Day 13; 13 sh @ $727.04, GTC stop $695.97, ~3.1% cushion -- THINNEST in the book. golden_cross, +3.5% mild extension. Red at -1.26%, now the TOP death-cross/stop watch. No death cross yet."
+      "unrealized_pnl_pct": -1.54,
+      "notes": "Day 14; 13 sh @ $727.04, GTC stop $695.97, ~2.8% cushion -- THINNEST in the book. golden_cross, +3.5% mild extension. Red at -1.54%, the TOP death-cross/stop watch. No death cross yet."
     },
     {
       "symbol": "DVN",
       "entry_price": 48.19,
       "current_stop": 44.85,
       "entry_date": "2026-08-18",
-      "unrealized_pnl_pct": -0.52,
-      "notes": "Day 0. 211 sh @ $48.19, stop $44.85 (exactly 2xATR below fill, ATR 1.6681), ~6.4% cushion. Size-down shallow-cross energy entry (two soft flags: 0.162% cross + ~6.8% ext); standard turtle unit, did not upsize. Barely red -0.52%. Watch for shallow-cross fake-out if the energy pop fades. Fresh 20/60 trend, no death cross."
+      "unrealized_pnl_pct": -0.42,
+      "notes": "Day 1. 211 sh @ $48.19, stop $44.85 (exactly 2xATR below fill, ATR 1.6681), ~6.5% cushion. Size-down shallow-cross energy entry (two soft flags: 0.162% cross + ~6.8% ext); standard turtle unit, did not upsize. Holding flat at -0.42%. Watch for shallow-cross fake-out if the energy pop fades. Fresh 20/60 trend, no death cross."
     }
   ],
-  "notes_for_next_session": "MARKET OPEN 2026-08-19 (Wed) EXECUTED -> 0 trades, exactly as the Tue evening scan forecast. Both signal files empty (no golden/death crosses); Part 0b reconcile confirmed 0 overnight stop fills, all 10 positions still open at Alpaca and matching positions.json. No kill_switch, account not blocked, equity ~$100,921. Per Part 1 both signals empty -> logged and stopped; no exits, no entries, positions.json unchanged. All 10 GTC 2xATR stops remain live and unchanged: SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, QQQ 695.97, DVN 44.85 (do NOT trail -- fixed at entry, removed only on a death-cross exit). Book 10/20, ~84% deployed (~15k cash), room under both caps. TOP DEATH-CROSS/STOP WATCH unchanged for EOD: QQQ (cushion ~3.1%, THINNEST) then MSFT (~5.4%); DVN Day 1 shallow-cross fake-out watch. For the EOD agent: light session, no fills to reconcile beyond the standard mark-to-market; refresh P&L and re-run the death-cross check on all 10 holds."
+  "notes_for_next_session": "For the 2026-08-19 (Wed) EVENING SCAN agent: two consecutive quiet no-trade sessions logged (last fill was DVN on Aug 18); today EOD +1.13% vs SPY +0.18% (+0.95 beat), equity $102,085. All 10 GTC 2xATR stops verified LIVE and EXACT at Alpaca this afternoon (SCHW 93.28, PCG 16.29, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, QQQ 695.97, DVN 44.85) -- do NOT trail, fixed at entry, removed only on a death-cross exit. Run the full 20/60 death-cross scan on all 10 holds tonight: TOP death-cross/stop WATCH is QQQ (cushion 2.78%, THINNEST and only ~$20 above its stop) then MSFT (5.59%); DVN Day 1 still flat, watch for a shallow-cross fake-out if energy fades. The rest are all in strong uptrends with 10-18% cushions (BMY +15.25, SCHW +13.10, GIS +11.34, CRM +10.71, CAG +8.24). Cumulative Bull +2.09% now LEADS SPY +1.36% by ~0.73pt -- momentum firmly positive. Book 10/20, ~84% deployed (~$25k cash), room under both caps for any clean fresh golden cross (apply the shallow-cross floor 0.1%, one-flag-size-down/two-flag-skip, and extended >6-8% size-down rules). Watch for the first death cross on QQQ -- it is the most likely near-term exit."
 }
