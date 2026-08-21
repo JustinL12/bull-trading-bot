@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "symbol": "PSKY",
+    "close": 10.34,
+    "atr": 0.384,
+    "ema_fast": 9.61,
+    "ema_slow": 9.5933,
+    "avg_volume_20d": 852464,
+    "signal": "golden_cross",
+    "scanned_at": "2026-08-21T20:06:16.307166+00:00"
+  }
+]
