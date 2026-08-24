@@ -138,5 +138,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "3754b100-688f-430c-b060-b3843ea3aab2",
     "stop_order_id": "b1699870-5cc5-4f83-a362-b520e8a01cae"
+  },
+  "PSKY": {
+    "symbol": "PSKY",
+    "entry_price": 10.29,
+    "shares": 698,
+    "entry_time": "2026-08-24T13:36:25.896611+00:00",
+    "atr_at_entry": 0.36,
+    "initial_stop": 9.57,
+    "current_stop": 9.57,
+    "highest_close_since_entry": 10.29,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "48e4a8a4-da30-48ed-9057-63f150c2b042",
+    "stop_order_id": "9a56aa86-d1ec-477c-af7b-55bcebace687"
   }
 }
