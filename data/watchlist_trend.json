@@ -1,12 +1,12 @@
 [
   {
-    "symbol": "PSKY",
-    "close": 10.34,
-    "atr": 0.384,
-    "ema_fast": 9.61,
-    "ema_slow": 9.5933,
-    "avg_volume_20d": 852464,
+    "symbol": "MOS",
+    "close": 24.0,
+    "atr": 1.0002,
+    "ema_fast": 22.6994,
+    "ema_slow": 22.6571,
+    "avg_volume_20d": 536187,
     "signal": "golden_cross",
-    "scanned_at": "2026-08-21T20:06:16.307166+00:00"
+    "scanned_at": "2026-08-24T20:09:46.108245+00:00"
   }
 ]
