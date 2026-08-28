@@ -13,20 +13,6 @@
     "alpaca_order_id": "1153e82a-9163-45a1-8d07-63091ff9cbdf",
     "stop_order_id": "ef365e4b-e81d-409e-80e7-27a32b167b78"
   },
-  "PCG": {
-    "symbol": "PCG",
-    "entry_price": 17.127577,
-    "shares": 586,
-    "entry_time": "2026-07-06T13:42:53.782000+00:00",
-    "atr_at_entry": 0.4188,
-    "initial_stop": 16.29,
-    "current_stop": 16.29,
-    "highest_close_since_entry": 17.127577,
-    "partial_sold": false,
-    "partial_sold_shares": 0,
-    "alpaca_order_id": "93600096-b773-482d-9601-42243d0f601e",
-    "stop_order_id": "4478351b-c269-4185-b2fe-d678c9ce626d"
-  },
   "GIS": {
     "symbol": "GIS",
     "entry_price": 35.89343,
