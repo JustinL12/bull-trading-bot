@@ -1,109 +1,109 @@
 {
   "last_updated": "2026-08-31",
-  "sessions_analyzed": 78,
+  "sessions_analyzed": 79,
   "total_trades": 15,
-  "performance_overview": "Through 78 sessions (inception 2026-06-01) Bull holds 11 open positions and 15 realized round-trips (3W/12L, ~20% win rate). Today (Fri 2026-08-28) was near-flat: day P&L -$0.87 (-0.00%) on ~$104,966 equity vs SPY -0.23% -> +0.23pt alpha on a soft tape -- consistent with the tape-conditional read that the defensive tilt earns its keep on down/flat tapes. The one realized event was PCG (PG&E utility) stopping out at $16.29, -4.89% (-~$492), its 2xATR GTC stop filling overnight (reconciled at open by reconcile_fills.py, no agent present at the fill). Market open was a clean NO-OP (0 entries, 0 discretionary exits; both EQT and SLV watchlist candidates were correctly skipped). Cumulative lead: Bull +4.97% vs SPY +1.45% (~+3.52pt), still materially CRM-driven -- CRM firmed again to +38.17% (53sh) and remains the single largest tail in the book.",
+  "performance_overview": "Through 79 sessions (inception 2026-06-01) Bull holds 11 open positions and 15 realized round-trips (3W/12L, ~20% win rate). Today (Mon 2026-08-31) was the book's best clean up-day in a while: P&L +$499.97 (+0.48%) on ~$105,347 equity vs SPY -0.28% -> +0.76pt alpha, and notably the alpha was NOT purely CRM this time -- the whole book firmed (MSFT +5.12%, XLE +6.19%, SCHW +12.25%, BMY +14.02%, GIS +15.37%) while SPY fell, a genuinely broad defensive-tilt day rather than a single-name markup. Zero trades executed (clean NO-OP at open, as the Fri evening scan predicted). Cumulative lead widened: Bull +5.35% vs SPY +1.14% (~+4.21pt), still CRM-anchored (+39.03%, 53sh, the single largest tail) but the gap grew today on breadth, not just CRM.",
   "best_signals": [
-    "Single shallow-cross probation entries (heavy size-DOWN, NOT skip) -- verdict POSITIVE and durable. BMY (0.13% cross, 50% unit) the book's anchor at +13.50% (Day ~43); GIS (0.29% cross, 75% unit) +15.73%; CAG (0.113% cross, 50% unit) +7.24%; MOS (0.43% matured cross, 75% unit) ~flat at -0.74% Day ~3. Read: size down on a single clean shallow cross, do not upsize, weight the entry's SECTOR trend.",
+    "Single shallow-cross probation entries (heavy size-DOWN, NOT skip) -- verdict POSITIVE and durable. BMY (0.13% cross, 50% unit) the book's anchor at +14.02% (Day ~46); GIS (0.29% cross, 75% unit) +15.37%; CAG (0.113% cross, 50% unit) +7.10%; MOS (0.43% matured cross, 75% unit) recovered to +1.26% Day ~6. Read: size down on a single clean shallow cross, do not upsize, weight the entry's SECTOR trend.",
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% -- the ONLY profitable bucket for the LEGACY intraday RSI strategy; n=2, thin, INFORMATIONAL ONLY now that the live strategy is MA-20/60 trend-following. Do not act on it (n<10).",
-    "Idiosyncratic single-name upside is real and can dominate the cumulative record (CRM +38.17%) -- the mirror image of single-name downside (AMZN/PCG). It is NOT a repeatable strategy edge; treat both fat tails as luck-of-the-draw. The lasting lesson is symmetric: MA-20/60 trend entries carry fat single-name tails in BOTH directions -- size discipline is the only defense."
+    "Idiosyncratic single-name upside is real and can dominate the cumulative record (CRM +39.03%) -- the mirror image of single-name downside (AMZN/PCG). It is NOT a repeatable strategy edge; treat both fat tails as luck-of-the-draw. The lasting lesson is symmetric: MA-20/60 trend entries carry fat single-name tails in BOTH directions -- size discipline is the only defense. Today's up-day was the counterpoint: broad book strength beat SPY without leaning on CRM, evidence the defensive-tilt selection has genuine breadth."
   ],
   "avoid": [
-    "Extended entries (price well above EMA-20 at entry) -- CONFIRMED LOSER, thesis RESOLVED by AMZN (entered Aug 4 at +15.2% above EMA20, stopped -6.57% Aug 17) and META (Jul 15 ~8.5% ext, stopped -8.04% Jul 23). Surviving extended admits are fine now (MSFT +5.81%, QQQ still tightest at -1.50%/2.82% cushion, CRM the +38% exception) but that does not vindicate the entry. Firm rule stands: treat >~6-8% above-EMA extension as size-DOWN or wait-for-pullback; when it co-occurs with a shallow cross, SKIP.",
-    "STACKED-FLAG entries (shallow cross + extended above EMA + thin liquidity together) -- SKIP, not size-down: PDBC (0.15% cross + ~6% ext + thin liq, Jul 24) stopped -2.40%. One flag -> size down; two or more stacked -> skip. Applied correctly this week: SLV skipped Aug 28 on TWO flags (+6.9% extended + thin 549k liq).",
+    "Extended entries (price well above EMA-20 at entry) -- CONFIRMED LOSER, thesis RESOLVED by AMZN (entered Aug 4 at +15.2% above EMA20, stopped -6.57% Aug 17) and META (Jul 15 ~8.5% ext, stopped -8.04% Jul 23). Surviving extended admits are fine now (MSFT +5.12%, QQQ still tightest at -1.53%/2.79% cushion, CRM the +39% exception) but that does not vindicate the entry. Firm rule stands: treat >~6-8% above-EMA extension as size-DOWN or wait-for-pullback; when it co-occurs with a shallow cross, SKIP.",
+    "STACKED-FLAG entries (shallow cross + extended above EMA + thin liquidity together) -- SKIP, not size-down: PDBC (0.15% cross + ~6% ext + thin liq, Jul 24) stopped -2.40%. One flag -> size down; two or more stacked -> skip. Applied correctly recently: SLV skipped Aug 28 on TWO flags (+6.9% extended + thin 549k liq).",
     "Noise-level / opening-bar-artifact crosses -- EQT skipped Aug 28: completed-bar EMA20/60 spread only 0.0145%, far below the 0.1% shallow-cross floor; a live 0.19% read was a 917-share opening-bar artifact on a partial daily bar. Hold the 0.1% floor against thin-liquidity fake-outs."
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Aug 24 - Aug 28: tape cooled off Thursday's strong up day into a soft Friday (SPY -0.23%). VIX calm ~14.5, no suspend. Broad tech mixed-to-soft (QQQ pulled back to -1.50%, MSFT firm +5.81%); defensive leaders held (BMY +13.50%, GIS +15.73%, SCHW +12.92%). PCG (utility) stopped out Friday -- the first realized exit since AMZN (Aug 17). Book trimmed 12 -> 11 names, still trending, no golden/death crosses at Thu evening scan. Alpha edge remains tape-conditional (widest on down/flat tapes, thinnest on strong up days).",
+  "recent_market_context": "Aug 25 - Aug 31: tape chopped soft-to-down (SPY red again Monday -0.28% after Fri -0.23%), VIX calm ~14.4 (no suspend). Despite SPY weakness Bull's book firmed broadly on Monday -- defensive/energy/staples leaders (SCHW +12.25%, BMY +14.02%, GIS +15.37%, XLE +6.19%) all pushed higher, the cleanest broad-breadth alpha day recently rather than a CRM-only markup. No golden/death crosses at the Fri evening scan; book steady at 11 names since PCG stopped out Fri. Alpha edge continues to widen on down/flat tapes.",
   "current_open_positions": [
     {
       "symbol": "QQQ",
       "entry_price": 727.04,
       "current_stop": 695.97,
       "entry_date": "2026-08-05",
-      "unrealized_pnl_pct": -1.5,
-      "notes": "cushion 2.82% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": -1.53,
+      "notes": "TIGHTEST cushion 2.79% above fixed 2xATR stop; leading death-cross/stop candidate on any gap-down; stop not trailed by design"
     },
     {
       "symbol": "DVN",
       "entry_price": 48.19,
       "current_stop": 44.85,
       "entry_date": "2026-08-18",
-      "unrealized_pnl_pct": -1.9,
-      "notes": "cushion 5.12% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 0.29,
+      "notes": "recovered from -1.9% to slightly green; cushion 7.19% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "MOS",
       "entry_price": 23.77,
       "current_stop": 22.0,
       "entry_date": "2026-08-25",
-      "unrealized_pnl_pct": -0.76,
-      "notes": "cushion 6.74% above fixed 2xATR stop; stop not trailed by design"
-    },
-    {
-      "symbol": "XLE",
-      "entry_price": 60.17,
-      "current_stop": 56.92,
-      "entry_date": "2026-07-23",
-      "unrealized_pnl_pct": 3.98,
-      "notes": "cushion 9.02% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 1.26,
+      "notes": "probation shallow-cross entry now green; cushion 8.60% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "MSFT",
       "entry_price": 485.41,
       "current_stop": 456.13,
       "entry_date": "2026-08-03",
-      "unrealized_pnl_pct": 5.81,
-      "notes": "cushion 11.2% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 5.12,
+      "notes": "cushion 10.61% above fixed 2xATR stop; stop not trailed by design"
+    },
+    {
+      "symbol": "XLE",
+      "entry_price": 60.17,
+      "current_stop": 56.92,
+      "entry_date": "2026-07-23",
+      "unrealized_pnl_pct": 6.19,
+      "notes": "energy firmed; cushion 10.92% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "PSKY",
       "entry_price": 10.29,
       "current_stop": 9.57,
       "entry_date": "2026-08-24",
-      "unrealized_pnl_pct": 6.41,
-      "notes": "cushion 12.6% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 5.69,
+      "notes": "cushion 12.00% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "CAG",
       "entry_price": 14.99,
       "current_stop": 13.94,
       "entry_date": "2026-07-27",
-      "unrealized_pnl_pct": 7.2,
-      "notes": "cushion 13.25% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 7.1,
+      "notes": "cushion 13.17% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "SCHW",
       "entry_price": 97.93,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 12.92,
-      "notes": "cushion 15.64% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 12.25,
+      "notes": "cushion 15.14% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "BMY",
       "entry_price": 58.71,
       "current_stop": 55.76,
       "entry_date": "2026-07-16",
-      "unrealized_pnl_pct": 13.51,
-      "notes": "cushion 16.33% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 14.02,
+      "notes": "book anchor; cushion 16.70% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "GIS",
       "entry_price": 35.89,
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
-      "unrealized_pnl_pct": 15.73,
-      "notes": "cushion 17.16% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 15.37,
+      "notes": "cushion 16.90% above fixed 2xATR stop; stop not trailed by design"
     },
     {
       "symbol": "CRM",
       "entry_price": 186.41,
       "current_stop": 169.75,
       "entry_date": "2026-08-04",
-      "unrealized_pnl_pct": 38.17,
-      "notes": "cushion 34.1% above fixed 2xATR stop; stop not trailed by design"
+      "unrealized_pnl_pct": 39.03,
+      "notes": "largest dollar-P&L tail in book; cushion 34.50% above fixed 2xATR stop; DO NOT trail -- stop fixed at entry by design"
     }
   ],
-  "notes_for_next_session": "For the NEXT session (Mon 2026-08-31 EOD agent). Market-open was a CLEAN NO-OP exactly as the Fri 2026-08-28 evening scan predicted: watchlist_trend.json and exit_signals.json both EMPTY -> 0 entries, 0 discretionary exits. Pre-flight all green at Monday open: reconcile_fills 0 stop fills / 11 still open (all 11 GTC 2xATR stops confirmed LIVE at Alpaca over the weekend gap), VIX 14.43 calm (no suspend), account not blocked, no kill_switch, 11/20 positions (below cap). Equity opened ~$105,253.22 (up ~$286 over the weekend from Fri last_equity $104,966.94). Book UNCHANGED (11 names): SCHW, GIS, BMY, XLE, CAG, MSFT, CRM, QQQ, DVN, PSKY, MOS -- all 2xATR stops fixed at entry, none trailed by design. PRIORITY STOP/DEATH-CROSS WATCHES for tonights EOD scan (tightest cushion first): (1) QQQ ~2.8% cushion vs $695.97 stop -- leading death-cross candidate on any gap-down; (2) DVN ~5% cushion, $44.85 stop, weakest fresh name; (3) MOS ~6.7% cushion, Day ~5 probation entry; (4) CRM +38% but dominates book dollar-P&L (stop $169.75 fixed, DO NOT trail). Other 7 names 9-17% cushions, intact uptrends -- let run. Standing entry filters UNCHANGED: 0.1% shallow-cross floor, one-flag-size-down / two-flag-skip, >6-8% above-EMA extension size-down, 14-day earnings blackout."
+  "notes_for_next_session": "For the NEXT session (Tue 2026-09-01 evening scan / EOD agent). Monday 2026-08-31 was a clean NO-OP at open (0 entries, 0 exits -- Fri evening scan had empty watchlist_trend.json and exit_signals.json) and finished a strong +$499.97 (+0.48%) vs SPY -0.28% -> +0.76pt alpha, this time on BROAD book strength (MSFT/XLE/SCHW/BMY/GIS all up) not just CRM. All 11 GTC 2xATR stops verified LIVE at Alpaca and exactly matching positions.json (SCHW 93.28, GIS 34.41, BMY 55.76, XLE 56.92, CAG 13.94, MSFT 456.13, CRM 169.75, QQQ 695.97, DVN 44.85, PSKY 9.57, MOS 22.00). Equity ~$105,347. 11/20 positions (below cap). No stops trailed (fixed by design). PRIORITY STOP/DEATH-CROSS WATCHES (tightest cushion first): (1) QQQ ~2.79% cushion vs $695.97 stop, still -1.53% and the ONLY red name -- leading death-cross candidate on any gap-down; (2) DVN ~7.19% cushion (recovered to +0.29% today); (3) MOS ~8.60% cushion, Day ~6 probation entry, now green. Other 8 names 10-35% cushions, uptrends intact -- let run. CRM (+39.03%) dominates cumulative P&L; a give-back would swing the whole book, but stop stays fixed at $169.75. Standing entry filters UNCHANGED: 0.1% shallow-cross floor, one-flag-size-down / two-flag-skip, >6-8% above-EMA extension size-down, 14-day earnings blackout."
 }
