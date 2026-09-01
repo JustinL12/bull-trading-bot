@@ -152,5 +152,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "ee9bdd5b-da6d-4caf-82d3-4d5c37e93271",
     "stop_order_id": "bcbfee11-e4fd-4a6b-9f18-222ab41609d6"
+  },
+  "NFLX": {
+    "symbol": "NFLX",
+    "entry_price": 80.2,
+    "shares": 65,
+    "entry_time": "2026-09-01T13:35:11.525266+00:00",
+    "atr_at_entry": 2.2314,
+    "initial_stop": 75.74,
+    "current_stop": 75.74,
+    "highest_close_since_entry": 80.2,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "32c81ca0-e780-43dc-bce4-ded9cf1bec28",
+    "stop_order_id": "38458fac-8c6f-42ea-a81a-7b7a9883682b"
   }
 }

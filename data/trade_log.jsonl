@@ -39,3 +39,4 @@
 {"ts": "2026-08-24T13:36:25.897745+00:00", "event": "ENTRY", "symbol": "PSKY", "shares": 698, "price": 10.29, "stop": 9.57}
 {"ts": "2026-08-25T13:36:56.383782+00:00", "event": "ENTRY", "symbol": "MOS", "shares": 320, "price": 23.77, "stop": 22.0}
 {"ts": "2026-08-28T16:59:28.210632+00:00", "event": "EXIT", "symbol": "PCG", "shares": 586, "price": 16.29, "pnl_dollars": -490.82, "pnl_pct": -4.89, "exit_reason": "stop_fill (reconciled)"}
+{"ts": "2026-09-01T13:35:11.525893+00:00", "event": "ENTRY", "symbol": "NFLX", "shares": 65, "price": 80.2, "stop": 76.6}
