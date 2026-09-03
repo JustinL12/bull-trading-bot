@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "symbol": "HAL",
+    "close": 37.3,
+    "atr": 1.0568,
+    "ema_fast": 35.2919,
+    "ema_slow": 35.1871,
+    "avg_volume_20d": 657404,
+    "signal": "golden_cross",
+    "scanned_at": "2026-09-03T20:03:28.565838+00:00"
+  }
+]
