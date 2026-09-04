@@ -166,5 +166,19 @@
     "partial_sold_shares": 0,
     "alpaca_order_id": "32c81ca0-e780-43dc-bce4-ded9cf1bec28",
     "stop_order_id": "38458fac-8c6f-42ea-a81a-7b7a9883682b"
+  },
+  "HAL": {
+    "symbol": "HAL",
+    "entry_price": 37.26,
+    "shares": 141,
+    "entry_time": "2026-09-04T13:34:10.861531+00:00",
+    "atr_at_entry": 1.035,
+    "initial_stop": 35.19,
+    "current_stop": 35.19,
+    "highest_close_since_entry": 37.26,
+    "partial_sold": false,
+    "partial_sold_shares": 0,
+    "alpaca_order_id": "78d6c254-e934-4f5c-9ea0-ed9552378639",
+    "stop_order_id": "c0737f1c-82d9-4f74-aa48-398df6f811e1"
   }
 }
