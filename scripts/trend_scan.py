@@ -4,9 +4,16 @@ Runs at 4:00 PM ET after market close. Screens universe_trend.json for symbols
 where the EMA-20 has crossed above the EMA-60 today (golden cross), and checks
 all open positions for death cross exit signals (EMA-20 crosses below EMA-60).
 
+Also checks open positions (not exiting tonight) for a profit-lock trigger
+(gain >= PROFIT_LOCK_ATR_MULT × atr_at_entry): a one-time partial sell of
+PARTIAL_PROFIT_FRACTION of the position, and a trailing-stop raise to
+highest_close_since_entry - TRAILING_STOP_ATR_MULT × current ATR(20).
+
 Outputs:
-  data/watchlist_trend.json  — entry candidates for tomorrow's open
-  data/exit_signals.json     — open positions that triggered a death cross
+  data/watchlist_trend.json      — entry candidates for tomorrow's open
+  data/exit_signals.json         — open positions that triggered a death cross
+  data/partial_exit_signals.json — open positions that hit the profit-lock partial-sell trigger
+  data/stop_updates.json         — open positions whose trailing stop should be raised
 
 Strategy parameters:
   FAST_PERIOD = 20  (EMA-20)
@@ -27,6 +34,7 @@ import config
 from lib.alpaca_client import get_data_client
 from lib.indicators import compute_atr, compute_ema
 from lib.notify import post_attention
+from lib.risk import partial_profit_shares, profit_lock_triggered, trailing_stop_price
 from lib.state import read_json, write_json
 
 # Need ~120 trading days to get stable EMA-60; 180 calendar days provides ~126 trading days
@@ -194,6 +202,76 @@ def scan_exits(positions: dict, bars: dict[str, pd.DataFrame]) -> list[dict]:
     return exits
 
 
+def scan_profit_protection(positions: dict, bars: dict[str, pd.DataFrame], exiting_symbols: set) -> tuple[list, list]:
+    """Check open positions (excluding tonight's death-cross exits) for partial
+    profit-taking and trailing-stop-raise triggers.
+
+    Updates highest_close_since_entry on each position in place, and persists
+    positions.json if any changed (this is the only writer of that field).
+
+    Returns (stop_updates, partial_exits).
+    """
+    stop_updates = []
+    partial_exits = []
+    changed = False
+
+    for sym, pos in positions.items():
+        if sym in exiting_symbols:
+            continue
+        df = bars.get(sym)
+        if df is None or len(df) < config.ATR_PERIOD + 2:
+            continue
+
+        current_close = float(df["close"].iloc[-1])
+        prior_high = pos.get("highest_close_since_entry", pos["entry_price"])
+        new_high = max(prior_high, current_close)
+        if new_high != prior_high:
+            pos["highest_close_since_entry"] = new_high
+            changed = True
+
+        df_tmp = df.copy()
+        compute_atr(df_tmp, config.ATR_PERIOD)
+        atr_val = df_tmp["atr"].iloc[-1]
+        if pd.isna(atr_val):
+            continue
+        atr_val = float(atr_val)
+
+        entry_price = pos["entry_price"]
+        atr_at_entry = pos.get("atr_at_entry") or atr_val
+        if not profit_lock_triggered(current_close, entry_price, atr_at_entry):
+            continue
+
+        if not pos.get("partial_sold"):
+            shares_to_sell = partial_profit_shares(pos["shares"], False)
+            if shares_to_sell > 0:
+                partial_exits.append({
+                    "symbol": sym,
+                    "shares": shares_to_sell,
+                    "current_close": round(current_close, 4),
+                    "entry_price": entry_price,
+                    "reason": (
+                        f"Partial profit target (+{config.PROFIT_LOCK_ATR_MULT}x ATR): "
+                        f"close {current_close:.2f} vs entry {entry_price:.2f}"
+                    ),
+                })
+
+        candidate_stop = trailing_stop_price(new_high, atr_val)
+        current_stop = pos.get("current_stop", pos.get("initial_stop"))
+        if current_stop is not None and candidate_stop > current_stop:
+            stop_updates.append({
+                "symbol": sym,
+                "new_stop": candidate_stop,
+                "prior_stop": current_stop,
+                "highest_close": round(new_high, 4),
+                "atr": round(atr_val, 4),
+            })
+
+    if changed:
+        write_json("positions.json", positions)
+
+    return stop_updates, partial_exits
+
+
 def main():
     print("=== Trend Scan: MA-20/60 Crossover ===")
     data_client = get_data_client()
@@ -232,8 +310,15 @@ def main():
     # Exit signals on open positions (death cross)
     exit_signals = scan_exits(positions, bars)
 
+    # Profit protection on positions not already exiting tonight (partial
+    # profit-taking + trailing-stop raise)
+    death_cross_symbols = {e["symbol"] for e in exit_signals}
+    stop_updates, partial_exits = scan_profit_protection(positions, bars, death_cross_symbols)
+
     write_json("watchlist_trend.json", entry_candidates)
     write_json("exit_signals.json", exit_signals)
+    write_json("stop_updates.json", stop_updates)
+    write_json("partial_exit_signals.json", partial_exits)
 
     print(f"\nEntry signals (golden cross): {len(entry_candidates)}")
     for c in entry_candidates[:10]:
@@ -244,6 +329,14 @@ def main():
     for e in exit_signals:
         print(f"  {e['symbol']:<8}  close={e['current_close']:.2f}  "
               f"EMA{FAST_PERIOD}={e['ema_fast']:.2f}  EMA{SLOW_PERIOD}={e['ema_slow']:.2f}")
+
+    print(f"\nPartial profit-taking signals: {len(partial_exits)}")
+    for p in partial_exits:
+        print(f"  {p['symbol']:<8}  sell {p['shares']} sh  close={p['current_close']:.2f}  entry={p['entry_price']:.2f}")
+
+    print(f"\nStop-raise signals: {len(stop_updates)}")
+    for s in stop_updates:
+        print(f"  {s['symbol']:<8}  {s['prior_stop']:.2f} -> {s['new_stop']:.2f}")
 
     if not entry_candidates:
         post_attention(

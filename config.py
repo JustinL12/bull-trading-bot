@@ -31,6 +31,11 @@ TURTLE_MAX_POSITIONS = 20        # max simultaneous open positions
 ATR_PERIOD = 20                  # ATR period used for sizing and stops
 BACKTEST_STOP_ATR_MULT = 2.0     # hard stop = entry - 2 × ATR(20)
 
+# --- Profit protection ---
+PROFIT_LOCK_ATR_MULT = 2.0       # gain must reach this × atr_at_entry before locking in profit
+PARTIAL_PROFIT_FRACTION = 1 / 3  # fraction of original shares sold when the profit lock triggers
+TRAILING_STOP_ATR_MULT = 2.0     # once triggered, stop trails at highest_close - 2 × current ATR(20)
+
 # Strategy A: MA Crossover
 MA_FAST_SLOW_PAIRS = [(10, 50), (20, 60), (50, 200)]
 

@@ -1,7 +1,7 @@
 Bull — EOD Review Agent
 Schedule: 3:45 PM ET, Monday–Friday
 Working directory: ~/bull (cloned from GitHub at runtime)
-Your role: Verify hard stops are live at Alpaca for all open positions, finalize today's P&L, synthesize memory, and post the daily Discord report. All positions are held by default — you do not close positions here (death cross exits are detected each evening by trend_scan.py). Stops are fixed at entry (2×ATR) and do not trail — re-place any missing ones but never raise them. You are the learning agent — the quality of your memory synthesis directly determines how well future agents perform.
+Your role: Verify stops are live at Alpaca for all open positions, finalize today's P&L, synthesize memory, and post the daily Discord report. All positions are held by default — you do not close positions here (death cross exits are detected each evening by trend_scan.py). Stops start at entry (2×ATR) and can trail upward once a position clears its profit-lock threshold — trend_scan.py computes trailing-stop raises each evening and market_open_play.md executes them the next morning. Your job here is verification only: re-place any missing stops at positions.json's current_stop, but do not raise stops yourself — that only happens via the morning routine. You are the learning agent — the quality of your memory synthesis directly determines how well future agents perform.
 
 ---
 
@@ -84,11 +84,11 @@ Re-read data/daily_pnl.json. Note: pnl_dollars, pnl_pct, spy_return_today, cumul
 
 ---
 
-## Part 3: Verify hard stops are live at Alpaca
+## Part 3: Verify stops are live at Alpaca
 
-With the MA-20/60 strategy, exits are triggered by death cross signals detected each evening in trend_scan.py — not by a trailing channel. The hard stop (2×ATR below entry, set at entry time) is the only intraday protection. It is placed as a live Alpaca GTC stop-loss order and executes automatically at the broker.
+With the MA-20/60 strategy, full exits are triggered by death cross signals detected each evening in trend_scan.py — not by a trailing channel. The stop (2×ATR below entry at first, raised over time once a position clears its profit-lock threshold — see Part 4 of market_open_play.md) is the only intraday protection. It is placed as a live Alpaca GTC stop-loss order and executes automatically at the broker.
 
-Your job here is to verify those stop orders are still active for each open position:
+Your job here is to verify those stop orders are still active for each open position, at the price recorded in positions.json's current_stop (this reflects any trailing-stop raise from this morning):
 
 ```python
 import sys
@@ -121,12 +121,15 @@ if missing_stops:
         print(f"  {m}")
 ```
 
-If any stops are missing, re-place them:
+If any stops are missing, re-place them at positions.json's recorded current_stop (do not raise it here —
+raising happens only via market_open_play.md based on trend_scan.py's stop_updates.json):
 ```
-python scripts/place_order.py --action stop --symbol SYMBOL --stop STOP_PRICE
+python scripts/place_order.py --action raise_stop --symbol SYMBOL --stop CURRENT_STOP_FROM_POSITIONS_JSON
 ```
 
-Note in the journal: `stops_raised: []` (MA-20/60 stops do not trail — they are fixed at entry and only removed when a death cross triggers a full exit tomorrow morning).
+Note in the journal: `stops_raised` — pull today's STOP_RAISED events for each symbol from trade_log.jsonl
+(old_stop, new_stop); this list is populated by this morning's market_open_play.md run, not by this
+routine, but it belongs in today's eod journal entry for a complete daily record.
 
 ---
 

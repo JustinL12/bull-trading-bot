@@ -1,10 +1,11 @@
-"""Place a buy, sell, or partial-sell order via Alpaca. Updates data/positions.json.
+"""Place a buy, sell, partial-sell, or stop-raise order via Alpaca. Updates data/positions.json.
 Sends a Discord trade alert after every fill.
 
 Usage:
     python scripts/place_order.py --action buy --symbol XLK --shares 45 --stop 192.40
     python scripts/place_order.py --action sell --symbol XLK --reason "Trend exit: 10-day low"
     python scripts/place_order.py --action partial_sell --symbol XLK --shares 22 --reason "Manual partial"
+    python scripts/place_order.py --action raise_stop --symbol XLK --stop 205.10
 """
 
 import argparse
@@ -278,6 +279,32 @@ def place_sell(client, symbol: str, reason: str, shares: int | None = None, is_p
         positions[symbol]["partial_sold"] = True
         positions[symbol]["partial_sold_shares"] = pos.get("partial_sold_shares", 0) + filled_qty
         event = "PARTIAL_EXIT"
+
+        # Resize the protective stop to the reduced share count. Without this,
+        # the GTC stop stays sized for the pre-sell quantity — if it later
+        # fires, it would try to sell more shares than we hold and open a short.
+        remaining = pos["shares"] - positions[symbol]["partial_sold_shares"]
+        if remaining > 0:
+            cancel_stop_order(client, pos.get("stop_order_id"))
+            resize_req = StopOrderRequest(
+                symbol=symbol,
+                qty=remaining,
+                side=OrderSide.SELL,
+                time_in_force=TimeInForce.GTC,
+                stop_price=round(pos["current_stop"], 2),
+            )
+            try:
+                resized = client.submit_order(resize_req)
+                positions[symbol]["stop_order_id"] = str(resized.id)
+            except Exception as e:
+                print(f"Warning: failed to resize stop for {symbol} after partial sell: {e}")
+                post_attention(
+                    f"Stop Resize Failed After Partial Sell: {symbol}",
+                    f"Partial sell of {filled_qty} sh filled but resizing the protective stop to "
+                    f"{remaining} sh failed: {e}\nThe old stop order was already canceled — "
+                    f"position is UNPROTECTED for the remaining shares. Place a stop manually in Alpaca.",
+                    level="critical",
+                )
     else:
         del positions[symbol]
         event = "EXIT"
@@ -301,9 +328,62 @@ def place_sell(client, symbol: str, reason: str, shares: int | None = None, is_p
     post_trade_alert("SELL", symbol, filled_qty, fill_price, pnl_dollars=pnl_dollars, pnl_pct=pnl_pct, exit_reason=reason, hold_duration=hold_str)
 
 
+def place_raise_stop(client, symbol: str, new_stop: float) -> None:
+    """Raise the trailing stop for an open position: cancel the existing GTC
+    stop and resubmit at new_stop for the currently broker-held quantity.
+    """
+    positions = read_json("positions.json", default={})
+    if symbol not in positions:
+        print(f"No open position for {symbol}.")
+        return
+    pos = positions[symbol]
+
+    held = broker_position_qty(client, symbol)
+    if held <= 0:
+        print(f"{symbol}: broker holds no long position; skipping stop raise "
+              f"(run reconcile_fills.py first if positions.json is stale).")
+        return
+
+    cancel_stop_order(client, pos.get("stop_order_id"))
+
+    stop_req = StopOrderRequest(
+        symbol=symbol,
+        qty=held,
+        side=OrderSide.SELL,
+        time_in_force=TimeInForce.GTC,
+        stop_price=round(new_stop, 2),
+    )
+    try:
+        stop_order = client.submit_order(stop_req)
+    except Exception as e:
+        print(f"Warning: failed to raise stop for {symbol}: {e}")
+        post_attention(
+            f"Stop Raise Failed: {symbol}",
+            f"Tried to raise the stop for {symbol} to ${new_stop:.2f} but the order failed: {e}\n"
+            f"The old stop order was already canceled — position is UNPROTECTED. "
+            f"Place a stop manually in Alpaca.",
+            level="critical",
+        )
+        return
+
+    old_stop = pos.get("current_stop")
+    positions[symbol]["current_stop"] = new_stop
+    positions[symbol]["stop_order_id"] = str(stop_order.id)
+    write_json("positions.json", positions)
+
+    append_jsonl("trade_log.jsonl", {
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "event": "STOP_RAISED",
+        "symbol": symbol,
+        "old_stop": old_stop,
+        "new_stop": new_stop,
+    })
+    print(f"Raised stop for {symbol}: ${old_stop:.2f} -> ${new_stop:.2f}")
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--action", required=True, choices=["buy", "sell", "partial_sell"])
+    parser.add_argument("--action", required=True, choices=["buy", "sell", "partial_sell", "raise_stop"])
     parser.add_argument("--symbol", required=True)
     parser.add_argument("--shares", type=int, default=0)
     parser.add_argument("--stop", type=float, default=0)
@@ -325,6 +405,11 @@ def main():
             print("--shares required for partial_sell.")
             sys.exit(1)
         place_sell(client, symbol, args.reason or "partial profit target", shares=args.shares, is_partial=True)
+    elif args.action == "raise_stop":
+        if not args.stop:
+            print("--stop required for raise_stop.")
+            sys.exit(1)
+        place_raise_stop(client, symbol, args.stop)
 
 
 if __name__ == "__main__":

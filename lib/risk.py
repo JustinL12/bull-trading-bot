@@ -34,6 +34,35 @@ def turtle_stop_price(entry_price: float, atr: float) -> float:
     return round(entry_price - config.BACKTEST_STOP_ATR_MULT * atr, 2)
 
 
+def profit_lock_triggered(current_close: float, entry_price: float, atr_at_entry: float) -> bool:
+    """True once unrealized gain reaches PROFIT_LOCK_ATR_MULT × atr_at_entry.
+
+    Gates both partial profit-taking and trailing-stop activation.
+    """
+    if atr_at_entry <= 0:
+        return False
+    return (current_close - entry_price) >= config.PROFIT_LOCK_ATR_MULT * atr_at_entry
+
+
+def partial_profit_shares(shares: int, already_partial_sold: bool) -> int:
+    """Shares to sell when the profit lock first triggers.
+
+    Returns 0 if the partial sell already happened (partial_sold True) or if
+    the fraction rounds down to nothing.
+    """
+    if already_partial_sold:
+        return 0
+    return math.floor(shares * config.PARTIAL_PROFIT_FRACTION)
+
+
+def trailing_stop_price(highest_close: float, atr: float) -> float:
+    """Trailing stop = highest close since entry - TRAILING_STOP_ATR_MULT × current ATR(20).
+
+    Caller is responsible for only raising current_stop (never lowering it).
+    """
+    return round(highest_close - config.TRAILING_STOP_ATR_MULT * atr, 2)
+
+
 def check_kill_switch(equity: float, starting_equity: float) -> bool:
     """Return True (and set flag) if daily loss limit is breached."""
     if flag_exists("kill_switch.flag"):

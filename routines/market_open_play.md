@@ -74,11 +74,13 @@ Read these files before doing anything else:
 
 1. data/watchlist_trend.json — entry candidates from last night's scan (already earnings-filtered)
 2. data/exit_signals.json — open positions to close at open
-3. data/positions.json — current open positions (what's actually held)
-4. data/account.json — current equity for position sizing
-5. data/memory/compressed_summary.json — notes_for_next_session from last night's agent
+3. data/partial_exit_signals.json — open positions that hit the profit-lock partial-sell trigger
+4. data/stop_updates.json — open positions whose trailing stop should be raised
+5. data/positions.json — current open positions (what's actually held)
+6. data/account.json — current equity for position sizing
+7. data/memory/compressed_summary.json — notes_for_next_session from last night's agent
 
-If data/watchlist_trend.json is missing or empty and data/exit_signals.json is also empty, log a journal entry and stop — the evening scan did not run or found nothing.
+If data/watchlist_trend.json is missing or empty and data/exit_signals.json, data/partial_exit_signals.json, and data/stop_updates.json are also all empty, log a journal entry and stop — the evening scan did not run or found nothing.
 
 ---
 
@@ -107,7 +109,13 @@ Read data/positions.json. Count open positions. If already at TURTLE_MAX_POSITIO
 
 ---
 
-## Part 3: Execute exits first
+## Part 3: Execute exits, partial profit-taking, and stop raises
+
+Run these three steps in order — full exits first (frees capital, most important step), then partial
+profit-taking, then stop raises last (so a symbol that had a partial sell today gets its stop resized
+against the post-partial-sell share count, not the original one).
+
+### Part 3a — Full exits (death cross)
 
 For each symbol in data/exit_signals.json, close the position immediately at market open:
 
@@ -118,9 +126,38 @@ python scripts/place_order.py \
   --reason "Trend exit: MA-20/60 death cross"
 ```
 
-Execute all exits before looking at entries. This frees capital and is the most important step — do not delay or skip exits.
+Do not delay or skip exits. After each exit, verify the fill by reading data/positions.json to confirm
+the symbol was removed.
 
-After each exit, verify the fill by reading data/positions.json to confirm the symbol was removed.
+### Part 3b — Partial profit-taking
+
+For each entry in data/partial_exit_signals.json (skip any symbol already closed in Part 3a):
+
+```
+python scripts/place_order.py \
+  --action partial_sell \
+  --symbol SYMBOL \
+  --shares SHARES \
+  --reason "Partial profit target (+2 ATR)"
+```
+
+Use the `shares` and `reason` from the signal entry. After each fill, verify by reading
+data/positions.json to confirm `partial_sold` is true and `partial_sold_shares` increased.
+
+### Part 3c — Stop raises (trailing stop)
+
+For each entry in data/stop_updates.json (skip any symbol already closed in Part 3a):
+
+```
+python scripts/place_order.py \
+  --action raise_stop \
+  --symbol SYMBOL \
+  --stop NEW_STOP
+```
+
+Use the `new_stop` from the signal entry. Run this after Part 3b so the resubmitted stop order is sized
+to the current (post-partial-sell) share count. After each raise, verify by reading data/positions.json
+to confirm `current_stop` matches `new_stop`.
 
 ---
 
@@ -184,12 +221,14 @@ Append one JSON line to data/memory/session_journal.jsonl:
   "date": "YYYY-MM-DD",
   "session": "market_open",
   "exits_executed": [],
+  "partial_exits_executed": [],
+  "stops_raised": [],
   "entries_executed": [],
   "entries_skipped": [],
   "positions_at_cap": false,
   "vix_suspended": false,
   "kill_switch_active": false,
-  "notes": "Brief narrative: exits taken, entries filled, any execution issues"
+  "notes": "Brief narrative: exits taken, partial profits taken, stops raised, entries filled, any execution issues"
 }
 ```
 
