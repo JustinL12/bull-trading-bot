@@ -1,125 +1,125 @@
 {
   "last_updated": "2026-09-09",
-  "sessions_analyzed": 87,
+  "sessions_analyzed": 88,
   "total_trades": 15,
-  "performance_overview": "Through 87 sessions (inception 2026-06-01) Bull holds 13 open positions and 15 realized round-trips (3W/12L). The 2026-09-08 evening scan was the first fresh signal read in a week and came back EMPTY: 0 golden crosses, 0 death crosses across 553 tickers on live 9/8 closes. EOD equity $103,577.53, down -1.01% today vs SPY -0.53% (alpha -0.47%) -- third down day in four as the tech-led pullback ground on. Book still 10/13 green: CRM the dominant tail (+33.69%), MOS +11.61%, BMY +10.20%, SCHW +9.14% steady; the three reds all HELD (no death cross) -- NFLX -4.24% (acute, cushion just 1.40% above fixed stop 75.74), QQQ -1.28% (3.12%), HAL -1.22% (4.59%). Cumulative lead over SPY: Bull +3.58% vs SPY +1.00% (~+2.58pt gap, still narrowing) -- Bull high-beta book keeps bleeding relative alpha on this down/choppy tape.",
+  "performance_overview": "Through 88 sessions (inception 2026-06-01) Bull holds 13 open positions and 15 realized round-trips (3W/12L). No trades today -- the 9/8 evening scan returned EMPTY (0 golden/0 death crosses across 553 tickers) so the 9/9 open was a no-op and no fresh signals exist for tomorrow. EOD equity $102,684.43, down -0.80% today vs SPY -0.44% (alpha -0.35%) -- FOURTH down day in five as the tech-led pullback ground on. Book now 9/13 green (was 10/13): CRM still the dominant tail but faded to +30.96% (was +33.69%), MOS +10.29%, BMY +9.60%, SCHW +8.91%, XLE +8.59% firm; the reds are NFLX -5.20%, QQQ -1.51%, HAL -0.08%, PSKY ~flat -0.05% -- all HELD (no death cross). Cumulative lead over SPY: Bull +2.68% vs SPY +0.56% (~+2.12pt gap, still narrowing from +2.58) -- Bull high-beta book keeps bleeding relative alpha on this down/choppy tape.",
   "best_signals": [
-    "Single shallow-cross probation entries (heavy size-DOWN, NOT skip) -- verdict POSITIVE and durable. BMY (0.13% cross, 50% unit) +10.09%; GIS (0.29% cross, 75% unit) +5.58%; CAG (0.113% cross, 50% unit) +2.37%; MOS (0.43% matured cross, 75% unit) +11.97%. The two freshest probation entries are the two worst reds: NFLX (0.109% cross, 50% unit, entered 9/1) now -4.40% with a 1.22% cushion -- the tech fade turned this one materially adverse; HAL (0.298% cross + borderline 657k liq = two soft flags, 50% unit, entered 9/4) -0.58%. Read: size down on a single clean shallow cross, do not upsize, and weight the entry's SECTOR trend -- NFLX shows a clean cross can still fail fast when its sector rolls over.",
+    "Single shallow-cross probation entries (heavy size-DOWN, NOT skip) -- verdict POSITIVE and durable. BMY (0.13% cross, 50% unit) +9.60%; GIS (0.29% cross, 75% unit) +3.31%; CAG (0.113% cross, 50% unit) +1.13%; MOS (0.43% matured cross, 75% unit) +10.29%. The two freshest probation entries are the worst reds: NFLX (0.109% cross, 50% unit, entered 9/1) now -5.20% with only a 0.38% cushion -- essentially AT its stop; HAL (0.298% cross + borderline 657k liq = two soft flags, 50% unit, entered 9/4) -0.08%. Read: size down on a single clean shallow cross, do not upsize, and weight the entry's SECTOR trend -- NFLX shows a clean cross can still fail fast when its sector rolls over.",
     "RSI 55-60 at entry: 2/2 wins (100%), avg +2.15% -- the ONLY profitable bucket for the LEGACY intraday RSI strategy; n=2, thin, INFORMATIONAL ONLY now that the live strategy is MA-20/60 trend-following. Do not act on it (n<10).",
-    "Idiosyncratic single-name upside is real and can dominate the cumulative record (CRM +33.72%) -- the mirror image of single-name downside (AMZN/PCG). It is NOT a repeatable strategy edge; treat both fat tails as luck-of-the-draw. The lasting lesson is symmetric: MA-20/60 trend entries carry fat single-name tails in BOTH directions -- size discipline is the only defense. The last week made the two-sided point cleanly and 9/8 extended it: Bull's biggest winners are high-beta names (CRM, MSFT, NFLX) that lead lower on down tapes, so Bull gives back MORE than SPY on tech-led pullbacks (lagged Fri 9/4 AND Tue 9/8)."
+    "Idiosyncratic single-name upside is real and can dominate the cumulative record (CRM +30.96%, faded from a +39% peak) -- the mirror image of single-name downside (AMZN/PCG). It is NOT a repeatable strategy edge; treat both fat tails as luck-of-the-draw. The lasting lesson is symmetric: MA-20/60 trend entries carry fat single-name tails in BOTH directions -- size discipline is the only defense. This week made the two-sided point cleanly: Bull's biggest winners are high-beta names (CRM, MSFT, NFLX) that lead lower on down tapes, so Bull gives back MORE than SPY on tech-led pullbacks (lagged 9/4, 9/8 AND 9/9)."
   ],
   "avoid": [
-    "Extended entries (price well above EMA-20 at entry) -- CONFIRMED LOSER, thesis RESOLVED by AMZN (entered Aug 4 at +15.2% above EMA20, stopped -6.57% Aug 17) and META (Jul 15 ~8.5% ext, stopped -8.04% Jul 23). Surviving extended admits are fine now (MSFT +1.71%, QQQ still RED -1.20%/3.11% cushion, CRM the +33.72% exception) but that does not vindicate the entry. Firm rule stands: treat >~6-8% above-EMA extension as size-DOWN or wait-for-pullback; when it co-occurs with a shallow cross, SKIP. MSTR correctly SKIPPED 9/1 on +17.2% extension among three stacked flags.",
-    "STACKED-FLAG entries (shallow cross + extended above EMA + thin liquidity together) -- SKIP, not size-down: PDBC (0.15% cross + ~6% ext + thin liq, Jul 24) stopped -2.40%. One flag -> size down; two or more stacked -> skip. Applied correctly repeatedly: SLV skipped Aug 28 (two flags), MSTR skipped Sep 1 (three flags), EWZ skipped Sep 2 (0.033% noise cross + 7.05% ext). HAL 9/4 was a legitimate size-down (two SOFT flags: 0.298% cross + 657k borderline liq, NOT extended at 5.69%) -- the boundary case, still -0.58% and worth watching.",
+    "Extended entries (price well above EMA-20 at entry) -- CONFIRMED LOSER, thesis RESOLVED by AMZN (entered Aug 4 at +15.2% above EMA20, stopped -6.57% Aug 17) and META (Jul 15 ~8.5% ext, stopped -8.04% Jul 23). Surviving extended admits are fine now (MSFT +1.20%, QQQ still RED -1.51%/2.81% cushion, CRM the +30.96% exception) but that does not vindicate the entry. Firm rule stands: treat >~6-8% above-EMA extension as size-DOWN or wait-for-pullback; when it co-occurs with a shallow cross, SKIP. MSTR correctly SKIPPED 9/1 on +17.2% extension among three stacked flags.",
+    "STACKED-FLAG entries (shallow cross + extended above EMA + thin liquidity together) -- SKIP, not size-down: PDBC (0.15% cross + ~6% ext + thin liq, Jul 24) stopped -2.40%. One flag -> size down; two or more stacked -> skip. Applied correctly repeatedly: SLV skipped Aug 28 (two flags), MSTR skipped Sep 1 (three flags), EWZ skipped Sep 2 (0.033% noise cross + 7.05% ext). HAL 9/4 was a legitimate size-down (two SOFT flags: 0.298% cross + 657k borderline liq, NOT extended at 5.69%) -- the boundary case, now -0.08% and worth watching.",
     "Noise-level / opening-bar-artifact crosses -- EQT skipped Aug 28: completed-bar EMA20/60 spread only 0.0145%, far below the 0.1% shallow-cross floor; a live 0.19% read was a 917-share opening-bar artifact on a partial daily bar. EWZ Sep 2 same pattern (0.033% completed spread). Hold the 0.1% floor against thin-liquidity fake-outs."
   ],
   "active_parameter_adjustments": [],
-  "recent_market_context": "Sep 1 - Sep 8: soft selloff 9/1, bounce 9/2, tech rally 9/3, tech-led pullback 9/4 (Bull -1.31%), Labor Day 9/7 (closed), pullback extended 9/8 (SPY -0.53%, Bull -1.01%). Three down days in four, tech/high-beta leadership rolling over; Bull lagged SPY on 9/4 and 9/8. VIX calm ~14-15 (no suspend). Regime choppy-to-soft with tech softening -- Bull high-beta winners (CRM, MSFT, NFLX) give back the most. Book 13/20, ~96% deployed (cash ~-$0.7k, buying_power ~$290k).",
+  "recent_market_context": "Sep 3 - Sep 9: tech rally 9/3, then tech-led pullback 9/4 (Bull -1.31%), Labor Day 9/7 (closed), pullback extended 9/8 (SPY -0.53%, Bull -1.01%) and again 9/9 (SPY -0.44%, Bull -0.80%). Four down days in five, tech/high-beta leadership rolling over; Bull lagged SPY on 9/4, 9/8 and 9/9. VIX calm ~14-15 (no suspend). Regime choppy-to-soft with tech softening -- Bull high-beta winners (CRM, MSFT, NFLX) give back the most. Book 13/20, ~96% deployed (buying_power ~$287k).",
   "current_open_positions": [
     {
       "symbol": "NFLX",
       "entry_price": 80.2,
       "current_stop": 75.74,
       "entry_date": "2026-09-01",
-      "unrealized_pnl_pct": -4.24,
-      "notes": "ACUTE STOP RISK persists but NO death cross on 9/8 close -- firmed slightly to -4.24%, cushion ~1.40% above fixed 2xATR stop 75.74; only the GTC stop can exit it (stop not trailed by design); watch first for a death cross or stop-out"
+      "unrealized_pnl_pct": -5.2,
+      "notes": "AT-STOP RISK -- cushion collapsed to just 0.38% above the fixed 2xATR stop 75.74 (mark ~76.03, -5.20%); one more adverse tick likely fills the GTC stop. No death cross on 9/8. Stop is its only exit (not trailed by design); reconcile_fills will log it if it fires overnight/tomorrow"
     },
     {
       "symbol": "QQQ",
       "entry_price": 727.04,
       "current_stop": 695.97,
       "entry_date": "2026-08-05",
-      "unrealized_pnl_pct": -1.28,
-      "notes": "#2 stop risk; cushion 3.12% above fixed 2xATR stop 695.97 (-1.28%); no death cross; stop not trailed by design"
+      "unrealized_pnl_pct": -1.51,
+      "notes": "#2 stop risk; cushion 2.81% above fixed 2xATR stop 695.97 (-1.51%); no death cross; stop not trailed by design"
     },
     {
       "symbol": "HAL",
       "entry_price": 37.26,
       "current_stop": 35.19,
       "entry_date": "2026-09-04",
-      "unrealized_pnl_pct": -1.22,
-      "notes": "now #3 risk, slipped to -1.22%; cushion 4.59% above fixed 2xATR stop 35.19; day-2 probation (50% unit, two soft flags); no death cross; stop not trailed by design"
-    },
-    {
-      "symbol": "DVN",
-      "entry_price": 48.19,
-      "current_stop": 44.85,
-      "entry_date": "2026-08-18",
-      "unrealized_pnl_pct": 0.45,
-      "notes": "roughly flat +0.45%; cushion 7.93% above fixed 2xATR stop 44.85; stop not trailed by design"
-    },
-    {
-      "symbol": "MSFT",
-      "entry_price": 485.41,
-      "current_stop": 456.13,
-      "entry_date": "2026-08-03",
-      "unrealized_pnl_pct": 1.75,
-      "notes": "held +1.75% through the tech give-back; cushion 8.28% above fixed 2xATR stop 456.13; stop not trailed by design"
-    },
-    {
-      "symbol": "CAG",
-      "entry_price": 14.99,
-      "current_stop": 13.94,
-      "entry_date": "2026-07-27",
-      "unrealized_pnl_pct": 1.87,
-      "notes": "probation shallow-cross entry +1.87%; cushion 9.54% above fixed 2xATR stop 13.94; stop not trailed by design"
-    },
-    {
-      "symbol": "GIS",
-      "entry_price": 35.89,
-      "current_stop": 34.41,
-      "entry_date": "2026-07-14",
-      "unrealized_pnl_pct": 5.06,
-      "notes": "defensive, +5.06% and firm on the down tape; cushion 9.59% above fixed 2xATR stop 34.41; stop not trailed by design"
+      "unrealized_pnl_pct": -0.08,
+      "notes": "#3 risk, roughly flat -0.08%; cushion 5.48% above fixed 2xATR stop 35.19; probation entry (50% unit, two soft flags); no death cross; stop not trailed by design"
     },
     {
       "symbol": "PSKY",
       "entry_price": 10.29,
       "current_stop": 9.57,
       "entry_date": "2026-08-24",
-      "unrealized_pnl_pct": 4.91,
-      "notes": "green +4.91%; cushion 12.80% above fixed 2xATR stop 9.57; stop not trailed by design"
+      "unrealized_pnl_pct": -0.05,
+      "notes": "roughly flat -0.05% (slipped from green); cushion 6.95% above fixed 2xATR stop 9.57; stop not trailed by design"
+    },
+    {
+      "symbol": "CAG",
+      "entry_price": 14.99,
+      "current_stop": 13.94,
+      "entry_date": "2026-07-27",
+      "unrealized_pnl_pct": 1.13,
+      "notes": "probation shallow-cross entry +1.13%; cushion 8.05% above fixed 2xATR stop 13.94; stop not trailed by design"
+    },
+    {
+      "symbol": "MSFT",
+      "entry_price": 485.41,
+      "current_stop": 456.13,
+      "entry_date": "2026-08-03",
+      "unrealized_pnl_pct": 1.2,
+      "notes": "held +1.20% through the tech give-back; cushion 7.14% above fixed 2xATR stop 456.13; stop not trailed by design"
+    },
+    {
+      "symbol": "DVN",
+      "entry_price": 48.19,
+      "current_stop": 44.85,
+      "entry_date": "2026-08-18",
+      "unrealized_pnl_pct": 1.8,
+      "notes": "+1.80%, energy holding; cushion 8.57% above fixed 2xATR stop 44.85; stop not trailed by design"
+    },
+    {
+      "symbol": "GIS",
+      "entry_price": 35.89,
+      "current_stop": 34.41,
+      "entry_date": "2026-07-14",
+      "unrealized_pnl_pct": 3.31,
+      "notes": "defensive, +3.31% and firm on the down tape; cushion 7.20% above fixed 2xATR stop 34.41; stop not trailed by design"
     },
     {
       "symbol": "XLE",
       "entry_price": 60.17,
       "current_stop": 56.92,
       "entry_date": "2026-07-23",
-      "unrealized_pnl_pct": 7.65,
-      "notes": "energy firm +7.65%, sector tailwind for HAL/DVN; cushion 13.79% above fixed 2xATR stop 56.92; stop not trailed by design"
+      "unrealized_pnl_pct": 8.59,
+      "notes": "energy firm +8.59%, sector tailwind for HAL/DVN; cushion 12.88% above fixed 2xATR stop 56.92; stop not trailed by design"
     },
     {
       "symbol": "SCHW",
       "entry_price": 97.93,
       "current_stop": 93.28,
       "entry_date": "2026-07-06",
-      "unrealized_pnl_pct": 9.14,
-      "notes": "steady financial +9.14%; cushion 14.58% above fixed 2xATR stop 93.28; stop not trailed by design"
+      "unrealized_pnl_pct": 8.91,
+      "notes": "steady financial +8.91%; cushion 12.54% above fixed 2xATR stop 93.28; stop not trailed by design"
     },
     {
       "symbol": "BMY",
       "entry_price": 58.71,
       "current_stop": 55.76,
       "entry_date": "2026-07-16",
-      "unrealized_pnl_pct": 10.2,
-      "notes": "defensive book anchor +10.20%; cushion 16.03% above fixed 2xATR stop 55.76; stop not trailed by design"
+      "unrealized_pnl_pct": 9.6,
+      "notes": "defensive book anchor +9.60%; cushion 13.34% above fixed 2xATR stop 55.76; stop not trailed by design"
     },
     {
       "symbol": "MOS",
       "entry_price": 23.77,
       "current_stop": 22.0,
       "entry_date": "2026-08-25",
-      "unrealized_pnl_pct": 11.61,
-      "notes": "probation shallow-cross entry, solidly green +11.61%; cushion 20.59% above fixed 2xATR stop 22.0; stop not trailed by design"
+      "unrealized_pnl_pct": 10.29,
+      "notes": "probation shallow-cross entry, solidly green +10.29%; cushion 16.08% above fixed 2xATR stop 22.0; stop not trailed by design"
     },
     {
       "symbol": "CRM",
       "entry_price": 186.41,
       "current_stop": 169.75,
       "entry_date": "2026-08-04",
-      "unrealized_pnl_pct": 33.69,
-      "notes": "dominant single-name tail, ripped to +33.69%; cushion 46.82% above fixed 2xATR stop 169.75; stop not trailed by design"
+      "unrealized_pnl_pct": 30.96,
+      "notes": "dominant single-name tail, faded to +30.96% (was +33.69%); cushion 30.47% above fixed 2xATR stop 169.75; stop not trailed by design"
     }
   ],
-  "notes_for_next_session": "For the 2026-09-09 EOD agent: the market-open run was a NO-OP. Last nights 9/8 evening scan returned empty lists (watchlist_trend.json=[], exit_signals.json=[]) so the open agent placed no trades and touched no stops. reconcile_fills found 0 stop fills; all 13 GTC 2xATR stops remain live at Alpaca and the book is unchanged at 13/20 (~96% deployed). No kill_switch. Position state is identical to the 9/8 EOD snapshot below -- do a fresh mark at close. ACUTE STOP-RISK WATCH unchanged: NFLX is the closest to its fixed stop 75.74 (cushion ~1.40%), then QQQ (~3.12%) and HAL (~4.59%). Stops are fixed 2xATR by design -- do NOT trail/raise them; they are removed only by a death-cross full exit or a GTC stop fill. Standing entry filters unchanged (0.1% shallow-cross floor; size-down single/soft flag; skip stacked flags or >6-8% EMA extension)."
+  "notes_for_next_session": "For the 2026-09-09 evening scan agent: no trades today; the 9/8 evening scan returned EMPTY so the 9/9 open was a no-op. All 13 GTC 2xATR stops verified live/exact at Alpaca; reconcile_fills found 0 fills. Book 13/20 (~96% deployed), no kill_switch. TOP PRIORITY on tonight's live 9/9 close: NFLX is now essentially AT its stop -- cushion collapsed to just 0.38% above the fixed stop 75.74 (mark ~76.03, -5.20%). Watch it first for either (a) a death cross (would trigger a full exit at the 9/10 open) or (b) a GTC stop fill logged by reconcile_fills; a single adverse tech session likely stops it out. QQQ (cushion 2.81%) and HAL (5.48%) are next; PSKY slipped to ~flat. Stops are fixed 2xATR by design -- do NOT trail/raise them; they are removed only by a death-cross full exit or a GTC stop fill. Standing entry filters unchanged (0.1% shallow-cross floor; size-down single/soft flag; skip stacked flags or >6-8% EMA extension). Tech/high-beta leadership rolling over -- Bull has lagged SPY three sessions running."
 }
