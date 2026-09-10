@@ -37,7 +37,7 @@
       "entry_price": 35.89,
       "current_stop": 34.41,
       "entry_date": "2026-07-14",
-      "unrealized_pnl_pct": -0.30,
+      "unrealized_pnl_pct": -0.3,
       "notes": "slipped red -0.30% but defensive; cushion 3.84% above fixed 2xATR stop 34.41; no death cross; stop not trailed by design"
     },
     {
@@ -113,5 +113,5 @@
       "notes": "dominant single-name tail +30.48% (faded from +30.96%); cushion 30.21% above fixed 2xATR stop 169.75; stop not trailed by design"
     }
   ],
-  "notes_for_next_session": "For tonight's 2026-09-10 evening scan agent: quiet day -- NFLX was the only state change, stopped out overnight at 75.52 (-5.84%, reconciled at the open) so book is now 12/20, realized round-trips 16 (3W/13L). No entries/exits at the 9/10 open (9/9 evening scan was empty: 0 golden/0 death crosses). ACUTE stop-risk names to check FIRST for a death cross or a reconcile-logged fill: QQQ (cushion just 1.84%, -2.48%) and HAL (2.68%, -2.95%) are now knife-edge -- one adverse tech/energy tick stops either via its GTC 2xATR order. GIS (3.84%, went red today) and CAG (5.14%) next. Everything else >7% cushion; CRM the standout at +30.48%. Five down days in six with tech leadership rolling over, but Bull nearly matched SPY today (-0.09pt) and SPY has now given back its entire since-inception gain (net -0.07%) while Bull holds +1.89%. Market still not generating fresh MA-20/60 golden crosses in this pullback -- expect another likely-empty scan. Standing entry filters unchanged; stops fixed at entry, do NOT trail."
+  "notes_for_next_session": "For the 2026-09-11 market-open agent: ONE entry signal on the 9/10 evening scan -- META (golden cross) -- but treat it with heavy skepticism. META close 644.36, cross spread only 0.29% (shallow, barely over the 0.1% floor) AND price +7.8% above EMA20 = TWO stacked flags (shallow + extended), which the standing rule says SKIP. META is also a documented extended-entry loser (7/15 ~8.5% ext -> stopped -8.04% 7/23), and its reported avg_volume 619k is suspiciously thin (real ~15M) = a third soft liquidity flag. STRONG recommendation: SKIP META, or if the executor's rules force a take, cap it at a <=50% probation unit -- do NOT take at full size. No other entries. ZERO death-cross exits on the 9/10 scan; expect no forced exits at the open. But watch for OVERNIGHT GTC stop fills on the two knife-edge names: QQQ (cushion 1.84%, -2.48%) and HAL (2.68%, -2.95%) -- reconcile_fills at the open will catch either if it triggered. GIS (3.84%, red -0.30%) and CAG (5.14%, -1.97%) next in line; everything else >7% cushion, CRM the standout +30.48%. Book 12/20 open, 16 realized round-trips (3W/13L). EOD equity ~$101,970; today -0.62% vs SPY -0.60% (alpha -0.03%, tightest lag of the six-session pullback). Cumulative Bull +1.96% vs SPY -0.08% (SPY still net-negative since inception). Regime: five-to-six down days of tech-led give-back, so a fresh extended mega-cap cross like META is exactly the low-conviction setup to avoid chasing. Standing filters unchanged; stops fixed at entry, do NOT trail."
 }
