@@ -41,3 +41,4 @@
 {"ts": "2026-08-28T16:59:28.210632+00:00", "event": "EXIT", "symbol": "PCG", "shares": 586, "price": 16.29, "pnl_dollars": -490.82, "pnl_pct": -4.89, "exit_reason": "stop_fill (reconciled)"}
 {"ts": "2026-09-01T13:35:11.525893+00:00", "event": "ENTRY", "symbol": "NFLX", "shares": 65, "price": 80.2, "stop": 76.6}
 {"ts": "2026-09-04T13:34:10.862283+00:00", "event": "ENTRY", "symbol": "HAL", "shares": 141, "price": 37.26, "stop": 35.19}
+{"ts": "2026-09-10T13:30:21.855086+00:00", "event": "EXIT", "symbol": "NFLX", "shares": 65, "price": 75.52, "pnl_dollars": -304.2, "pnl_pct": -5.84, "exit_reason": "stop_fill (reconciled)"}

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-09",
+  "last_updated": "2026-09-10",
   "sessions_analyzed": 88,
   "total_trades": 15,
   "performance_overview": "Through 88 sessions (inception 2026-06-01) Bull holds 13 open positions and 15 realized round-trips (3W/12L). No trades today -- the 9/8 evening scan returned EMPTY (0 golden/0 death crosses across 553 tickers) so the 9/9 open was a no-op and no fresh signals exist for tomorrow. EOD equity $102,684.43, down -0.80% today vs SPY -0.44% (alpha -0.35%) -- FOURTH down day in five as the tech-led pullback ground on. Book now 9/13 green (was 10/13): CRM still the dominant tail but faded to +30.96% (was +33.69%), MOS +10.29%, BMY +9.60%, SCHW +8.91%, XLE +8.59% firm; the reds are NFLX -5.20%, QQQ -1.51%, HAL -0.08%, PSKY ~flat -0.05% -- all HELD (no death cross). Cumulative lead over SPY: Bull +2.68% vs SPY +0.56% (~+2.12pt gap, still narrowing from +2.58) -- Bull high-beta book keeps bleeding relative alpha on this down/choppy tape.",
@@ -16,14 +16,6 @@
   "active_parameter_adjustments": [],
   "recent_market_context": "Sep 3 - Sep 9: tech rally 9/3, then tech-led pullback 9/4 (Bull -1.31%), Labor Day 9/7 (closed), pullback extended 9/8 (SPY -0.53%, Bull -1.01%) and again 9/9 (SPY -0.44%, Bull -0.80%). Four down days in five, tech/high-beta leadership rolling over; Bull lagged SPY on 9/4, 9/8 and 9/9. VIX calm ~14-15 (no suspend). Regime choppy-to-soft with tech softening -- Bull high-beta winners (CRM, MSFT, NFLX) give back the most. Book 13/20, ~96% deployed (buying_power ~$287k).",
   "current_open_positions": [
-    {
-      "symbol": "NFLX",
-      "entry_price": 80.2,
-      "current_stop": 75.74,
-      "entry_date": "2026-09-01",
-      "unrealized_pnl_pct": -5.2,
-      "notes": "AT-STOP RISK -- cushion collapsed to just 0.38% above the fixed 2xATR stop 75.74 (mark ~76.03, -5.20%); one more adverse tick likely fills the GTC stop. No death cross on 9/8. Stop is its only exit (not trailed by design); reconcile_fills will log it if it fires overnight/tomorrow"
-    },
     {
       "symbol": "QQQ",
       "entry_price": 727.04,
@@ -121,5 +113,5 @@
       "notes": "dominant single-name tail, faded to +30.96% (was +33.69%); cushion 30.47% above fixed 2xATR stop 169.75; stop not trailed by design"
     }
   ],
-  "notes_for_next_session": "For the 2026-09-10 market-open agent: TONIGHT'S 9/9 EVENING SCAN WAS EMPTY -- 0 golden crosses, 0 death crosses. Expect a NO-OP open: no new entries in watchlist_trend.json, no exits in exit_signals.json. Do NOT force trades. Book unchanged at 13/20 (~96% deployed), equity 102,727.70. Watch NFLX FIRST at the open: cushion is a razor-thin 0.42% (mark 76.06 vs fixed GTC stop 75.74) -- it survived a second session but a single adverse tech tick fills the stop; if it fired overnight, reconcile_fills will have logged the EXIT and cleared it before you read positions.json. QQQ (2.86%) and HAL (5.54%) are the next-nearest stops; PSKY 6.58%. All other names carry >7% cushion, CRM the standout at +43.9%. Stops are fixed 2xATR by design -- do NOT trail/raise; they clear only via a death-cross full exit or a GTC stop fill. Tech/high-beta leadership is rolling over and Bull has lagged SPY 3+ sessions running; no fresh MA-20/60 crosses are forming in this pullback. Standing entry filters unchanged (0.1% shallow-cross floor; size-down single/soft flag; skip stacked flags or >6-8% EMA extension)."
+  "notes_for_next_session": "For the 2026-09-10 EOD agent: MARKET OPEN WAS A NO-OP as the 9/9 empty scan predicted -- both watchlist_trend.json and exit_signals.json empty, no signal-driven trades. ONE state change at the open: NFLX stop finally fired overnight (knife-edge for two sessions) -- reconcile_fills logged the EXIT (65sh @ 75.52, -304.20/-5.84%, stop_fill reconciled) and cleared it. Book now 12/20 (~down from 13), realized round-trips 16 (3W/13L). Equity 102,410.21, buying_power 291,796.56. Pre-flight all clear at open: no kill_switch, trading/account not blocked, VIX 16.46 (no suspend), under 20-cap. Next-nearest stops to watch tonight: QQQ, HAL, PSKY -- all held, no death cross, fixed 2xATR stops (do NOT trail). Tech/high-beta leadership has been rolling over and Bull has lagged SPY several sessions; NFLX was the freshest shallow-cross probation entry (0.109% cross, 50% unit, entered 9/1) and the reminder that a clean shallow cross can still fail fast when its sector rolls -- size discipline remains the only defense. Standing entry filters unchanged."
 }
