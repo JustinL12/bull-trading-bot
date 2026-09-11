@@ -1,0 +1,30 @@
+[
+  {
+    "symbol": "SCHW",
+    "new_stop": 103.15,
+    "prior_stop": 93.28,
+    "highest_close": 107.24,
+    "atr": 2.0425
+  },
+  {
+    "symbol": "BMY",
+    "new_stop": 60.73,
+    "prior_stop": 55.76,
+    "highest_close": 63.62,
+    "atr": 1.4434
+  },
+  {
+    "symbol": "XLE",
+    "new_stop": 62.73,
+    "prior_stop": 56.92,
+    "highest_close": 65.125,
+    "atr": 1.1954
+  },
+  {
+    "symbol": "CRM",
+    "new_stop": 228.61,
+    "prior_stop": 169.75,
+    "highest_close": 247.7,
+    "atr": 9.5433
+  }
+]

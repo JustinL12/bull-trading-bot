@@ -1,0 +1,30 @@
+[
+  {
+    "symbol": "SCHW",
+    "shares": 34,
+    "current_close": 107.24,
+    "entry_price": 97.925243,
+    "reason": "Partial profit target (+2.0x ATR): close 107.24 vs entry 97.93"
+  },
+  {
+    "symbol": "BMY",
+    "shares": 28,
+    "current_close": 63.62,
+    "entry_price": 58.71,
+    "reason": "Partial profit target (+2.0x ATR): close 63.62 vs entry 58.71"
+  },
+  {
+    "symbol": "XLE",
+    "shares": 28,
+    "current_close": 65.125,
+    "entry_price": 60.167738,
+    "reason": "Partial profit target (+2.0x ATR): close 65.12 vs entry 60.17"
+  },
+  {
+    "symbol": "CRM",
+    "shares": 17,
+    "current_close": 247.7,
+    "entry_price": 186.413208,
+    "reason": "Partial profit target (+2.0x ATR): close 247.70 vs entry 186.41"
+  }
+]
